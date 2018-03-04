@@ -1,0 +1,133 @@
+buildscript {
+  ext.kotlinVersion = '1.2.30'
+
+  repositories {
+    jcenter()
+    google()
+    gradlePluginPortal()
+  }
+
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    classpath 'com.gradle.publish:plugin-publish-plugin:0.9.10'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
+    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.9.0'
+    classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.11.0'
+  }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'kotlin'
+apply plugin: 'com.github.ben-manes.versions'
+apply plugin: 'com.vanniktech.code.quality.tools'
+apply plugin: 'com.vanniktech.android.junit.jacoco'
+apply plugin: 'com.gradle.plugin-publish'
+
+codeQualityTools {
+  ktlint {
+    toolVersion = '0.18.0'
+  }
+  detekt {
+    toolVersion = '1.0.0.RC6-3'
+  }
+  findbugs {
+    enabled = false
+  }
+  pmd {
+    enabled = false
+  }
+  checkstyle {
+    enabled = false
+  }
+  cpd {
+    enabled = false
+  }
+  errorProne {
+    enabled = false
+  }
+}
+
+gradlePlugin {
+  plugins {
+    graphGeneratorDependencyPlugin {
+      id = 'com.vanniktech.dependency.graph.generator'
+      implementationClass = 'com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorPlugin'
+    }
+  }
+}
+
+repositories {
+  jcenter()
+  google()
+  gradlePluginPortal()
+}
+
+dependencies {
+  implementation localGroovy()
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+  implementation gradleApi()
+
+  testImplementation 'junit:junit:4.12'
+  testImplementation 'org.assertj:assertj-core:3.9.1'
+  testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+
+group = GROUP
+version = VERSION_NAME
+
+pluginBundle {
+  website = POM_URL
+  vcsUrl = POM_SCM_URL
+
+  plugins {
+    dependencyGraphGenerator {
+      id = 'com.vanniktech.dependency.graph.generator'
+      displayName = POM_NAME
+      tags = ['gradle', 'graph', 'dependencies', 'graphviz', 'dot']
+      description = POM_DESCRIPTION
+    }
+  }
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '4.6'
+  distributionType = Wrapper.DistributionType.ALL
+}
+
+task groovydocJar(type: Jar, dependsOn: groovydoc) {
+  classifier = 'groovydoc'
+  from groovydoc.destinationDir
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+  classifier = 'javadoc'
+  from javadoc.destinationDir
+}
+
+task sourcesJar(type: Jar) {
+  classifier = 'sources'
+  from sourceSets.main.allSource
+}
+
+artifacts {
+  archives jar
+  archives groovydocJar
+  archives javadocJar
+  archives sourcesJar
+}
+
+apply from: file('gradle/gradle-mvn-push.gradle')
+
+apply plugin: 'maven-publish'
+
+publishing {
+  publications {
+    main(MavenPublication) {
+      from components.java
+      artifact sourcesJar
+    }
+  }
+}
