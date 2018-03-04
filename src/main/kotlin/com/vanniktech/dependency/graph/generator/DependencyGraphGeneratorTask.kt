@@ -14,8 +14,8 @@ open class DependencyGraphGeneratorTask : DefaultTask() {
   lateinit var generator: Generator // TODO does this need to be an input? Quick testing shows no.
   @InputFile lateinit var inputFile: File
 
-  @OutputFile lateinit var dotOutputFile: File
-  @OutputFile lateinit var imageOutputFile: File
+  @OutputFile lateinit var outputFileDot: File
+  @OutputFile lateinit var outputFileImage: File
 
   @TaskAction fun run() {
     val result = project.exec {
@@ -35,18 +35,11 @@ open class DependencyGraphGeneratorTask : DefaultTask() {
       throw GradleException("This task requires dot from graphviz. $message")
     }
 
-    dotOutputFile.writeText(DotGenerator(project, generator).generateContent())
+    outputFileDot.writeText(DotGenerator(project, generator).generateContent())
 
     project.exec {
-      it.workingDir = dotOutputFile.parentFile
       it.executable = "dot"
-      it.args("-Tpng", "-O", dotOutputFile.name)
-    }
-
-    project.copy {
-      it.from(File(dotOutputFile.parentFile, "${dotOutputFile.name}.png").toString())
-      it.into(project.projectDir.toString())
-      it.rename("\\.dot", "")
+      it.args("-o", outputFileImage.toString(), "-Tpng", outputFileDot.toString())
     }
   }
 
