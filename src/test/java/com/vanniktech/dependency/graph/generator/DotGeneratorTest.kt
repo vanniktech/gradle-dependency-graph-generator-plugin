@@ -50,7 +50,6 @@ class DotGeneratorTest {
     assertThat(DotGenerator(singleEmpty, ALL).generateContent()).isEqualTo("""
         |digraph G {
         |  singleempty [label="singleempty", shape="box"];
-        |  { rank = same; "singleempty" };
         |}
         |""".trimMargin())
   }
@@ -60,7 +59,6 @@ class DotGeneratorTest {
         |digraph G {
         |  label="my custom header" fontsize="24" height="5" labelloc="t" labeljust="c";
         |  singleempty [label="singleempty", shape="box"];
-        |  { rank = same; "singleempty" };
         |}
         |""".trimMargin())
   }
@@ -69,7 +67,6 @@ class DotGeneratorTest {
     assertThat(DotGenerator(singleEmpty, ALL.copy(rootSuffix = "my suffix")).generateContent()).isEqualTo("""
         |digraph G {
         |  singleemptymysuffix [label="singleempty my suffix", shape="box"];
-        |  { rank = same; "singleemptymysuffix" };
         |}
         |""".trimMargin())
   }
@@ -78,7 +75,6 @@ class DotGeneratorTest {
     assertThat(DotGenerator(singleEmpty, ALL.copy(rootFormattingOptions = GraphFormattingOptions(Shape.EGG, Style.DOTTED, Color.fromHex("#ff0099")))).generateContent()).isEqualTo("""
         |digraph G {
         |  singleempty [label="singleempty", shape="egg", style="dotted", color="#ff0099"];
-        |  { rank = same; "singleempty" };
         |}
         |""".trimMargin())
   }
@@ -87,7 +83,6 @@ class DotGeneratorTest {
     assertThat(DotGenerator(singleProject, ALL).generateContent()).isEqualTo("""
         |digraph G {
         |  single [label="single", shape="box"];
-        |  { rank = same; "single" };
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
         |  single -> orgjetbrainskotlinkotlinstdlib;
         |  orgjetbrainsannotations [label="annotations", shape="box"];
@@ -111,7 +106,6 @@ class DotGeneratorTest {
     assertThat(DotGenerator(singleProject, ALL.copy(dependencyFormattingOptions = dependencyFormattingOptions)).generateContent()).isEqualTo("""
         |digraph G {
         |  single [label="single", shape="box"];
-        |  { rank = same; "single" };
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box", color="#6ba46e"];
         |  single -> orgjetbrainskotlinkotlinstdlib;
         |  orgjetbrainsannotations [label="annotations", shape="box", color="#4a09b2"];
@@ -129,7 +123,6 @@ class DotGeneratorTest {
     assertThat(DotGenerator(singleProject, ALL.copy(children = { false })).generateContent()).isEqualTo("""
         |digraph G {
         |  single [label="single", shape="box"];
-        |  { rank = same; "single" };
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
         |  single -> orgjetbrainskotlinkotlinstdlib;
         |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
@@ -143,7 +136,6 @@ class DotGeneratorTest {
     assertThat(DotGenerator(singleProject, ALL.copy(include = { it.moduleGroup != "io.reactivex.rxjava2" })).generateContent()).isEqualTo("""
         |digraph G {
         |  single [label="single", shape="box"];
-        |  { rank = same; "single" };
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
         |  single -> orgjetbrainskotlinkotlinstdlib;
         |  orgjetbrainsannotations [label="annotations", shape="box"];
@@ -159,7 +151,6 @@ class DotGeneratorTest {
     assertThat(DotGenerator(singleProject, ALL).generateContent()).isEqualTo("""
         |digraph G {
         |  single [label="single", shape="box"];
-        |  { rank = same; "single" };
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
         |  single -> orgjetbrainskotlinkotlinstdlib;
         |  orgjetbrainsannotations [label="annotations", shape="box"];
