@@ -27,12 +27,20 @@ This plugin is using the `dot` command line tool for generating the graphs hence
 
 Information: [This plugin is also available on Gradle plugins](https://plugins.gradle.org/plugin/com.vanniktech.dependency.graph.generator)
 
-### Snapshots
-
-Can be found [here](https://oss.sonatype.org/#nexus-search;quick~gradle-dependency-graph-generator-plugin). Current one is:
+### Snapshot
 
 ```groovy
-classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.2.0-SNAPSHOT"
+buildscript {
+  repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+  }
+  dependencies {
+    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.2.0-SNAPSHOT"
+  }
+}
+
+apply plugin: "com.vanniktech.dependency.graph.generator"
 ```
 
 ## Usage
