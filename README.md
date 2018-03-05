@@ -32,7 +32,6 @@ Information: [This plugin is also available on Gradle plugins](https://plugins.g
 ```gradle
 buildscript {
   repositories {
-    mavenCentral()
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
   }
   dependencies {
