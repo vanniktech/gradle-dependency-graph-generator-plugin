@@ -8,7 +8,7 @@ Gradle plugin that lets you visualize your dependencies in a graph.
 
 # Set up
 
-```groovy
+```gradle
 buildscript {
   repositories {
     mavenCentral()
@@ -29,7 +29,7 @@ Information: [This plugin is also available on Gradle plugins](https://plugins.g
 
 ### Snapshot
 
-```groovy
+```gradle
 buildscript {
   repositories {
     mavenCentral()
