@@ -74,7 +74,7 @@ This will generate a new task `generateDependencyGraphFirebaseLibraries` which w
 
 ![Example Firebase graph.](example-firebase.png)
 
-Note that when using the `dependencyGraphGenerator` extension with custom generators you loose the default one, to add it back simply use the `Generator.ALL` instance:
+Note that when using the `dependencyGraphGenerator` extension with custom generators you lose the default one, to add it back simply use the `Generator.ALL` instance:
 
 ```groovy
 dependencyGraphGenerator {
