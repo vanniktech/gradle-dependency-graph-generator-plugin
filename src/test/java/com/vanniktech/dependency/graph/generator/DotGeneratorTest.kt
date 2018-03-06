@@ -1,5 +1,7 @@
 package com.vanniktech.dependency.graph.generator
 
+import com.android.build.gradle.AppExtension
+import com.android.build.gradle.AppPlugin
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator.Companion.ALL
 import com.vanniktech.dependency.graph.generator.dot.Header
 import com.vanniktech.dependency.graph.generator.dot.Color.Companion.MAX_COLOR_VALUE
@@ -10,20 +12,25 @@ import com.vanniktech.dependency.graph.generator.dot.GraphFormattingOptions
 import org.assertj.core.api.Java6Assertions.assertThat
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ResolvedDependency
+import org.gradle.api.internal.project.DefaultProject
 import org.gradle.api.plugins.JavaLibraryPlugin
 import org.gradle.testfixtures.ProjectBuilder
 import org.junit.Before
 import org.junit.Test
+import java.io.File
 import java.util.Random
 
 class DotGeneratorTest {
   private lateinit var singleEmpty: Project
   private lateinit var singleProject: Project
-
   private lateinit var multiProject: Project
+  private lateinit var androidProject: DefaultProject
+  private lateinit var androidProjectExtension: AppExtension
 
-  @Before fun setUp() {
+  @Before @Suppress("Detekt.LongMethod") fun setUp() {
     singleEmpty = ProjectBuilder.builder().withName("singleempty").build()
+    singleEmpty.plugins.apply(JavaLibraryPlugin::class.java)
+    singleEmpty.repositories.run { add(mavenCentral()) }
 
     singleProject = ProjectBuilder.builder().withName("single").build()
     singleProject.plugins.apply(JavaLibraryPlugin::class.java)
@@ -44,6 +51,30 @@ class DotGeneratorTest {
     multiProject2.repositories.run { add(mavenCentral()) }
     multiProject2.dependencies.add("implementation", "io.reactivex.rxjava2:rxjava:2.1.10")
     multiProject2.dependencies.add("implementation", "io.reactivex.rxjava2:rxandroid:2.0.2")
+
+    androidProject = ProjectBuilder.builder().withName("android").build() as DefaultProject
+    androidProject.plugins.apply(AppPlugin::class.java)
+    androidProject.repositories.run { add(mavenCentral()) }
+
+    androidProjectExtension = androidProject.extensions.getByType(AppExtension::class.java)
+    androidProjectExtension.compileSdkVersion(27)
+    val manifestFile = File(androidProject.projectDir, "src/main/AndroidManifest.xml")
+    manifestFile.parentFile.mkdirs()
+    manifestFile.writeText("""
+        |<?xml version="1.0" encoding="utf-8"?>
+        |<manifest package="com.foo.bar" xmlns:android="http://schemas.android.com/apk/res/android">
+        |  <application/>
+        |</manifest>""".trimMargin())
+  }
+
+  @Test fun singleProjectAllNoTestDependencies() {
+    singleEmpty.dependencies.add("testImplementation", "junit:junit:4.12")
+
+    assertThat(DotGenerator(singleEmpty, ALL).generateContent()).isEqualTo("""
+        |digraph G {
+        |  singleempty [label="singleempty", shape="box"];
+        |}
+        |""".trimMargin())
   }
 
   @Test fun singleProjectEmptyAll() {
@@ -187,6 +218,111 @@ class DotGeneratorTest {
         |  multi2 -> ioreactivexrxjava2rxandroid;
         |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
         |  ioreactivexrxjava2rxandroid -> ioreactivexrxjava2rxjava;
+        |}
+        |""".trimMargin())
+  }
+
+  @Test fun androidProjectIncludeAllFlavorsByDefault() {
+    androidProjectExtension.flavorDimensions("test")
+    androidProjectExtension.productFlavors {
+      it.create("flavor1").dimension = "test"
+      it.create("flavor2").dimension = "test"
+    }
+
+    androidProject.evaluate() // Since we're adding custom productFlavors we need this.
+
+    androidProject.dependencies.add("flavor1Implementation", "io.reactivex.rxjava2:rxandroid:2.0.2")
+    androidProject.dependencies.add("flavor2DebugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
+    androidProject.dependencies.add("flavor2ReleaseImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
+
+    assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
+      |digraph G {
+      |  android [label="android", shape="box"];
+      |  ioreactivexrxjava2rxandroid [label="rxandroid", shape="box"];
+      |  android -> ioreactivexrxjava2rxandroid;
+      |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
+      |  ioreactivexrxjava2rxandroid -> ioreactivexrxjava2rxjava;
+      |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box"];
+      |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
+      |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
+      |  android -> ioreactivexrxjava2rxjava;
+      |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
+      |  android -> orgjetbrainskotlinkotlinstdlib;
+      |  orgjetbrainsannotations [label="annotations", shape="box"];
+      |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
+      |}
+      |""".trimMargin())
+  }
+
+  @Test fun androidProjectIncludeAllBuildTypesByDefault() {
+    androidProjectExtension.buildTypes {
+      it.create("staging")
+    }
+
+    androidProject.evaluate() // Since we're adding a custom buildType we need this.
+
+    androidProject.dependencies.add("releaseImplementation", "io.reactivex.rxjava2:rxandroid:2.0.2")
+    androidProject.dependencies.add("debugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
+    androidProject.dependencies.add("stagingImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
+
+    assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
+      |digraph G {
+      |  android [label="android", shape="box"];
+      |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
+      |  android -> ioreactivexrxjava2rxjava;
+      |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box"];
+      |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
+      |  ioreactivexrxjava2rxandroid [label="rxandroid", shape="box"];
+      |  android -> ioreactivexrxjava2rxandroid;
+      |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
+      |  ioreactivexrxjava2rxandroid -> ioreactivexrxjava2rxjava;
+      |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
+      |  android -> orgjetbrainskotlinkotlinstdlib;
+      |  orgjetbrainsannotations [label="annotations", shape="box"];
+      |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
+      |}
+      |""".trimMargin())
+  }
+
+  @Suppress("Detekt.UnnecessaryParentheses") // https://github.com/arturbosch/detekt/issues/767
+  @Test fun androidProjectIncludeOnlyStagingCompileClasspath() {
+    androidProjectExtension.buildTypes {
+      it.create("staging")
+    }
+
+    androidProject.evaluate() // Since we're adding a custom buildType we need this.
+
+    androidProject.dependencies.add("releaseImplementation", "io.reactivex.rxjava2:rxandroid:2.0.2")
+    androidProject.dependencies.add("debugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
+    androidProject.dependencies.add("stagingImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
+
+    assertThat(DotGenerator(androidProject, ALL.copy(includeConfiguration = { it.name == "stagingCompileClasspath" })).generateContent()).isEqualTo("""
+        |digraph G {
+        |  android [label="android", shape="box"];
+        |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
+        |  android -> orgjetbrainskotlinkotlinstdlib;
+        |  orgjetbrainsannotations [label="annotations", shape="box"];
+        |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
+        |}
+        |""".trimMargin())
+  }
+
+  @Test fun androidProjectDoNotIncludeTestDependency() {
+    androidProject.dependencies.add("testImplementation", "junit:junit:4.12")
+
+    assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
+        |digraph G {
+        |  android [label="android", shape="box"];
+        |}
+        |""".trimMargin())
+  }
+
+  @Test fun androidProjectDoNotIncludeAndroidTestDependency() {
+    androidProject.dependencies.add("androidTestImplementation", "junit:junit:4.12")
+
+    assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
+        |digraph G {
+        |  android [label="android", shape="box"];
         |}
         |""".trimMargin())
   }
