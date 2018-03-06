@@ -93,6 +93,16 @@ pluginBundle {
   }
 }
 
+tasks.withType(Test) {
+  testLogging {
+    events "failed"
+    exceptionFormat "full"
+    showExceptions true
+    showStackTraces true
+    showCauses true
+  }
+}
+
 task wrapper(type: Wrapper) {
   gradleVersion = '4.6'
   distributionType = Wrapper.DistributionType.ALL
