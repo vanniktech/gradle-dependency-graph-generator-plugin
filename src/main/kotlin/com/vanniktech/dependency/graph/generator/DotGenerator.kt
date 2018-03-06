@@ -43,12 +43,7 @@ internal class DotGenerator(
         .flatMap { project ->
           project.configurations
               .filter { it.isCanBeResolved }
-              .filter {
-                // TODO this is not optimal but will do for now.
-                val isCompileClassPath = it.name == "compileClasspath"
-                val isAndroidProjectClassPath = it.name == "debugCompileClasspath" || it.name == "releaseCompileClasspath"
-                isCompileClassPath || isAndroidProjectClassPath
-              }
+              .filter { generator.includeConfiguration.invoke(it) }
               .flatMap { it.resolvedConfiguration.firstLevelModuleDependencies }
               .map { project to it }
         }

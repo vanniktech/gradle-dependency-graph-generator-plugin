@@ -3,6 +3,7 @@ package com.vanniktech.dependency.graph.generator
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator.Companion.ALL
 import com.vanniktech.dependency.graph.generator.dot.GraphFormattingOptions
 import com.vanniktech.dependency.graph.generator.dot.Header
+import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ResolvedDependency
 
 /**
@@ -33,7 +34,13 @@ open class DependencyGraphGeneratorExtension {
     /** The formatting options for the root - the project this generator is applied too. */
     val rootFormattingOptions: GraphFormattingOptions = GraphFormattingOptions(),
     /** Optional header that can be displayed wrapped around the graph. */
-    val header: Header? = null
+    val header: Header? = null,
+    /** Return true when you want to include this configuration, false otherwise. */
+    val includeConfiguration: (Configuration) -> Boolean = {
+      // By default we'll include everything that's on the compileClassPath except test, UnitTest and AndroidTest configurations.
+      val raw = it.name.replace("compileClasspath", "", ignoreCase = true)
+      it.name.contains("compileClassPath", ignoreCase = true) && listOf("test", "AndroidTest", "UnitTest").none { raw.contains(it) }
+    }
   ) {
     /** Gradle task name that is associated with this generator. */
     val gradleTaskName = "generateDependencyGraph${name.capitalize()}"
