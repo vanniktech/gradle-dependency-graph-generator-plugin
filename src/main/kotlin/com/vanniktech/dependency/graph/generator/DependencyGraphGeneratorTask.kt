@@ -20,8 +20,7 @@ open class DependencyGraphGeneratorTask : DefaultTask() {
   @TaskAction fun run() {
     val result = project.exec {
       it.standardOutput = NullOutputStream // Don't print the output.
-      it.executable = "command"
-      it.args("-v", "dot")
+      it.commandLine("dot", "-v")
       it.isIgnoreExitValue = true
     }
 
