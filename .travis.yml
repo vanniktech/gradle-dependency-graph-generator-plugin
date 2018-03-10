@@ -3,15 +3,12 @@ language: android
 matrix:
   include:
     - os: linux
-      env: INSTALL="yes | sudo apt-get install graphviz"
     - os: osx
-      language: generic
-      env: INSTALL="brew install graphviz"
 
 jdk: oraclejdk8
 
 before_install:
-  - $INSTALL
+  - ./.travis/install.sh
   - pip install --user codecov
   # Download SDK
   - yes | sdkmanager "tools" &>/dev/null
