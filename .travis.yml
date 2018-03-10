@@ -9,7 +9,10 @@ matrix:
           packages:
             - graphviz
     - os: osx
-      env: ANDROID_HOME=/usr/local/android-sdk/
+      android:
+        components:
+          - tools
+          - platform-tools
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
