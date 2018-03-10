@@ -10,6 +10,7 @@ matrix:
             - graphviz
       sudo: false
     - os: osx
+      osx_image: xcode9.2 # Will give us JDK 1.8.0_112-b16
       dist: precise # https://github.com/travis-ci/travis-ci/issues/5990#issuecomment-216621501
       sudo: required
       android:
