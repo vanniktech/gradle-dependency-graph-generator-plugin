@@ -3,7 +3,7 @@ language: android
 jdk: oraclejdk8
 
 before_install:
-  - brew install graphviz
+  - yes | sudo apt-get install graphviz
   - pip install --user codecov
   # Download SDK
   - yes | sdkmanager "tools" &>/dev/null
