@@ -19,9 +19,9 @@ open class DependencyGraphGeneratorTask : DefaultTask() {
 
   @TaskAction fun run() {
     val result = project.exec {
-      it.standardOutput = NullOutputStream // Don't print the output.
-      it.executable = "type"
-      it.args("dot")
+      it.standardOutput = NullOutputStream // Consume the output.
+      it.errorOutput = NullOutputStream // Consume the output.
+      it.commandLine("type", "dot")
       it.isIgnoreExitValue = true
     }
 
