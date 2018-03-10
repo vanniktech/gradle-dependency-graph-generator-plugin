@@ -13,14 +13,9 @@ matrix:
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install graphviz; fi
-  # Download SDK
-  - yes | sdkmanager "tools" &>/dev/null
-  - yes | sdkmanager "platform-tools" &>/dev/null
-  - yes | sdkmanager "build-tools;27.0.3" &>/dev/null
-  - yes | sdkmanager "platforms;android-27" &>/dev/null
-  # Update remaining dependencies and accept licenses
-  - yes | sdkmanager --update &>/dev/null
-  - yes | sdkmanager --licenses &>/dev/null
+  # Install SDK license so Android Gradle plugin can install deps.
+  - mkdir "$ANDROID_HOME/licenses" || true
+  - echo "d56f5187479451eabf01fb78af6dfcb131a6481e" > "$ANDROID_HOME/licenses/android-sdk-license"
 
 script: ./gradlew clean build
 
