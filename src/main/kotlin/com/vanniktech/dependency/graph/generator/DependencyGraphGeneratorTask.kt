@@ -21,7 +21,7 @@ open class DependencyGraphGeneratorTask : DefaultTask() {
     val result = project.exec {
       it.standardOutput = NullOutputStream // Consume the output.
       it.errorOutput = NullOutputStream // Consume the output.
-      it.commandLine("type", "dot")
+      it.commandLine("sh", "-c", "command -v dot")
       it.isIgnoreExitValue = true
     }
 
