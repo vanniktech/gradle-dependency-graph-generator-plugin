@@ -63,7 +63,7 @@ repositories {
   gradlePluginPortal()
 }
 
-// Write the plugin's classpath to a file to share with the tests
+// Write the plugin's classpath to a file to share with the tests.
 task createClasspathManifest {
   def outputDir = file("$buildDir/$name")
 
@@ -104,6 +104,16 @@ pluginBundle {
       tags = ['gradle', 'graph', 'dependencies', 'graphviz', 'dot']
       description = POM_DESCRIPTION
     }
+  }
+}
+
+tasks.withType(Test) {
+  testLogging {
+    events "failed"
+    exceptionFormat "full"
+    showExceptions true
+    showStackTraces true
+    showCauses true
   }
 }
 
