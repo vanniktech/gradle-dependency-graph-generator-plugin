@@ -13,6 +13,7 @@ matrix:
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install graphviz; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install python  ; fi
   - pip install --user codecov
   # Download SDK
   - yes | sdkmanager "tools" &>/dev/null
