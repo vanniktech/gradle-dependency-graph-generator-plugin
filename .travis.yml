@@ -8,8 +8,10 @@ matrix:
         apt:
           packages:
             - graphviz
+      sudo: false
     - os: osx
       dist: precise # https://github.com/travis-ci/travis-ci/issues/5990#issuecomment-216621501
+      sudo: required
       android:
         components:
           - tools
@@ -39,8 +41,6 @@ branches:
 
 notifications:
   email: false
-
-sudo: false
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
