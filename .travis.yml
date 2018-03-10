@@ -9,6 +9,7 @@ matrix:
           packages:
             - graphviz
     - os: osx
+      dist: precise # https://github.com/travis-ci/travis-ci/issues/5990#issuecomment-216621501
       android:
         components:
           - tools
