@@ -18,14 +18,16 @@ open class DependencyGraphGeneratorTask : DefaultTask() {
   @OutputFile lateinit var outputFileImage: File
 
   @TaskAction fun run() {
+    val commandLine = when {
+      Os.isFamily(Os.FAMILY_WINDOWS) -> listOf("cmd", "-v", "dot")
+      Os.isFamily(Os.FAMILY_MAC) -> listOf("command", "-v", "dot")
+      else -> listOf("sh", "-c", "command -v dot")
+    }
+
     val result = project.exec {
-      it.standardOutput = NullOutputStream // Don't print the output.
-      if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-        it.executable = "cmd"
-      } else {
-        it.executable = "command"
-      }
-      it.args("-v", "dot")
+      it.standardOutput = NullOutputStream // Consume the output.
+      it.errorOutput = NullOutputStream // Consume the output.
+      it.commandLine(commandLine)
       it.isIgnoreExitValue = true
     }
 
