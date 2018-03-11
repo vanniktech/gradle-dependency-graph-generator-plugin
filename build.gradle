@@ -26,7 +26,7 @@ apply plugin: 'com.gradle.plugin-publish'
 
 codeQualityTools {
   ktlint {
-    toolVersion = '0.18.0'
+    toolVersion = '0.19.0'
   }
   detekt {
     toolVersion = '1.0.0.RC6-3'
