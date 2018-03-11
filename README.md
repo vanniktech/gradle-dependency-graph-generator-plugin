@@ -24,7 +24,10 @@ apply plugin: "com.vanniktech.dependency.graph.generator"
 
 Note that this plugin can be applied at the root of the project or at a specific project. Both cases will just work.
 
-This plugin is using the `dot` command line tool for generating the graphs hence you need to install it. Mac users can use `brew install graphviz`. Ubuntu users can `sudo apt-get install graphviz`.
+This plugin is using the `dot` command line tool for generating the graphs hence you need to install it.
+  - Mac (with [Homebrew](https://brew.sh/) installed): `brew install graphviz`
+  - Windows (with [Chocolatey](https://chocolatey.org/) installed): `choco install graphviz`
+  - Ubuntu: `sudo apt-get install graphviz`
 
 Information: [This plugin is also available on Gradle plugins](https://plugins.gradle.org/plugin/com.vanniktech.dependency.graph.generator)
 
