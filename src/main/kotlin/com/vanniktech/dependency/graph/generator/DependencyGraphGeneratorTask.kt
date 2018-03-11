@@ -33,9 +33,9 @@ open class DependencyGraphGeneratorTask : DefaultTask() {
 
     if (result.exitValue != 0) {
       val message = when {
+        Os.isFamily(Os.FAMILY_WINDOWS) -> "Please install via: choco install graphviz"
         Os.isFamily(Os.FAMILY_MAC) -> "Please install via: brew install graphviz"
         Os.isFamily(Os.FAMILY_UNIX) -> "Please install via: sudo apt-get install graphviz"
-        Os.isFamily(Os.FAMILY_WINDOWS) -> "Please install via: choco install graphviz"
         else -> "Please find a way to install it."
       }
 
