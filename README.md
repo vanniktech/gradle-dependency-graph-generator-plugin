@@ -1,6 +1,7 @@
 # gradle-dependency-graph-generator-plugin
 
 [![Build Status](https://travis-ci.org/vanniktech/gradle-dependency-graph-generator-plugin.svg?branch=master)](https://travis-ci.org/vanniktech/gradle-dependency-graph-generator-plugin?branch=master)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.vanniktech/gradle-dependency-graph-generator-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.vanniktech/gradle-dependency-graph-generator-plugin)
 [![Codecov](https://codecov.io/github/vanniktech/gradle-dependency-graph-generator-plugin/coverage.svg?branch=master)](https://codecov.io/github/vanniktech/gradle-dependency-graph-generator-plugin?branch=master)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Build status](https://ci.appveyor.com/api/projects/status/a0umitv5qvin5e6w/branch/master?svg=true)](https://ci.appveyor.com/project/vanniktech/gradle-dependency-graph-generator-plugin/branch/master)
