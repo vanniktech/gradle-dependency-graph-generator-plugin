@@ -10,7 +10,7 @@ Gradle plugin that lets you visualize your dependencies in a graph.
 
 # Set up
 
-[Gradle 4.0](https://docs.gradle.org/4.0/release-notes.html) or higher is requred.
+[Gradle 4.0](https://docs.gradle.org/4.0/release-notes.html) or higher is required.
 
 ```gradle
 buildscript {
