@@ -1,7 +1,13 @@
 # Change Log
 
-Version 0.3.0 *(In development)*
---------------------------------
+Version 0.3.0 *(2018-03-13)*
+----------------------------
+
+- Add MavenCentral badge. [\#18](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/18) ([johnjohndoe](https://github.com/johnjohndoe))
+- Update ktlint to 0.19.0 [\#17](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/17) ([vanniktech](https://github.com/vanniktech))
+- Add AppVeyor. [\#16](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/16) ([vanniktech](https://github.com/vanniktech))
+- Fix Gradle task on Linux and add integration test. [\#14](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/14) ([vanniktech](https://github.com/vanniktech))
+- Adding Windows support [\#10](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/10) ([Thunderforge](https://github.com/Thunderforge))
 
 Version 0.2.0 *(2018-03-07)*
 ----------------------------
