@@ -42,22 +42,12 @@ class DependencyGraphGeneratorPluginTest {
   }
 
   @Test fun integrationTest() {
-    val classpathString = javaClass.classLoader.getResource("plugin-classpath.txt")
-        .readText()
-        .split(Regex("\\s*\\r?\\n\\s*"))
-        .map { File(it).absolutePath.replace("\\", "\\\\") }
-        .joinToString(", ") { "'$it'" }
-
     val buildFile = testProjectDir.newFile("build.gradle")
     buildFile.writeText("""
-        |buildscript {
-        |  dependencies {
-        |    classpath files($classpathString)
-        |  }
+        |plugins {
+        |  id "java-library"
+        |  id "com.vanniktech.dependency.graph.generator"
         |}
-        |
-        |apply plugin: "java-library"
-        |apply plugin: "com.vanniktech.dependency.graph.generator"
         |
         |repositories {
         |  mavenCentral()
