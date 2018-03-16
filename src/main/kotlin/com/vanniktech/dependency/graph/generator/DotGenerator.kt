@@ -8,10 +8,10 @@ internal class DotGenerator(
   private val project: Project,
   private val generator: Generator
 ) {
-  // We keep a map of dependency to a parent identifier in order to not add unique dependencies more than once.
+  // We keep a map of an identifier to a parent identifier in order to not add unique dependencies more than once.
   // One scenario is A depending on B and B on C.
   // If a module depends on both A and B the connection from B to C could be wired twice.
-  private val addedConnections = mutableSetOf<Pair<ResolvedDependency, String>>()
+  private val addedConnections = mutableSetOf<Pair<String, String>>()
 
   fun generateContent(): String {
     // Some general documentation about dot. http://www.graphviz.org/pdf/dotguide.pdf
@@ -59,7 +59,7 @@ internal class DotGenerator(
       val name = dependency.moduleName
       val identifier = (dependency.moduleGroup + dependency.moduleName).dotIdentifier
 
-      val pair = dependency to parentIdentifier
+      val pair = parentIdentifier to identifier
       if (!addedConnections.contains(pair)) { // We don't want to re-add the same dependencies.
         addedConnections.add(pair)
 
