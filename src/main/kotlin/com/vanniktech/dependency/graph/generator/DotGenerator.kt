@@ -56,12 +56,22 @@ internal class DotGenerator(
 
   private fun append(dependency: ResolvedDependency, parentIdentifier: String, content: StringBuilder) {
     if (generator.include.invoke(dependency)) {
-      val name = dependency.moduleName
       val identifier = (dependency.moduleGroup + dependency.moduleName).dotIdentifier
 
       val pair = parentIdentifier to identifier
       if (!addedConnections.contains(pair)) { // We don't want to re-add the same dependencies.
         addedConnections.add(pair)
+
+        // Special case since Android Architecture components have weird module names.
+        val name = if (dependency.moduleGroup.startsWith("android.arch.")) {
+          dependency.moduleGroup
+              .replace("android.arch.", "")
+              .replace('.', '-')
+              .plus("-")
+              .plus(dependency.moduleName)
+        } else {
+          dependency.moduleName
+        }
 
         content.append("  $identifier ${generator.dependencyFormattingOptions.invoke(dependency).withLabel(name)};\n")
         content.append("  $parentIdentifier -> $identifier;\n")

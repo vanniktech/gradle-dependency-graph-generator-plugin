@@ -24,7 +24,7 @@ class DotGeneratorTest {
   private lateinit var singleEmpty: Project
   private lateinit var singleProject: Project
   private lateinit var multiProject: Project
-  private lateinit var androidProject: DefaultProject
+  private lateinit var androidProject: DefaultProject // We always need to call evaluate() for Android Projects.
   private lateinit var androidProjectExtension: AppExtension
 
   @Before @Suppress("Detekt.LongMethod") fun setUp() {
@@ -54,7 +54,10 @@ class DotGeneratorTest {
 
     androidProject = ProjectBuilder.builder().withName("android").build() as DefaultProject
     androidProject.plugins.apply(AppPlugin::class.java)
-    androidProject.repositories.run { add(mavenCentral()) }
+    androidProject.repositories.run {
+      add(mavenCentral())
+      add(google())
+    }
 
     androidProjectExtension = androidProject.extensions.getByType(AppExtension::class.java)
     androidProjectExtension.compileSdkVersion(27)
@@ -222,6 +225,50 @@ class DotGeneratorTest {
         |""".trimMargin())
   }
 
+  @Test fun androidProjectArchitectureComponents() {
+    androidProject.evaluate()
+
+    androidProject.dependencies.add("implementation", "android.arch.persistence.room:runtime:1.0.0")
+
+    assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
+        |digraph G {
+        |  android [label="android", shape="box"];
+        |  androidarchpersistenceroomruntime [label="persistence-room-runtime", shape="box"];
+        |  android -> androidarchpersistenceroomruntime;
+        |  androidarchpersistenceroomcommon [label="persistence-room-common", shape="box"];
+        |  androidarchpersistenceroomruntime -> androidarchpersistenceroomcommon;
+        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
+        |  androidarchpersistenceroomcommon -> comandroidsupportsupportannotations;
+        |  androidarchpersistencedbframework [label="persistence-db-framework", shape="box"];
+        |  androidarchpersistenceroomruntime -> androidarchpersistencedbframework;
+        |  androidarchpersistencedb [label="persistence-db", shape="box"];
+        |  androidarchpersistencedbframework -> androidarchpersistencedb;
+        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
+        |  androidarchpersistencedb -> comandroidsupportsupportannotations;
+        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
+        |  androidarchpersistencedbframework -> comandroidsupportsupportannotations;
+        |  androidarchpersistencedb [label="persistence-db", shape="box"];
+        |  androidarchpersistenceroomruntime -> androidarchpersistencedb;
+        |  androidarchcoreruntime [label="core-runtime", shape="box"];
+        |  androidarchpersistenceroomruntime -> androidarchcoreruntime;
+        |  androidarchcorecommon [label="core-common", shape="box"];
+        |  androidarchcoreruntime -> androidarchcorecommon;
+        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
+        |  androidarchcorecommon -> comandroidsupportsupportannotations;
+        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
+        |  androidarchcoreruntime -> comandroidsupportsupportannotations;
+        |  comandroidsupportsupportcoreutils [label="support-core-utils", shape="box"];
+        |  androidarchpersistenceroomruntime -> comandroidsupportsupportcoreutils;
+        |  comandroidsupportsupportcompat [label="support-compat", shape="box"];
+        |  comandroidsupportsupportcoreutils -> comandroidsupportsupportcompat;
+        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
+        |  comandroidsupportsupportcompat -> comandroidsupportsupportannotations;
+        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
+        |  comandroidsupportsupportcoreutils -> comandroidsupportsupportannotations;
+        |}
+        |""".trimMargin())
+  }
+
   @Test fun androidProjectIncludeAllFlavorsByDefault() {
     androidProjectExtension.flavorDimensions("test")
     androidProjectExtension.productFlavors {
@@ -229,7 +276,7 @@ class DotGeneratorTest {
       it.create("flavor2").dimension = "test"
     }
 
-    androidProject.evaluate() // Since we're adding custom productFlavors we need this.
+    androidProject.evaluate()
 
     androidProject.dependencies.add("flavor1Implementation", "io.reactivex.rxjava2:rxandroid:2.0.2")
     androidProject.dependencies.add("flavor2DebugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
@@ -259,7 +306,7 @@ class DotGeneratorTest {
       it.create("staging")
     }
 
-    androidProject.evaluate() // Since we're adding a custom buildType we need this.
+    androidProject.evaluate()
 
     androidProject.dependencies.add("releaseImplementation", "io.reactivex.rxjava2:rxandroid:2.0.2")
     androidProject.dependencies.add("debugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
@@ -290,7 +337,7 @@ class DotGeneratorTest {
       it.create("staging")
     }
 
-    androidProject.evaluate() // Since we're adding a custom buildType we need this.
+    androidProject.evaluate()
 
     androidProject.dependencies.add("releaseImplementation", "io.reactivex.rxjava2:rxandroid:2.0.2")
     androidProject.dependencies.add("debugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
@@ -308,6 +355,8 @@ class DotGeneratorTest {
   }
 
   @Test fun androidProjectDoNotIncludeTestDependency() {
+    androidProject.evaluate()
+
     androidProject.dependencies.add("testImplementation", "junit:junit:4.12")
 
     assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
@@ -318,6 +367,8 @@ class DotGeneratorTest {
   }
 
   @Test fun androidProjectDoNotIncludeAndroidTestDependency() {
+    androidProject.evaluate()
+
     androidProject.dependencies.add("androidTestImplementation", "junit:junit:4.12")
 
     assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
