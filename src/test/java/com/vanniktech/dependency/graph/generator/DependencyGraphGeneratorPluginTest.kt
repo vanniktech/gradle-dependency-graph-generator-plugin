@@ -38,7 +38,7 @@ class DependencyGraphGeneratorPluginTest {
     assertThat(task.group).isEqualTo("reporting")
     assertThat(task.description).isEqualTo("Generates a dependency graph")
     assertThat(task.inputFile).hasToString(singleProject.buildFile.toString())
-    assertThat(task.outputFileDot).hasToString(File(singleProject.buildDir, "dependency-graph.dot").toString())
+    assertThat(task.outputFileDot).hasToString(File(singleProject.buildDir, "reports/dependency-graph/dependency-graph.dot").toString())
     assertThat(task.outputFileImage).hasToString(File(singleProject.projectDir, "dependency-graph.png").toString())
   }
 
@@ -91,7 +91,7 @@ class DependencyGraphGeneratorPluginTest {
     // We don't want to assert the content of the image, just that it exists.
     assertThat(File(testProjectDir.root, "dependency-graph.png")).exists()
 
-    assertThat(File(testProjectDir.root, "build/dependency-graph.dot")).hasContent("""
+    assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot")).hasContent("""
         |digraph G {
         |  ${testProjectDir.root.name} [label="${testProjectDir.root.name}", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
