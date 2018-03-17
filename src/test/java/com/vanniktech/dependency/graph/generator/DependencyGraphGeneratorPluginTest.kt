@@ -7,6 +7,7 @@ import org.gradle.api.plugins.JavaLibraryPlugin
 import org.gradle.testfixtures.ProjectBuilder
 import org.gradle.testkit.runner.GradleRunner
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
@@ -41,7 +42,23 @@ class DependencyGraphGeneratorPluginTest {
     assertThat(task.outputFileImage).hasToString(File(singleProject.projectDir, "dependency-graph.png").toString())
   }
 
-  @Test fun integrationTest() {
+  @Test fun integrationTestGradle46() {
+    integrationTest("4.6")
+  }
+
+  @Test fun integrationTestGradle40() {
+    integrationTest("4.0")
+  }
+
+  @Test @Ignore("https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/issues/23") fun integrationTestGradle30() {
+    integrationTest("3.0")
+  }
+
+  @Test @Ignore("https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/issues/23") fun integrationTestGradle20() {
+    integrationTest("2.0")
+  }
+
+  private fun integrationTest(gradleVersion: String) {
     val buildFile = testProjectDir.newFile("build.gradle")
     buildFile.writeText("""
         |plugins {
@@ -62,7 +79,7 @@ class DependencyGraphGeneratorPluginTest {
 
     GradleRunner.create()
         .withPluginClasspath()
-        .withGradleVersion("4.6")
+        .withGradleVersion(gradleVersion)
         .withProjectDir(testProjectDir.root)
         .withArguments("generateDependencyGraph")
         .forwardStdError(stdErrorWriter)
