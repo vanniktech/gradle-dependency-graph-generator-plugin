@@ -105,14 +105,6 @@ class DotGeneratorTest {
         |""".trimMargin())
   }
 
-  @Test fun singleProjectEmptyAllRootSuffix() {
-    assertThat(DotGenerator(singleEmpty, ALL.copy(rootSuffix = "my suffix")).generateContent()).isEqualTo("""
-        |digraph G {
-        |  singleemptymysuffix [label="singleempty my suffix", shape="box"];
-        |}
-        |""".trimMargin())
-  }
-
   @Test fun singleProjectEmptyAllRootFormatted() {
     assertThat(DotGenerator(singleEmpty, ALL.copy(rootFormattingOptions = GraphFormattingOptions(Shape.EGG, Style.DOTTED, Color.fromHex("#ff0099")))).generateContent()).isEqualTo("""
         |digraph G {
@@ -212,21 +204,21 @@ class DotGeneratorTest {
   @Test fun multiProjectAll() {
     assertThat(DotGenerator(multiProject, ALL).generateContent()).isEqualTo("""
         |digraph G {
-        |  multi1 [label="multi1", shape="box"];
-        |  multi2 [label="multi2", shape="box"];
-        |  { rank = same; "multi1"; "multi2" };
+        |  multimulti1 [label="multi1", shape="box"];
+        |  multimulti2 [label="multi2", shape="box"];
+        |  { rank = same; "multimulti1"; "multimulti2" };
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
-        |  multi1 -> orgjetbrainskotlinkotlinstdlib;
+        |  multimulti1 -> orgjetbrainskotlinkotlinstdlib;
         |  orgjetbrainsannotations [label="annotations", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
         |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-        |  multi1 -> ioreactivexrxjava2rxjava;
+        |  multimulti1 -> ioreactivexrxjava2rxjava;
         |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box"];
         |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
         |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-        |  multi2 -> ioreactivexrxjava2rxjava;
+        |  multimulti2 -> ioreactivexrxjava2rxjava;
         |  ioreactivexrxjava2rxandroid [label="rxandroid", shape="box"];
-        |  multi2 -> ioreactivexrxjava2rxandroid;
+        |  multimulti2 -> ioreactivexrxjava2rxandroid;
         |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
         |  ioreactivexrxjava2rxandroid -> ioreactivexrxjava2rxjava;
         |}

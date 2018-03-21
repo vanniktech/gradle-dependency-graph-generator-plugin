@@ -24,8 +24,6 @@ open class DependencyGraphGeneratorExtension {
      * The task name as well as the output files will use this name.
      */
     val name: String = "",
-    /** Optional suffix for the root - the project this generator is applied too. */
-    val rootSuffix: String? = null,
     /** Return true when you want to include this dependency, false otherwise. */
     val include: (ResolvedDependency) -> Boolean = { true },
     /** Return true when you want to include the children of this dependency, false otherwise. */

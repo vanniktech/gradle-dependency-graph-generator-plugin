@@ -6,7 +6,7 @@ import org.assertj.core.api.Java6Assertions.assertThat
 import org.junit.Test
 
 class GeneratorTest {
-  private val generatorFoo = Generator(name = "fooBar", rootSuffix = "bar")
+  private val generatorFoo = Generator(name = "fooBar")
 
   @Test fun gradleTaskName() {
     assertThat(ALL.gradleTaskName).isEqualTo("generateDependencyGraph")

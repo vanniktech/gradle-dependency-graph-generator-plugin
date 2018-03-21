@@ -13,6 +13,10 @@ internal class DotGenerator(
   // If a module depends on both A and B the connection from B to C could be wired twice.
   private val addedConnections = mutableSetOf<Pair<String, String>>()
 
+  // Dependencies that we might have already added.
+  // This becomes used when a project depends on another project.
+  private val addedDependencies = mutableSetOf<String>()
+
   fun generateContent(): String {
     // Some general documentation about dot. http://www.graphviz.org/pdf/dotguide.pdf
     val content = StringBuilder("digraph G {\n")
@@ -24,18 +28,17 @@ internal class DotGenerator(
     val projects = (if (project.subprojects.size > 0) project.subprojects else setOf(project))
         .filter { generator.includeProject(it) }
 
-    val projectSuffix = generator.rootSuffix ?: ""
-
     // Generate top level projects.
     projects.forEach {
-      val projectId = it.dotIdentifier(projectSuffix)
-      val settings = generator.rootFormattingOptions.withLabel(it.name + projectSuffix.nonEmptyPrepend(" "))
+      val projectId = it.dotIdentifier
+      val settings = generator.rootFormattingOptions.withLabel(it.name)
       content.append("  $projectId $settings;\n")
+      addedDependencies.add(projectId)
     }
 
     if (projects.size > 1) {
       // All projects should be displayed on the same level.
-      val ranking = projects.joinToString(separator = "; ") { "\"${it.dotIdentifier(projectSuffix)}\"" }
+      val ranking = projects.joinToString(separator = "; ") { "\"${it.dotIdentifier}\"" }
       content.append("  { rank = same; $ranking };\n")
     }
 
@@ -49,7 +52,7 @@ internal class DotGenerator(
               .map { project to it }
         }
         .forEach { (project, dependency) ->
-          append(dependency, project.dotIdentifier(projectSuffix), content)
+          append(dependency, project.dotIdentifier, content)
         }
 
     return content.append("}\n").toString()
@@ -74,7 +77,10 @@ internal class DotGenerator(
           dependency.moduleName
         }
 
-        content.append("  $identifier ${generator.dependencyFormattingOptions.invoke(dependency).withLabel(name)};\n")
+        if (!addedDependencies.contains(identifier)) {
+          content.append("  $identifier ${generator.dependencyFormattingOptions.invoke(dependency).withLabel(name)};\n")
+        }
+
         content.append("  $parentIdentifier -> $identifier;\n")
       }
 
@@ -85,4 +91,4 @@ internal class DotGenerator(
   }
 }
 
-private fun Project.dotIdentifier(suffix: String) = (name + suffix).dotIdentifier
+private val Project.dotIdentifier get() = "$group$name".dotIdentifier

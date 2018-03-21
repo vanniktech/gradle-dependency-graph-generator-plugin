@@ -59,8 +59,7 @@ class DependencyGraphGeneratorPluginTest {
   }
 
   private fun integrationTest(gradleVersion: String) {
-    val buildFile = testProjectDir.newFile("build.gradle")
-    buildFile.writeText("""
+    testProjectDir.newFile("build.gradle").writeText("""
         |plugins {
         |  id "java-library"
         |  id "com.vanniktech.dependency.graph.generator"
@@ -73,7 +72,8 @@ class DependencyGraphGeneratorPluginTest {
         |dependencies {
         |  api "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
         |  implementation "io.reactivex.rxjava2:rxjava:2.1.10"
-        |}""".trimMargin())
+        |}
+        |""".trimMargin())
 
     val stdErrorWriter = StringWriter()
 
@@ -102,6 +102,106 @@ class DependencyGraphGeneratorPluginTest {
         |  ${testProjectDir.root.name} -> ioreactivexrxjava2rxjava;
         |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box"];
         |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
-        |}""".trimMargin())
+        |}
+        |""".trimMargin())
+  }
+
+  @Test fun multiProjectIntegrationTest() {
+    testProjectDir.newFile("build.gradle").writeText("""
+        |plugins {
+        |  id "com.vanniktech.dependency.graph.generator"
+        |}
+        |""".trimMargin())
+
+    testProjectDir.newFile("settings.gradle").writeText("""
+        |include ":lib"
+        |include ":lib1"
+        |include ":lib2"
+        |include ":app"
+        |""".trimMargin())
+
+    val lib = testProjectDir.newFolder("lib").run { parentFile.name + name }
+    testProjectDir.newFile("lib/build.gradle").writeText("""
+        |plugins { id "java-library" }
+        |
+        |repositories { mavenCentral() }
+        |
+        |dependencies {
+        |  api "io.reactivex.rxjava2:rxjava:2.1.10"
+        |}
+        |""".trimMargin())
+
+    val lib1 = testProjectDir.newFolder("lib1").run { parentFile.name + name }
+    testProjectDir.newFile("lib1/build.gradle").writeText("""
+        |plugins { id "java-library" }
+        |
+        |repositories { mavenCentral() }
+        |
+        |dependencies {
+        |  api project(":lib")
+        |  implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
+        |}
+        |""".trimMargin())
+
+    val lib2 = testProjectDir.newFolder("lib2").run { parentFile.name + name }
+    testProjectDir.newFile("lib2/build.gradle").writeText("""
+        |plugins { id "java-library" }
+        |
+        |repositories { mavenCentral() }
+        |
+        |dependencies {
+        |  api project(":lib")
+        |}
+        |""".trimMargin())
+
+    val app = testProjectDir.newFolder("app").run { parentFile.name + name }
+    testProjectDir.newFile("app/build.gradle").writeText("""
+        |plugins { id "java-library" }
+        |
+        |repositories { mavenCentral() }
+        |
+        |dependencies {
+        |  implementation project(":lib1")
+        |  implementation project(":lib2")
+        |}
+        |""".trimMargin())
+
+    val stdErrorWriter = StringWriter()
+
+    GradleRunner.create()
+        .withPluginClasspath()
+        .withGradleVersion("4.6")
+        .withProjectDir(testProjectDir.root)
+        .withArguments("generateDependencyGraph")
+        .forwardStdError(stdErrorWriter)
+        .build()
+
+    // No errors.
+    assertThat(stdErrorWriter).hasToString("")
+
+    // We don't want to assert the content of the image, just that it exists.
+    assertThat(File(testProjectDir.root, "dependency-graph.png")).exists()
+
+    assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot")).hasContent("""
+        |digraph G {
+        |  $app [label="app", shape="box"];
+        |  $lib [label="lib", shape="box"];
+        |  $lib1 [label="lib1", shape="box"];
+        |  $lib2 [label="lib2", shape="box"];
+        |  { rank = same; "$app"; "$lib"; "$lib1"; "$lib2" };
+        |  $app -> $lib1;
+        |  $lib1 -> $lib;
+        |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
+        |  $lib -> ioreactivexrxjava2rxjava;
+        |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box"];
+        |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
+        |  $app -> $lib2;
+        |  $lib2 -> $lib;
+        |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
+        |  $lib1 -> orgjetbrainskotlinkotlinstdlib;
+        |  orgjetbrainsannotations [label="annotations", shape="box"];
+        |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
+        |}
+        |""".trimMargin())
   }
 }
