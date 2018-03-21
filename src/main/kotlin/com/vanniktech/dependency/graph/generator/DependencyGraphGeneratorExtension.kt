@@ -3,6 +3,7 @@ package com.vanniktech.dependency.graph.generator
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator.Companion.ALL
 import com.vanniktech.dependency.graph.generator.dot.GraphFormattingOptions
 import com.vanniktech.dependency.graph.generator.dot.Header
+import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ResolvedDependency
 
@@ -40,7 +41,9 @@ open class DependencyGraphGeneratorExtension {
       // By default we'll include everything that's on the compileClassPath except test, UnitTest and AndroidTest configurations.
       val raw = it.name.replace("compileClasspath", "", ignoreCase = true)
       it.name.contains("compileClassPath", ignoreCase = true) && listOf("test", "AndroidTest", "UnitTest").none { raw.contains(it) }
-    }
+    },
+    /** Return true when you want to include this project, false otherwise. */
+    val includeProject: (Project) -> Boolean = { true }
   ) {
     /** Gradle task name that is associated with this generator. */
     val gradleTaskName = "generateDependencyGraph${name.capitalize()}"

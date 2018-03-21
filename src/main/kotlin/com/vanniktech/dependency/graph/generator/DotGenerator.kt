@@ -21,7 +21,8 @@ internal class DotGenerator(
       content.append("  $it;\n")
     }
 
-    val projects = if (project.subprojects.size > 0) project.subprojects else setOf(project)
+    val projects = (if (project.subprojects.size > 0) project.subprojects else setOf(project))
+        .filter { generator.includeProject(it) }
 
     val projectSuffix = generator.rootSuffix ?: ""
 
