@@ -48,7 +48,7 @@ open class DependencyGraphGeneratorExtension {
     private val outputFileName = "dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
     internal val outputFileNameDot = "$outputFileName.dot"
 
-    /** Output file name of the genreated png which is stored on module level. */
+    /** Output file name of the generated png which is stored under the build/reports/dependency-graph/ directory. */
     val outputFileNamePng = "$outputFileName.png"
 
     companion object {

@@ -39,7 +39,7 @@ class DependencyGraphGeneratorPluginTest {
     assertThat(task.description).isEqualTo("Generates a dependency graph")
     assertThat(task.inputFile).hasToString(singleProject.buildFile.toString())
     assertThat(task.outputFileDot).hasToString(File(singleProject.buildDir, "reports/dependency-graph/dependency-graph.dot").toString())
-    assertThat(task.outputFileImage).hasToString(File(singleProject.projectDir, "dependency-graph.png").toString())
+    assertThat(task.outputFileImage).hasToString(File(singleProject.buildDir, "reports/dependency-graph/dependency-graph.png").toString())
   }
 
   @Test fun integrationTestGradle46() {
@@ -89,7 +89,7 @@ class DependencyGraphGeneratorPluginTest {
     assertThat(stdErrorWriter).hasToString("")
 
     // We don't want to assert the content of the image, just that it exists.
-    assertThat(File(testProjectDir.root, "dependency-graph.png")).exists()
+    assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.png")).exists()
 
     assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot")).hasContent("""
         |digraph G {
@@ -180,7 +180,7 @@ class DependencyGraphGeneratorPluginTest {
     assertThat(stdErrorWriter).hasToString("")
 
     // We don't want to assert the content of the image, just that it exists.
-    assertThat(File(testProjectDir.root, "dependency-graph.png")).exists()
+    assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.png")).exists()
 
     assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot")).hasContent("""
         |digraph G {

@@ -16,7 +16,7 @@ open class DependencyGraphGeneratorPlugin : Plugin<Project> {
         task.description = "Generates a dependency graph${it.name.nonEmptyPrepend(" for ")}"
         task.inputFile = project.buildFile
         task.outputFileDot = File(project.buildDir, "reports/dependency-graph/${it.outputFileNameDot}")
-        task.outputFileImage = File(project.projectDir, it.outputFileNamePng)
+        task.outputFileImage = File(project.buildDir, "reports/dependency-graph/${it.outputFileNamePng}")
       }
     }
   }
