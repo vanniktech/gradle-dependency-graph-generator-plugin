@@ -80,6 +80,14 @@ class DotGeneratorTest {
         |""".trimMargin())
   }
 
+  @Suppress("Detekt.UnnecessaryParentheses") // https://github.com/arturbosch/detekt/issues/767
+  @Test fun singleProjectEmptyAllNoProjects() {
+    assertThat(DotGenerator(singleEmpty, ALL.copy(includeProject = { false })).generateContent()).isEqualTo("""
+        |digraph G {
+        |}
+        |""".trimMargin())
+  }
+
   @Test fun singleProjectEmptyAll() {
     assertThat(DotGenerator(singleEmpty, ALL).generateContent()).isEqualTo("""
         |digraph G {
