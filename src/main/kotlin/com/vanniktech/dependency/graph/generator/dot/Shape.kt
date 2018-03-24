@@ -1,6 +1,5 @@
 package com.vanniktech.dependency.graph.generator.dot
 
-@Suppress("Detekt.EndOfSentenceFormat") // https://github.com/arturbosch/detekt/issues/768
 /** http://www.graphviz.org/doc/info/shapes.html */
 enum class Shape(val string: String) {
   BOX("box"),
@@ -40,7 +39,6 @@ enum class Shape(val string: String) {
   NOTE("note"),
   TAB("tab"),
   FOLDER("folder"),
-  @Suppress("Detekt.EnumNaming") // Not yet released https://github.com/arturbosch/detekt/pull/717/
   BOX3D("box3d"),
   COMPONENT("component"),
   PROMOTER("promoter"),

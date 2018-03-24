@@ -1,11 +1,10 @@
 package com.vanniktech.dependency.graph.generator
 
-@Suppress("Detekt.TopLevelPropertyNaming") // https://github.com/arturbosch/detekt/issues/769
-private val WHITESPACE_REGEX = Regex("\\s")
+private val whitespaceRegex = Regex("\\s")
 
 internal val String.dotIdentifier get() = replace("-", "")
     .replace(".", "")
-    .replace(WHITESPACE_REGEX, "")
+    .replace(whitespaceRegex, "")
 
 internal fun String.nonEmptyPrepend(prepend: String) =
     if (isNotEmpty()) prepend + this else this
