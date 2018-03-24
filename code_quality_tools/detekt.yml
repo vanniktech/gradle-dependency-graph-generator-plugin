@@ -9,6 +9,8 @@ potential-bugs:
 style:
   TopLevelPropertyNaming:
     active: false
+  UnusedPrivateMember:
+    active: false # Way too many false positives. https://github.com/arturbosch/detekt/issues/812
   MaxLineLength:
     active: false
 

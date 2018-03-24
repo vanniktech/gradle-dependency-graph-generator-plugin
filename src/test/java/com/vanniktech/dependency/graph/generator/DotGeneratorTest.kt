@@ -80,7 +80,6 @@ class DotGeneratorTest {
         |""".trimMargin())
   }
 
-  @Suppress("Detekt.UnnecessaryParentheses") // https://github.com/arturbosch/detekt/issues/767
   @Test fun singleProjectEmptyAllNoProjects() {
     assertThat(DotGenerator(singleEmpty, ALL.copy(includeProject = { false })).generateContent()).isEqualTo("""
         |digraph G {
@@ -152,7 +151,6 @@ class DotGeneratorTest {
         |""".trimMargin())
   }
 
-  @Suppress("Detekt.UnnecessaryParentheses") // https://github.com/arturbosch/detekt/issues/767
   @Test fun singleProjectNoChildren() {
     assertThat(DotGenerator(singleProject, ALL.copy(children = { false })).generateContent()).isEqualTo("""
         |digraph G {
@@ -165,7 +163,6 @@ class DotGeneratorTest {
         |""".trimMargin())
   }
 
-  @Suppress("Detekt.UnnecessaryParentheses") // https://github.com/arturbosch/detekt/issues/767
   @Test fun singleProjectFilterRxJavaOut() {
     assertThat(DotGenerator(singleProject, ALL.copy(include = { it.moduleGroup != "io.reactivex.rxjava2" })).generateContent()).isEqualTo("""
         |digraph G {
@@ -347,7 +344,6 @@ class DotGeneratorTest {
       |""".trimMargin())
   }
 
-  @Suppress("Detekt.UnnecessaryParentheses") // https://github.com/arturbosch/detekt/issues/767
   @Test fun androidProjectIncludeOnlyStagingCompileClasspath() {
     androidProjectExtension.buildTypes {
       it.create("staging")
