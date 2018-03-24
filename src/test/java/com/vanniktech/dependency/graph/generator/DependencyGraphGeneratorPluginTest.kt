@@ -96,7 +96,7 @@ class DependencyGraphGeneratorPluginTest {
         |  ${testProjectDir.root.name} [label="${testProjectDir.root.name}", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
         |  ${testProjectDir.root.name} -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="annotations", shape="box"];
+        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
         |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
         |  ${testProjectDir.root.name} -> ioreactivexrxjava2rxjava;
@@ -199,7 +199,7 @@ class DependencyGraphGeneratorPluginTest {
         |  $lib2 -> $lib;
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
         |  $lib1 -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="annotations", shape="box"];
+        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
         |}
         |""".trimMargin())

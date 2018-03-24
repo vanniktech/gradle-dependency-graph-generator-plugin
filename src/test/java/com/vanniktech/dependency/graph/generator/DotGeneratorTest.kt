@@ -119,7 +119,7 @@ class DotGeneratorTest {
         |  single [label="single", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
         |  single -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="annotations", shape="box"];
+        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
         |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
         |  single -> ioreactivexrxjava2rxjava;
@@ -142,7 +142,7 @@ class DotGeneratorTest {
         |  single [label="single", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box", color="#6ba46e"];
         |  single -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="annotations", shape="box", color="#4a09b2"];
+        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box", color="#4a09b2"];
         |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
         |  ioreactivexrxjava2rxjava [label="rxjava", shape="box", color="#cb660b"];
         |  single -> ioreactivexrxjava2rxjava;
@@ -172,7 +172,7 @@ class DotGeneratorTest {
         |  single [label="single", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
         |  single -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="annotations", shape="box"];
+        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
         |}
         |""".trimMargin())
@@ -187,7 +187,7 @@ class DotGeneratorTest {
         |  single [label="single", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
         |  single -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="annotations", shape="box"];
+        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
         |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
         |  single -> ioreactivexrxjava2rxjava;
@@ -209,7 +209,7 @@ class DotGeneratorTest {
         |  { rank = same; "multimulti1"; "multimulti2" };
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
         |  multimulti1 -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="annotations", shape="box"];
+        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
         |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
         |  multimulti1 -> ioreactivexrxjava2rxjava;
@@ -269,6 +269,22 @@ class DotGeneratorTest {
         |""".trimMargin())
   }
 
+  @Test fun androidProjectSqlDelight() {
+    androidProject.evaluate()
+
+    androidProject.dependencies.add("implementation", "com.squareup.sqldelight:runtime:0.6.1")
+
+    assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
+        |digraph G {
+        |  android [label="android", shape="box"];
+        |  comsquareupsqldelightruntime [label="sqldelight-runtime", shape="box"];
+        |  android -> comsquareupsqldelightruntime;
+        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
+        |  comsquareupsqldelightruntime -> comandroidsupportsupportannotations;
+        |}
+        |""".trimMargin())
+  }
+
   @Test fun androidProjectIncludeAllFlavorsByDefault() {
     androidProjectExtension.flavorDimensions("test")
     androidProjectExtension.productFlavors {
@@ -295,7 +311,7 @@ class DotGeneratorTest {
       |  android -> ioreactivexrxjava2rxjava;
       |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
       |  android -> orgjetbrainskotlinkotlinstdlib;
-      |  orgjetbrainsannotations [label="annotations", shape="box"];
+      |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
       |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
       |}
       |""".trimMargin())
@@ -325,7 +341,7 @@ class DotGeneratorTest {
       |  ioreactivexrxjava2rxandroid -> ioreactivexrxjava2rxjava;
       |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
       |  android -> orgjetbrainskotlinkotlinstdlib;
-      |  orgjetbrainsannotations [label="annotations", shape="box"];
+      |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
       |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
       |}
       |""".trimMargin())
@@ -348,7 +364,7 @@ class DotGeneratorTest {
         |  android [label="android", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
         |  android -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="annotations", shape="box"];
+        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
         |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
         |}
         |""".trimMargin())
