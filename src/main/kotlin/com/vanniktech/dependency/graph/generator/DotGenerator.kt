@@ -66,19 +66,8 @@ internal class DotGenerator(
       if (!addedConnections.contains(pair)) { // We don't want to re-add the same dependencies.
         addedConnections.add(pair)
 
-        // Special case since Android Architecture components have weird module names.
-        val name = if (dependency.moduleGroup.startsWith("android.arch.")) {
-          dependency.moduleGroup
-              .replace("android.arch.", "")
-              .replace('.', '-')
-              .plus("-")
-              .plus(dependency.moduleName)
-        } else {
-          dependency.moduleName
-        }
-
         if (!addedDependencies.contains(identifier)) {
-          content.append("  $identifier ${generator.dependencyFormattingOptions.invoke(dependency).withLabel(name)};\n")
+          content.append("  $identifier ${generator.dependencyFormattingOptions.invoke(dependency).withLabel(dependency.getDisplayName())};\n")
         }
 
         content.append("  $parentIdentifier -> $identifier;\n")
@@ -88,6 +77,17 @@ internal class DotGenerator(
         dependency.children.forEach { append(it, identifier, content) }
       }
     }
+  }
+
+  private fun ResolvedDependency.getDisplayName() = when {
+    moduleGroup.startsWith("android.arch.") -> moduleGroup
+        .removePrefix("android.arch.")
+        .replace('.', '-')
+        .plus("-")
+        .plus(moduleName)
+    moduleGroup == "com.squareup.sqldelight" -> "sqldelight-$moduleName"
+    moduleGroup == "org.jetbrains" && moduleName == "annotations" -> "jetbrains-annotations"
+    else -> moduleName
   }
 }
 
