@@ -1,5 +1,5 @@
 buildscript {
-  ext.kotlinVersion = '1.2.30'
+  ext.kotlinVersion = '1.2.31'
 
   repositories {
     jcenter()
@@ -11,7 +11,7 @@ buildscript {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     classpath 'com.gradle.publish:plugin-publish-plugin:0.9.10'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
-    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.9.0'
+    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.10.0'
     classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.11.0'
   }
 }
@@ -26,7 +26,7 @@ apply plugin: 'com.gradle.plugin-publish'
 
 codeQualityTools {
   ktlint {
-    toolVersion = '0.19.0'
+    toolVersion = '0.21.0'
   }
   detekt {
     toolVersion = '1.0.0.RC6-4'
@@ -70,7 +70,7 @@ dependencies {
 
   testImplementation 'junit:junit:4.12'
   testImplementation 'org.assertj:assertj-core:3.9.1'
-  testImplementation 'com.android.tools.build:gradle:3.0.1'
+  testImplementation 'com.android.tools.build:gradle:3.1.0'
   testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 }
 
