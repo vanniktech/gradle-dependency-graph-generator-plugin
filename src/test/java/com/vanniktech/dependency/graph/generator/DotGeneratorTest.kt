@@ -3,12 +3,12 @@ package com.vanniktech.dependency.graph.generator
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.AppPlugin
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator.Companion.ALL
-import com.vanniktech.dependency.graph.generator.dot.Header
+import com.vanniktech.dependency.graph.generator.dot.Color
 import com.vanniktech.dependency.graph.generator.dot.Color.Companion.MAX_COLOR_VALUE
+import com.vanniktech.dependency.graph.generator.dot.GraphFormattingOptions
+import com.vanniktech.dependency.graph.generator.dot.Header
 import com.vanniktech.dependency.graph.generator.dot.Shape
 import com.vanniktech.dependency.graph.generator.dot.Style
-import com.vanniktech.dependency.graph.generator.dot.Color
-import com.vanniktech.dependency.graph.generator.dot.GraphFormattingOptions
 import org.assertj.core.api.Java6Assertions.assertThat
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ResolvedDependency
@@ -23,6 +23,7 @@ import java.util.Random
 class DotGeneratorTest {
   private lateinit var singleEmpty: Project
   private lateinit var singleProject: Project
+  private lateinit var rxjavaProject: Project
   private lateinit var multiProject: Project
   private lateinit var androidProject: DefaultProject // We always need to call evaluate() for Android Projects.
   private lateinit var androidProjectExtension: AppExtension
@@ -37,6 +38,11 @@ class DotGeneratorTest {
     singleProject.repositories.run { add(mavenCentral()) }
     singleProject.dependencies.add("api", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
     singleProject.dependencies.add("implementation", "io.reactivex.rxjava2:rxjava:2.1.10")
+
+    rxjavaProject = ProjectBuilder.builder().withName("rxjava").build()
+    rxjavaProject.plugins.apply(JavaLibraryPlugin::class.java)
+    rxjavaProject.repositories.run { add(mavenCentral()) }
+    rxjavaProject.dependencies.add("implementation", "io.reactivex.rxjava2:rxjava:2.1.10")
 
     multiProject = ProjectBuilder.builder().withName("multi").build()
 
@@ -385,6 +391,18 @@ class DotGeneratorTest {
     assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
         |digraph G {
         |  android [label="android", shape="box"];
+        |}
+        |""".trimMargin())
+  }
+
+  @Test fun projectNamedLikeDependencyName() {
+    assertThat(DotGenerator(rxjavaProject, ALL).generateContent()).isEqualTo("""
+        |digraph G {
+        |  rxjava [label="rxjava", shape="box"];
+        |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
+        |  rxjava -> ioreactivexrxjava2rxjava;
+        |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box"];
+        |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
         |}
         |""".trimMargin())
   }
