@@ -203,7 +203,6 @@ class DotGeneratorTest {
         |digraph G {
         |  multimulti1 [label="multi1", shape="box"];
         |  multimulti2 [label="multi2", shape="box"];
-        |  { rank = same; "multimulti1"; "multimulti2" };
         |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
         |  multimulti1 -> orgjetbrainskotlinkotlinstdlib;
         |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];

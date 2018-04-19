@@ -188,7 +188,6 @@ class DependencyGraphGeneratorPluginTest {
         |  $lib [label="lib", shape="box"];
         |  $lib1 [label="lib1", shape="box"];
         |  $lib2 [label="lib2", shape="box"];
-        |  { rank = same; "$app"; "$lib"; "$lib1"; "$lib2" };
         |  $app -> $lib1;
         |  $lib1 -> $lib;
         |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];

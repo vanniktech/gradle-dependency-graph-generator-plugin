@@ -36,12 +36,6 @@ internal class DotGenerator(
       addedDependencies.add(projectId)
     }
 
-    if (projects.size > 1) {
-      // All projects should be displayed on the same level.
-      val ranking = projects.joinToString(separator = "; ") { "\"${it.dotIdentifier}\"" }
-      content.append("  { rank = same; $ranking };\n")
-    }
-
     // Let's gather everything and put it in the file.
     projects
         .flatMap { project ->
