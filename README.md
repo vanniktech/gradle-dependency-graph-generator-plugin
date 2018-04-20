@@ -67,7 +67,6 @@ plugins.apply(DependencyGraphGeneratorPlugin)
 
 def firebaseGenerator = new Generator(
   "firebaseLibraries", // Suffix for our Gradle task.
-  "", // Root suffix that we don't want in this case.
   { dependency -> dependency.getModuleGroup().startsWith("com.google.firebase") }, // Only want Firebase.
   { dependency -> true }, // Include transitive dependencies.
   { dependency -> new GraphFormattingOptions(Shape.BOX, Style.FILLED, Color.fromRgb(255, 203, 43)) }, // Give them some color.
