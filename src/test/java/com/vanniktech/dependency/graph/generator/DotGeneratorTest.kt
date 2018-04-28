@@ -181,6 +181,140 @@ class DotGeneratorTest {
         |""".trimMargin())
   }
 
+  @Test fun recursiveDependencies() {
+      singleEmpty.dependencies.add("implementation", "org.apache.xmlgraphics:batik-gvt:1.7")
+
+      assertThat(DotGenerator(singleEmpty, ALL).generateContent()).isEqualTo("""
+        |digraph G {
+        |  singleempty [label="singleempty", shape="box"];
+        |  orgapachexmlgraphicsbatikgvt [label="batik-gvt", shape="box"];
+        |  singleempty -> orgapachexmlgraphicsbatikgvt;
+        |  orgapachexmlgraphicsbatikbridge [label="batik-bridge", shape="box"];
+        |  orgapachexmlgraphicsbatikgvt -> orgapachexmlgraphicsbatikbridge;
+        |  orgapachexmlgraphicsbatikscript [label="batik-script", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikscript;
+        |  orgapachexmlgraphicsbatikbridge [label="batik-bridge", shape="box"];
+        |  orgapachexmlgraphicsbatikscript -> orgapachexmlgraphicsbatikbridge;
+        |  orgapachexmlgraphicsbatikgvt [label="batik-gvt", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikgvt;
+        |  orgapachexmlgraphicsbatikawtutil [label="batik-awt-util", shape="box"];
+        |  orgapachexmlgraphicsbatikgvt -> orgapachexmlgraphicsbatikawtutil;
+        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
+        |  orgapachexmlgraphicsbatikawtutil -> orgapachexmlgraphicsbatikutil;
+        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
+        |  orgapachexmlgraphicsbatikgvt -> orgapachexmlgraphicsbatikutil;
+        |  xmlapisxmlapis [label="xml-apis", shape="box"];
+        |  orgapachexmlgraphicsbatikgvt -> xmlapisxmlapis;
+        |  orgapachexmlgraphicsbatiksvgdom [label="batik-svg-dom", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatiksvgdom;
+        |  orgapachexmlgraphicsbatikanim [label="batik-anim", shape="box"];
+        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikanim;
+        |  orgapachexmlgraphicsbatiksvgdom [label="batik-svg-dom", shape="box"];
+        |  orgapachexmlgraphicsbatikanim -> orgapachexmlgraphicsbatiksvgdom;
+        |  orgapachexmlgraphicsbatikparser [label="batik-parser", shape="box"];
+        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikparser;
+        |  orgapachexmlgraphicsbatikawtutil [label="batik-awt-util", shape="box"];
+        |  orgapachexmlgraphicsbatikparser -> orgapachexmlgraphicsbatikawtutil;
+        |  orgapachexmlgraphicsbatikxml [label="batik-xml", shape="box"];
+        |  orgapachexmlgraphicsbatikparser -> orgapachexmlgraphicsbatikxml;
+        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
+        |  orgapachexmlgraphicsbatikxml -> orgapachexmlgraphicsbatikutil;
+        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
+        |  orgapachexmlgraphicsbatikparser -> orgapachexmlgraphicsbatikutil;
+        |  orgapachexmlgraphicsbatikawtutil [label="batik-awt-util", shape="box"];
+        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikawtutil;
+        |  orgapachexmlgraphicsbatikdom [label="batik-dom", shape="box"];
+        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikdom;
+        |  orgapachexmlgraphicsbatikcss [label="batik-css", shape="box"];
+        |  orgapachexmlgraphicsbatikdom -> orgapachexmlgraphicsbatikcss;
+        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
+        |  orgapachexmlgraphicsbatikcss -> orgapachexmlgraphicsbatikutil;
+        |  orgapachexmlgraphicsbatikext [label="batik-ext", shape="box"];
+        |  orgapachexmlgraphicsbatikcss -> orgapachexmlgraphicsbatikext;
+        |  xmlapisxmlapis [label="xml-apis", shape="box"];
+        |  orgapachexmlgraphicsbatikext -> xmlapisxmlapis;
+        |  xmlapisxmlapis [label="xml-apis", shape="box"];
+        |  orgapachexmlgraphicsbatikcss -> xmlapisxmlapis;
+        |  xmlapisxmlapisext [label="xml-apis-ext", shape="box"];
+        |  orgapachexmlgraphicsbatikcss -> xmlapisxmlapisext;
+        |  orgapachexmlgraphicsbatikxml [label="batik-xml", shape="box"];
+        |  orgapachexmlgraphicsbatikdom -> orgapachexmlgraphicsbatikxml;
+        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
+        |  orgapachexmlgraphicsbatikdom -> orgapachexmlgraphicsbatikutil;
+        |  orgapachexmlgraphicsbatikext [label="batik-ext", shape="box"];
+        |  orgapachexmlgraphicsbatikdom -> orgapachexmlgraphicsbatikext;
+        |  xalanxalan [label="xalan", shape="box"];
+        |  orgapachexmlgraphicsbatikdom -> xalanxalan;
+        |  xmlapisxmlapis [label="xml-apis", shape="box"];
+        |  xalanxalan -> xmlapisxmlapis;
+        |  xmlapisxmlapis [label="xml-apis", shape="box"];
+        |  orgapachexmlgraphicsbatikdom -> xmlapisxmlapis;
+        |  xmlapisxmlapisext [label="xml-apis-ext", shape="box"];
+        |  orgapachexmlgraphicsbatikdom -> xmlapisxmlapisext;
+        |  orgapachexmlgraphicsbatikcss [label="batik-css", shape="box"];
+        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikcss;
+        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
+        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikutil;
+        |  orgapachexmlgraphicsbatikext [label="batik-ext", shape="box"];
+        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikext;
+        |  xmlapisxmlapis [label="xml-apis", shape="box"];
+        |  orgapachexmlgraphicsbatiksvgdom -> xmlapisxmlapis;
+        |  xmlapisxmlapisext [label="xml-apis-ext", shape="box"];
+        |  orgapachexmlgraphicsbatiksvgdom -> xmlapisxmlapisext;
+        |  orgapachexmlgraphicsbatikparser [label="batik-parser", shape="box"];
+        |  orgapachexmlgraphicsbatikanim -> orgapachexmlgraphicsbatikparser;
+        |  orgapachexmlgraphicsbatikawtutil [label="batik-awt-util", shape="box"];
+        |  orgapachexmlgraphicsbatikanim -> orgapachexmlgraphicsbatikawtutil;
+        |  orgapachexmlgraphicsbatikdom [label="batik-dom", shape="box"];
+        |  orgapachexmlgraphicsbatikanim -> orgapachexmlgraphicsbatikdom;
+        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
+        |  orgapachexmlgraphicsbatikanim -> orgapachexmlgraphicsbatikutil;
+        |  orgapachexmlgraphicsbatikext [label="batik-ext", shape="box"];
+        |  orgapachexmlgraphicsbatikanim -> orgapachexmlgraphicsbatikext;
+        |  xmlapisxmlapis [label="xml-apis", shape="box"];
+        |  orgapachexmlgraphicsbatikanim -> xmlapisxmlapis;
+        |  xmlapisxmlapisext [label="xml-apis-ext", shape="box"];
+        |  orgapachexmlgraphicsbatikanim -> xmlapisxmlapisext;
+        |  orgapachexmlgraphicsbatikanim [label="batik-anim", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikanim;
+        |  orgapachexmlgraphicsbatikparser [label="batik-parser", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikparser;
+        |  orgapachexmlgraphicsbatikawtutil [label="batik-awt-util", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikawtutil;
+        |  orgapachexmlgraphicsbatikdom [label="batik-dom", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikdom;
+        |  orgapachexmlgraphicsbatikcss [label="batik-css", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikcss;
+        |  orgapachexmlgraphicsbatikxml [label="batik-xml", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikxml;
+        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikutil;
+        |  orgapachexmlgraphicsbatikext [label="batik-ext", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikext;
+        |  xalanxalan [label="xalan", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> xalanxalan;
+        |  xmlapisxmlapis [label="xml-apis", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> xmlapisxmlapis;
+        |  xmlapisxmlapisext [label="xml-apis-ext", shape="box"];
+        |  orgapachexmlgraphicsbatikbridge -> xmlapisxmlapisext;
+        |  orgapachexmlgraphicsbatiksvgdom [label="batik-svg-dom", shape="box"];
+        |  orgapachexmlgraphicsbatikscript -> orgapachexmlgraphicsbatiksvgdom;
+        |  orgapachexmlgraphicsbatikdom [label="batik-dom", shape="box"];
+        |  orgapachexmlgraphicsbatikscript -> orgapachexmlgraphicsbatikdom;
+        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
+        |  orgapachexmlgraphicsbatikscript -> orgapachexmlgraphicsbatikutil;
+        |  orgapachexmlgraphicsbatikext [label="batik-ext", shape="box"];
+        |  orgapachexmlgraphicsbatikscript -> orgapachexmlgraphicsbatikext;
+        |  orgapachexmlgraphicsbatikjs [label="batik-js", shape="box"];
+        |  orgapachexmlgraphicsbatikscript -> orgapachexmlgraphicsbatikjs;
+        |  xmlapisxmlapis [label="xml-apis", shape="box"];
+        |  orgapachexmlgraphicsbatikjs -> xmlapisxmlapis;
+        |  xmlapisxmlapis [label="xml-apis", shape="box"];
+        |  orgapachexmlgraphicsbatikscript -> xmlapisxmlapis;
+        |}
+        |""".trimMargin())
+  }
+
   @Test fun singleProjectNoDuplicateDependencyConnections() {
     // Both RxJava and RxAndroid point transitively on reactivestreams.
     singleProject.dependencies.add("implementation", "io.reactivex.rxjava2:rxandroid:2.0.2")

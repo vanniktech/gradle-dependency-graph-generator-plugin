@@ -53,19 +53,17 @@ internal class DotGenerator(
   }
 
   private fun append(dependency: ResolvedDependency, parentIdentifier: String, content: StringBuilder) {
-    if (generator.include.invoke(dependency)) {
-      val identifier = (dependency.moduleGroup + dependency.moduleName).dotIdentifier
+    val identifier = (dependency.moduleGroup + dependency.moduleName).dotIdentifier
+    val pair = parentIdentifier to identifier
 
-      val pair = parentIdentifier to identifier
-      if (!addedConnections.contains(pair)) { // We don't want to re-add the same dependencies.
-        addedConnections.add(pair)
+    if (generator.include.invoke(dependency) && !addedConnections.contains(pair)) {
+      addedConnections.add(pair)
 
-        if (!addedDependencies.contains(identifier)) {
-          content.append("  $identifier ${generator.dependencyFormattingOptions.invoke(dependency).withLabel(dependency.getDisplayName())};\n")
-        }
-
-        content.append("  $parentIdentifier -> $identifier;\n")
+      if (!addedDependencies.contains(identifier)) {
+        content.append("  $identifier ${generator.dependencyFormattingOptions.invoke(dependency).withLabel(dependency.getDisplayName())};\n")
       }
+
+      content.append("  $parentIdentifier -> $identifier;\n")
 
       if (generator.children.invoke(dependency)) {
         dependency.children.forEach { append(it, identifier, content) }
