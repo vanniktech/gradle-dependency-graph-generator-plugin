@@ -1,5 +1,5 @@
 buildscript {
-  ext.kotlinVersion = '1.2.31'
+  ext.kotlinVersion = '1.2.41'
 
   repositories {
     jcenter()
@@ -26,10 +26,10 @@ apply plugin: 'com.gradle.plugin-publish'
 
 codeQualityTools {
   ktlint {
-    toolVersion = '0.21.0'
+    toolVersion = '0.23.1'
   }
   detekt {
-    toolVersion = '1.0.0.RC6-4'
+    toolVersion = '1.0.0.RC7'
   }
   findbugs {
     enabled = false
