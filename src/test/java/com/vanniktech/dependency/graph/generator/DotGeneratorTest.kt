@@ -3,12 +3,13 @@ package com.vanniktech.dependency.graph.generator
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.AppPlugin
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator.Companion.ALL
-import com.vanniktech.dependency.graph.generator.dot.Color
-import com.vanniktech.dependency.graph.generator.dot.Color.Companion.MAX_COLOR_VALUE
-import com.vanniktech.dependency.graph.generator.dot.GraphFormattingOptions
-import com.vanniktech.dependency.graph.generator.dot.Header
-import com.vanniktech.dependency.graph.generator.dot.Shape
-import com.vanniktech.dependency.graph.generator.dot.Style
+import guru.nidi.graphviz.attribute.Color
+import guru.nidi.graphviz.attribute.Label
+import guru.nidi.graphviz.attribute.Label.Justification.LEFT
+import guru.nidi.graphviz.attribute.Label.Location.TOP
+import guru.nidi.graphviz.attribute.Shape
+import guru.nidi.graphviz.attribute.Style
+import guru.nidi.graphviz.model.MutableNode
 import org.assertj.core.api.Java6Assertions.assertThat
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ResolvedDependency
@@ -69,296 +70,255 @@ class DotGeneratorTest {
     androidProjectExtension.compileSdkVersion(27)
     val manifestFile = File(androidProject.projectDir, "src/main/AndroidManifest.xml")
     manifestFile.parentFile.mkdirs()
-    manifestFile.writeText("""
-        |<?xml version="1.0" encoding="utf-8"?>
-        |<manifest package="com.foo.bar" xmlns:android="http://schemas.android.com/apk/res/android">
-        |  <application/>
-        |</manifest>""".trimMargin())
+    manifestFile.writeText("""<manifest package="com.foo.bar"/>""".trimIndent())
   }
 
   @Test fun singleProjectAllNoTestDependencies() {
     singleEmpty.dependencies.add("testImplementation", "junit:junit:4.12")
 
-    assertThat(DotGenerator(singleEmpty, ALL).generateContent()).isEqualTo("""
-        |digraph G {
-        |  singleempty [label="singleempty", shape="box"];
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(singleEmpty, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "singleempty" ["shape"="rectangle","label"="singleempty"]
+        }
+        """.trimIndent())
   }
 
   @Test fun singleProjectEmptyAllNoProjects() {
-    assertThat(DotGenerator(singleEmpty, ALL.copy(includeProject = { false })).generateContent()).isEqualTo("""
-        |digraph G {
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(singleEmpty, ALL.copy(includeProject = { false })).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        }
+        """.trimIndent())
   }
 
   @Test fun singleProjectEmptyAll() {
-    assertThat(DotGenerator(singleEmpty, ALL).generateContent()).isEqualTo("""
-        |digraph G {
-        |  singleempty [label="singleempty", shape="box"];
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(singleEmpty, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "singleempty" ["shape"="rectangle","label"="singleempty"]
+        }
+        """.trimIndent())
   }
 
   @Test fun singleProjectEmptyAllHeader() {
-    assertThat(DotGenerator(singleEmpty, ALL.copy(header = Header("my custom header"))).generateContent()).isEqualTo("""
-        |digraph G {
-        |  label="my custom header" fontsize="24" height="5" labelloc="t" labeljust="c";
-        |  singleempty [label="singleempty", shape="box"];
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(singleEmpty, ALL.copy(label = Label.of("my custom header").locate(TOP).justify(LEFT))).generateGraph()).hasToString("""
+        digraph "G" {
+        graph ["labeljust"="l","labelloc"="t","label"="my custom header"]
+        node ["fontname"="Times New Roman"]
+        "singleempty" ["shape"="rectangle","label"="singleempty"]
+        }
+        """.trimIndent())
   }
 
   @Test fun singleProjectEmptyAllRootFormatted() {
-    assertThat(DotGenerator(singleEmpty, ALL.copy(rootFormattingOptions = GraphFormattingOptions(Shape.EGG, Style.DOTTED, Color.fromHex("#ff0099")))).generateContent()).isEqualTo("""
-        |digraph G {
-        |  singleempty [label="singleempty", shape="egg", style="dotted", color="#ff0099"];
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(singleEmpty, ALL.copy(projectNode = { node, _ -> node.add(Shape.EGG, Style.DOTTED, Color.rgb("ff0099")) })).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "singleempty" ["shape"="egg","color"="#ff0099","style"="dotted","label"="singleempty"]
+        }
+        """.trimIndent())
   }
 
   @Test fun singleProjectAll() {
-    assertThat(DotGenerator(singleProject, ALL).generateContent()).isEqualTo("""
-        |digraph G {
-        |  single [label="single", shape="box"];
-        |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
-        |  single -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
-        |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
-        |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-        |  single -> ioreactivexrxjava2rxjava;
-        |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box"];
-        |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(singleProject, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "single" ["shape"="rectangle","label"="single"]
+        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
+        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
+        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        "single" -> "orgjetbrainskotlinkotlinstdlib"
+        "single" -> "ioreactivexrxjava2rxjava"
+        "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
+        "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
+        }
+        """.trimIndent())
   }
 
   @Test fun singleProjectAllDependencyFormattingOptions() {
     // Generate a color for each dependency.
-    val dependencyFormattingOptions: (ResolvedDependency) -> GraphFormattingOptions = {
-      val random = Random(it.hashCode().toLong())
-      GraphFormattingOptions(color = Color.fromRgb(random.nextInt(MAX_COLOR_VALUE), random.nextInt(MAX_COLOR_VALUE), random.nextInt(MAX_COLOR_VALUE))
+    val dependencyNode: (MutableNode, ResolvedDependency) -> MutableNode = { node, project ->
+      val random = Random(project.hashCode().toLong())
+      node.add(Style.FILLED, Color.hsv(random.nextDouble(), random.nextDouble(), random.nextDouble())
       )
     }
 
-    assertThat(DotGenerator(singleProject, ALL.copy(dependencyFormattingOptions = dependencyFormattingOptions)).generateContent()).isEqualTo("""
-        |digraph G {
-        |  single [label="single", shape="box"];
-        |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box", color="#6ba46e"];
-        |  single -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box", color="#4a09b2"];
-        |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
-        |  ioreactivexrxjava2rxjava [label="rxjava", shape="box", color="#cb660b"];
-        |  single -> ioreactivexrxjava2rxjava;
-        |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box", color="#7c70b6"];
-        |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(singleProject, ALL.copy(dependencyNode = dependencyNode)).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "single" ["shape"="rectangle","label"="single"]
+        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","color"="0.5729030306231915 0.730480096472168 0.6199754367027828","style"="filled","label"="kotlin-stdlib"]
+        "orgjetbrainsannotations" ["shape"="rectangle","color"="0.4288231821397507 0.6911813426492972 0.6290787664264184","style"="filled","label"="jetbrains-annotations"]
+        "ioreactivexrxjava2rxjava" ["shape"="rectangle","color"="0.16317995652814232 0.937505295349677 0.3856775265969894","style"="filled","label"="rxjava"]
+        "orgreactivestreamsreactivestreams" ["shape"="rectangle","color"="0.7630981414446663 0.06104724686147023 0.3765458063358519","style"="filled","label"="reactive-streams"]
+        "single" -> "orgjetbrainskotlinkotlinstdlib"
+        "single" -> "ioreactivexrxjava2rxjava"
+        "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
+        "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
+        }
+        """.trimIndent())
   }
 
   @Test fun singleProjectNoChildren() {
-    assertThat(DotGenerator(singleProject, ALL.copy(children = { false })).generateContent()).isEqualTo("""
-        |digraph G {
-        |  single [label="single", shape="box"];
-        |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
-        |  single -> orgjetbrainskotlinkotlinstdlib;
-        |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-        |  single -> ioreactivexrxjava2rxjava;
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(singleProject, ALL.copy(children = { false })).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "single" ["shape"="rectangle","label"="single"]
+        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
+        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
+        "single" -> "orgjetbrainskotlinkotlinstdlib"
+        "single" -> "ioreactivexrxjava2rxjava"
+        }
+        """.trimIndent())
   }
 
   @Test fun singleProjectFilterRxJavaOut() {
-    assertThat(DotGenerator(singleProject, ALL.copy(include = { it.moduleGroup != "io.reactivex.rxjava2" })).generateContent()).isEqualTo("""
-        |digraph G {
-        |  single [label="single", shape="box"];
-        |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
-        |  single -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
-        |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(singleProject, ALL.copy(include = { it.moduleGroup != "io.reactivex.rxjava2" })).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "single" ["shape"="rectangle","label"="single"]
+        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
+        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        "single" -> "orgjetbrainskotlinkotlinstdlib"
+        "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
+        }
+        """.trimIndent())
   }
 
   @Test fun recursiveDependencies() {
       singleEmpty.dependencies.add("implementation", "org.apache.xmlgraphics:batik-gvt:1.7")
 
-      assertThat(DotGenerator(singleEmpty, ALL).generateContent()).isEqualTo("""
-        |digraph G {
-        |  singleempty [label="singleempty", shape="box"];
-        |  orgapachexmlgraphicsbatikgvt [label="batik-gvt", shape="box"];
-        |  singleempty -> orgapachexmlgraphicsbatikgvt;
-        |  orgapachexmlgraphicsbatikbridge [label="batik-bridge", shape="box"];
-        |  orgapachexmlgraphicsbatikgvt -> orgapachexmlgraphicsbatikbridge;
-        |  orgapachexmlgraphicsbatikscript [label="batik-script", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikscript;
-        |  orgapachexmlgraphicsbatikbridge [label="batik-bridge", shape="box"];
-        |  orgapachexmlgraphicsbatikscript -> orgapachexmlgraphicsbatikbridge;
-        |  orgapachexmlgraphicsbatikgvt [label="batik-gvt", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikgvt;
-        |  orgapachexmlgraphicsbatikawtutil [label="batik-awt-util", shape="box"];
-        |  orgapachexmlgraphicsbatikgvt -> orgapachexmlgraphicsbatikawtutil;
-        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
-        |  orgapachexmlgraphicsbatikawtutil -> orgapachexmlgraphicsbatikutil;
-        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
-        |  orgapachexmlgraphicsbatikgvt -> orgapachexmlgraphicsbatikutil;
-        |  xmlapisxmlapis [label="xml-apis", shape="box"];
-        |  orgapachexmlgraphicsbatikgvt -> xmlapisxmlapis;
-        |  orgapachexmlgraphicsbatiksvgdom [label="batik-svg-dom", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatiksvgdom;
-        |  orgapachexmlgraphicsbatikanim [label="batik-anim", shape="box"];
-        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikanim;
-        |  orgapachexmlgraphicsbatiksvgdom [label="batik-svg-dom", shape="box"];
-        |  orgapachexmlgraphicsbatikanim -> orgapachexmlgraphicsbatiksvgdom;
-        |  orgapachexmlgraphicsbatikparser [label="batik-parser", shape="box"];
-        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikparser;
-        |  orgapachexmlgraphicsbatikawtutil [label="batik-awt-util", shape="box"];
-        |  orgapachexmlgraphicsbatikparser -> orgapachexmlgraphicsbatikawtutil;
-        |  orgapachexmlgraphicsbatikxml [label="batik-xml", shape="box"];
-        |  orgapachexmlgraphicsbatikparser -> orgapachexmlgraphicsbatikxml;
-        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
-        |  orgapachexmlgraphicsbatikxml -> orgapachexmlgraphicsbatikutil;
-        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
-        |  orgapachexmlgraphicsbatikparser -> orgapachexmlgraphicsbatikutil;
-        |  orgapachexmlgraphicsbatikawtutil [label="batik-awt-util", shape="box"];
-        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikawtutil;
-        |  orgapachexmlgraphicsbatikdom [label="batik-dom", shape="box"];
-        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikdom;
-        |  orgapachexmlgraphicsbatikcss [label="batik-css", shape="box"];
-        |  orgapachexmlgraphicsbatikdom -> orgapachexmlgraphicsbatikcss;
-        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
-        |  orgapachexmlgraphicsbatikcss -> orgapachexmlgraphicsbatikutil;
-        |  orgapachexmlgraphicsbatikext [label="batik-ext", shape="box"];
-        |  orgapachexmlgraphicsbatikcss -> orgapachexmlgraphicsbatikext;
-        |  xmlapisxmlapis [label="xml-apis", shape="box"];
-        |  orgapachexmlgraphicsbatikext -> xmlapisxmlapis;
-        |  xmlapisxmlapis [label="xml-apis", shape="box"];
-        |  orgapachexmlgraphicsbatikcss -> xmlapisxmlapis;
-        |  xmlapisxmlapisext [label="xml-apis-ext", shape="box"];
-        |  orgapachexmlgraphicsbatikcss -> xmlapisxmlapisext;
-        |  orgapachexmlgraphicsbatikxml [label="batik-xml", shape="box"];
-        |  orgapachexmlgraphicsbatikdom -> orgapachexmlgraphicsbatikxml;
-        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
-        |  orgapachexmlgraphicsbatikdom -> orgapachexmlgraphicsbatikutil;
-        |  orgapachexmlgraphicsbatikext [label="batik-ext", shape="box"];
-        |  orgapachexmlgraphicsbatikdom -> orgapachexmlgraphicsbatikext;
-        |  xalanxalan [label="xalan", shape="box"];
-        |  orgapachexmlgraphicsbatikdom -> xalanxalan;
-        |  xmlapisxmlapis [label="xml-apis", shape="box"];
-        |  xalanxalan -> xmlapisxmlapis;
-        |  xmlapisxmlapis [label="xml-apis", shape="box"];
-        |  orgapachexmlgraphicsbatikdom -> xmlapisxmlapis;
-        |  xmlapisxmlapisext [label="xml-apis-ext", shape="box"];
-        |  orgapachexmlgraphicsbatikdom -> xmlapisxmlapisext;
-        |  orgapachexmlgraphicsbatikcss [label="batik-css", shape="box"];
-        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikcss;
-        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
-        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikutil;
-        |  orgapachexmlgraphicsbatikext [label="batik-ext", shape="box"];
-        |  orgapachexmlgraphicsbatiksvgdom -> orgapachexmlgraphicsbatikext;
-        |  xmlapisxmlapis [label="xml-apis", shape="box"];
-        |  orgapachexmlgraphicsbatiksvgdom -> xmlapisxmlapis;
-        |  xmlapisxmlapisext [label="xml-apis-ext", shape="box"];
-        |  orgapachexmlgraphicsbatiksvgdom -> xmlapisxmlapisext;
-        |  orgapachexmlgraphicsbatikparser [label="batik-parser", shape="box"];
-        |  orgapachexmlgraphicsbatikanim -> orgapachexmlgraphicsbatikparser;
-        |  orgapachexmlgraphicsbatikawtutil [label="batik-awt-util", shape="box"];
-        |  orgapachexmlgraphicsbatikanim -> orgapachexmlgraphicsbatikawtutil;
-        |  orgapachexmlgraphicsbatikdom [label="batik-dom", shape="box"];
-        |  orgapachexmlgraphicsbatikanim -> orgapachexmlgraphicsbatikdom;
-        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
-        |  orgapachexmlgraphicsbatikanim -> orgapachexmlgraphicsbatikutil;
-        |  orgapachexmlgraphicsbatikext [label="batik-ext", shape="box"];
-        |  orgapachexmlgraphicsbatikanim -> orgapachexmlgraphicsbatikext;
-        |  xmlapisxmlapis [label="xml-apis", shape="box"];
-        |  orgapachexmlgraphicsbatikanim -> xmlapisxmlapis;
-        |  xmlapisxmlapisext [label="xml-apis-ext", shape="box"];
-        |  orgapachexmlgraphicsbatikanim -> xmlapisxmlapisext;
-        |  orgapachexmlgraphicsbatikanim [label="batik-anim", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikanim;
-        |  orgapachexmlgraphicsbatikparser [label="batik-parser", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikparser;
-        |  orgapachexmlgraphicsbatikawtutil [label="batik-awt-util", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikawtutil;
-        |  orgapachexmlgraphicsbatikdom [label="batik-dom", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikdom;
-        |  orgapachexmlgraphicsbatikcss [label="batik-css", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikcss;
-        |  orgapachexmlgraphicsbatikxml [label="batik-xml", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikxml;
-        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikutil;
-        |  orgapachexmlgraphicsbatikext [label="batik-ext", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> orgapachexmlgraphicsbatikext;
-        |  xalanxalan [label="xalan", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> xalanxalan;
-        |  xmlapisxmlapis [label="xml-apis", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> xmlapisxmlapis;
-        |  xmlapisxmlapisext [label="xml-apis-ext", shape="box"];
-        |  orgapachexmlgraphicsbatikbridge -> xmlapisxmlapisext;
-        |  orgapachexmlgraphicsbatiksvgdom [label="batik-svg-dom", shape="box"];
-        |  orgapachexmlgraphicsbatikscript -> orgapachexmlgraphicsbatiksvgdom;
-        |  orgapachexmlgraphicsbatikdom [label="batik-dom", shape="box"];
-        |  orgapachexmlgraphicsbatikscript -> orgapachexmlgraphicsbatikdom;
-        |  orgapachexmlgraphicsbatikutil [label="batik-util", shape="box"];
-        |  orgapachexmlgraphicsbatikscript -> orgapachexmlgraphicsbatikutil;
-        |  orgapachexmlgraphicsbatikext [label="batik-ext", shape="box"];
-        |  orgapachexmlgraphicsbatikscript -> orgapachexmlgraphicsbatikext;
-        |  orgapachexmlgraphicsbatikjs [label="batik-js", shape="box"];
-        |  orgapachexmlgraphicsbatikscript -> orgapachexmlgraphicsbatikjs;
-        |  xmlapisxmlapis [label="xml-apis", shape="box"];
-        |  orgapachexmlgraphicsbatikjs -> xmlapisxmlapis;
-        |  xmlapisxmlapis [label="xml-apis", shape="box"];
-        |  orgapachexmlgraphicsbatikscript -> xmlapisxmlapis;
-        |}
-        |""".trimMargin())
+      assertThat(DotGenerator(singleEmpty, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "singleempty" ["shape"="rectangle","label"="singleempty"]
+        "orgapachexmlgraphicsbatikgvt" ["shape"="rectangle","label"="batik-gvt"]
+        "orgapachexmlgraphicsbatikbridge" ["shape"="rectangle","label"="batik-bridge"]
+        "orgapachexmlgraphicsbatikscript" ["shape"="rectangle","label"="batik-script"]
+        "orgapachexmlgraphicsbatikawtutil" ["shape"="rectangle","label"="batik-awt-util"]
+        "orgapachexmlgraphicsbatikutil" ["shape"="rectangle","label"="batik-util"]
+        "xmlapisxmlapis" ["shape"="rectangle","label"="xml-apis"]
+        "orgapachexmlgraphicsbatiksvgdom" ["shape"="rectangle","label"="batik-svg-dom"]
+        "orgapachexmlgraphicsbatikanim" ["shape"="rectangle","label"="batik-anim"]
+        "orgapachexmlgraphicsbatikparser" ["shape"="rectangle","label"="batik-parser"]
+        "orgapachexmlgraphicsbatikxml" ["shape"="rectangle","label"="batik-xml"]
+        "orgapachexmlgraphicsbatikdom" ["shape"="rectangle","label"="batik-dom"]
+        "orgapachexmlgraphicsbatikcss" ["shape"="rectangle","label"="batik-css"]
+        "orgapachexmlgraphicsbatikext" ["shape"="rectangle","label"="batik-ext"]
+        "xmlapisxmlapisext" ["shape"="rectangle","label"="xml-apis-ext"]
+        "xalanxalan" ["shape"="rectangle","label"="xalan"]
+        "orgapachexmlgraphicsbatikjs" ["shape"="rectangle","label"="batik-js"]
+        "singleempty" -> "orgapachexmlgraphicsbatikgvt"
+        "orgapachexmlgraphicsbatikgvt" -> "orgapachexmlgraphicsbatikawtutil"
+        "orgapachexmlgraphicsbatikgvt" -> "orgapachexmlgraphicsbatikutil"
+        "orgapachexmlgraphicsbatikgvt" -> "xmlapisxmlapis"
+        "orgapachexmlgraphicsbatikgvt" -> "orgapachexmlgraphicsbatikbridge"
+        "orgapachexmlgraphicsbatikbridge" -> "orgapachexmlgraphicsbatikgvt"
+        "orgapachexmlgraphicsbatikbridge" -> "orgapachexmlgraphicsbatiksvgdom"
+        "orgapachexmlgraphicsbatikbridge" -> "orgapachexmlgraphicsbatikanim"
+        "orgapachexmlgraphicsbatikbridge" -> "orgapachexmlgraphicsbatikparser"
+        "orgapachexmlgraphicsbatikbridge" -> "orgapachexmlgraphicsbatikawtutil"
+        "orgapachexmlgraphicsbatikbridge" -> "orgapachexmlgraphicsbatikdom"
+        "orgapachexmlgraphicsbatikbridge" -> "orgapachexmlgraphicsbatikcss"
+        "orgapachexmlgraphicsbatikbridge" -> "orgapachexmlgraphicsbatikxml"
+        "orgapachexmlgraphicsbatikbridge" -> "orgapachexmlgraphicsbatikutil"
+        "orgapachexmlgraphicsbatikbridge" -> "orgapachexmlgraphicsbatikext"
+        "orgapachexmlgraphicsbatikbridge" -> "xalanxalan"
+        "orgapachexmlgraphicsbatikbridge" -> "xmlapisxmlapis"
+        "orgapachexmlgraphicsbatikbridge" -> "xmlapisxmlapisext"
+        "orgapachexmlgraphicsbatikbridge" -> "orgapachexmlgraphicsbatikscript"
+        "orgapachexmlgraphicsbatikscript" -> "orgapachexmlgraphicsbatikbridge"
+        "orgapachexmlgraphicsbatikscript" -> "orgapachexmlgraphicsbatiksvgdom"
+        "orgapachexmlgraphicsbatikscript" -> "orgapachexmlgraphicsbatikdom"
+        "orgapachexmlgraphicsbatikscript" -> "orgapachexmlgraphicsbatikutil"
+        "orgapachexmlgraphicsbatikscript" -> "orgapachexmlgraphicsbatikext"
+        "orgapachexmlgraphicsbatikscript" -> "orgapachexmlgraphicsbatikjs"
+        "orgapachexmlgraphicsbatikscript" -> "xmlapisxmlapis"
+        "orgapachexmlgraphicsbatikawtutil" -> "orgapachexmlgraphicsbatikutil"
+        "orgapachexmlgraphicsbatiksvgdom" -> "orgapachexmlgraphicsbatikparser"
+        "orgapachexmlgraphicsbatiksvgdom" -> "orgapachexmlgraphicsbatikawtutil"
+        "orgapachexmlgraphicsbatiksvgdom" -> "orgapachexmlgraphicsbatikdom"
+        "orgapachexmlgraphicsbatiksvgdom" -> "orgapachexmlgraphicsbatikcss"
+        "orgapachexmlgraphicsbatiksvgdom" -> "orgapachexmlgraphicsbatikutil"
+        "orgapachexmlgraphicsbatiksvgdom" -> "orgapachexmlgraphicsbatikext"
+        "orgapachexmlgraphicsbatiksvgdom" -> "xmlapisxmlapis"
+        "orgapachexmlgraphicsbatiksvgdom" -> "xmlapisxmlapisext"
+        "orgapachexmlgraphicsbatiksvgdom" -> "orgapachexmlgraphicsbatikanim"
+        "orgapachexmlgraphicsbatikanim" -> "orgapachexmlgraphicsbatiksvgdom"
+        "orgapachexmlgraphicsbatikanim" -> "orgapachexmlgraphicsbatikparser"
+        "orgapachexmlgraphicsbatikanim" -> "orgapachexmlgraphicsbatikawtutil"
+        "orgapachexmlgraphicsbatikanim" -> "orgapachexmlgraphicsbatikdom"
+        "orgapachexmlgraphicsbatikanim" -> "orgapachexmlgraphicsbatikutil"
+        "orgapachexmlgraphicsbatikanim" -> "orgapachexmlgraphicsbatikext"
+        "orgapachexmlgraphicsbatikanim" -> "xmlapisxmlapis"
+        "orgapachexmlgraphicsbatikanim" -> "xmlapisxmlapisext"
+        "orgapachexmlgraphicsbatikparser" -> "orgapachexmlgraphicsbatikawtutil"
+        "orgapachexmlgraphicsbatikparser" -> "orgapachexmlgraphicsbatikxml"
+        "orgapachexmlgraphicsbatikparser" -> "orgapachexmlgraphicsbatikutil"
+        "orgapachexmlgraphicsbatikxml" -> "orgapachexmlgraphicsbatikutil"
+        "orgapachexmlgraphicsbatikdom" -> "orgapachexmlgraphicsbatikcss"
+        "orgapachexmlgraphicsbatikdom" -> "orgapachexmlgraphicsbatikxml"
+        "orgapachexmlgraphicsbatikdom" -> "orgapachexmlgraphicsbatikutil"
+        "orgapachexmlgraphicsbatikdom" -> "orgapachexmlgraphicsbatikext"
+        "orgapachexmlgraphicsbatikdom" -> "xalanxalan"
+        "orgapachexmlgraphicsbatikdom" -> "xmlapisxmlapis"
+        "orgapachexmlgraphicsbatikdom" -> "xmlapisxmlapisext"
+        "orgapachexmlgraphicsbatikcss" -> "orgapachexmlgraphicsbatikutil"
+        "orgapachexmlgraphicsbatikcss" -> "orgapachexmlgraphicsbatikext"
+        "orgapachexmlgraphicsbatikcss" -> "xmlapisxmlapis"
+        "orgapachexmlgraphicsbatikcss" -> "xmlapisxmlapisext"
+        "orgapachexmlgraphicsbatikext" -> "xmlapisxmlapis"
+        "xalanxalan" -> "xmlapisxmlapis"
+        "orgapachexmlgraphicsbatikjs" -> "xmlapisxmlapis"
+        }
+        """.trimIndent())
   }
 
   @Test fun singleProjectNoDuplicateDependencyConnections() {
     // Both RxJava and RxAndroid point transitively on reactivestreams.
     singleProject.dependencies.add("implementation", "io.reactivex.rxjava2:rxandroid:2.0.2")
 
-    assertThat(DotGenerator(singleProject, ALL).generateContent()).isEqualTo("""
-        |digraph G {
-        |  single [label="single", shape="box"];
-        |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
-        |  single -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
-        |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
-        |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-        |  single -> ioreactivexrxjava2rxjava;
-        |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box"];
-        |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
-        |  ioreactivexrxjava2rxandroid [label="rxandroid", shape="box"];
-        |  single -> ioreactivexrxjava2rxandroid;
-        |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-        |  ioreactivexrxjava2rxandroid -> ioreactivexrxjava2rxjava;
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(singleProject, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "single" ["shape"="rectangle","label"="single"]
+        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
+        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
+        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        "ioreactivexrxjava2rxandroid" ["shape"="rectangle","label"="rxandroid"]
+        "single" -> "orgjetbrainskotlinkotlinstdlib"
+        "single" -> "ioreactivexrxjava2rxjava"
+        "single" -> "ioreactivexrxjava2rxandroid"
+        "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
+        "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
+        "ioreactivexrxjava2rxandroid" -> "ioreactivexrxjava2rxjava"
+        }
+        """.trimIndent())
   }
 
   @Test fun multiProjectAll() {
-    assertThat(DotGenerator(multiProject, ALL).generateContent()).isEqualTo("""
-        |digraph G {
-        |  multimulti1 [label="multi1", shape="box"];
-        |  multimulti2 [label="multi2", shape="box"];
-        |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
-        |  multimulti1 -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
-        |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
-        |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-        |  multimulti1 -> ioreactivexrxjava2rxjava;
-        |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box"];
-        |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
-        |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-        |  multimulti2 -> ioreactivexrxjava2rxjava;
-        |  ioreactivexrxjava2rxandroid [label="rxandroid", shape="box"];
-        |  multimulti2 -> ioreactivexrxjava2rxandroid;
-        |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-        |  ioreactivexrxjava2rxandroid -> ioreactivexrxjava2rxjava;
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(multiProject, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "multimulti1" ["shape"="rectangle","label"="multi1"]
+        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
+        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
+        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        "multimulti2" ["shape"="rectangle","label"="multi2"]
+        "ioreactivexrxjava2rxandroid" ["shape"="rectangle","label"="rxandroid"]
+        "multimulti1" -> "orgjetbrainskotlinkotlinstdlib"
+        "multimulti1" -> "ioreactivexrxjava2rxjava"
+        "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
+        "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
+        "multimulti2" -> "ioreactivexrxjava2rxjava"
+        "multimulti2" -> "ioreactivexrxjava2rxandroid"
+        "ioreactivexrxjava2rxandroid" -> "ioreactivexrxjava2rxjava"
+        }
+        """.trimIndent())
   }
 
   @Test fun androidProjectArchitectureComponents() {
@@ -366,43 +326,37 @@ class DotGeneratorTest {
 
     androidProject.dependencies.add("implementation", "android.arch.persistence.room:runtime:1.0.0")
 
-    assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
-        |digraph G {
-        |  android [label="android", shape="box"];
-        |  androidarchpersistenceroomruntime [label="persistence-room-runtime", shape="box"];
-        |  android -> androidarchpersistenceroomruntime;
-        |  androidarchpersistenceroomcommon [label="persistence-room-common", shape="box"];
-        |  androidarchpersistenceroomruntime -> androidarchpersistenceroomcommon;
-        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
-        |  androidarchpersistenceroomcommon -> comandroidsupportsupportannotations;
-        |  androidarchpersistencedbframework [label="persistence-db-framework", shape="box"];
-        |  androidarchpersistenceroomruntime -> androidarchpersistencedbframework;
-        |  androidarchpersistencedb [label="persistence-db", shape="box"];
-        |  androidarchpersistencedbframework -> androidarchpersistencedb;
-        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
-        |  androidarchpersistencedb -> comandroidsupportsupportannotations;
-        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
-        |  androidarchpersistencedbframework -> comandroidsupportsupportannotations;
-        |  androidarchpersistencedb [label="persistence-db", shape="box"];
-        |  androidarchpersistenceroomruntime -> androidarchpersistencedb;
-        |  androidarchcoreruntime [label="core-runtime", shape="box"];
-        |  androidarchpersistenceroomruntime -> androidarchcoreruntime;
-        |  androidarchcorecommon [label="core-common", shape="box"];
-        |  androidarchcoreruntime -> androidarchcorecommon;
-        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
-        |  androidarchcorecommon -> comandroidsupportsupportannotations;
-        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
-        |  androidarchcoreruntime -> comandroidsupportsupportannotations;
-        |  comandroidsupportsupportcoreutils [label="support-core-utils", shape="box"];
-        |  androidarchpersistenceroomruntime -> comandroidsupportsupportcoreutils;
-        |  comandroidsupportsupportcompat [label="support-compat", shape="box"];
-        |  comandroidsupportsupportcoreutils -> comandroidsupportsupportcompat;
-        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
-        |  comandroidsupportsupportcompat -> comandroidsupportsupportannotations;
-        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
-        |  comandroidsupportsupportcoreutils -> comandroidsupportsupportannotations;
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(androidProject, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "android" ["shape"="rectangle","label"="android"]
+        "androidarchpersistenceroomruntime" ["shape"="rectangle","label"="persistence-room-runtime"]
+        "androidarchpersistenceroomcommon" ["shape"="rectangle","label"="persistence-room-common"]
+        "comandroidsupportsupportannotations" ["shape"="rectangle","label"="support-annotations"]
+        "androidarchpersistencedbframework" ["shape"="rectangle","label"="persistence-db-framework"]
+        "androidarchpersistencedb" ["shape"="rectangle","label"="persistence-db"]
+        "androidarchcoreruntime" ["shape"="rectangle","label"="core-runtime"]
+        "androidarchcorecommon" ["shape"="rectangle","label"="core-common"]
+        "comandroidsupportsupportcoreutils" ["shape"="rectangle","label"="support-core-utils"]
+        "comandroidsupportsupportcompat" ["shape"="rectangle","label"="support-compat"]
+        "android" -> "androidarchpersistenceroomruntime"
+        "androidarchpersistenceroomruntime" -> "androidarchpersistenceroomcommon"
+        "androidarchpersistenceroomruntime" -> "androidarchpersistencedbframework"
+        "androidarchpersistenceroomruntime" -> "androidarchpersistencedb"
+        "androidarchpersistenceroomruntime" -> "androidarchcoreruntime"
+        "androidarchpersistenceroomruntime" -> "comandroidsupportsupportcoreutils"
+        "androidarchpersistenceroomcommon" -> "comandroidsupportsupportannotations"
+        "androidarchpersistencedbframework" -> "androidarchpersistencedb"
+        "androidarchpersistencedbframework" -> "comandroidsupportsupportannotations"
+        "androidarchpersistencedb" -> "comandroidsupportsupportannotations"
+        "androidarchcoreruntime" -> "androidarchcorecommon"
+        "androidarchcoreruntime" -> "comandroidsupportsupportannotations"
+        "androidarchcorecommon" -> "comandroidsupportsupportannotations"
+        "comandroidsupportsupportcoreutils" -> "comandroidsupportsupportcompat"
+        "comandroidsupportsupportcoreutils" -> "comandroidsupportsupportannotations"
+        "comandroidsupportsupportcompat" -> "comandroidsupportsupportannotations"
+        }
+        """.trimIndent())
   }
 
   @Test fun androidProjectSqlDelight() {
@@ -410,15 +364,16 @@ class DotGeneratorTest {
 
     androidProject.dependencies.add("implementation", "com.squareup.sqldelight:runtime:0.6.1")
 
-    assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
-        |digraph G {
-        |  android [label="android", shape="box"];
-        |  comsquareupsqldelightruntime [label="sqldelight-runtime", shape="box"];
-        |  android -> comsquareupsqldelightruntime;
-        |  comandroidsupportsupportannotations [label="support-annotations", shape="box"];
-        |  comsquareupsqldelightruntime -> comandroidsupportsupportannotations;
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(androidProject, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "android" ["shape"="rectangle","label"="android"]
+        "comsquareupsqldelightruntime" ["shape"="rectangle","label"="sqldelight-runtime"]
+        "comandroidsupportsupportannotations" ["shape"="rectangle","label"="support-annotations"]
+        "android" -> "comsquareupsqldelightruntime"
+        "comsquareupsqldelightruntime" -> "comandroidsupportsupportannotations"
+        }
+        """.trimIndent())
   }
 
   @Test fun androidProjectIncludeAllFlavorsByDefault() {
@@ -434,23 +389,23 @@ class DotGeneratorTest {
     androidProject.dependencies.add("flavor2DebugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
     androidProject.dependencies.add("flavor2ReleaseImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
 
-    assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
-      |digraph G {
-      |  android [label="android", shape="box"];
-      |  ioreactivexrxjava2rxandroid [label="rxandroid", shape="box"];
-      |  android -> ioreactivexrxjava2rxandroid;
-      |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-      |  ioreactivexrxjava2rxandroid -> ioreactivexrxjava2rxjava;
-      |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box"];
-      |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
-      |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-      |  android -> ioreactivexrxjava2rxjava;
-      |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
-      |  android -> orgjetbrainskotlinkotlinstdlib;
-      |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
-      |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
-      |}
-      |""".trimMargin())
+    assertThat(DotGenerator(androidProject, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "android" ["shape"="rectangle","label"="android"]
+        "ioreactivexrxjava2rxandroid" ["shape"="rectangle","label"="rxandroid"]
+        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
+        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
+        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        "android" -> "ioreactivexrxjava2rxandroid"
+        "android" -> "ioreactivexrxjava2rxjava"
+        "android" -> "orgjetbrainskotlinkotlinstdlib"
+        "ioreactivexrxjava2rxandroid" -> "ioreactivexrxjava2rxjava"
+        "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
+        "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
+        }
+        """.trimIndent())
   }
 
   @Test fun androidProjectIncludeAllBuildTypesByDefault() {
@@ -464,23 +419,23 @@ class DotGeneratorTest {
     androidProject.dependencies.add("debugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
     androidProject.dependencies.add("stagingImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
 
-    assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
-      |digraph G {
-      |  android [label="android", shape="box"];
-      |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-      |  android -> ioreactivexrxjava2rxjava;
-      |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box"];
-      |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
-      |  ioreactivexrxjava2rxandroid [label="rxandroid", shape="box"];
-      |  android -> ioreactivexrxjava2rxandroid;
-      |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-      |  ioreactivexrxjava2rxandroid -> ioreactivexrxjava2rxjava;
-      |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
-      |  android -> orgjetbrainskotlinkotlinstdlib;
-      |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
-      |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
-      |}
-      |""".trimMargin())
+    assertThat(DotGenerator(androidProject, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "android" ["shape"="rectangle","label"="android"]
+        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
+        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        "ioreactivexrxjava2rxandroid" ["shape"="rectangle","label"="rxandroid"]
+        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
+        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        "android" -> "ioreactivexrxjava2rxjava"
+        "android" -> "ioreactivexrxjava2rxandroid"
+        "android" -> "orgjetbrainskotlinkotlinstdlib"
+        "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
+        "ioreactivexrxjava2rxandroid" -> "ioreactivexrxjava2rxjava"
+        "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
+        }
+        """.trimIndent())
   }
 
   @Test fun androidProjectIncludeOnlyStagingCompileClasspath() {
@@ -494,15 +449,16 @@ class DotGeneratorTest {
     androidProject.dependencies.add("debugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
     androidProject.dependencies.add("stagingImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
 
-    assertThat(DotGenerator(androidProject, ALL.copy(includeConfiguration = { it.name == "stagingCompileClasspath" })).generateContent()).isEqualTo("""
-        |digraph G {
-        |  android [label="android", shape="box"];
-        |  orgjetbrainskotlinkotlinstdlib [label="kotlin-stdlib", shape="box"];
-        |  android -> orgjetbrainskotlinkotlinstdlib;
-        |  orgjetbrainsannotations [label="jetbrains-annotations", shape="box"];
-        |  orgjetbrainskotlinkotlinstdlib -> orgjetbrainsannotations;
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(androidProject, ALL.copy(includeConfiguration = { it.name == "stagingCompileClasspath" })).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "android" ["shape"="rectangle","label"="android"]
+        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
+        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        "android" -> "orgjetbrainskotlinkotlinstdlib"
+        "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
+        }
+        """.trimIndent())
   }
 
   @Test fun androidProjectDoNotIncludeTestDependency() {
@@ -510,11 +466,12 @@ class DotGeneratorTest {
 
     androidProject.dependencies.add("testImplementation", "junit:junit:4.12")
 
-    assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
-        |digraph G {
-        |  android [label="android", shape="box"];
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(androidProject, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "android" ["shape"="rectangle","label"="android"]
+        }
+        """.trimIndent())
   }
 
   @Test fun androidProjectDoNotIncludeAndroidTestDependency() {
@@ -522,22 +479,24 @@ class DotGeneratorTest {
 
     androidProject.dependencies.add("androidTestImplementation", "junit:junit:4.12")
 
-    assertThat(DotGenerator(androidProject, ALL).generateContent()).isEqualTo("""
-        |digraph G {
-        |  android [label="android", shape="box"];
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(androidProject, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "android" ["shape"="rectangle","label"="android"]
+        }
+        """.trimIndent())
   }
 
   @Test fun projectNamedLikeDependencyName() {
-    assertThat(DotGenerator(rxjavaProject, ALL).generateContent()).isEqualTo("""
-        |digraph G {
-        |  rxjava [label="rxjava", shape="box"];
-        |  ioreactivexrxjava2rxjava [label="rxjava", shape="box"];
-        |  rxjava -> ioreactivexrxjava2rxjava;
-        |  orgreactivestreamsreactivestreams [label="reactive-streams", shape="box"];
-        |  ioreactivexrxjava2rxjava -> orgreactivestreamsreactivestreams;
-        |}
-        |""".trimMargin())
+    assertThat(DotGenerator(rxjavaProject, ALL).generateGraph()).hasToString("""
+        digraph "G" {
+        node ["fontname"="Times New Roman"]
+        "rxjava" ["shape"="rectangle","label"="rxjava"]
+        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
+        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        "rxjava" -> "ioreactivexrxjava2rxjava"
+        "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
+        }
+        """.trimIndent())
   }
 }
