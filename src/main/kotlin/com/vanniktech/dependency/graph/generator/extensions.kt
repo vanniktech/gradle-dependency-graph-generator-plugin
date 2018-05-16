@@ -17,7 +17,3 @@ internal fun String.toHyphenCase(): String {
       .drop(1)
       .joinToString(separator = "") { if (it[0].isUpperCase()) "-${it[0].toLowerCase()}" else it }
 }
-
-internal fun Map<String, Any?>.asDotSyntax(separator: String = ", ") = filter { (_, value) -> value != null }
-    .map { (key, value) -> "$key=\"$value\"" }
-    .joinToString(separator)

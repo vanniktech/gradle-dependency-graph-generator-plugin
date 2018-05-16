@@ -1,8 +1,8 @@
 package com.vanniktech.dependency.graph.generator
 
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator.Companion.ALL
-import com.vanniktech.dependency.graph.generator.dot.GraphFormattingOptions
-import com.vanniktech.dependency.graph.generator.dot.Header
+import guru.nidi.graphviz.attribute.Label
+import guru.nidi.graphviz.model.MutableNode
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ResolvedDependency
@@ -28,12 +28,12 @@ open class DependencyGraphGeneratorExtension {
     val include: (ResolvedDependency) -> Boolean = { true },
     /** Return true when you want to include the children of this dependency, false otherwise. */
     val children: (ResolvedDependency) -> Boolean = { true },
-    /** Allows to tweak the formatting of a single dependency in the graph. */
-    val dependencyFormattingOptions: (ResolvedDependency) -> GraphFormattingOptions = { GraphFormattingOptions() },
-    /** The formatting options for the root - the project this generator is applied too. */
-    val rootFormattingOptions: GraphFormattingOptions = GraphFormattingOptions(),
-    /** Optional header that can be displayed wrapped around the graph. */
-    val header: Header? = null,
+    /** Allows to change the node for the given dependency. */
+    val dependencyNode: (MutableNode, ResolvedDependency) -> MutableNode = { node, _ -> node },
+    /** Allows to change the node for the given project. */
+    val projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
+    /** Optional label  that can be displayed wrapped around the graph. */
+    val label: Label? = null,
     /** Return true when you want to include this configuration, false otherwise. */
     val includeConfiguration: (Configuration) -> Boolean = {
       // By default we'll include everything that's on the compileClassPath except test, UnitTest and AndroidTest configurations.
