@@ -2,7 +2,7 @@ buildscript {
   ext.kotlinVersion = '1.2.41'
 
   repositories {
-    jcenter()
+    mavenCentral()
     google()
     gradlePluginPortal()
   }
@@ -13,6 +13,7 @@ buildscript {
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
     classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.10.0'
     classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.11.0'
+    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.1.0'
   }
 }
 
@@ -24,6 +25,7 @@ apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'com.vanniktech.code.quality.tools'
 apply plugin: 'com.vanniktech.android.junit.jacoco'
 apply plugin: 'com.gradle.plugin-publish'
+apply plugin: "com.vanniktech.maven.publish"
 
 codeQualityTools {
   ktlint {
@@ -61,7 +63,6 @@ gradlePlugin {
 repositories {
   jcenter()
   google()
-  gradlePluginPortal()
 }
 
 dependencies {
@@ -77,9 +78,6 @@ dependencies {
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_7
-
-group = GROUP
-version = VERSION_NAME
 
 pluginBundle {
   website = POM_URL
@@ -108,39 +106,4 @@ tasks.withType(Test) {
 task wrapper(type: Wrapper) {
   gradleVersion = '4.6'
   distributionType = Wrapper.DistributionType.ALL
-}
-
-task groovydocJar(type: Jar, dependsOn: groovydoc) {
-  classifier = 'groovydoc'
-  from groovydoc.destinationDir
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-  classifier = 'javadoc'
-  from javadoc.destinationDir
-}
-
-task sourcesJar(type: Jar) {
-  classifier = 'sources'
-  from sourceSets.main.allSource
-}
-
-artifacts {
-  archives jar
-  archives groovydocJar
-  archives javadocJar
-  archives sourcesJar
-}
-
-apply from: file('gradle/gradle-mvn-push.gradle')
-
-apply plugin: 'maven-publish'
-
-publishing {
-  publications {
-    main(MavenPublication) {
-      from components.java
-      artifact sourcesJar
-    }
-  }
 }
