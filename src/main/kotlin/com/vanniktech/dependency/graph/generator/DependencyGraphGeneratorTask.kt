@@ -7,7 +7,6 @@ import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
-import java.util.Locale.US
 
 open class DependencyGraphGeneratorTask : DefaultTask() {
   lateinit var generator: Generator // TODO does this need to be an input? Quick testing shows no.
