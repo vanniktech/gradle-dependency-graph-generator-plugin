@@ -22,7 +22,7 @@ open class DependencyGraphGeneratorTask : DefaultTask() {
     val graphviz = Graphviz.fromGraph(graph)
 
     generator.outputFormats.forEach {
-      graphviz.render(it).toFile(File(outputDirectory, generator.outputFileName + "." + it.name.toLowerCase(US)))
+      graphviz.render(it).toFile(File(outputDirectory, generator.outputFileName))
     }
   }
 }
