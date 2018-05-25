@@ -2,6 +2,8 @@ package com.vanniktech.dependency.graph.generator
 
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator.Companion.ALL
 import guru.nidi.graphviz.attribute.Label
+import guru.nidi.graphviz.engine.Format
+import guru.nidi.graphviz.engine.Format.PNG
 import guru.nidi.graphviz.model.MutableNode
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
@@ -41,15 +43,14 @@ open class DependencyGraphGeneratorExtension {
       it.name.contains("compileClassPath", ignoreCase = true) && listOf("test", "AndroidTest", "UnitTest").none { raw.contains(it) }
     },
     /** Return true when you want to include this project, false otherwise. */
-    val includeProject: (Project) -> Boolean = { true }
+    val includeProject: (Project) -> Boolean = { true },
+    /** Return the output formats you'd like to be generated. */
+    val outputFormats: List<Format> = listOf(PNG)
   ) {
     /** Gradle task name that is associated with this generator. */
     val gradleTaskName = "generateDependencyGraph${name.capitalize()}"
-    private val outputFileName = "dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
+    internal val outputFileName = "dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
     internal val outputFileNameDot = "$outputFileName.dot"
-
-    /** Output file name of the generated png which is stored under the build/reports/dependency-graph/ directory. */
-    val outputFileNamePng = "$outputFileName.png"
 
     companion object {
       /** Default behavior which will include everything as is. */

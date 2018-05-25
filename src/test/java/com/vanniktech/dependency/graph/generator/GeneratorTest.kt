@@ -13,13 +13,13 @@ class GeneratorTest {
     assertThat(generatorFoo.gradleTaskName).isEqualTo("generateDependencyGraphFooBar")
   }
 
+  @Test fun outputFileName() {
+    assertThat(ALL.outputFileName).isEqualTo("dependency-graph")
+    assertThat(generatorFoo.outputFileName).isEqualTo("dependency-graph-foo-bar")
+  }
+
   @Test fun outputFileNameDot() {
     assertThat(ALL.outputFileNameDot).isEqualTo("dependency-graph.dot")
     assertThat(generatorFoo.outputFileNameDot).isEqualTo("dependency-graph-foo-bar.dot")
-  }
-
-  @Test fun outputFileNamePng() {
-    assertThat(ALL.outputFileNamePng).isEqualTo("dependency-graph.png")
-    assertThat(generatorFoo.outputFileNamePng).isEqualTo("dependency-graph-foo-bar.png")
   }
 }
