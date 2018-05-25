@@ -37,8 +37,7 @@ class DependencyGraphGeneratorPluginTest {
     assertThat(task.group).isEqualTo("reporting")
     assertThat(task.description).isEqualTo("Generates a dependency graph")
     assertThat(task.inputFile).hasToString(singleProject.buildFile.toString())
-    assertThat(task.outputFileDot).hasToString(File(singleProject.buildDir, "reports/dependency-graph/dependency-graph.dot").toString())
-    assertThat(task.outputFileImage).hasToString(File(singleProject.buildDir, "reports/dependency-graph/dependency-graph.png").toString())
+    assertThat(task.outputDirectory).hasToString(File(singleProject.buildDir, "reports/dependency-graph/").toString())
   }
 
   @Test fun integrationTestGradle46() {
