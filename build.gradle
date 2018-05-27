@@ -13,7 +13,7 @@ buildscript {
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
     classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.10.0'
     classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.11.0'
-    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.1.0'
+    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.2.0'
   }
 }
 
@@ -61,8 +61,9 @@ gradlePlugin {
 }
 
 repositories {
-  jcenter()
+  mavenCentral()
   google()
+  jcenter()
 }
 
 dependencies {
@@ -93,17 +94,7 @@ pluginBundle {
   }
 }
 
-tasks.withType(Test) {
-  testLogging {
-    events "failed"
-    exceptionFormat "full"
-    showExceptions true
-    showStackTraces true
-    showCauses true
-  }
-}
-
 task wrapper(type: Wrapper) {
-  gradleVersion = '4.6'
+  gradleVersion = '4.7'
   distributionType = Wrapper.DistributionType.ALL
 }
