@@ -4,7 +4,7 @@ Gradle plugin that lets you visualize your dependencies in a graph.
 
 # Set up
 
-[Gradle 4.0](https://docs.gradle.org/4.0/release-notes.html) or higher is required.
+[Gradle 3.3](https://docs.gradle.org/3.3/release-notes.html) or higher is required.
 
 ```gradle
 buildscript {
@@ -12,7 +12,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.4.0"
+    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.5.0"
   }
 }
 
@@ -20,11 +20,6 @@ apply plugin: "com.vanniktech.dependency.graph.generator"
 ```
 
 Note that this plugin can be applied at the root of the project or at a specific project. Both cases will just work.
-
-This plugin is using the `dot` command line tool for generating the graphs hence you need to install it.
-  - Mac (with [Homebrew](https://brew.sh/) installed): `brew install graphviz`
-  - Windows (with [Chocolatey](https://chocolatey.org/) installed): `choco install graphviz`
-  - Ubuntu: `sudo apt-get install graphviz`
 
 Information: [This plugin is also available on Gradle plugins](https://plugins.gradle.org/plugin/com.vanniktech.dependency.graph.generator)
 
@@ -58,10 +53,8 @@ We only want to show which Firebase libraries we're using and give them the typi
 ```groovy
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorPlugin
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator
-import com.vanniktech.dependency.graph.generator.dot.GraphFormattingOptions
-import com.vanniktech.dependency.graph.generator.dot.Color
-import com.vanniktech.dependency.graph.generator.dot.Shape
-import com.vanniktech.dependency.graph.generator.dot.Style
+import guru.nidi.graphviz.attribute.Color
+import guru.nidi.graphviz.attribute.Style
 
 plugins.apply(DependencyGraphGeneratorPlugin)
 
@@ -69,7 +62,7 @@ def firebaseGenerator = new Generator(
   "firebaseLibraries", // Suffix for our Gradle task.
   { dependency -> dependency.getModuleGroup().startsWith("com.google.firebase") }, // Only want Firebase.
   { dependency -> true }, // Include transitive dependencies.
-  { dependency -> new GraphFormattingOptions(Shape.BOX, Style.FILLED, Color.fromRgb(255, 203, 43)) }, // Give them some color.
+  { node, dependency -> node.add(Style.FILLED, Color.rgb("#ffcb2b")) }, // Give them some color.
 )
 
 dependencyGraphGenerator {
@@ -88,6 +81,7 @@ dependencyGraphGenerator {
   generators = [ Generator.ALL, firebaseGenerator ]
 }
 ```
+
 # License
 
 Copyright (C) 2018 Vanniktech - Niklas Baudy

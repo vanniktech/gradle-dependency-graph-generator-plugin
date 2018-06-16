@@ -1,7 +1,16 @@
 # Change Log
 
-Version 0.5.0 *(In development)*
---------------------------------
+Version 0.5.0 *(2018-06-16)*
+----------------------------
+
+- Generate SVG picture by default. [\#55](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/55) ([vanniktech](https://github.com/vanniktech))
+- Update Gradle wrapper to 4.8 [\#54](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/54) ([vanniktech](https://github.com/vanniktech))
+- Unify setup, improve a few things and bump versions. [\#53](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/53) ([vanniktech](https://github.com/vanniktech))
+- Use Gradle Maven Publish Plugin for publishing. [\#52](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/52) ([vanniktech](https://github.com/vanniktech))
+- Generator: Allow custom output formats. [\#51](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/51) ([vanniktech](https://github.com/vanniktech))
+- Update ktlint to 0.23.1 & Detekt to 1.0.0-RC7 [\#47](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/47) ([vanniktech](https://github.com/vanniktech))
+- Handle recursive depenencies correctly. [\#45](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/45) ([vanniktech](https://github.com/vanniktech))
+- Replace dot execution with graphviz-java library. [\#40](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/40) ([vanniktech](https://github.com/vanniktech))
 
 Version 0.4.0 *(2018-04-20)*
 ----------------------------
