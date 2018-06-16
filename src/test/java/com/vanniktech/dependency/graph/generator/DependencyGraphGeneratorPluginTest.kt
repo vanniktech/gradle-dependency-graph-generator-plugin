@@ -82,8 +82,9 @@ class DependencyGraphGeneratorPluginTest {
     // No errors.
     assertThat(stdErrorWriter).hasToString("")
 
-    // We don't want to assert the content of the image, just that it exists.
+    // We don't want to assert the content of the images, just that they exist.
     assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.png")).exists()
+    assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.svg")).exists()
 
     assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot")).hasContent("""
         digraph "G" {
