@@ -10,8 +10,4 @@ class DependencyGraphGeneratorExtensionTest {
     val defaults = DependencyGraphGeneratorExtension()
     assertThat(defaults.generators).containsExactly(ALL)
   }
-
-  @Test fun allDefaults() {
-    assertThat(ALL.outputFormats).containsExactly(PNG)
-  }
 }
