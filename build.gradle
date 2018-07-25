@@ -70,7 +70,7 @@ dependencies {
   implementation localGroovy()
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
   implementation gradleApi()
-  api "guru.nidi:graphviz-java:0.5.2"
+  api "guru.nidi:graphviz-java:0.5.3"
 
   testImplementation 'junit:junit:4.12'
   testImplementation 'org.assertj:assertj-core:3.10.0'
