@@ -58,7 +58,7 @@ internal class DotGenerator(
           append(dependency, project.dotIdentifier, graph)
         }
 
-    return graph
+    return generator.mutateGraph(graph)
   }
 
   private fun append(dependency: ResolvedDependency, parentIdentifier: String, graph: MutableGraph) {

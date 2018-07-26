@@ -101,6 +101,15 @@ class DotGeneratorTest {
         """.trimIndent())
   }
 
+  @Test fun singleProjectEmptyAllMutateGraph() {
+    assertThat(DotGenerator(singleEmpty, ALL.copy(mutateGraph = { it.setDirected(false) })).generateGraph()).hasToString("""
+        graph "G" {
+        node ["fontname"="Times New Roman"]
+        "singleempty" ["shape"="rectangle","label"="singleempty"]
+        }
+        """.trimIndent())
+  }
+
   @Test fun singleProjectEmptyAllHeader() {
     assertThat(DotGenerator(singleEmpty, ALL.copy(label = Label.of("my custom header").locate(TOP).justify(LEFT))).generateGraph()).hasToString("""
         digraph "G" {
