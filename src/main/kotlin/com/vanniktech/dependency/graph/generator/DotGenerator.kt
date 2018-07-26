@@ -58,7 +58,7 @@ internal class DotGenerator(
           append(dependency, project.dotIdentifier, graph)
         }
 
-    return graph
+    return generator.graph(graph)
   }
 
   private fun append(dependency: ResolvedDependency, parentIdentifier: String, graph: MutableGraph) {
@@ -72,9 +72,9 @@ internal class DotGenerator(
           .add(Label.of(dependency.getDisplayName()))
           .add(Shape.RECTANGLE)
 
-      val tunedNode = generator.dependencyNode.invoke(node, dependency)
-      nodes[identifier] = tunedNode
-      graph.add(tunedNode)
+      val mutated = generator.dependencyNode.invoke(node, dependency)
+      nodes[identifier] = mutated
+      graph.add(mutated)
 
       nodes[parentIdentifier]?.addLink(nodes[identifier])
 
