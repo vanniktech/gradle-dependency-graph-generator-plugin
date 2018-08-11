@@ -94,6 +94,10 @@ class DependencyGraphGeneratorPluginTest {
         "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
         "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
         "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        {
+        graph ["rank"="same"]
+        "${testProjectDir.root.name}"
+        }
         "${testProjectDir.root.name}" -> "orgjetbrainskotlinkotlinstdlib"
         "${testProjectDir.root.name}" -> "ioreactivexrxjava2rxjava"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
@@ -188,6 +192,10 @@ class DependencyGraphGeneratorPluginTest {
         "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
         "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
         "$lib2" ["shape"="rectangle","label"="lib2"]
+        {
+        graph ["rank"="same"]
+        "$app"
+        }
         "$app" -> "$lib1"
         "$app" -> "$lib2"
         "$lib1" -> "$lib"

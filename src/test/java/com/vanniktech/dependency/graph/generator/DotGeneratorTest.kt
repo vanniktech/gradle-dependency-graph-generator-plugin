@@ -80,6 +80,10 @@ class DotGeneratorTest {
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="rectangle","label"="singleempty"]
+        {
+        graph ["rank"="same"]
+        "singleempty"
+        }
         }
         """.trimIndent())
   }
@@ -97,6 +101,10 @@ class DotGeneratorTest {
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="rectangle","label"="singleempty"]
+        {
+        graph ["rank"="same"]
+        "singleempty"
+        }
         }
         """.trimIndent())
   }
@@ -106,6 +114,10 @@ class DotGeneratorTest {
         graph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="rectangle","label"="singleempty"]
+        {
+        graph ["rank"="same"]
+        "singleempty"
+        }
         }
         """.trimIndent())
   }
@@ -116,6 +128,10 @@ class DotGeneratorTest {
         graph ["labeljust"="l","labelloc"="t","label"="my custom header"]
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="rectangle","label"="singleempty"]
+        {
+        graph ["rank"="same"]
+        "singleempty"
+        }
         }
         """.trimIndent())
   }
@@ -125,6 +141,10 @@ class DotGeneratorTest {
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="egg","color"="#ff0099","style"="dotted","label"="singleempty"]
+        {
+        graph ["rank"="same"]
+        "singleempty"
+        }
         }
         """.trimIndent())
   }
@@ -138,6 +158,10 @@ class DotGeneratorTest {
         "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
         "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
         "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        {
+        graph ["rank"="same"]
+        "single"
+        }
         "single" -> "orgjetbrainskotlinkotlinstdlib"
         "single" -> "ioreactivexrxjava2rxjava"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
@@ -158,10 +182,14 @@ class DotGeneratorTest {
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "single" ["shape"="rectangle","label"="single"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","color"="0.5729030306231915 0.730480096472168 0.6199754367027828","style"="filled","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","color"="0.4288231821397507 0.6911813426492972 0.6290787664264184","style"="filled","label"="jetbrains-annotations"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","color"="0.16317995652814232 0.937505295349677 0.3856775265969894","style"="filled","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","color"="0.7630981414446663 0.06104724686147023 0.3765458063358519","style"="filled","label"="reactive-streams"]
+        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","color"="0.0640501426300134 0.8237627867666534 0.01589038828058631","style"="filled","label"="kotlin-stdlib"]
+        "orgjetbrainsannotations" ["shape"="rectangle","color"="0.5597323057578714 0.5443799058850397 0.1501148203700079","style"="filled","label"="jetbrains-annotations"]
+        "ioreactivexrxjava2rxjava" ["shape"="rectangle","color"="0.20985086076534065 0.9479919750755385 0.8980077536791101","style"="filled","label"="rxjava"]
+        "orgreactivestreamsreactivestreams" ["shape"="rectangle","color"="0.012912074006375618 0.7892530392440779 0.007857780626616906","style"="filled","label"="reactive-streams"]
+        {
+        graph ["rank"="same"]
+        "single"
+        }
         "single" -> "orgjetbrainskotlinkotlinstdlib"
         "single" -> "ioreactivexrxjava2rxjava"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
@@ -177,6 +205,10 @@ class DotGeneratorTest {
         "single" ["shape"="rectangle","label"="single"]
         "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
         "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
+        {
+        graph ["rank"="same"]
+        "single"
+        }
         "single" -> "orgjetbrainskotlinkotlinstdlib"
         "single" -> "ioreactivexrxjava2rxjava"
         }
@@ -190,6 +222,10 @@ class DotGeneratorTest {
         "single" ["shape"="rectangle","label"="single"]
         "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
         "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        {
+        graph ["rank"="same"]
+        "single"
+        }
         "single" -> "orgjetbrainskotlinkotlinstdlib"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         }
@@ -219,6 +255,10 @@ class DotGeneratorTest {
         "xmlapisxmlapisext" ["shape"="rectangle","label"="xml-apis-ext"]
         "xalanxalan" ["shape"="rectangle","label"="xalan"]
         "orgapachexmlgraphicsbatikjs" ["shape"="rectangle","label"="batik-js"]
+        {
+        graph ["rank"="same"]
+        "singleempty"
+        }
         "singleempty" -> "orgapachexmlgraphicsbatikgvt"
         "orgapachexmlgraphicsbatikgvt" -> "orgapachexmlgraphicsbatikawtutil"
         "orgapachexmlgraphicsbatikgvt" -> "orgapachexmlgraphicsbatikutil"
@@ -298,6 +338,10 @@ class DotGeneratorTest {
         "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
         "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
         "ioreactivexrxjava2rxandroid" ["shape"="rectangle","label"="rxandroid"]
+        {
+        graph ["rank"="same"]
+        "single"
+        }
         "single" -> "orgjetbrainskotlinkotlinstdlib"
         "single" -> "ioreactivexrxjava2rxjava"
         "single" -> "ioreactivexrxjava2rxandroid"
@@ -319,6 +363,11 @@ class DotGeneratorTest {
         "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
         "multimulti2" ["shape"="rectangle","label"="multi2"]
         "ioreactivexrxjava2rxandroid" ["shape"="rectangle","label"="rxandroid"]
+        {
+        graph ["rank"="same"]
+        "multimulti1"
+        "multimulti2"
+        }
         "multimulti1" -> "orgjetbrainskotlinkotlinstdlib"
         "multimulti1" -> "ioreactivexrxjava2rxjava"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
@@ -348,6 +397,10 @@ class DotGeneratorTest {
         "androidarchcorecommon" ["shape"="rectangle","label"="core-common"]
         "comandroidsupportsupportcoreutils" ["shape"="rectangle","label"="support-core-utils"]
         "comandroidsupportsupportcompat" ["shape"="rectangle","label"="support-compat"]
+        {
+        graph ["rank"="same"]
+        "android"
+        }
         "android" -> "androidarchpersistenceroomruntime"
         "androidarchpersistenceroomruntime" -> "androidarchpersistenceroomcommon"
         "androidarchpersistenceroomruntime" -> "androidarchpersistencedbframework"
@@ -379,6 +432,10 @@ class DotGeneratorTest {
         "android" ["shape"="rectangle","label"="android"]
         "comsquareupsqldelightruntime" ["shape"="rectangle","label"="sqldelight-runtime"]
         "comandroidsupportsupportannotations" ["shape"="rectangle","label"="support-annotations"]
+        {
+        graph ["rank"="same"]
+        "android"
+        }
         "android" -> "comsquareupsqldelightruntime"
         "comsquareupsqldelightruntime" -> "comandroidsupportsupportannotations"
         }
@@ -407,6 +464,10 @@ class DotGeneratorTest {
         "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
         "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
         "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        {
+        graph ["rank"="same"]
+        "android"
+        }
         "android" -> "ioreactivexrxjava2rxandroid"
         "android" -> "ioreactivexrxjava2rxjava"
         "android" -> "orgjetbrainskotlinkotlinstdlib"
@@ -437,6 +498,10 @@ class DotGeneratorTest {
         "ioreactivexrxjava2rxandroid" ["shape"="rectangle","label"="rxandroid"]
         "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
         "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        {
+        graph ["rank"="same"]
+        "android"
+        }
         "android" -> "ioreactivexrxjava2rxjava"
         "android" -> "ioreactivexrxjava2rxandroid"
         "android" -> "orgjetbrainskotlinkotlinstdlib"
@@ -464,6 +529,10 @@ class DotGeneratorTest {
         "android" ["shape"="rectangle","label"="android"]
         "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
         "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        {
+        graph ["rank"="same"]
+        "android"
+        }
         "android" -> "orgjetbrainskotlinkotlinstdlib"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         }
@@ -479,6 +548,10 @@ class DotGeneratorTest {
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
+        {
+        graph ["rank"="same"]
+        "android"
+        }
         }
         """.trimIndent())
   }
@@ -492,6 +565,10 @@ class DotGeneratorTest {
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
+        {
+        graph ["rank"="same"]
+        "android"
+        }
         }
         """.trimIndent())
   }
@@ -503,6 +580,10 @@ class DotGeneratorTest {
         "rxjava" ["shape"="rectangle","label"="rxjava"]
         "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
         "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        {
+        graph ["rank"="same"]
+        "rxjava"
+        }
         "rxjava" -> "ioreactivexrxjava2rxjava"
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         }

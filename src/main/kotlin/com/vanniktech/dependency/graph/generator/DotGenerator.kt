@@ -3,9 +3,12 @@ package com.vanniktech.dependency.graph.generator
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator
 import guru.nidi.graphviz.attribute.Font
 import guru.nidi.graphviz.attribute.Label
+import guru.nidi.graphviz.attribute.Rank
 import guru.nidi.graphviz.attribute.Shape
+import guru.nidi.graphviz.model.Factory.graph
 import guru.nidi.graphviz.model.Factory.mutGraph
 import guru.nidi.graphviz.model.Factory.mutNode
+import guru.nidi.graphviz.model.Factory.node
 import guru.nidi.graphviz.model.MutableGraph
 import guru.nidi.graphviz.model.MutableNode
 import org.gradle.api.Project
@@ -22,7 +25,7 @@ internal class DotGenerator(
 
   private val nodes = mutableMapOf<String, MutableNode>()
 
-  fun generateGraph(): MutableGraph {
+  @Suppress("Detekt.SpreadOperator") fun generateGraph(): MutableGraph {
     val graph = mutGraph("G").setDirected(true)
 
     generator.label?.let {
@@ -34,6 +37,8 @@ internal class DotGenerator(
     val projects = (if (project.subprojects.size > 0) project.subprojects else setOf(project))
         .filter { generator.includeProject(it) }
 
+    val rootNodes = mutableSetOf<String>()
+
     // Generate top level projects.
     projects.forEach {
       val projectId = it.dotIdentifier
@@ -43,6 +48,7 @@ internal class DotGenerator(
       val tunedNode = generator.projectNode.invoke(node, it)
       nodes[projectId] = tunedNode
       graph.add(tunedNode)
+      rootNodes.add(projectId)
     }
 
     // Let's gather everything and put it in the file.
@@ -55,13 +61,21 @@ internal class DotGenerator(
               .map { project to it }
         }
         .forEach { (project, dependency) ->
-          append(dependency, project.dotIdentifier, graph)
+          append(dependency, project.dotIdentifier, graph, rootNodes)
         }
+
+    if (rootNodes.isNotEmpty()) {
+      graph.add(graph()
+          .graphAttr()
+          .with(Rank.SAME)
+          .with(*rootNodes.map { mutNode(it) }.toTypedArray())
+      )
+    }
 
     return generator.graph(graph)
   }
 
-  private fun append(dependency: ResolvedDependency, parentIdentifier: String, graph: MutableGraph) {
+  private fun append(dependency: ResolvedDependency, parentIdentifier: String, graph: MutableGraph, rootNodes: MutableSet<String>) {
     val identifier = (dependency.moduleGroup + dependency.moduleName).dotIdentifier
     val pair = parentIdentifier to identifier
 
@@ -76,10 +90,12 @@ internal class DotGenerator(
       nodes[identifier] = mutated
       graph.add(mutated)
 
+      rootNodes.remove(identifier)
+
       nodes[parentIdentifier]?.addLink(nodes[identifier])
 
       if (generator.children.invoke(dependency)) {
-        dependency.children.forEach { append(it, identifier, graph) }
+        dependency.children.forEach { append(it, identifier, graph, rootNodes) }
       }
     }
   }
