@@ -85,8 +85,7 @@ pluginBundle {
   vcsUrl = POM_SCM_URL
 
   plugins {
-    dependencyGraphGenerator {
-      id = 'com.vanniktech.dependency.graph.generator'
+    graphGeneratorDependencyPlugin {
       displayName = POM_NAME
       tags = ['gradle', 'graph', 'dependencies', 'graphviz', 'dot']
       description = POM_DESCRIPTION
