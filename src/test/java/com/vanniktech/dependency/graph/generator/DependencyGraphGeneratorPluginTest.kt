@@ -40,6 +40,14 @@ class DependencyGraphGeneratorPluginTest {
     assertThat(task.outputDirectory).hasToString(File(singleProject.buildDir, "reports/dependency-graph/").toString())
   }
 
+  @Test fun integrationTestGradle410() {
+    integrationTest("4.10")
+  }
+
+  @Test fun integrationTestGradle49() {
+    integrationTest("4.9")
+  }
+
   @Test fun integrationTestGradle46() {
     integrationTest("4.6")
   }
