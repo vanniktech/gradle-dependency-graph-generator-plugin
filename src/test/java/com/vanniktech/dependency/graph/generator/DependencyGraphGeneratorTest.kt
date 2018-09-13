@@ -21,7 +21,7 @@ import org.junit.Test
 import java.io.File
 import java.util.Random
 
-class DotGeneratorTest {
+class DependencyGraphGeneratorTest {
   private lateinit var singleEmpty: Project
   private lateinit var singleProject: Project
   private lateinit var rxjavaProject: Project
@@ -76,7 +76,7 @@ class DotGeneratorTest {
   @Test fun singleProjectAllNoTestDependencies() {
     singleEmpty.dependencies.add("testImplementation", "junit:junit:4.12")
 
-    assertThat(DotGenerator(singleEmpty, ALL).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(singleEmpty, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="rectangle","label"="singleempty"]
@@ -89,7 +89,7 @@ class DotGeneratorTest {
   }
 
   @Test fun singleProjectEmptyAllNoProjects() {
-    assertThat(DotGenerator(singleEmpty, ALL.copy(includeProject = { false })).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(singleEmpty, ALL.copy(includeProject = { false })).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         }
@@ -97,7 +97,7 @@ class DotGeneratorTest {
   }
 
   @Test fun singleProjectEmptyAll() {
-    assertThat(DotGenerator(singleEmpty, ALL).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(singleEmpty, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="rectangle","label"="singleempty"]
@@ -110,7 +110,7 @@ class DotGeneratorTest {
   }
 
   @Test fun singleProjectEmptyAllMutateGraph() {
-    assertThat(DotGenerator(singleEmpty, ALL.copy(graph = { it.setDirected(false) })).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(singleEmpty, ALL.copy(graph = { it.setDirected(false) })).generateGraph()).hasToString("""
         graph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="rectangle","label"="singleempty"]
@@ -123,7 +123,7 @@ class DotGeneratorTest {
   }
 
   @Test fun singleProjectEmptyAllHeader() {
-    assertThat(DotGenerator(singleEmpty, ALL.copy(label = Label.of("my custom header").locate(TOP).justify(LEFT))).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(singleEmpty, ALL.copy(label = Label.of("my custom header").locate(TOP).justify(LEFT))).generateGraph()).hasToString("""
         digraph "G" {
         graph ["labeljust"="l","labelloc"="t","label"="my custom header"]
         node ["fontname"="Times New Roman"]
@@ -137,7 +137,7 @@ class DotGeneratorTest {
   }
 
   @Test fun singleProjectEmptyAllRootFormatted() {
-    assertThat(DotGenerator(singleEmpty, ALL.copy(projectNode = { node, _ -> node.add(Shape.EGG, Style.DOTTED, Color.rgb("ff0099")) })).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(singleEmpty, ALL.copy(projectNode = { node, _ -> node.add(Shape.EGG, Style.DOTTED, Color.rgb("ff0099")) })).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="egg","color"="#ff0099","style"="dotted","label"="singleempty"]
@@ -150,7 +150,7 @@ class DotGeneratorTest {
   }
 
   @Test fun singleProjectAll() {
-    assertThat(DotGenerator(singleProject, ALL).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(singleProject, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "single" ["shape"="rectangle","label"="single"]
@@ -178,7 +178,7 @@ class DotGeneratorTest {
       )
     }
 
-    assertThat(DotGenerator(singleProject, ALL.copy(dependencyNode = dependencyNode)).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(singleProject, ALL.copy(dependencyNode = dependencyNode)).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "single" ["shape"="rectangle","label"="single"]
@@ -199,7 +199,7 @@ class DotGeneratorTest {
   }
 
   @Test fun singleProjectNoChildren() {
-    assertThat(DotGenerator(singleProject, ALL.copy(children = { false })).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(singleProject, ALL.copy(children = { false })).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "single" ["shape"="rectangle","label"="single"]
@@ -216,7 +216,7 @@ class DotGeneratorTest {
   }
 
   @Test fun singleProjectFilterRxJavaOut() {
-    assertThat(DotGenerator(singleProject, ALL.copy(include = { it.moduleGroup != "io.reactivex.rxjava2" })).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(singleProject, ALL.copy(include = { it.moduleGroup != "io.reactivex.rxjava2" })).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "single" ["shape"="rectangle","label"="single"]
@@ -235,7 +235,7 @@ class DotGeneratorTest {
   @Test fun recursiveDependencies() {
       singleEmpty.dependencies.add("implementation", "org.apache.xmlgraphics:batik-gvt:1.7")
 
-      assertThat(DotGenerator(singleEmpty, ALL).generateGraph()).hasToString("""
+      assertThat(DependencyGraphGenerator(singleEmpty, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="rectangle","label"="singleempty"]
@@ -329,7 +329,7 @@ class DotGeneratorTest {
     // Both RxJava and RxAndroid point transitively on reactivestreams.
     singleProject.dependencies.add("implementation", "io.reactivex.rxjava2:rxandroid:2.0.2")
 
-    assertThat(DotGenerator(singleProject, ALL).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(singleProject, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "single" ["shape"="rectangle","label"="single"]
@@ -353,7 +353,7 @@ class DotGeneratorTest {
   }
 
   @Test fun multiProjectAll() {
-    assertThat(DotGenerator(multiProject, ALL).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(multiProject, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "multimulti1" ["shape"="rectangle","label"="multi1"]
@@ -384,7 +384,7 @@ class DotGeneratorTest {
 
     androidProject.dependencies.add("implementation", "android.arch.persistence.room:runtime:1.0.0")
 
-    assertThat(DotGenerator(androidProject, ALL).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(androidProject, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -426,7 +426,7 @@ class DotGeneratorTest {
 
     androidProject.dependencies.add("implementation", "com.squareup.sqldelight:runtime:0.6.1")
 
-    assertThat(DotGenerator(androidProject, ALL).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(androidProject, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -455,7 +455,7 @@ class DotGeneratorTest {
     androidProject.dependencies.add("flavor2DebugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
     androidProject.dependencies.add("flavor2ReleaseImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
 
-    assertThat(DotGenerator(androidProject, ALL).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(androidProject, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -489,7 +489,7 @@ class DotGeneratorTest {
     androidProject.dependencies.add("debugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
     androidProject.dependencies.add("stagingImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
 
-    assertThat(DotGenerator(androidProject, ALL).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(androidProject, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -523,7 +523,7 @@ class DotGeneratorTest {
     androidProject.dependencies.add("debugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
     androidProject.dependencies.add("stagingImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
 
-    assertThat(DotGenerator(androidProject, ALL.copy(includeConfiguration = { it.name == "stagingCompileClasspath" })).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(androidProject, ALL.copy(includeConfiguration = { it.name == "stagingCompileClasspath" })).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -544,7 +544,7 @@ class DotGeneratorTest {
 
     androidProject.dependencies.add("testImplementation", "junit:junit:4.12")
 
-    assertThat(DotGenerator(androidProject, ALL).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(androidProject, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -561,7 +561,7 @@ class DotGeneratorTest {
 
     androidProject.dependencies.add("androidTestImplementation", "junit:junit:4.12")
 
-    assertThat(DotGenerator(androidProject, ALL).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(androidProject, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -574,7 +574,7 @@ class DotGeneratorTest {
   }
 
   @Test fun projectNamedLikeDependencyName() {
-    assertThat(DotGenerator(rxjavaProject, ALL).generateGraph()).hasToString("""
+    assertThat(DependencyGraphGenerator(rxjavaProject, ALL).generateGraph()).hasToString("""
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "rxjava" ["shape"="rectangle","label"="rxjava"]

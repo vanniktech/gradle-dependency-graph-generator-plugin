@@ -1,6 +1,5 @@
 package com.vanniktech.dependency.graph.generator
 
-import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator.Companion.ALL
 import org.assertj.core.api.Java6Assertions.assertThat
 import org.gradle.api.internal.project.DefaultProject
 import org.gradle.api.plugins.JavaLibraryPlugin
@@ -33,11 +32,24 @@ class DependencyGraphGeneratorPluginTest {
     singleProject.evaluate() // Need to call this for afterEvaluate() to pick up.
 
     val task = singleProject.tasks.getByName("generateDependencyGraph") as DependencyGraphGeneratorTask
-    assertThat(task.generator).isSameAs(ALL)
+    assertThat(task.generator).isSameAs(DependencyGraphGeneratorExtension.Generator.ALL)
     assertThat(task.group).isEqualTo("reporting")
     assertThat(task.description).isEqualTo("Generates a dependency graph")
     assertThat(task.inputFile).hasToString(singleProject.buildFile.toString())
     assertThat(task.outputDirectory).hasToString(File(singleProject.buildDir, "reports/dependency-graph/").toString())
+  }
+
+  @Test fun taskPropertiesProject() {
+    singleProject.plugins.apply(DependencyGraphGeneratorPlugin::class.java)
+
+    singleProject.evaluate() // Need to call this for afterEvaluate() to pick up.
+
+    val task = singleProject.tasks.getByName("generateProjectDependencyGraph") as ProjectDependencyGraphGeneratorTask
+    assertThat(task.projectGenerator).isSameAs(DependencyGraphGeneratorExtension.ProjectGenerator.ALL)
+    assertThat(task.group).isEqualTo("reporting")
+    assertThat(task.description).isEqualTo("Generates a project dependency graph")
+    assertThat(task.inputFile).hasToString(singleProject.buildFile.toString())
+    assertThat(task.outputDirectory).hasToString(File(singleProject.buildDir, "reports/project-dependency-graph/").toString())
   }
 
   @Test fun integrationTestGradle410() {
@@ -83,7 +95,7 @@ class DependencyGraphGeneratorPluginTest {
         .withPluginClasspath()
         .withGradleVersion(gradleVersion)
         .withProjectDir(testProjectDir.root)
-        .withArguments("generateDependencyGraph")
+        .withArguments("generateDependencyGraph", "generateProjectDependencyGraph")
         .forwardStdError(stdErrorWriter)
         .build()
 
@@ -110,6 +122,19 @@ class DependencyGraphGeneratorPluginTest {
         "${testProjectDir.root.name}" -> "ioreactivexrxjava2rxjava"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
+        }""".trimIndent())
+
+    // We don't want to assert the content of the images, just that they exist.
+    assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.png")).exists()
+    assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.svg")).exists()
+
+    assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.dot")).hasContent("""
+        digraph {
+        graph ["fontsize"="35","label"="${testProjectDir.root.name}","labelloc"="t"]
+        node ["fontname"="Times New Roman","style"="filled"]
+        {
+        graph ["rank"="same"]
+        }
         }""".trimIndent())
   }
 
@@ -179,7 +204,7 @@ class DependencyGraphGeneratorPluginTest {
         .withPluginClasspath()
         .withGradleVersion("4.6")
         .withProjectDir(testProjectDir.root)
-        .withArguments("generateDependencyGraph")
+        .withArguments("generateDependencyGraph", "generateProjectDependencyGraph")
         .forwardStdError(stdErrorWriter)
         .build()
 
@@ -188,6 +213,7 @@ class DependencyGraphGeneratorPluginTest {
 
     // We don't want to assert the content of the image, just that it exists.
     assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.png")).exists()
+    assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.svg")).exists()
 
     assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot")).hasContent("""
         digraph "G" {
@@ -212,6 +238,28 @@ class DependencyGraphGeneratorPluginTest {
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         "$lib2" -> "$lib"
+        }""".trimIndent())
+
+    // We don't want to assert the content of the image, just that it exists.
+    assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.png")).exists()
+    assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.svg")).exists()
+
+    assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.dot")).hasContent("""
+        digraph {
+        graph ["fontsize"="35","label"="${testProjectDir.root.name}","labelloc"="t"]
+        node ["fontname"="Times New Roman","style"="filled"]
+        ":app" ["fillcolor"="#ff8a65","shape"="rectangle"]
+        ":lib1" ["fillcolor"="#ff8a65"]
+        ":lib" ["fillcolor"="#ff8a65"]
+        ":lib2" ["fillcolor"="#ff8a65"]
+        {
+        graph ["rank"="same"]
+        ":app"
+        }
+        ":app" -> ":lib1" ["style"="dotted"]
+        ":app" -> ":lib2" ["style"="dotted"]
+        ":lib1" -> ":lib"
+        ":lib2" -> ":lib"
         }""".trimIndent())
   }
 }

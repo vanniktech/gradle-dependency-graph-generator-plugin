@@ -8,13 +8,12 @@ import guru.nidi.graphviz.attribute.Shape
 import guru.nidi.graphviz.model.Factory.graph
 import guru.nidi.graphviz.model.Factory.mutGraph
 import guru.nidi.graphviz.model.Factory.mutNode
-import guru.nidi.graphviz.model.Factory.node
 import guru.nidi.graphviz.model.MutableGraph
 import guru.nidi.graphviz.model.MutableNode
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ResolvedDependency
 
-internal class DotGenerator(
+internal class DependencyGraphGenerator(
   private val project: Project,
   private val generator: Generator
 ) {
@@ -92,7 +91,7 @@ internal class DotGenerator(
 
       rootNodes.remove(identifier)
 
-      nodes[parentIdentifier]?.addLink(nodes[identifier])
+      nodes[parentIdentifier]?.addLink(mutated)
 
       if (generator.children.invoke(dependency)) {
         dependency.children.forEach { append(it, identifier, graph, rootNodes) }
@@ -111,5 +110,3 @@ internal class DotGenerator(
     else -> moduleName
   }
 }
-
-private val Project.dotIdentifier get() = "$group$name".dotIdentifier
