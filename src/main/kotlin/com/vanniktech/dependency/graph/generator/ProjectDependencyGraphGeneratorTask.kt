@@ -3,12 +3,13 @@ package com.vanniktech.dependency.graph.generator
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.ProjectGenerator
 import guru.nidi.graphviz.engine.Graphviz
 import org.gradle.api.DefaultTask
+import org.gradle.api.tasks.CacheableTask
 import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
-open class ProjectDependencyGraphGeneratorTask : DefaultTask() {
+@CacheableTask open class ProjectDependencyGraphGeneratorTask : DefaultTask() {
   lateinit var projectGenerator: ProjectGenerator // TODO does this need to be an input? Quick testing shows no.
   @InputFile lateinit var inputFile: File
 
