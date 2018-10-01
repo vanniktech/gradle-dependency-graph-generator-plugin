@@ -1,6 +1,5 @@
 package com.vanniktech.dependency.graph.generator
 
-import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator.Companion.ALL
 import guru.nidi.graphviz.attribute.Label
 import guru.nidi.graphviz.engine.Format
 import guru.nidi.graphviz.engine.Format.PNG
@@ -16,10 +15,19 @@ import org.gradle.api.artifacts.ResolvedDependency
  * @since 0.1.0
  */
 open class DependencyGraphGeneratorExtension {
-  var generators: List<Generator> = listOf(ALL)
+  /**
+   * Generator extensions. By default this will yield a graph showing every project and library dependencies.
+   * @since 0.1.0
+   */
+  var generators: List<Generator> = listOf(Generator.ALL)
 
   /**
-   * Generator allows you to customize which dependencies you want to select. Further you can tweak some of the formatting.
+   * ProjectGenerator extensions. By default this will yield a graph showing every project and it's project dependencies.
+   */
+  var projectGenerators: List<ProjectGenerator> = listOf(ProjectGenerator.ALL)
+
+  /**
+   * Generator allows you to filter and tweak between projects- as well as library dependencies.
    * @since 0.1.0
    */
   data class Generator @JvmOverloads constructor(
@@ -36,7 +44,7 @@ open class DependencyGraphGeneratorExtension {
     val dependencyNode: (MutableNode, ResolvedDependency) -> MutableNode = { node, _ -> node },
     /** Allows to change the node for the given project. */
     val projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
-    /** Optional label  that can be displayed wrapped around the graph. */
+    /** Optional label that can be displayed wrapped around the graph. */
     val label: Label? = null,
     /** Return true when you want to include this configuration, false otherwise. */
     val includeConfiguration: (Configuration) -> Boolean = {
@@ -59,6 +67,36 @@ open class DependencyGraphGeneratorExtension {
     companion object {
       /** Default behavior which will include everything as is. */
       @JvmStatic val ALL = Generator()
+    }
+  }
+
+  /**
+   * ProjectGenerator allows you to filter and tweak between projects dependencies.
+   * @since 0.6.0
+   */
+  data class ProjectGenerator @JvmOverloads constructor(
+    /**
+     * The name of this type of generator that should be in lowerCamelCase.
+     * The task name as well as the output files will use this name.
+     */
+    val name: String = "",
+    /** Allows to change the node for the given project. */
+    val projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
+    /** Return true when you want to include this project, false otherwise. */
+    val includeProject: (Project) -> Boolean = { true },
+    /** Return the output formats you'd like to be generated. */
+    val outputFormats: List<Format> = listOf(PNG, SVG),
+    /** Allows you to mutate the graph and add things as needed. */
+    val graph: (MutableGraph) -> MutableGraph = { it }
+  ) {
+    /** Gradle task name that is associated with this generator. */
+    val gradleTaskName = "generateProjectDependencyGraph${name.capitalize()}"
+    internal val outputFileName = "project-dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
+    internal val outputFileNameDot = "$outputFileName.dot"
+
+    companion object {
+      /** Default behavior which will include everything as is. */
+      @JvmStatic val ALL = ProjectGenerator()
     }
   }
 }

@@ -1,5 +1,7 @@
 package com.vanniktech.dependency.graph.generator
 
+import org.gradle.api.Project
+
 private val whitespaceRegex = Regex("\\s")
 
 internal val String.dotIdentifier get() = replace("-", "")
@@ -17,3 +19,15 @@ internal fun String.toHyphenCase(): String {
       .drop(1)
       .joinToString(separator = "") { if (it[0].isUpperCase()) "-${it[0].toLowerCase()}" else it }
 }
+
+internal val Project.dotIdentifier get() = "$group$name".dotIdentifier
+
+fun Project.isJavaProject() = listOf("java-library", "java", "java-gradle-plugin").any { plugins.hasPlugin(it) }
+
+fun Project.isKotlinProject() = listOf("kotlin", "kotlin-android", "kotlin-platform-jvm").any { plugins.hasPlugin(it) }
+
+fun Project.isAndroidProject() = listOf("com.android.library", "com.android.application", "com.android.test", "com.android.feature", "com.android.instantapp").any { plugins.hasPlugin(it) }
+
+fun Project.isJsProject() = plugins.hasPlugin("kotlin2js")
+
+fun Project.isCommonsProject() = plugins.hasPlugin("org.jetbrains.kotlin.platform.common")

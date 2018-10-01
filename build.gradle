@@ -1,5 +1,5 @@
 buildscript {
-  ext.kotlinVersion = '1.2.60'
+  ext.kotlinVersion = '1.2.71'
 
   repositories {
     mavenCentral()
@@ -29,7 +29,7 @@ apply plugin: "com.vanniktech.maven.publish"
 
 codeQualityTools {
   ktlint {
-    toolVersion = '0.27.0'
+    toolVersion = '0.28.0'
   }
   detekt {
     toolVersion = '1.0.0.RC8'
@@ -70,10 +70,10 @@ dependencies {
   implementation localGroovy()
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
   implementation gradleApi()
-  api "guru.nidi:graphviz-java:0.5.4"
+  api "guru.nidi:graphviz-java:0.6.0"
 
   testImplementation 'junit:junit:4.12'
-  testImplementation 'org.assertj:assertj-core:3.10.0'
+  testImplementation 'org.assertj:assertj-core:3.11.1'
   testImplementation 'com.android.tools.build:gradle:3.1.4'
   testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 }
@@ -94,6 +94,6 @@ pluginBundle {
 }
 
 wrapper {
-  gradleVersion = '4.9'
+  gradleVersion = '4.10.2'
   distributionType = Wrapper.DistributionType.ALL
 }

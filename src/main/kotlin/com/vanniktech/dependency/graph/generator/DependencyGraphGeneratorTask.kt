@@ -15,7 +15,7 @@ open class DependencyGraphGeneratorTask : DefaultTask() {
   @OutputDirectory lateinit var outputDirectory: File
 
   @TaskAction fun run() {
-    val graph = DotGenerator(project, generator).generateGraph()
+    val graph = DependencyGraphGenerator(project, generator).generateGraph()
     File(outputDirectory, generator.outputFileNameDot).writeText(graph.toString())
 
     val graphviz = Graphviz.fromGraph(graph)
