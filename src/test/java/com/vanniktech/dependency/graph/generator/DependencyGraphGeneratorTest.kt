@@ -173,7 +173,7 @@ class DependencyGraphGeneratorTest {
   @Test fun singleProjectAllDependencyFormattingOptions() {
     // Generate a color for each dependency.
     val dependencyNode: (MutableNode, ResolvedDependency) -> MutableNode = { node, project ->
-      val random = Random(project.hashCode().toLong())
+      val random = Random(project.name.hashCode().toLong())
       node.add(Style.FILLED, Color.hsv(random.nextDouble(), random.nextDouble(), random.nextDouble())
       )
     }
@@ -182,10 +182,10 @@ class DependencyGraphGeneratorTest {
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "single" ["shape"="rectangle","label"="single"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","color"="0.0640501426300134 0.8237627867666534 0.01589038828058631","style"="filled","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","color"="0.5597323057578714 0.5443799058850397 0.1501148203700079","style"="filled","label"="jetbrains-annotations"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","color"="0.20985086076534065 0.9479919750755385 0.8980077536791101","style"="filled","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","color"="0.012912074006375618 0.7892530392440779 0.007857780626616906","style"="filled","label"="reactive-streams"]
+        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","color"="0.833904937402929 0.4047932090555708 0.5440948801677342","style"="filled","label"="kotlin-stdlib"]
+        "orgjetbrainsannotations" ["shape"="rectangle","color"="0.44658757938141413 0.25639393293458856 0.2315484830185478","style"="filled","label"="jetbrains-annotations"]
+        "ioreactivexrxjava2rxjava" ["shape"="rectangle","color"="0.37947834890750454 0.21008099121996504 0.6969226044909884","style"="filled","label"="rxjava"]
+        "orgreactivestreamsreactivestreams" ["shape"="rectangle","color"="0.3100028267238165 0.7876064423347447 0.6784992909440705","style"="filled","label"="reactive-streams"]
         {
         graph ["rank"="same"]
         "single"
