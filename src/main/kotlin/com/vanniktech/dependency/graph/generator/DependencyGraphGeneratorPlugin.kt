@@ -9,16 +9,16 @@ open class DependencyGraphGeneratorPlugin : Plugin<Project> {
   override fun apply(project: Project) {
     val extension = project.extensions.create("dependencyGraphGenerator", DependencyGraphGeneratorExtension::class.java)
 
-    if (GradleVersion.current() >= GradleVersion.version("4.9")) {
-      extension.generators.forEach {
-        project.tasks.register(it.gradleTaskName, DependencyGraphGeneratorTask::class.java, it.configureTask(project))
-      }
+    project.afterEvaluate { _ ->
+      if (GradleVersion.current() >= GradleVersion.version("4.9")) {
+        extension.generators.forEach {
+          project.tasks.register(it.gradleTaskName, DependencyGraphGeneratorTask::class.java, it.configureTask(project))
+        }
 
-      extension.projectGenerators.forEach {
-        project.tasks.register(it.gradleTaskName, ProjectDependencyGraphGeneratorTask::class.java, it.configureTask(project))
-      }
-    } else {
-      project.afterEvaluate { _ ->
+        extension.projectGenerators.forEach {
+          project.tasks.register(it.gradleTaskName, ProjectDependencyGraphGeneratorTask::class.java, it.configureTask(project))
+        }
+      } else {
         extension.generators.forEach {
           project.tasks.create(it.gradleTaskName, DependencyGraphGeneratorTask::class.java, it.configureTask(project))
         }
