@@ -35,7 +35,6 @@ class DependencyGraphGeneratorPluginTest {
     assertThat(task.generator).isSameAs(DependencyGraphGeneratorExtension.Generator.ALL)
     assertThat(task.group).isEqualTo("reporting")
     assertThat(task.description).isEqualTo("Generates a dependency graph")
-    assertThat(task.inputFile).hasToString(singleProject.buildFile.toString())
     assertThat(task.outputDirectory).hasToString(File(singleProject.buildDir, "reports/dependency-graph/").toString())
   }
 
@@ -48,7 +47,6 @@ class DependencyGraphGeneratorPluginTest {
     assertThat(task.projectGenerator).isSameAs(DependencyGraphGeneratorExtension.ProjectGenerator.ALL)
     assertThat(task.group).isEqualTo("reporting")
     assertThat(task.description).isEqualTo("Generates a project dependency graph")
-    assertThat(task.inputFile).hasToString(singleProject.buildFile.toString())
     assertThat(task.outputDirectory).hasToString(File(singleProject.buildDir, "reports/project-dependency-graph/").toString())
   }
 
@@ -138,7 +136,7 @@ class DependencyGraphGeneratorPluginTest {
         }""".trimIndent())
   }
 
-  @Test fun multiProjectIntegrationTest() {
+  @Test @Suppress("Detekt.LongMethod") fun multiProjectIntegrationTest() {
     testProjectDir.newFile("build.gradle").writeText("""
         |plugins {
         |  id "com.vanniktech.dependency.graph.generator"
@@ -150,6 +148,7 @@ class DependencyGraphGeneratorPluginTest {
         |include ":lib1"
         |include ":lib2"
         |include ":app"
+        |include ":empty"
         |""".trimMargin())
 
     val lib = testProjectDir.newFolder("lib").run { parentFile.name + name }
@@ -198,6 +197,8 @@ class DependencyGraphGeneratorPluginTest {
         |}
         |""".trimMargin())
 
+    val empty = testProjectDir.newFolder("empty").run { parentFile.name + name }
+
     val stdErrorWriter = StringWriter()
 
     GradleRunner.create()
@@ -226,9 +227,11 @@ class DependencyGraphGeneratorPluginTest {
         "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
         "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
         "$lib2" ["shape"="rectangle","label"="lib2"]
+        "$empty" ["shape"="rectangle","label"="empty"]
         {
         graph ["rank"="same"]
         "$app"
+        "$empty"
         }
         "$app" -> "$lib1"
         "$app" -> "$lib2"
