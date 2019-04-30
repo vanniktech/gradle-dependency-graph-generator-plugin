@@ -37,7 +37,6 @@ open class DependencyGraphGeneratorPlugin : Plugin<Project> {
       it.generator = this
       it.group = "reporting"
       it.description = "Generates a dependency graph$name"
-      it.inputFile = project.buildFile
       it.outputDirectory = File(project.buildDir, "reports/dependency-graph/")
     }
   }
@@ -49,7 +48,6 @@ open class DependencyGraphGeneratorPlugin : Plugin<Project> {
       it.projectGenerator = this
       it.group = "reporting"
       it.description = "Generates a project dependency graph$name"
-      it.inputFile = project.buildFile
       it.outputDirectory = File(project.buildDir, "reports/project-dependency-graph/")
     }
   }
