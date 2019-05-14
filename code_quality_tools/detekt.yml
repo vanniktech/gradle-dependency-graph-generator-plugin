@@ -11,6 +11,8 @@ style:
     active: false
   MaxLineLength:
     active: false
+  UnnecessaryApply:
+    active: false
 
 comments:
   UndocumentedPublicClass:
