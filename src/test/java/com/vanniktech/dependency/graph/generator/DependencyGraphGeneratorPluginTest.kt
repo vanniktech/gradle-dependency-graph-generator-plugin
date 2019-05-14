@@ -50,24 +50,8 @@ class DependencyGraphGeneratorPluginTest {
     assertThat(task.outputDirectory).hasToString(File(singleProject.buildDir, "reports/project-dependency-graph/").toString())
   }
 
-  @Test fun integrationTestGradle410() {
-    integrationTest("4.10")
-  }
-
-  @Test fun integrationTestGradle49() {
-    integrationTest("4.9")
-  }
-
-  @Test fun integrationTestGradle46() {
-    integrationTest("4.6")
-  }
-
-  @Test fun integrationTestGradle40() {
-    integrationTest("4.0")
-  }
-
-  @Test fun integrationTestGradle33() {
-    integrationTest("3.3")
+  @Test fun integrationTestGradle50() {
+    integrationTest("5.0")
   }
 
   private fun integrationTest(gradleVersion: String) {
@@ -203,7 +187,7 @@ class DependencyGraphGeneratorPluginTest {
 
     GradleRunner.create()
         .withPluginClasspath()
-        .withGradleVersion("4.6")
+        .withGradleVersion("5.0")
         .withProjectDir(testProjectDir.root)
         .withArguments("generateDependencyGraph", "generateProjectDependencyGraph")
         .forwardStdError(stdErrorWriter)

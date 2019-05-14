@@ -1,11 +1,13 @@
 package com.vanniktech.dependency.graph.generator
 
+import groovy.lang.Closure
 import guru.nidi.graphviz.attribute.Label
 import guru.nidi.graphviz.engine.Format
 import guru.nidi.graphviz.engine.Format.PNG
 import guru.nidi.graphviz.engine.Format.SVG
 import guru.nidi.graphviz.model.MutableGraph
 import guru.nidi.graphviz.model.MutableNode
+import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ResolvedDependency
@@ -14,17 +16,29 @@ import org.gradle.api.artifacts.ResolvedDependency
  * Extension for dependency graph generation.
  * @since 0.1.0
  */
-open class DependencyGraphGeneratorExtension {
+open class DependencyGraphGeneratorExtension(project: Project) {
   /**
    * Generator extensions. By default this will yield a graph showing every project and library dependencies.
    * @since 0.1.0
    */
-  var generators: List<Generator> = listOf(Generator.ALL)
+  var generators: NamedDomainObjectContainer<Generator> = project.container(Generator::class.java) { Generator(it) }.apply {
+    add(Generator.ALL)
+  }
+
+  fun generators(closure: Closure<*>) {
+    generators.configure(closure)
+  }
 
   /**
    * ProjectGenerator extensions. By default this will yield a graph showing every project and it's project dependencies.
    */
-  var projectGenerators: List<ProjectGenerator> = listOf(ProjectGenerator.ALL)
+  var projectGenerators: NamedDomainObjectContainer<ProjectGenerator> = project.container(ProjectGenerator::class.java) { ProjectGenerator(it) }.apply {
+    add(ProjectGenerator.ALL)
+  }
+
+  fun projectGenerators(closure: Closure<*>) {
+    projectGenerators.configure(closure)
+  }
 
   /**
    * Generator allows you to filter and tweak between projects- as well as library dependencies.
@@ -35,29 +49,29 @@ open class DependencyGraphGeneratorExtension {
      * The name of this type of generator that should be in lowerCamelCase.
      * The task name as well as the output files will use this name.
      */
-    val name: String = "",
+    var name: String = "",
     /** Return true when you want to include this dependency, false otherwise. */
-    val include: (ResolvedDependency) -> Boolean = { true },
+    var include: (ResolvedDependency) -> Boolean = { true },
     /** Return true when you want to include the children of this dependency, false otherwise. */
-    val children: (ResolvedDependency) -> Boolean = { true },
+    var children: (ResolvedDependency) -> Boolean = { true },
     /** Allows to change the node for the given dependency. */
-    val dependencyNode: (MutableNode, ResolvedDependency) -> MutableNode = { node, _ -> node },
+    var dependencyNode: (MutableNode, ResolvedDependency) -> MutableNode = { node, _ -> node },
     /** Allows to change the node for the given project. */
-    val projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
+    var projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
     /** Optional label that can be displayed wrapped around the graph. */
-    val label: Label? = null,
+    var label: Label? = null,
     /** Return true when you want to include this configuration, false otherwise. */
-    val includeConfiguration: (Configuration) -> Boolean = {
+    var includeConfiguration: (Configuration) -> Boolean = {
       // By default we'll include everything that's on the compileClassPath except test, UnitTest and AndroidTest configurations.
       val raw = it.name.replace("compileClasspath", "", ignoreCase = true)
       it.name.contains("compileClassPath", ignoreCase = true) && listOf("test", "AndroidTest", "UnitTest").none { raw.contains(it) }
     },
     /** Return true when you want to include this project, false otherwise. */
-    val includeProject: (Project) -> Boolean = { true },
+    var includeProject: (Project) -> Boolean = { true },
     /** Return the output formats you'd like to be generated. */
-    val outputFormats: List<Format> = listOf(PNG, SVG),
+    var outputFormats: List<Format> = listOf(PNG, SVG),
     /** Allows you to mutate the graph and add things as needed. */
-    val graph: (MutableGraph) -> MutableGraph = { it }
+    var graph: (MutableGraph) -> MutableGraph = { it }
   ) {
     /** Gradle task name that is associated with this generator. */
     val gradleTaskName = "generateDependencyGraph${name.capitalize()}"
@@ -79,15 +93,15 @@ open class DependencyGraphGeneratorExtension {
      * The name of this type of generator that should be in lowerCamelCase.
      * The task name as well as the output files will use this name.
      */
-    val name: String = "",
+    var name: String = "",
     /** Allows to change the node for the given project. */
-    val projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
+    var projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
     /** Return true when you want to include this project, false otherwise. */
-    val includeProject: (Project) -> Boolean = { true },
+    var includeProject: (Project) -> Boolean = { true },
     /** Return the output formats you'd like to be generated. */
-    val outputFormats: List<Format> = listOf(PNG, SVG),
+    var outputFormats: List<Format> = listOf(PNG, SVG),
     /** Allows you to mutate the graph and add things as needed. */
-    val graph: (MutableGraph) -> MutableGraph = { it }
+    var graph: (MutableGraph) -> MutableGraph = { it }
   ) {
     /** Gradle task name that is associated with this generator. */
     val gradleTaskName = "generateProjectDependencyGraph${name.capitalize()}"
