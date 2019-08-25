@@ -37,6 +37,10 @@ buildscript {
 
 apply plugin: "com.vanniktech.dependency.graph.generator"
 ```
+After adding, you should run the gradle like below:
+<img align="center" src="https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/blob/master/Capture5.JPG?raw=true." alt="Spire the Hare" title="ScreenShot1" width="900px">
+
+finally you can find the graphs under build directory in your app folder.
 
 ## Usage
 
