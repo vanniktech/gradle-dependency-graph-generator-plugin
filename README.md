@@ -12,7 +12,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.4.0"
+    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.4.1"
   }
 }
 
@@ -36,7 +36,7 @@ buildscript {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
   }
   dependencies {
-    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.4.0-SNAPSHOT"
+    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.4.1-SNAPSHOT"
   }
 }
 
