@@ -1,6 +1,10 @@
 # Change Log
 
-Version 0.4.1 *(2018-04-20)*
+Version 0.4.1 *(2020-02-14)*
+----------------------------
+- Add version number to Modules
+
+Version 0.4.0 *(2018-04-20)*
 ----------------------------
 
 - Add a test for a project which is named like one of the dependency names. [\#43](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/43) ([vanniktech](https://github.com/vanniktech))
