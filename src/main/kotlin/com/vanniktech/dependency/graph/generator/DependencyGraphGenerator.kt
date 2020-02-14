@@ -107,6 +107,6 @@ internal class DependencyGraphGenerator(
         .plus(moduleName)
     moduleGroup == "com.squareup.sqldelight" -> "sqldelight-$moduleName"
     moduleGroup == "org.jetbrains" && moduleName == "annotations" -> "jetbrains-annotations"
-    else -> moduleName
+    else -> "$moduleName:$moduleVersion"
   }
 }
