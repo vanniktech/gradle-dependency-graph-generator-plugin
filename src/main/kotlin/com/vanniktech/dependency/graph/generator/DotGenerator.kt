@@ -26,7 +26,7 @@ internal class DotGenerator(
     }
 
     val projects = (if (project.subprojects.size > 0) project.subprojects else setOf(project))
-        .filter { generator.includeProject(it) }
+      .filter { generator.includeProject(it) }
 
     // Generate top level projects.
     projects.forEach {
@@ -38,16 +38,16 @@ internal class DotGenerator(
 
     // Let's gather everything and put it in the file.
     projects
-        .flatMap { project ->
-          project.configurations
-              .filter { it.isCanBeResolved }
-              .filter { generator.includeConfiguration.invoke(it) }
-              .flatMap { it.resolvedConfiguration.firstLevelModuleDependencies }
-              .map { project to it }
-        }
-        .forEach { (project, dependency) ->
-          append(dependency, project.dotIdentifier, content)
-        }
+      .flatMap { project ->
+        project.configurations
+          .filter { it.isCanBeResolved }
+          .filter { generator.includeConfiguration.invoke(it) }
+          .flatMap { it.resolvedConfiguration.firstLevelModuleDependencies }
+          .map { project to it }
+      }
+      .forEach { (project, dependency) ->
+        append(dependency, project.dotIdentifier, content)
+      }
 
     return content.append("}\n").toString()
   }
@@ -75,13 +75,13 @@ internal class DotGenerator(
 
   private fun ResolvedDependency.getDisplayName() = when {
     moduleGroup.startsWith("android.arch.") -> moduleGroup
-        .removePrefix("android.arch.")
-        .replace('.', '-')
-        .plus("-")
-        .plus(moduleName)
+      .removePrefix("android.arch.")
+      .replace('.', '-')
+      .plus("-")
+      .plus(moduleName)
     moduleGroup == "com.squareup.sqldelight" -> "sqldelight-$moduleName"
     moduleGroup == "org.jetbrains" && moduleName == "annotations" -> "jetbrains-annotations"
-    else -> moduleName
+    else -> "$moduleName:$moduleVersion"
   }
 }
 
