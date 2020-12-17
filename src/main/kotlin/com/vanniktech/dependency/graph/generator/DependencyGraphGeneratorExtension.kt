@@ -12,6 +12,7 @@ import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ResolvedDependency
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.Optional
 
 /**
  * Extension for dependency graph generation.
@@ -78,6 +79,9 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     val gradleTaskName = "generateDependencyGraph${name.capitalize()}"
     internal val outputFileName = "dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
     internal val outputFileNameDot = "$outputFileName.dot"
+
+    @get:[Optional Input] internal val rawLabel: String?
+      get() = label?.toString()
 
     companion object {
       /** Default behavior which will include everything as is. */
