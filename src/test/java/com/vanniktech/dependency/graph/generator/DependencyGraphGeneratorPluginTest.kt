@@ -74,15 +74,12 @@ class DependencyGraphGeneratorPluginTest {
         |}
         |""".trimMargin())
 
-    val stdErrorWriter = StringWriter()
-
     fun runBuild(): BuildResult {
       return GradleRunner.create()
         .withPluginClasspath()
         .withGradleVersion(gradleVersion)
         .withProjectDir(testProjectDir.root)
         .withArguments("generateDependencyGraph", "generateProjectDependencyGraph")
-        .forwardStdError(stdErrorWriter)
         .build()
     }
 
@@ -213,14 +210,11 @@ class DependencyGraphGeneratorPluginTest {
 
     val empty = testProjectDir.newFolder("empty").run { parentFile.name + name }
 
-    val stdErrorWriter = StringWriter()
-
     val result = GradleRunner.create()
         .withPluginClasspath()
         .withGradleVersion("5.0")
         .withProjectDir(testProjectDir.root)
         .withArguments("generateDependencyGraph", "generateProjectDependencyGraph")
-        .forwardStdError(stdErrorWriter)
         .build()
 
     result.tasks.filter { it.path.contains("DependencyGraph") }.forEach {
