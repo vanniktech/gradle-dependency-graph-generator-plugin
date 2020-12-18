@@ -4,7 +4,9 @@ import org.assertj.core.api.Java6Assertions.assertThat
 import org.gradle.api.internal.project.DefaultProject
 import org.gradle.api.plugins.JavaLibraryPlugin
 import org.gradle.testfixtures.ProjectBuilder
+import org.gradle.testkit.runner.BuildResult
 import org.gradle.testkit.runner.GradleRunner
+import org.gradle.testkit.runner.TaskOutcome
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -54,8 +56,9 @@ class DependencyGraphGeneratorPluginTest {
     integrationTest("5.0")
   }
 
-  private fun integrationTest(gradleVersion: String) {
-    testProjectDir.newFile("build.gradle").writeText("""
+  @Suppress("Detekt.LongMethod") private fun integrationTest(gradleVersion: String) {
+    val buildFile = testProjectDir.newFile("build.gradle")
+    buildFile.writeText("""
         |plugins {
         |  id "java"
         |  id "com.vanniktech.dependency.graph.generator"
@@ -71,18 +74,18 @@ class DependencyGraphGeneratorPluginTest {
         |}
         |""".trimMargin())
 
-    val stdErrorWriter = StringWriter()
-
-    GradleRunner.create()
+    fun runBuild(): BuildResult {
+      return GradleRunner.create()
         .withPluginClasspath()
         .withGradleVersion(gradleVersion)
         .withProjectDir(testProjectDir.root)
         .withArguments("generateDependencyGraph", "generateProjectDependencyGraph")
-        .forwardStdError(stdErrorWriter)
         .build()
+    }
 
-    // No errors.
-    assertThat(stdErrorWriter).hasToString("")
+    val result = runBuild()
+    assertThat(result.task(":generateDependencyGraph")?.outcome).isEqualTo(TaskOutcome.SUCCESS)
+    assertThat(result.task(":generateProjectDependencyGraph")?.outcome).isEqualTo(TaskOutcome.SUCCESS)
 
     // We don't want to assert the content of the images, just that they exist.
     assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.png")).exists()
@@ -118,6 +121,30 @@ class DependencyGraphGeneratorPluginTest {
         graph ["rank"="same"]
         }
         }""".trimIndent())
+
+    val secondResult = runBuild()
+    assertThat(secondResult.task(":generateDependencyGraph")?.outcome).isEqualTo(TaskOutcome.UP_TO_DATE)
+    assertThat(secondResult.task(":generateProjectDependencyGraph")?.outcome).isEqualTo(TaskOutcome.UP_TO_DATE)
+
+    buildFile.appendText("""
+      |import guru.nidi.graphviz.engine.Format
+      |dependencyGraphGenerator {
+      |  generators {
+      |    configureEach {
+      |      it.outputFormats = [Format.SVG]
+      |    }
+      |  }
+      |  projectGenerators {
+      |    configureEach {
+      |      it.outputFormats = [Format.SVG]
+      |    }
+      |  }
+      |}
+      |""".trimMargin())
+
+    val thirdResult = runBuild()
+    assertThat(thirdResult.task(":generateDependencyGraph")?.outcome).isEqualTo(TaskOutcome.SUCCESS)
+    assertThat(thirdResult.task(":generateProjectDependencyGraph")?.outcome).isEqualTo(TaskOutcome.SUCCESS)
   }
 
   @Test @Suppress("Detekt.LongMethod") fun multiProjectIntegrationTest() {
@@ -183,18 +210,16 @@ class DependencyGraphGeneratorPluginTest {
 
     val empty = testProjectDir.newFolder("empty").run { parentFile.name + name }
 
-    val stdErrorWriter = StringWriter()
-
-    GradleRunner.create()
+    val result = GradleRunner.create()
         .withPluginClasspath()
         .withGradleVersion("5.0")
         .withProjectDir(testProjectDir.root)
         .withArguments("generateDependencyGraph", "generateProjectDependencyGraph")
-        .forwardStdError(stdErrorWriter)
         .build()
 
-    // No errors.
-    assertThat(stdErrorWriter).hasToString("")
+    result.tasks.filter { it.path.contains("DependencyGraph") }.forEach {
+      assertThat(it?.outcome).isEqualTo(TaskOutcome.SUCCESS)
+    }
 
     // We don't want to assert the content of the image, just that it exists.
     assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.png")).exists()
