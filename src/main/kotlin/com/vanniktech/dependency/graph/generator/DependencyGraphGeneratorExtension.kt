@@ -12,6 +12,7 @@ import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ResolvedDependency
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.Optional
 
 /**
@@ -61,7 +62,7 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     /** Allows to change the node for the given project. */
     @get:Input var projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
     /** Optional label that can be displayed wrapped around the graph. */
-    var label: Label? = null, //Not serializable making it unusable as an Input
+    @get:Internal var label: Label? = null, //Not serializable making it unusable as an Input
     /** Return true when you want to include this configuration, false otherwise. */
     @get:Input var includeConfiguration: (Configuration) -> Boolean = {
       // By default we'll include everything that's on the compileClassPath except test, UnitTest and AndroidTest configurations.
@@ -76,9 +77,9 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     @get:Input var graph: (MutableGraph) -> MutableGraph = { it }
   ) {
     /** Gradle task name that is associated with this generator. */
-    val gradleTaskName = "generateDependencyGraph${name.capitalize()}"
-    internal val outputFileName = "dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
-    internal val outputFileNameDot = "$outputFileName.dot"
+    @get:Internal val gradleTaskName = "generateDependencyGraph${name.capitalize()}"
+    @get:Internal internal val outputFileName = "dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
+    @get:Internal internal val outputFileNameDot = "$outputFileName.dot"
 
     @get:[Optional Input] internal val rawLabel: String?
       get() = label?.toString()
@@ -109,9 +110,9 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     @get:Input var graph: (MutableGraph) -> MutableGraph = { it }
   ) {
     /** Gradle task name that is associated with this generator. */
-    val gradleTaskName = "generateProjectDependencyGraph${name.capitalize()}"
-    internal val outputFileName = "project-dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
-    internal val outputFileNameDot = "$outputFileName.dot"
+    @get:Internal val gradleTaskName = "generateProjectDependencyGraph${name.capitalize()}"
+    @get:Internal internal val outputFileName = "project-dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
+    @get:Internal internal val outputFileNameDot = "$outputFileName.dot"
 
     companion object {
       /** Default behavior which will include everything as is. */
