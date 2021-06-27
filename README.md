@@ -21,8 +21,6 @@ apply plugin: "com.vanniktech.dependency.graph.generator"
 
 Note that this plugin can be applied at the root of the project or at a specific project. Both cases will just work.
 
-Information: [This plugin is also available on Gradle plugins](https://plugins.gradle.org/plugin/com.vanniktech.dependency.graph.generator)
-
 ### Snapshot
 
 ```gradle

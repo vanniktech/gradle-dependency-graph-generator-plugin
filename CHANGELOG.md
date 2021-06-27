@@ -1,7 +1,19 @@
 # Change Log
 
-Version 0.6.0 *(In development)*
---------------------------------
+Version 0.6.0 *(2021-06-27)*
+----------------------------
+
+- Switch to GitHub workflows. [\#123](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/123) ([vanniktech](https://github.com/vanniktech))
+- Gradle 7.0 compatibility [\#122](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/122) ([xsveda](https://github.com/xsveda))
+- mark task inputs as such. [\#116](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/116) ([trevjonez](https://github.com/trevjonez))
+- ProjectDependencyGraphGenerator: Unique lines per project dependency. [\#97](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/97) ([vanniktech](https://github.com/vanniktech))
+- Use NamedDomainObjectContainer to configure the Extension. [\#92](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/92) ([vanniktech](https://github.com/vanniktech))
+- Remove the project build.gradle file as an input [\#89](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/89) ([vanniktech](https://github.com/vanniktech))
+- Make DependencyGraphGeneratorTask ProjectDependencyGraphGeneratorTask cacheable tasks. [\#75](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/75) ([vanniktech](https://github.com/vanniktech))
+- Add generateProjectDependencyGraph Task and ProjectGenerator extension for proper multi project support. [\#74](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/74) ([vanniktech](https://github.com/vanniktech))
+- Leverage Task Configuration Avoidance starting with Gradle 4.9 [\#72](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/72) ([vanniktech](https://github.com/vanniktech))
+- Rank all root projects on the same level. [\#66](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/66) ([vanniktech](https://github.com/vanniktech))
+- Update graphviz-java version to 0.5.3 [\#60](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/60) ([gengjiawen](https://github.com/gengjiawen))
 
 Version 0.5.0 *(2018-06-16)*
 ----------------------------
