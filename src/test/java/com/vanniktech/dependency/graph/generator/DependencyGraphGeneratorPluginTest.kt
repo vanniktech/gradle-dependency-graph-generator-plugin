@@ -12,7 +12,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import java.io.File
-import java.io.StringWriter
 
 class DependencyGraphGeneratorPluginTest {
   @get:Rule val testProjectDir = TemporaryFolder()
@@ -222,7 +221,6 @@ class DependencyGraphGeneratorPluginTest {
     }
 
     // We don't want to assert the content of the image, just that it exists.
-    assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.png")).exists()
     assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.svg")).exists()
 
     assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot")).hasContent("""
@@ -253,7 +251,6 @@ class DependencyGraphGeneratorPluginTest {
         }""".trimIndent())
 
     // We don't want to assert the content of the image, just that it exists.
-    assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.png")).exists()
     assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.svg")).exists()
 
     assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.dot")).hasContent("""
