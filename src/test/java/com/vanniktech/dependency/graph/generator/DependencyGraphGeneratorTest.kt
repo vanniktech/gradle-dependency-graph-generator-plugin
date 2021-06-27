@@ -11,6 +11,7 @@ import guru.nidi.graphviz.attribute.Shape
 import guru.nidi.graphviz.attribute.Style
 import guru.nidi.graphviz.model.MutableNode
 import org.assertj.core.api.Java6Assertions.assertThat
+import org.gradle.api.Action
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ResolvedDependency
 import org.gradle.api.internal.project.DefaultProject
@@ -444,10 +445,10 @@ class DependencyGraphGeneratorTest {
 
   @Test fun androidProjectIncludeAllFlavorsByDefault() {
     androidProjectExtension.flavorDimensions("test")
-    androidProjectExtension.productFlavors {
-      it.create("flavor1").dimension = "test"
-      it.create("flavor2").dimension = "test"
-    }
+    androidProjectExtension.productFlavors(Action { container ->
+      container.create("flavor1").dimension = "test"
+      container.create("flavor2").dimension = "test"
+    })
 
     androidProject.evaluate()
 
@@ -479,9 +480,9 @@ class DependencyGraphGeneratorTest {
   }
 
   @Test fun androidProjectIncludeAllBuildTypesByDefault() {
-    androidProjectExtension.buildTypes {
-      it.create("staging")
-    }
+    androidProjectExtension.buildTypes(Action { container ->
+      container.create("staging")
+    })
 
     androidProject.evaluate()
 
@@ -513,9 +514,9 @@ class DependencyGraphGeneratorTest {
   }
 
   @Test fun androidProjectIncludeOnlyStagingCompileClasspath() {
-    androidProjectExtension.buildTypes {
-      it.create("staging")
-    }
+    androidProjectExtension.buildTypes(Action { container ->
+      container.create("staging")
+    })
 
     androidProject.evaluate()
 
