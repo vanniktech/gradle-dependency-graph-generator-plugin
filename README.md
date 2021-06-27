@@ -12,7 +12,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.5.0"
+    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.6.0"
   }
 }
 
@@ -29,7 +29,7 @@ buildscript {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
   }
   dependencies {
-    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.6.0-SNAPSHOT"
+    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.7.0-SNAPSHOT"
   }
 }
 
@@ -69,6 +69,19 @@ dependencyGraphGenerator {
 ```
 
 This will generate a new task `generateDependencyGraphFirebaseLibraries` which when run will yield this graph:
+
+The same can be done using Kotlin:
+
+```kotlin
+rootProject.plugins.apply(DependencyGraphGeneratorPlugin::class.java)
+rootProject.configure<DependencyGraphGeneratorExtension> {
+  generators.create("firebaseLibrarys") {
+    include = { dependency -> dependency.moduleGroup.startsWith("com.google.firebase") }
+    children = { true } // Include transitive dependencies.
+    dependencyNode = { node, dependency -> node.add(Style.FILLED, Color.rgb("#ffcb2b")) } // Give them some color.
+  }
+}
+```
 
 ![Example Firebase graph.](example-firebase.png)
 
