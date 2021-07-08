@@ -50,21 +50,19 @@ We only want to show which Firebase libraries we're using and give them the typi
 
 ```groovy
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorPlugin
-import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator
 import guru.nidi.graphviz.attribute.Color
 import guru.nidi.graphviz.attribute.Style
 
 plugins.apply(DependencyGraphGeneratorPlugin)
 
-def firebaseGenerator = new Generator(
-  "firebaseLibraries", // Suffix for our Gradle task.
-  { dependency -> dependency.getModuleGroup().startsWith("com.google.firebase") }, // Only want Firebase.
-  { dependency -> true }, // Include transitive dependencies.
-  { node, dependency -> node.add(Style.FILLED, Color.rgb("#ffcb2b")) }, // Give them some color.
-)
-
 dependencyGraphGenerator {
-  generators = [ firebaseGenerator ]
+  generators {
+    firebaseLibraries {
+      include = { dependency -> dependency.getModuleGroup().startsWith("com.google.firebase") } // Only want Firebase.
+      children = { dependency -> true } // Include transitive dependencies.
+      dependencyNode = { node, dependency -> node.add(Style.FILLED, Color.rgb("#ffcb2b")) } // Give them some color.
+    }
+  }
 }
 ```
 
@@ -85,13 +83,6 @@ rootProject.configure<DependencyGraphGeneratorExtension> {
 
 ![Example Firebase graph.](example-firebase.png)
 
-Note that when using the `dependencyGraphGenerator` extension with custom generators you lose the default one, to add it back simply use the `Generator.ALL` instance:
-
-```groovy
-dependencyGraphGenerator {
-  generators = [ Generator.ALL, firebaseGenerator ]
-}
-```
 
 # License
 
