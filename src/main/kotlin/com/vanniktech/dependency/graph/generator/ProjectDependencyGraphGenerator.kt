@@ -21,64 +21,59 @@ internal class ProjectDependencyGraphGenerator(
   private val projectGenerator: DependencyGraphGeneratorExtension.ProjectGenerator
 ) {
   fun generateGraph(): MutableGraph {
+    val projects = mutableSetOf<Project>()
+    val dependencies = mutableListOf<ProjectDependencyContainer>()
+    fun addProject(project: Project) {
+      if (projectGenerator.includeProject(project) && projects.add(project)) {
+        project.configurations
+          .flatMap { configuration ->
+            configuration.dependencies
+              .withType(ProjectDependency::class.java)
+              .map { ProjectDependencyContainer(project, it.dependencyProject, configuration.name.toLowerCase(US).endsWith("implementation")) }
+          }
+          .forEach {
+            dependencies.add(it)
+            addProject(it.to)
+          }
+      }
+    }
+    project.allprojects.filter { it.isDependingOnOtherProject() }.forEach { addProject(it) }
+
     val graph = mutGraph().setDirected(true)
     graph.graphAttrs().add(Label.of(project.name).locate(Label.Location.TOP), Font.size(DEFAULT_FONT_SIZE))
     graph.nodeAttrs().add(Font.name("Times New Roman"), Style.FILLED)
-
-    val rootProjects = project.allprojects.toMutableList()
-    val projects = mutableSetOf<Project>()
-    val dependencies = mutableListOf<ProjectDependencyContainer>()
-
-    addProjects(projects, rootProjects, dependencies, graph)
-    rankRootProjects(graph, projects, rootProjects)
+    projects.forEach { addNode(it, dependencies, graph) }
+    rankRootProjects(graph, projects, dependencies)
     addDependencies(dependencies, graph)
 
     return projectGenerator.graph(graph)
   }
 
-  @Suppress("Detekt.ComplexMethod") private fun addProjects(projects: MutableSet<Project>, rootProjects: MutableList<Project>, dependencies: MutableList<ProjectDependencyContainer>, graph: MutableGraph) {
-    project.allprojects
-        .filter { projectGenerator.includeProject(it) }
-        .flatMap { project -> project.configurations.map { project to it } }
-        .flatMap { (project, configuration) ->
-          configuration.dependencies
-              .withType(ProjectDependency::class.java)
-              .map { it.dependencyProject }
-              .flatMap { projectDependency ->
-                projects.add(project)
-                projects.add(projectDependency)
+  private fun addNode(project: Project, dependencies: List<ProjectDependencyContainer>, graph: MutableGraph) {
+    val node = mutNode(project.path)
 
-                rootProjects.remove(projectDependency)
-                dependencies.add(ProjectDependencyContainer(project, projectDependency, configuration.name.toLowerCase(US).endsWith("implementation")))
-                listOf(project, projectDependency)
-              }
-        }
-        .forEach { project ->
-          val node = mutNode(project.path)
+    if (dependencies.none { it.to == project }) {
+      node.add(Shape.RECTANGLE)
+    } else if (project.isCommonsProject()) {
+      node.add(Style.DASHED, Color.BLACK)
+    }
 
-          if (rootProjects.contains(project)) {
-            node.add(Shape.RECTANGLE)
-          } else if (project.isCommonsProject()) {
-            node.add(Style.DASHED, Color.BLACK)
-          }
+    when {
+      project.isJsProject() -> node.add(Color.rgb("#fff176").fill())
+      project.isAndroidProject() -> node.add(Color.rgb("#81c784").fill())
+      project.isKotlinProject() -> node.add(Color.rgb("#ffb74d").fill())
+      project.isJavaProject() -> node.add(Color.rgb("#ff8a65").fill())
+      else -> node.add(Color.rgb("#e0e0e0").fill())
+    }
 
-          when {
-            project.isJsProject() -> node.add(Color.rgb("#fff176").fill())
-            project.isAndroidProject() -> node.add(Color.rgb("#81c784").fill())
-            project.isKotlinProject() -> node.add(Color.rgb("#ffb74d").fill())
-            project.isJavaProject() -> node.add(Color.rgb("#ff8a65").fill())
-            else -> node.add(Color.rgb("#e0e0e0").fill())
-          }
-
-          graph.add(projectGenerator.projectNode(node, project))
-        }
+    graph.add(projectGenerator.projectNode(node, project))
   }
 
-  @Suppress("Detekt.SpreadOperator") private fun rankRootProjects(graph: MutableGraph, projects: MutableSet<Project>, rootProjects: MutableList<Project>) {
+  @Suppress("Detekt.SpreadOperator") private fun rankRootProjects(graph: MutableGraph, projects: MutableSet<Project>, dependencies: List<ProjectDependencyContainer>) {
     graph.add(graph()
         .graphAttr()
         .with(Rank.SAME)
-        .with(*projects.filter { rootProjects.contains(it) }.map { mutNode(it.path) }.toTypedArray()))
+        .with(*projects.filter { project -> dependencies.none { it.to == project } }.map { mutNode(it.path) }.toTypedArray()))
   }
 
   private fun addDependencies(dependencies: MutableList<ProjectDependencyContainer>, graph: MutableGraph) {
