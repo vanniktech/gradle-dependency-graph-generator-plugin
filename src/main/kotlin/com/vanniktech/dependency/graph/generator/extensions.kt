@@ -1,6 +1,7 @@
 package com.vanniktech.dependency.graph.generator
 
 import org.gradle.api.Project
+import org.gradle.api.artifacts.ProjectDependency
 
 private val whitespaceRegex = Regex("\\s")
 
@@ -21,6 +22,8 @@ internal fun String.toHyphenCase(): String {
 }
 
 internal val Project.dotIdentifier get() = "$group$name".dotIdentifier
+
+fun Project.isDependingOnOtherProject() = configurations.any { configuration -> configuration.dependencies.any { it is ProjectDependency } }
 
 fun Project.isJavaProject() = listOf("java-library", "java", "java-gradle-plugin").any { plugins.hasPlugin(it) }
 

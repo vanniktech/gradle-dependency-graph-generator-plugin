@@ -197,7 +197,10 @@ class DependencyGraphGeneratorPluginTest {
 
     val app = testProjectDir.newFolder("app").run { parentFile.name + name }
     testProjectDir.newFile("app/build.gradle").writeText("""
-        |plugins { id "java-library" }
+        |plugins {
+        |  id "java-library"
+        |  id "com.vanniktech.dependency.graph.generator"
+        |}
         |
         |repositories { mavenCentral() }
         |
@@ -213,7 +216,7 @@ class DependencyGraphGeneratorPluginTest {
         .withPluginClasspath()
         .withGradleVersion("5.0")
         .withProjectDir(testProjectDir.root)
-        .withArguments("generateDependencyGraph", "generateProjectDependencyGraph")
+        .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "app:generateProjectDependencyGraph")
         .build()
 
     result.tasks.filter { it.path.contains("DependencyGraph") }.forEach {
@@ -253,9 +256,9 @@ class DependencyGraphGeneratorPluginTest {
     // We don't want to assert the content of the image, just that it exists.
     assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.svg")).exists()
 
-    assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.dot")).hasContent("""
+    fun projectDependencyGraph(label: String) = """
         digraph {
-        graph ["fontsize"="35","label"="${testProjectDir.root.name}","labelloc"="t"]
+        graph ["fontsize"="35","label"="$label","labelloc"="t"]
         node ["fontname"="Times New Roman","style"="filled"]
         ":app" ["fillcolor"="#ff8a65","shape"="rectangle"]
         ":lib1" ["fillcolor"="#ff8a65"]
@@ -269,6 +272,13 @@ class DependencyGraphGeneratorPluginTest {
         ":app" -> ":lib2" ["style"="dotted"]
         ":lib1" -> ":lib"
         ":lib2" -> ":lib"
-        }""".trimIndent())
+        }""".trimIndent()
+
+    assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.dot")).hasContent(projectDependencyGraph(testProjectDir.root.name))
+
+    // We don't want to assert the content of the image, just that it exists.
+    assertThat(File(testProjectDir.root, "app/build/reports/project-dependency-graph/project-dependency-graph.svg")).exists()
+
+    assertThat(File(testProjectDir.root, "app/build/reports/project-dependency-graph/project-dependency-graph.dot")).hasContent(projectDependencyGraph("app"))
   }
 }
