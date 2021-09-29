@@ -12,8 +12,6 @@ import guru.nidi.graphviz.model.Factory.mutNode
 import guru.nidi.graphviz.model.Link
 import guru.nidi.graphviz.model.MutableGraph
 import org.gradle.api.Project
-import org.gradle.api.artifacts.ProjectDependency
-import java.util.Locale.US
 
 // Based on https://github.com/JakeWharton/SdkSearch/blob/766d612ed52cdf3af9cd0728b6afd87006746ae5/gradle/projectDependencyGraph.gradle
 internal class ProjectDependencyGraphGenerator(
@@ -21,23 +19,7 @@ internal class ProjectDependencyGraphGenerator(
   private val projectGenerator: DependencyGraphGeneratorExtension.ProjectGenerator
 ) {
   fun generateGraph(): MutableGraph {
-    val projects = mutableSetOf<Project>()
-    val dependencies = mutableListOf<ProjectDependencyContainer>()
-    fun addProject(project: Project) {
-      if (projectGenerator.includeProject(project) && projects.add(project)) {
-        project.configurations
-          .flatMap { configuration ->
-            configuration.dependencies
-              .withType(ProjectDependency::class.java)
-              .map { ProjectDependencyContainer(project, it.dependencyProject, configuration.name.toLowerCase(US).endsWith("implementation")) }
-          }
-          .forEach {
-            dependencies.add(it)
-            addProject(it.to)
-          }
-      }
-    }
-    project.allprojects.filter { it.isDependingOnOtherProject() }.forEach { addProject(it) }
+    val (projects, dependencies) = project.getProjectDependencies(projectGenerator)
 
     val graph = mutGraph().setDirected(true)
     graph.graphAttrs().add(Label.of(project.name).locate(Label.Location.TOP), Font.size(DEFAULT_FONT_SIZE))
@@ -49,7 +31,7 @@ internal class ProjectDependencyGraphGenerator(
     return projectGenerator.graph(graph)
   }
 
-  private fun addNode(project: Project, dependencies: List<ProjectDependencyContainer>, graph: MutableGraph) {
+  private fun addNode(project: Project, dependencies: List<Connection>, graph: MutableGraph) {
     val node = mutNode(project.path)
 
     if (dependencies.none { it.to == project }) {
@@ -69,14 +51,14 @@ internal class ProjectDependencyGraphGenerator(
     graph.add(projectGenerator.projectNode(node, project))
   }
 
-  @Suppress("Detekt.SpreadOperator") private fun rankRootProjects(graph: MutableGraph, projects: MutableSet<Project>, dependencies: List<ProjectDependencyContainer>) {
+  @Suppress("Detekt.SpreadOperator") private fun rankRootProjects(graph: MutableGraph, projects: Set<Project>, dependencies: List<Connection>) {
     graph.add(graph()
         .graphAttr()
         .with(Rank.SAME)
         .with(*projects.filter { project -> dependencies.none { it.to == project } }.map { mutNode(it.path) }.toTypedArray()))
   }
 
-  private fun addDependencies(dependencies: MutableList<ProjectDependencyContainer>, graph: MutableGraph) {
+  private fun addDependencies(dependencies: List<Connection>, graph: MutableGraph) {
     dependencies
         .filterNot { (from, to, _) -> !from.isCommonsProject() && to.isCommonsProject() }
         .distinctBy { (from, to, _) -> from to to }
@@ -91,7 +73,7 @@ internal class ProjectDependencyGraphGenerator(
         }
   }
 
-  internal data class ProjectDependencyContainer(
+  internal data class Connection(
     val from: Project,
     val to: Project,
     val isImplementation: Boolean
