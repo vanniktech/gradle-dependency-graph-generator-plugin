@@ -15,6 +15,11 @@ class ProjectGeneratorTest {
     assertThat(generatorFoo.gradleTaskName).isEqualTo("generateProjectDependencyGraphFooBar")
   }
 
+  @Test fun projectDependenciesTaskName() {
+    assertThat(ALL.projectDependenciesTaskName).isEqualTo("projectDependencies")
+    assertThat(generatorFoo.projectDependenciesTaskName).isEqualTo("projectDependenciesFooBar")
+  }
+
   @Test fun outputFileName() {
     assertThat(ALL.outputFileName).isEqualTo("project-dependency-graph")
     assertThat(generatorFoo.outputFileName).isEqualTo("project-dependency-graph-foo-bar")

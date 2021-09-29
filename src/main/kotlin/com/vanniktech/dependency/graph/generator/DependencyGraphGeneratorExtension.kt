@@ -100,6 +100,8 @@ open class DependencyGraphGeneratorExtension(project: Project) {
      * The task name as well as the output files will use this name.
      */
     @get:Input var name: String = "",
+    /** Allows to change the label for the given project. */
+    @get:Input var projectLabel: (Project) -> String = { it.path },
     /** Allows to change the node for the given project. */
     @get:Input var projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
     /** Return true when you want to include this project, false otherwise. */
@@ -111,6 +113,7 @@ open class DependencyGraphGeneratorExtension(project: Project) {
   ) {
     /** Gradle task name that is associated with this generator. */
     @get:Internal val gradleTaskName = "generateProjectDependencyGraph${name.capitalize()}"
+    @get:Internal val projectDependenciesTaskName = "projectDependencies${name.capitalize()}"
     @get:Internal internal val outputFileName = "project-dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
     @get:Internal internal val outputFileNameDot = "$outputFileName.dot"
 

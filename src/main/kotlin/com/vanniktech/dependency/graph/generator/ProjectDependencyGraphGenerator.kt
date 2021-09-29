@@ -32,7 +32,7 @@ internal class ProjectDependencyGraphGenerator(
   }
 
   private fun addNode(project: Project, dependencies: List<Connection>, graph: MutableGraph) {
-    val node = mutNode(project.path)
+    val node = mutNode(projectGenerator.projectLabel(project))
 
     if (dependencies.none { it.to == project }) {
       node.add(Shape.RECTANGLE)
@@ -55,7 +55,7 @@ internal class ProjectDependencyGraphGenerator(
     graph.add(graph()
         .graphAttr()
         .with(Rank.SAME)
-        .with(*projects.filter { project -> dependencies.none { it.to == project } }.map { mutNode(it.path) }.toTypedArray()))
+        .with(*projects.filter { project -> dependencies.none { it.to == project } }.map { mutNode(projectGenerator.projectLabel(it)) }.toTypedArray()))
   }
 
   private fun addDependencies(dependencies: List<Connection>, graph: MutableGraph) {
@@ -63,8 +63,8 @@ internal class ProjectDependencyGraphGenerator(
         .filterNot { (from, to, _) -> !from.isCommonsProject() && to.isCommonsProject() }
         .distinctBy { (from, to, _) -> from to to }
         .forEach { (from, to, isImplementation) ->
-          val fromNode = graph.nodes().find { it.name().toString() == from.path }
-          val toNode = graph.nodes().find { it.name().toString() == to.path }
+          val fromNode = graph.nodes().find { it.name().toString() == projectGenerator.projectLabel(from) }
+          val toNode = graph.nodes().find { it.name().toString() == projectGenerator.projectLabel(to) }
 
           if (fromNode != null && toNode != null) {
             val link = Link.to(toNode)
