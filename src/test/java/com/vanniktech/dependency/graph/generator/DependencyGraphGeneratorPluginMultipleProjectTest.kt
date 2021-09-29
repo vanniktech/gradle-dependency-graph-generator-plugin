@@ -171,6 +171,6 @@ class DependencyGraphGeneratorPluginMultipleProjectTest {
       assertThat(it.outcome).isEqualTo(TaskOutcome.SUCCESS)
     }
 
-    assertThat(result.output).contains(":lib1", ":lib", ":lib2")
+    assertThat(result.output).contains(":app:projectDependencies\n:lib\n:lib1\n:lib2")
   }
 }

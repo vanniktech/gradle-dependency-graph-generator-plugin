@@ -14,6 +14,7 @@ open class ProjectDependenciesTask : DefaultTask() {
   @TaskAction
   fun run() {
     project.getProjectDependencies(projectGenerator).first.minus(project)
-      .forEach { println(projectGenerator.projectLabel(it)) }
+      .map { projectGenerator.projectLabel(it) }.sorted()
+      .forEach(::println)
   }
 }
