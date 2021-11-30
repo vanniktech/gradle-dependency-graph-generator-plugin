@@ -63,7 +63,7 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     /** Allows to change the node for the given project. */
     @get:Nested var projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
     /** Optional label that can be displayed wrapped around the graph. */
-    @get:Optional var label: Label? = null, // Not serializable making it unusable as an Input
+    @get:Internal var label: Label? = null, // Not serializable making it unusable as an Input
     /** Return true when you want to include this configuration, false otherwise. */
     @get:Nested var includeConfiguration: (Configuration) -> Boolean = {
       // By default we'll include everything that's on the compileClassPath except test, UnitTest and AndroidTest configurations.
