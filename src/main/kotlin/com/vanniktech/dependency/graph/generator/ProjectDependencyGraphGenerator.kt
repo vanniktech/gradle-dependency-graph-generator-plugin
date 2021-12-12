@@ -72,7 +72,7 @@ internal class ProjectDependencyGraphGenerator(
   @Suppress("Detekt.SpreadOperator") private fun rankRootProjects(graph: MutableGraph, projects: MutableSet<Project>, dependencies: List<ProjectDependencyContainer>) {
     graph.add(graph()
         .graphAttr()
-        .with(Rank.SAME)
+      .with(Rank.inSubgraph(Rank.RankType.SAME))
         .with(*projects.filter { project -> dependencies.none { it.to == project } }.map { mutNode(it.path) }.toTypedArray()))
   }
 

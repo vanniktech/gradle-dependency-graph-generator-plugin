@@ -66,7 +66,7 @@ internal class DependencyGraphGenerator(
     if (rootNodes.isNotEmpty()) {
       graph.add(graph()
           .graphAttr()
-          .with(Rank.SAME)
+          .with(Rank.inSubgraph(Rank.RankType.SAME))
           .with(*rootNodes.map { mutNode(it) }.toTypedArray())
       )
     }

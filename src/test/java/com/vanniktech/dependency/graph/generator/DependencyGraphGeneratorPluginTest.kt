@@ -92,13 +92,15 @@ class DependencyGraphGeneratorPluginTest {
 
     assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot")).hasContent("""
         digraph "G" {
+        edge ["dir"="forward"]
         node ["fontname"="Times New Roman"]
-        "${testProjectDir.root.name}" ["shape"="rectangle","label"="${testProjectDir.root.name}"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        "${testProjectDir.root.name}" ["label"="${testProjectDir.root.name}","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
+        "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
+        "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "${testProjectDir.root.name}"
         }
@@ -114,9 +116,11 @@ class DependencyGraphGeneratorPluginTest {
 
     assertThat(File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.dot")).hasContent("""
         digraph {
-        graph ["fontsize"="35","label"="${testProjectDir.root.name}","labelloc"="t"]
+        edge ["dir"="forward"]
+        graph ["label"="${testProjectDir.root.name}","labelloc"="t","fontsize"="35"]
         node ["fontname"="Times New Roman","style"="filled"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         }
         }""".trimIndent())
@@ -228,17 +232,19 @@ class DependencyGraphGeneratorPluginTest {
 
     assertThat(File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot")).hasContent("""
         digraph "G" {
+        edge ["dir"="forward"]
         node ["fontname"="Times New Roman"]
-        "$app" ["shape"="rectangle","label"="app"]
-        "$lib1" ["shape"="rectangle","label"="lib1"]
-        "$lib" ["shape"="rectangle","label"="lib"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
-        "$lib2" ["shape"="rectangle","label"="lib2"]
-        "$empty" ["shape"="rectangle","label"="empty"]
+        "$app" ["label"="app","shape"="rectangle"]
+        "$lib1" ["label"="lib1","shape"="rectangle"]
+        "$lib" ["label"="lib","shape"="rectangle"]
+        "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
+        "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
+        "$lib2" ["label"="lib2","shape"="rectangle"]
+        "$empty" ["label"="empty","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "$app"
         "$empty"
@@ -258,13 +264,15 @@ class DependencyGraphGeneratorPluginTest {
 
     fun projectDependencyGraph(label: String) = """
         digraph {
-        graph ["fontsize"="35","label"="$label","labelloc"="t"]
+        edge ["dir"="forward"]
+        graph ["label"="$label","labelloc"="t","fontsize"="35"]
         node ["fontname"="Times New Roman","style"="filled"]
-        ":app" ["fillcolor"="#ff8a65","shape"="rectangle"]
+        ":app" ["shape"="rectangle","fillcolor"="#ff8a65"]
         ":lib1" ["fillcolor"="#ff8a65"]
         ":lib" ["fillcolor"="#ff8a65"]
         ":lib2" ["fillcolor"="#ff8a65"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         ":app"
         }
