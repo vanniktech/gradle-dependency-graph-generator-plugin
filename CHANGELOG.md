@@ -1,7 +1,14 @@
 # Change Log
 
-Version 0.7.0 *(In development)*
+Version 0.7.0 *(2021-12-18)*
 --------------------------------
+
+- Upgrade Kotlin version [\#141](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/141) ([carlonzo](https://github.com/carlonzo))
+- Fixing issue #127: README Firebase example for groovy DSL doesn't see… [\#138](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/138) ([gradlifier](https://github.com/gradlifier))
+- Support generateProjectDependencyGraph in SubProject [\#134](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/134) ([tedliang](https://github.com/tedliang))
+- Disable publish action in forked repository. [\#133](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/133) ([vanniktech](https://github.com/vanniktech))
+- Update Gradle Groovy example in README.md [\#128](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/128) ([fajarnuha](https://github.com/fajarnuha))
+- Delete .travis.yml [\#126](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/126) ([vanniktech](https://github.com/vanniktech))
 
 Version 0.6.0 *(2021-06-27)*
 ----------------------------
