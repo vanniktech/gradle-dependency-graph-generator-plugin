@@ -1,7 +1,10 @@
 # Change Log
 
-Version 0.7.0 *(2021-12-18)*
+Version 0.8.0 *(In development)*
 --------------------------------
+
+Version 0.7.0 *(2021-12-18)*
+----------------------------
 
 - Upgrade Kotlin version [\#141](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/141) ([carlonzo](https://github.com/carlonzo))
 - Fixing issue #127: README Firebase example for groovy DSL doesn't see… [\#138](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/138) ([gradlifier](https://github.com/gradlifier))

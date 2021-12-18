@@ -29,7 +29,7 @@ buildscript {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
   }
   dependencies {
-    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.7.0-SNAPSHOT"
+    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.8.0-SNAPSHOT"
   }
 }
 
