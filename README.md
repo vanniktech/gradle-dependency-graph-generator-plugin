@@ -38,7 +38,7 @@ apply plugin: "com.vanniktech.dependency.graph.generator"
 
 ## Usage
 
-By default this plugin will generate a `generateDependencyGraph` task that can be used to generate a dependency graph that could look like this. This graph was generated from my [chess clock app](https://play.google.com/store/apps/details?id=com.vanniktech.chessclock).
+By default this plugin will generate a `generateDependencyGraph` task that can be used to generate a dependency graph at location `yourmodule/build/reports/dependency-graph` that could look like this generated graph from my [chess clock app](https://play.google.com/store/apps/details?id=com.vanniktech.chessclock). The graph is generated in `.png`, `.svg` & `.dot` format.
 
 ![Example graph.](example.png)
 
