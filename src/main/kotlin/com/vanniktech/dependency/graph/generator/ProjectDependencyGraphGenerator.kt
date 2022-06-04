@@ -41,7 +41,7 @@ internal class ProjectDependencyGraphGenerator(
 
     val graph = mutGraph().setDirected(true)
     graph.graphAttrs().add(Label.of(project.name).locate(Label.Location.TOP), Font.size(DEFAULT_FONT_SIZE))
-    graph.nodeAttrs().add(Font.name("Times New Roman"), Style.FILLED)
+    graph.nodeAttrs().add(Style.FILLED)
     projects.forEach { addNode(it, dependencies, graph) }
     rankRootProjects(graph, projects, dependencies)
     addDependencies(dependencies, graph)

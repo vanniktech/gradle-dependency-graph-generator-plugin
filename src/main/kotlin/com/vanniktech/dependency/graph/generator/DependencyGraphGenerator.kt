@@ -1,7 +1,6 @@
 package com.vanniktech.dependency.graph.generator
 
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator
-import guru.nidi.graphviz.attribute.Font
 import guru.nidi.graphviz.attribute.Label
 import guru.nidi.graphviz.attribute.Rank
 import guru.nidi.graphviz.attribute.Rank.RankType
@@ -31,8 +30,6 @@ internal class DependencyGraphGenerator(
     generator.label?.let {
       graph.graphAttrs().add(it)
     }
-
-    graph.nodeAttrs().add(Font.name("Times New Roman"))
 
     val projects = (if (project.subprojects.size > 0) project.subprojects else setOf(project))
       .filter { generator.includeProject(it) }
