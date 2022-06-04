@@ -1,5 +1,8 @@
+import org.gradle.api.internal.classpath.ModuleRegistry
+import org.gradle.api.internal.project.ProjectInternal
+
 buildscript {
-  ext.kotlinVersion = '1.5.31'
+  ext.kotlinVersion = '1.6.21'
 
   repositories {
     mavenCentral()
@@ -10,30 +13,26 @@ buildscript {
 
   dependencies {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.20.0'
-    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.16.0'
-    classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.16.0'
-    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.16.0'
+    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.21.0'
+    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.19.0'
   }
 }
 
-apply plugin: 'groovy'
 apply plugin: 'java-library'
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'kotlin'
-apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'com.vanniktech.code.quality.tools'
-apply plugin: 'com.vanniktech.android.junit.jacoco'
 apply plugin: "com.vanniktech.maven.publish"
+
+validatePlugins {
+  enableStricterValidation = true
+}
 
 codeQualityTools {
   ktlint {
-    toolVersion = '0.30.0'
+    toolVersion = "0.45.2"
   }
   detekt {
-    toolVersion = '1.0.0-RC12'
-  }
-  findbugs {
     enabled = false
   }
   pmd {
@@ -43,9 +42,6 @@ codeQualityTools {
     enabled = false
   }
   cpd {
-    enabled = false
-  }
-  errorProne {
     enabled = false
   }
 }
@@ -62,7 +58,7 @@ gradlePlugin {
 repositories {
   mavenCentral()
   google()
-  jcenter()
+  gradlePluginPortal()
 }
 
 dependencies {
@@ -70,22 +66,28 @@ dependencies {
   implementation gradleApi()
   api "guru.nidi:graphviz-java:0.8.1"
 
-  testImplementation 'junit:junit:4.13-beta-2'
-  testImplementation 'org.assertj:assertj-core:3.12.0'
-  testImplementation 'com.android.tools.build:gradle:4.0.2'
+  testImplementation 'junit:junit:4.13.2'
+  testImplementation "com.android.tools.build:gradle:7.0.4"
   testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+
+  // https://github.com/gradle/gradle/issues/16774#issuecomment-893493869
+  def toolingApiBuildersJar = (project as ProjectInternal).services.get(ModuleRegistry.class)
+    .getModule("gradle-tooling-api-builders")
+    .classpath
+    .asFiles
+    .first()
+  testRuntimeOnly(files(toolingApiBuildersJar))
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_7
+sourceCompatibility = JavaVersion.VERSION_1_8
 
 wrapper {
-  gradleVersion = '6.8.3'
+  gradleVersion = '7.4.2'
   distributionType = Wrapper.DistributionType.ALL
 }
 
 test {
   testLogging {
-    events "passed", "skipped", "failed"
     exceptionFormat "full"
   }
 }

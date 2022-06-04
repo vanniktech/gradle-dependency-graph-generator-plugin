@@ -29,7 +29,7 @@ internal class ProjectDependencyGraphGenerator(
           .flatMap { configuration ->
             configuration.dependencies
               .withType(ProjectDependency::class.java)
-              .map { ProjectDependencyContainer(project, it.dependencyProject, configuration.name.toLowerCase(US).endsWith("implementation")) }
+              .map { ProjectDependencyContainer(project, it.dependencyProject, configuration.name.lowercase().endsWith("implementation")) }
           }
           .forEach {
             dependencies.add(it)

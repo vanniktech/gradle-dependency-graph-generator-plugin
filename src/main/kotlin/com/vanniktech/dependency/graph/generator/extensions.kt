@@ -15,10 +15,10 @@ internal fun String.nonEmptyPrepend(prepend: String) =
 internal fun String.toHyphenCase(): String {
   if (isBlank()) return this
 
-  return this[0].toLowerCase().toString() + toCharArray()
+  return this[0].lowercase().toString() + toCharArray()
       .map { it.toString() }
       .drop(1)
-      .joinToString(separator = "") { if (it[0].isUpperCase()) "-${it[0].toLowerCase()}" else it }
+      .joinToString(separator = "") { if (it[0].isUpperCase()) "-${it[0].lowercase()}" else it }
 }
 
 internal val Project.dotIdentifier get() = "$group$name".dotIdentifier
