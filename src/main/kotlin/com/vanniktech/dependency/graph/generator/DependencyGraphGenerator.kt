@@ -35,7 +35,7 @@ internal class DependencyGraphGenerator(
     graph.nodeAttrs().add(Font.name("Times New Roman"))
 
     val projects = (if (project.subprojects.size > 0) project.subprojects else setOf(project))
-        .filter { generator.includeProject(it) }
+      .filter { generator.includeProject(it) }
 
     val rootNodes = mutableSetOf<String>()
 
@@ -43,8 +43,8 @@ internal class DependencyGraphGenerator(
     projects.forEach {
       val projectId = it.dotIdentifier
       val node = mutNode(projectId)
-          .add(Label.of(it.name))
-          .add(Shape.RECTANGLE)
+        .add(Label.of(it.name))
+        .add(Shape.RECTANGLE)
       val tunedNode = generator.projectNode.invoke(node, it)
       nodes[projectId] = tunedNode
       graph.add(tunedNode)
@@ -53,19 +53,20 @@ internal class DependencyGraphGenerator(
 
     // Let's gather everything and put it in the file.
     projects
-        .flatMap { project ->
-          project.configurations
-              .filter { it.isCanBeResolved }
-              .filter { generator.includeConfiguration.invoke(it) }
-              .flatMap { it.resolvedConfiguration.firstLevelModuleDependencies }
-              .map { project to it }
-        }
-        .forEach { (project, dependency) ->
-          append(dependency, project.dotIdentifier, graph, rootNodes)
-        }
+      .flatMap { project ->
+        project.configurations
+          .filter { it.isCanBeResolved }
+          .filter { generator.includeConfiguration.invoke(it) }
+          .flatMap { it.resolvedConfiguration.firstLevelModuleDependencies }
+          .map { project to it }
+      }
+      .forEach { (project, dependency) ->
+        append(dependency, project.dotIdentifier, graph, rootNodes)
+      }
 
     if (rootNodes.isNotEmpty()) {
-      graph.add(graph()
+      graph.add(
+        graph()
           .graphAttr()
           .with(Rank.inSubgraph(RankType.SAME))
           .with(*rootNodes.map { mutNode(it) }.toTypedArray())
@@ -83,8 +84,8 @@ internal class DependencyGraphGenerator(
       addedConnections.add(pair)
 
       val node = mutNode(identifier)
-          .add(Label.of(dependency.getDisplayName()))
-          .add(Shape.RECTANGLE)
+        .add(Label.of(dependency.getDisplayName()))
+        .add(Shape.RECTANGLE)
 
       val mutated = generator.dependencyNode.invoke(node, dependency)
       nodes[identifier] = mutated
@@ -101,7 +102,8 @@ internal class DependencyGraphGenerator(
   }
 
   private fun ResolvedDependency.getDisplayName() = when {
-    moduleGroup.startsWith("android.arch.") -> moduleGroup
+    moduleGroup.startsWith("android.arch.") ->
+      moduleGroup
         .removePrefix("android.arch.")
         .replace('.', '-')
         .plus("-")

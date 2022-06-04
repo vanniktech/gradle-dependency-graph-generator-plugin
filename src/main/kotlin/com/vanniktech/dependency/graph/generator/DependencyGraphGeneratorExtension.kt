@@ -15,6 +15,7 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.Nested
 import org.gradle.api.tasks.Optional
+import java.util.Locale
 
 /**
  * Extension for dependency graph generation.
@@ -78,7 +79,14 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     @get:Nested var graph: (MutableGraph) -> MutableGraph = { it }
   ) {
     /** Gradle task name that is associated with this generator. */
-    @get:Internal val gradleTaskName = "generateDependencyGraph${name.capitalize()}"
+    @get:Internal val gradleTaskName = "generateDependencyGraph${
+    name.replaceFirstChar {
+      when {
+        it.isLowerCase() -> it.titlecase(Locale.getDefault())
+        else -> it.toString()
+      }
+    }
+    }"
     @get:Internal internal val outputFileName = "dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
     @get:Internal internal val outputFileNameDot = "$outputFileName.dot"
 
@@ -111,7 +119,14 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     @get:Nested var graph: (MutableGraph) -> MutableGraph = { it }
   ) {
     /** Gradle task name that is associated with this generator. */
-    @get:Internal val gradleTaskName = "generateProjectDependencyGraph${name.capitalize()}"
+    @get:Internal val gradleTaskName = "generateProjectDependencyGraph${
+    name.replaceFirstChar {
+      when {
+        it.isLowerCase() -> it.titlecase(Locale.getDefault())
+        else -> it.toString()
+      }
+    }
+    }"
     @get:Internal internal val outputFileName = "project-dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
     @get:Internal internal val outputFileNameDot = "$outputFileName.dot"
 

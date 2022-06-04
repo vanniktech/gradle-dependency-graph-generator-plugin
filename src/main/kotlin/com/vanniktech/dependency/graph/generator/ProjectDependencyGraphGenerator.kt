@@ -14,7 +14,6 @@ import guru.nidi.graphviz.model.Link
 import guru.nidi.graphviz.model.MutableGraph
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ProjectDependency
-import java.util.Locale.US
 
 // Based on https://github.com/JakeWharton/SdkSearch/blob/766d612ed52cdf3af9cd0728b6afd87006746ae5/gradle/projectDependencyGraph.gradle
 internal class ProjectDependencyGraphGenerator(
@@ -30,7 +29,7 @@ internal class ProjectDependencyGraphGenerator(
           .flatMap { configuration ->
             configuration.dependencies
               .withType(ProjectDependency::class.java)
-              .map { ProjectDependencyContainer(project, it.dependencyProject, configuration.name.toLowerCase(US).endsWith("implementation")) }
+              .map { ProjectDependencyContainer(project, it.dependencyProject, configuration.name.lowercase().endsWith("implementation")) }
           }
           .forEach {
             dependencies.add(it)
@@ -71,25 +70,27 @@ internal class ProjectDependencyGraphGenerator(
   }
 
   @Suppress("Detekt.SpreadOperator") private fun rankRootProjects(graph: MutableGraph, projects: MutableSet<Project>, dependencies: List<ProjectDependencyContainer>) {
-    graph.add(graph()
+    graph.add(
+      graph()
         .graphAttr()
         .with(Rank.inSubgraph(RankType.SAME))
-        .with(*projects.filter { project -> dependencies.none { it.to == project } }.map { mutNode(it.path) }.toTypedArray()))
+        .with(*projects.filter { project -> dependencies.none { it.to == project } }.map { mutNode(it.path) }.toTypedArray())
+    )
   }
 
   private fun addDependencies(dependencies: MutableList<ProjectDependencyContainer>, graph: MutableGraph) {
     dependencies
-        .filterNot { (from, to, _) -> !from.isCommonsProject() && to.isCommonsProject() }
-        .distinctBy { (from, to, _) -> from to to }
-        .forEach { (from, to, isImplementation) ->
-          val fromNode = graph.nodes().find { it.name().toString() == from.path }
-          val toNode = graph.nodes().find { it.name().toString() == to.path }
+      .filterNot { (from, to, _) -> !from.isCommonsProject() && to.isCommonsProject() }
+      .distinctBy { (from, to, _) -> from to to }
+      .forEach { (from, to, isImplementation) ->
+        val fromNode = graph.nodes().find { it.name().toString() == from.path }
+        val toNode = graph.nodes().find { it.name().toString() == to.path }
 
-          if (fromNode != null && toNode != null) {
-            val link = Link.to(toNode)
-            graph.add(fromNode.addLink(if (isImplementation) link.with(Style.DOTTED) else link))
-          }
+        if (fromNode != null && toNode != null) {
+          val link = Link.to(toNode)
+          graph.add(fromNode.addLink(if (isImplementation) link.with(Style.DOTTED) else link))
         }
+      }
   }
 
   internal data class ProjectDependencyContainer(
