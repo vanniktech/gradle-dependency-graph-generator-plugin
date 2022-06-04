@@ -77,11 +77,11 @@ class DependencyGraphGeneratorPluginTest {
     )
 
     fun runBuild(): BuildResult {
-      return GradleRunner.create()
+      return GradleRunner.create().withDebug(true)
         .withPluginClasspath()
         .withGradleVersion(gradleVersion)
         .withProjectDir(testProjectDir.root)
-        .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "-Dorg.gradle.jvmargs=-Xmx2048m")
+        .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "-Dorg.gradle.jvmargs=-Xmx2048m", "--stacktrace")
         .build()
     }
 
@@ -246,11 +246,11 @@ class DependencyGraphGeneratorPluginTest {
 
     val empty = testProjectDir.newFolder("empty").run { parentFile.name + name }
 
-    val result = GradleRunner.create()
+    val result = GradleRunner.create().withDebug(true)
       .withPluginClasspath()
       .withGradleVersion("7.4.2")
       .withProjectDir(testProjectDir.root)
-      .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "app:generateProjectDependencyGraph", "-Dorg.gradle.jvmargs=-Xmx2048m")
+      .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "app:generateProjectDependencyGraph", "-Dorg.gradle.jvmargs=-Xmx2048m", "--stacktrace")
       .build()
 
     result.tasks.filter { it.path.contains("DependencyGraph") }.forEach {
