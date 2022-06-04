@@ -25,12 +25,15 @@ import java.io.File
   }
 
   @TaskAction fun run() {
-    File(outputDirectory, projectGenerator.outputFileNameDot).writeText(graph.toString())
+    val dot = File(outputDirectory, projectGenerator.outputFileNameDot)
+    dot.writeText(graph.toString())
 
     val graphviz = Graphviz.fromGraph(graph)
 
-    projectGenerator.outputFormats.forEach {
+    val renders = projectGenerator.outputFormats.map {
       graphviz.render(it).toFile(File(outputDirectory, projectGenerator.outputFileName))
     }
+
+    listOf(dot).plus(renders).forEach { logger.lifecycle(it.absolutePath) }
   }
 }
