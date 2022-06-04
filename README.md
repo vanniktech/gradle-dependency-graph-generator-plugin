@@ -73,7 +73,7 @@ The same can be done using Kotlin:
 ```kotlin
 rootProject.plugins.apply(DependencyGraphGeneratorPlugin::class.java)
 rootProject.configure<DependencyGraphGeneratorExtension> {
-  generators.create("firebaseLibrarys") {
+  generators.create("firebaseLibraries") {
     include = { dependency -> dependency.moduleGroup.startsWith("com.google.firebase") }
     children = { true } // Include transitive dependencies.
     dependencyNode = { node, dependency -> node.add(Style.FILLED, Color.rgb("#ffcb2b")) } // Give them some color.
