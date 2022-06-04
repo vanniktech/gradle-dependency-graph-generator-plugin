@@ -81,7 +81,7 @@ class DependencyGraphGeneratorPluginTest {
         .withPluginClasspath()
         .withGradleVersion(gradleVersion)
         .withProjectDir(testProjectDir.root)
-        .withArguments("generateDependencyGraph", "generateProjectDependencyGraph")
+        .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "-Dorg.gradle.jvmargs=-Xmx2048m")
         .build()
     }
 
@@ -250,7 +250,7 @@ class DependencyGraphGeneratorPluginTest {
       .withPluginClasspath()
       .withGradleVersion("7.4.2")
       .withProjectDir(testProjectDir.root)
-      .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "app:generateProjectDependencyGraph")
+      .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "app:generateProjectDependencyGraph", "-Dorg.gradle.jvmargs=-Xmx2048m")
       .build()
 
     result.tasks.filter { it.path.contains("DependencyGraph") }.forEach {
