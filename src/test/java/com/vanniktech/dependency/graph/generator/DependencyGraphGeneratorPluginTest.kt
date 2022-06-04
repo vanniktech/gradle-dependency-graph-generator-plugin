@@ -57,7 +57,8 @@ class DependencyGraphGeneratorPluginTest {
 
   @Suppress("Detekt.LongMethod") private fun integrationTest(gradleVersion: String) {
     val buildFile = testProjectDir.newFile("build.gradle")
-    buildFile.writeText("""
+    buildFile.writeText(
+      """
         |plugins {
         |  id "java"
         |  id "com.vanniktech.dependency.graph.generator"
@@ -71,7 +72,9 @@ class DependencyGraphGeneratorPluginTest {
         |  implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
         |  implementation "io.reactivex.rxjava2:rxjava:2.1.10"
         |}
-        |""".trimMargin())
+        |
+      """.trimMargin()
+    )
 
     fun runBuild(): BuildResult {
       return GradleRunner.create()
@@ -90,7 +93,8 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(true, File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.png").exists())
     assertEquals(true, File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.svg").exists())
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "${testProjectDir.root.name}" ["shape"="rectangle","label"="${testProjectDir.root.name}"]
@@ -106,26 +110,34 @@ class DependencyGraphGeneratorPluginTest {
         "${testProjectDir.root.name}" -> "ioreactivexrxjava2rxjava"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
-        }""".trimIndent(), File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot").readText())
+        }
+      """.trimIndent(),
+      File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot").readText()
+    )
 
     // We don't want to assert the content of the images, just that they exist.
     assertEquals(true, File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.png").exists())
     assertEquals(true, File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.svg").exists())
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph {
         graph ["fontsize"="35","label"="${testProjectDir.root.name}","labelloc"="t"]
         node ["fontname"="Times New Roman","style"="filled"]
         {
         graph ["rank"="same"]
         }
-        }""".trimIndent(), File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.dot").readText())
+        }
+      """.trimIndent(),
+      File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.dot").readText()
+    )
 
     val secondResult = runBuild()
     assertEquals(TaskOutcome.UP_TO_DATE, secondResult.task(":generateDependencyGraph")?.outcome)
     assertEquals(TaskOutcome.UP_TO_DATE, secondResult.task(":generateProjectDependencyGraph")?.outcome)
 
-    buildFile.appendText("""
+    buildFile.appendText(
+      """
       |import guru.nidi.graphviz.engine.Format
       |dependencyGraphGenerator {
       |  generators {
@@ -139,7 +151,9 @@ class DependencyGraphGeneratorPluginTest {
       |    }
       |  }
       |}
-      |""".trimMargin())
+      |
+      """.trimMargin()
+    )
 
     val thirdResult = runBuild()
     assertEquals(TaskOutcome.SUCCESS, thirdResult.task(":generateDependencyGraph")?.outcome)
@@ -147,22 +161,29 @@ class DependencyGraphGeneratorPluginTest {
   }
 
   @Test @Suppress("Detekt.LongMethod") fun multiProjectIntegrationTest() {
-    testProjectDir.newFile("build.gradle").writeText("""
+    testProjectDir.newFile("build.gradle").writeText(
+      """
         |plugins {
         |  id "com.vanniktech.dependency.graph.generator"
         |}
-        |""".trimMargin())
+        |
+      """.trimMargin()
+    )
 
-    testProjectDir.newFile("settings.gradle").writeText("""
+    testProjectDir.newFile("settings.gradle").writeText(
+      """
         |include ":lib"
         |include ":lib1"
         |include ":lib2"
         |include ":app"
         |include ":empty"
-        |""".trimMargin())
+        |
+      """.trimMargin()
+    )
 
     val lib = testProjectDir.newFolder("lib").run { parentFile.name + name }
-    testProjectDir.newFile("lib/build.gradle").writeText("""
+    testProjectDir.newFile("lib/build.gradle").writeText(
+      """
         |plugins { id "java-library" }
         |
         |repositories { mavenCentral() }
@@ -170,10 +191,13 @@ class DependencyGraphGeneratorPluginTest {
         |dependencies {
         |  api "io.reactivex.rxjava2:rxjava:2.1.10"
         |}
-        |""".trimMargin())
+        |
+      """.trimMargin()
+    )
 
     val lib1 = testProjectDir.newFolder("lib1").run { parentFile.name + name }
-    testProjectDir.newFile("lib1/build.gradle").writeText("""
+    testProjectDir.newFile("lib1/build.gradle").writeText(
+      """
         |plugins { id "java-library" }
         |
         |repositories { mavenCentral() }
@@ -182,10 +206,13 @@ class DependencyGraphGeneratorPluginTest {
         |  api project(":lib")
         |  implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
         |}
-        |""".trimMargin())
+        |
+      """.trimMargin()
+    )
 
     val lib2 = testProjectDir.newFolder("lib2").run { parentFile.name + name }
-    testProjectDir.newFile("lib2/build.gradle").writeText("""
+    testProjectDir.newFile("lib2/build.gradle").writeText(
+      """
         |plugins { id "java-library" }
         |
         |repositories { mavenCentral() }
@@ -193,10 +220,13 @@ class DependencyGraphGeneratorPluginTest {
         |dependencies {
         |  api project(":lib")
         |}
-        |""".trimMargin())
+        |
+      """.trimMargin()
+    )
 
     val app = testProjectDir.newFolder("app").run { parentFile.name + name }
-    testProjectDir.newFile("app/build.gradle").writeText("""
+    testProjectDir.newFile("app/build.gradle").writeText(
+      """
         |plugins {
         |  id "java-library"
         |  id "com.vanniktech.dependency.graph.generator"
@@ -208,16 +238,18 @@ class DependencyGraphGeneratorPluginTest {
         |  implementation project(":lib1")
         |  implementation project(":lib2")
         |}
-        |""".trimMargin())
+        |
+      """.trimMargin()
+    )
 
     val empty = testProjectDir.newFolder("empty").run { parentFile.name + name }
 
     val result = GradleRunner.create()
-        .withPluginClasspath()
-        .withGradleVersion("7.4.2")
-        .withProjectDir(testProjectDir.root)
-        .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "app:generateProjectDependencyGraph")
-        .build()
+      .withPluginClasspath()
+      .withGradleVersion("7.4.2")
+      .withProjectDir(testProjectDir.root)
+      .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "app:generateProjectDependencyGraph")
+      .build()
 
     result.tasks.filter { it.path.contains("DependencyGraph") }.forEach {
       assertEquals(TaskOutcome.SUCCESS, it?.outcome)
@@ -226,7 +258,8 @@ class DependencyGraphGeneratorPluginTest {
     // We don't want to assert the content of the image, just that it exists.
     assertEquals(true, File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.svg").exists())
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "$app" ["shape"="rectangle","label"="app"]
@@ -251,7 +284,10 @@ class DependencyGraphGeneratorPluginTest {
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         "$lib2" -> "$lib"
-        }""".trimIndent(), File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot").readText())
+        }
+      """.trimIndent(),
+      File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot").readText()
+    )
 
     // We don't want to assert the content of the image, just that it exists.
     assertEquals(true, File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.svg").exists())
@@ -272,7 +308,8 @@ class DependencyGraphGeneratorPluginTest {
         ":app" -> ":lib2" ["style"="dotted"]
         ":lib1" -> ":lib"
         ":lib2" -> ":lib"
-        }""".trimIndent()
+        }
+    """.trimIndent()
 
     assertEquals(projectDependencyGraph(testProjectDir.root.name), File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.dot").readText())
 

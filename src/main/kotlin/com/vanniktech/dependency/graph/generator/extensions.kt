@@ -6,19 +6,19 @@ import org.gradle.api.artifacts.ProjectDependency
 private val whitespaceRegex = Regex("\\s")
 
 internal val String.dotIdentifier get() = replace("-", "")
-    .replace(".", "")
-    .replace(whitespaceRegex, "")
+  .replace(".", "")
+  .replace(whitespaceRegex, "")
 
 internal fun String.nonEmptyPrepend(prepend: String) =
-    if (isNotEmpty()) prepend + this else this
+  if (isNotEmpty()) prepend + this else this
 
 internal fun String.toHyphenCase(): String {
   if (isBlank()) return this
 
   return this[0].lowercase().toString() + toCharArray()
-      .map { it.toString() }
-      .drop(1)
-      .joinToString(separator = "") { if (it[0].isUpperCase()) "-${it[0].lowercase()}" else it }
+    .map { it.toString() }
+    .drop(1)
+    .joinToString(separator = "") { if (it[0].isUpperCase()) "-${it[0].lowercase()}" else it }
 }
 
 internal val Project.dotIdentifier get() = "$group$name".dotIdentifier

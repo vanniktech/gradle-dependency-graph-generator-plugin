@@ -1,7 +1,7 @@
 package com.vanniktech.dependency.graph.generator
 
-import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.ProjectGenerator.Companion.ALL
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.ProjectGenerator
+import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.ProjectGenerator.Companion.ALL
 import guru.nidi.graphviz.engine.Format.PNG
 import guru.nidi.graphviz.engine.Format.SVG
 import org.junit.Assert.assertEquals

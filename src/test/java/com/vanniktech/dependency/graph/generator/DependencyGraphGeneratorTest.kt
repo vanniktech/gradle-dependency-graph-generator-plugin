@@ -76,7 +76,8 @@ class DependencyGraphGeneratorTest {
   @Test fun singleProjectAllNoTestDependencies() {
     singleEmpty.dependencies.add("testImplementation", "junit:junit:4.12")
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="rectangle","label"="singleempty"]
@@ -85,19 +86,25 @@ class DependencyGraphGeneratorTest {
         "singleempty"
         }
         }
-        """.trimIndent(), DependencyGraphGenerator(singleEmpty, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(singleEmpty, ALL).generateGraph().toString()
+    )
   }
 
   @Test fun singleProjectEmptyAllNoProjects() {
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         }
-        """.trimIndent(), DependencyGraphGenerator(singleEmpty, ALL.copy(includeProject = { false })).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(singleEmpty, ALL.copy(includeProject = { false })).generateGraph().toString()
+    )
   }
 
   @Test fun singleProjectEmptyAll() {
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="rectangle","label"="singleempty"]
@@ -106,11 +113,14 @@ class DependencyGraphGeneratorTest {
         "singleempty"
         }
         }
-        """.trimIndent(), DependencyGraphGenerator(singleEmpty, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(singleEmpty, ALL).generateGraph().toString()
+    )
   }
 
   @Test fun singleProjectEmptyAllMutateGraph() {
-    assertEquals("""
+    assertEquals(
+      """
         graph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="rectangle","label"="singleempty"]
@@ -119,11 +129,14 @@ class DependencyGraphGeneratorTest {
         "singleempty"
         }
         }
-        """.trimIndent(), DependencyGraphGenerator(singleEmpty, ALL.copy(graph = { it.setDirected(false) })).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(singleEmpty, ALL.copy(graph = { it.setDirected(false) })).generateGraph().toString()
+    )
   }
 
   @Test fun singleProjectEmptyAllHeader() {
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         graph ["labeljust"="l","labelloc"="t","label"="my custom header"]
         node ["fontname"="Times New Roman"]
@@ -133,11 +146,14 @@ class DependencyGraphGeneratorTest {
         "singleempty"
         }
         }
-        """.trimIndent(), DependencyGraphGenerator(singleEmpty, ALL.copy(label = Label.of("my custom header").locate(TOP).justify(LEFT))).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(singleEmpty, ALL.copy(label = Label.of("my custom header").locate(TOP).justify(LEFT))).generateGraph().toString()
+    )
   }
 
   @Test fun singleProjectEmptyAllRootFormatted() {
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="egg","color"="#ff0099","style"="dotted","label"="singleempty"]
@@ -146,11 +162,14 @@ class DependencyGraphGeneratorTest {
         "singleempty"
         }
         }
-        """.trimIndent(), DependencyGraphGenerator(singleEmpty, ALL.copy(projectNode = { node, _ -> node.add(Shape.EGG, Style.DOTTED, Color.rgb("ff0099")) })).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(singleEmpty, ALL.copy(projectNode = { node, _ -> node.add(Shape.EGG, Style.DOTTED, Color.rgb("ff0099")) })).generateGraph().toString()
+    )
   }
 
   @Test fun singleProjectAll() {
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "single" ["shape"="rectangle","label"="single"]
@@ -167,18 +186,22 @@ class DependencyGraphGeneratorTest {
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         }
-        """.trimIndent(), DependencyGraphGenerator(singleProject, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(singleProject, ALL).generateGraph().toString()
+    )
   }
 
   @Test fun singleProjectAllDependencyFormattingOptions() {
     // Generate a color for each dependency.
     val dependencyNode: (MutableNode, ResolvedDependency) -> MutableNode = { node, project ->
       val random = Random(project.name.hashCode().toLong())
-      node.add(Style.FILLED, Color.hsv(random.nextDouble(), random.nextDouble(), random.nextDouble())
+      node.add(
+        Style.FILLED, Color.hsv(random.nextDouble(), random.nextDouble(), random.nextDouble())
       )
     }
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "single" ["shape"="rectangle","label"="single"]
@@ -195,11 +218,14 @@ class DependencyGraphGeneratorTest {
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         }
-        """.trimIndent(), DependencyGraphGenerator(singleProject, ALL.copy(dependencyNode = dependencyNode)).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(singleProject, ALL.copy(dependencyNode = dependencyNode)).generateGraph().toString()
+    )
   }
 
   @Test fun singleProjectNoChildren() {
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "single" ["shape"="rectangle","label"="single"]
@@ -212,11 +238,14 @@ class DependencyGraphGeneratorTest {
         "single" -> "orgjetbrainskotlinkotlinstdlib"
         "single" -> "ioreactivexrxjava2rxjava"
         }
-        """.trimIndent(), DependencyGraphGenerator(singleProject, ALL.copy(children = { false })).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(singleProject, ALL.copy(children = { false })).generateGraph().toString()
+    )
   }
 
   @Test fun singleProjectFilterRxJavaOut() {
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "single" ["shape"="rectangle","label"="single"]
@@ -229,13 +258,16 @@ class DependencyGraphGeneratorTest {
         "single" -> "orgjetbrainskotlinkotlinstdlib"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         }
-        """.trimIndent(), DependencyGraphGenerator(singleProject, ALL.copy(include = { it.moduleGroup != "io.reactivex.rxjava2" })).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(singleProject, ALL.copy(include = { it.moduleGroup != "io.reactivex.rxjava2" })).generateGraph().toString()
+    )
   }
 
   @Test fun recursiveDependencies() {
-      singleEmpty.dependencies.add("implementation", "org.apache.xmlgraphics:batik-gvt:1.7")
+    singleEmpty.dependencies.add("implementation", "org.apache.xmlgraphics:batik-gvt:1.7")
 
-      assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "singleempty" ["shape"="rectangle","label"="singleempty"]
@@ -322,14 +354,17 @@ class DependencyGraphGeneratorTest {
         "xalanxalan" -> "xmlapisxmlapis"
         "orgapachexmlgraphicsbatikjs" -> "xmlapisxmlapis"
         }
-        """.trimIndent(), DependencyGraphGenerator(singleEmpty, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(singleEmpty, ALL).generateGraph().toString()
+    )
   }
 
   @Test fun singleProjectNoDuplicateDependencyConnections() {
     // Both RxJava and RxAndroid point transitively on reactivestreams.
     singleProject.dependencies.add("implementation", "io.reactivex.rxjava2:rxandroid:2.0.2")
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "single" ["shape"="rectangle","label"="single"]
@@ -349,11 +384,14 @@ class DependencyGraphGeneratorTest {
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         "ioreactivexrxjava2rxandroid" -> "ioreactivexrxjava2rxjava"
         }
-        """.trimIndent(), DependencyGraphGenerator(singleProject, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(singleProject, ALL).generateGraph().toString()
+    )
   }
 
   @Test fun multiProjectAll() {
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "multimulti1" ["shape"="rectangle","label"="multi1"]
@@ -376,7 +414,9 @@ class DependencyGraphGeneratorTest {
         "multimulti2" -> "ioreactivexrxjava2rxandroid"
         "ioreactivexrxjava2rxandroid" -> "ioreactivexrxjava2rxjava"
         }
-        """.trimIndent(), DependencyGraphGenerator(multiProject, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(multiProject, ALL).generateGraph().toString()
+    )
   }
 
   @Test fun androidProjectArchitectureComponents() {
@@ -384,7 +424,8 @@ class DependencyGraphGeneratorTest {
 
     androidProject.dependencies.add("implementation", "android.arch.persistence.room:runtime:1.0.0")
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -418,7 +459,9 @@ class DependencyGraphGeneratorTest {
         "comandroidsupportsupportcoreutils" -> "comandroidsupportsupportannotations"
         "comandroidsupportsupportcompat" -> "comandroidsupportsupportannotations"
         }
-        """.trimIndent(), DependencyGraphGenerator(androidProject, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString()
+    )
   }
 
   @Test fun androidProjectSqlDelight() {
@@ -426,7 +469,8 @@ class DependencyGraphGeneratorTest {
 
     androidProject.dependencies.add("implementation", "com.squareup.sqldelight:runtime:0.6.1")
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -439,7 +483,9 @@ class DependencyGraphGeneratorTest {
         "android" -> "comsquareupsqldelightruntime"
         "comsquareupsqldelightruntime" -> "comandroidsupportsupportannotations"
         }
-        """.trimIndent(), DependencyGraphGenerator(androidProject, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString()
+    )
   }
 
   @Test fun androidProjectIncludeAllFlavorsByDefault() {
@@ -455,7 +501,8 @@ class DependencyGraphGeneratorTest {
     androidProject.dependencies.add("flavor2DebugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
     androidProject.dependencies.add("flavor2ReleaseImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -475,7 +522,9 @@ class DependencyGraphGeneratorTest {
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         }
-        """.trimIndent(), DependencyGraphGenerator(androidProject, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString()
+    )
   }
 
   @Test fun androidProjectIncludeAllBuildTypesByDefault() {
@@ -489,7 +538,8 @@ class DependencyGraphGeneratorTest {
     androidProject.dependencies.add("debugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
     androidProject.dependencies.add("stagingImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -509,7 +559,9 @@ class DependencyGraphGeneratorTest {
         "ioreactivexrxjava2rxandroid" -> "ioreactivexrxjava2rxjava"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         }
-        """.trimIndent(), DependencyGraphGenerator(androidProject, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString()
+    )
   }
 
   @Test fun androidProjectIncludeOnlyStagingCompileClasspath() {
@@ -523,7 +575,8 @@ class DependencyGraphGeneratorTest {
     androidProject.dependencies.add("debugImplementation", "io.reactivex.rxjava2:rxjava:2.1.10")
     androidProject.dependencies.add("stagingImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -536,7 +589,9 @@ class DependencyGraphGeneratorTest {
         "android" -> "orgjetbrainskotlinkotlinstdlib"
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         }
-        """.trimIndent(), DependencyGraphGenerator(androidProject, ALL.copy(includeConfiguration = { it.name == "stagingCompileClasspath" })).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(androidProject, ALL.copy(includeConfiguration = { it.name == "stagingCompileClasspath" })).generateGraph().toString()
+    )
   }
 
   @Test fun androidProjectDoNotIncludeTestDependency() {
@@ -544,7 +599,8 @@ class DependencyGraphGeneratorTest {
 
     androidProject.dependencies.add("testImplementation", "junit:junit:4.12")
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -553,7 +609,9 @@ class DependencyGraphGeneratorTest {
         "android"
         }
         }
-        """.trimIndent(), DependencyGraphGenerator(androidProject, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString()
+    )
   }
 
   @Test fun androidProjectDoNotIncludeAndroidTestDependency() {
@@ -561,7 +619,8 @@ class DependencyGraphGeneratorTest {
 
     androidProject.dependencies.add("androidTestImplementation", "junit:junit:4.12")
 
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "android" ["shape"="rectangle","label"="android"]
@@ -570,11 +629,14 @@ class DependencyGraphGeneratorTest {
         "android"
         }
         }
-        """.trimIndent(), DependencyGraphGenerator(androidProject, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString()
+    )
   }
 
   @Test fun projectNamedLikeDependencyName() {
-    assertEquals("""
+    assertEquals(
+      """
         digraph "G" {
         node ["fontname"="Times New Roman"]
         "rxjava" ["shape"="rectangle","label"="rxjava"]
@@ -587,6 +649,8 @@ class DependencyGraphGeneratorTest {
         "rxjava" -> "ioreactivexrxjava2rxjava"
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         }
-        """.trimIndent(), DependencyGraphGenerator(rxjavaProject, ALL).generateGraph().toString())
+      """.trimIndent(),
+      DependencyGraphGenerator(rxjavaProject, ALL).generateGraph().toString()
+    )
   }
 }
