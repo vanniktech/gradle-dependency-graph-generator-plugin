@@ -77,11 +77,11 @@ class DependencyGraphGeneratorPluginTest {
     )
 
     fun runBuild(): BuildResult {
-      return GradleRunner.create()
+      return GradleRunner.create().withDebug(true)
         .withPluginClasspath()
         .withGradleVersion(gradleVersion)
         .withProjectDir(testProjectDir.root)
-        .withArguments("generateDependencyGraph", "generateProjectDependencyGraph")
+        .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "-Dorg.gradle.jvmargs=-Xmx2048m", "--stacktrace")
         .build()
     }
 
@@ -96,13 +96,14 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "${testProjectDir.root.name}" ["shape"="rectangle","label"="${testProjectDir.root.name}"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        edge ["dir"="forward"]
+        "${testProjectDir.root.name}" ["label"="${testProjectDir.root.name}","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
+        "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
+        "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "${testProjectDir.root.name}"
         }
@@ -122,9 +123,11 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(
       """
         digraph {
-        graph ["fontsize"="35","label"="${testProjectDir.root.name}","labelloc"="t"]
-        node ["fontname"="Times New Roman","style"="filled"]
+        edge ["dir"="forward"]
+        graph ["label"="${testProjectDir.root.name}","labelloc"="t","fontsize"="35"]
+        node ["style"="filled"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         }
         }
@@ -244,11 +247,11 @@ class DependencyGraphGeneratorPluginTest {
 
     val empty = testProjectDir.newFolder("empty").run { parentFile.name + name }
 
-    val result = GradleRunner.create()
+    val result = GradleRunner.create().withDebug(true)
       .withPluginClasspath()
       .withGradleVersion("7.4.2")
       .withProjectDir(testProjectDir.root)
-      .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "app:generateProjectDependencyGraph")
+      .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "app:generateProjectDependencyGraph", "-Dorg.gradle.jvmargs=-Xmx2048m", "--stacktrace")
       .build()
 
     result.tasks.filter { it.path.contains("DependencyGraph") }.forEach {
@@ -261,17 +264,18 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "$app" ["shape"="rectangle","label"="app"]
-        "$lib1" ["shape"="rectangle","label"="lib1"]
-        "$lib" ["shape"="rectangle","label"="lib"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
-        "$lib2" ["shape"="rectangle","label"="lib2"]
-        "$empty" ["shape"="rectangle","label"="empty"]
+        edge ["dir"="forward"]
+        "$app" ["label"="app","shape"="rectangle"]
+        "$lib1" ["label"="lib1","shape"="rectangle"]
+        "$lib" ["label"="lib","shape"="rectangle"]
+        "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
+        "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
+        "$lib2" ["label"="lib2","shape"="rectangle"]
+        "$empty" ["label"="empty","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "$app"
         "$empty"
@@ -294,13 +298,15 @@ class DependencyGraphGeneratorPluginTest {
 
     fun projectDependencyGraph(label: String) = """
         digraph {
-        graph ["fontsize"="35","label"="$label","labelloc"="t"]
-        node ["fontname"="Times New Roman","style"="filled"]
-        ":app" ["fillcolor"="#ff8a65","shape"="rectangle"]
+        edge ["dir"="forward"]
+        graph ["label"="$label","labelloc"="t","fontsize"="35"]
+        node ["style"="filled"]
+        ":app" ["shape"="rectangle","fillcolor"="#ff8a65"]
         ":lib1" ["fillcolor"="#ff8a65"]
         ":lib" ["fillcolor"="#ff8a65"]
         ":lib2" ["fillcolor"="#ff8a65"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         ":app"
         }

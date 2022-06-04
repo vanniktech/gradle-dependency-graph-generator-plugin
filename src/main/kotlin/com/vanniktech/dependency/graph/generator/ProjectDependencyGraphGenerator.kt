@@ -4,6 +4,7 @@ import guru.nidi.graphviz.attribute.Color
 import guru.nidi.graphviz.attribute.Font
 import guru.nidi.graphviz.attribute.Label
 import guru.nidi.graphviz.attribute.Rank
+import guru.nidi.graphviz.attribute.Rank.RankType
 import guru.nidi.graphviz.attribute.Shape
 import guru.nidi.graphviz.attribute.Style
 import guru.nidi.graphviz.model.Factory.graph
@@ -40,7 +41,7 @@ internal class ProjectDependencyGraphGenerator(
 
     val graph = mutGraph().setDirected(true)
     graph.graphAttrs().add(Label.of(project.name).locate(Label.Location.TOP), Font.size(DEFAULT_FONT_SIZE))
-    graph.nodeAttrs().add(Font.name("Times New Roman"), Style.FILLED)
+    graph.nodeAttrs().add(Style.FILLED)
     projects.forEach { addNode(it, dependencies, graph) }
     rankRootProjects(graph, projects, dependencies)
     addDependencies(dependencies, graph)
@@ -72,7 +73,7 @@ internal class ProjectDependencyGraphGenerator(
     graph.add(
       graph()
         .graphAttr()
-        .with(Rank.SAME)
+        .with(Rank.inSubgraph(RankType.SAME))
         .with(*projects.filter { project -> dependencies.none { it.to == project } }.map { mutNode(it.path) }.toTypedArray())
     )
   }

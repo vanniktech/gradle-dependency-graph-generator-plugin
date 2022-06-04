@@ -79,9 +79,10 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "singleempty" ["shape"="rectangle","label"="singleempty"]
+        edge ["dir"="forward"]
+        "singleempty" ["label"="singleempty","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "singleempty"
         }
@@ -95,7 +96,6 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
         }
       """.trimIndent(),
       DependencyGraphGenerator(singleEmpty, ALL.copy(includeProject = { false })).generateGraph().toString()
@@ -106,9 +106,10 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "singleempty" ["shape"="rectangle","label"="singleempty"]
+        edge ["dir"="forward"]
+        "singleempty" ["label"="singleempty","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "singleempty"
         }
@@ -122,8 +123,7 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         graph "G" {
-        node ["fontname"="Times New Roman"]
-        "singleempty" ["shape"="rectangle","label"="singleempty"]
+        "singleempty" ["label"="singleempty","shape"="rectangle"]
         {
         graph ["rank"="same"]
         "singleempty"
@@ -138,10 +138,11 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        graph ["labeljust"="l","labelloc"="t","label"="my custom header"]
-        node ["fontname"="Times New Roman"]
-        "singleempty" ["shape"="rectangle","label"="singleempty"]
+        edge ["dir"="forward"]
+        graph ["label"="my custom header","labeljust"="l","labelloc"="t"]
+        "singleempty" ["label"="singleempty","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "singleempty"
         }
@@ -155,9 +156,10 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "singleempty" ["shape"="egg","color"="#ff0099","style"="dotted","label"="singleempty"]
+        edge ["dir"="forward"]
+        "singleempty" ["label"="singleempty","shape"="egg","style"="dotted","color"="#ff0099"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "singleempty"
         }
@@ -171,13 +173,14 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "single" ["shape"="rectangle","label"="single"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        edge ["dir"="forward"]
+        "single" ["label"="single","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
+        "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
+        "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "single"
         }
@@ -203,13 +206,14 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "single" ["shape"="rectangle","label"="single"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","color"="0.833904937402929 0.4047932090555708 0.5440948801677342","style"="filled","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","color"="0.44658757938141413 0.25639393293458856 0.2315484830185478","style"="filled","label"="jetbrains-annotations"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","color"="0.37947834890750454 0.21008099121996504 0.6969226044909884","style"="filled","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","color"="0.3100028267238165 0.7876064423347447 0.6784992909440705","style"="filled","label"="reactive-streams"]
+        edge ["dir"="forward"]
+        "single" ["label"="single","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle","style"="filled","color"="0.833904937402929 0.4047932090555708 0.5440948801677342"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle","style"="filled","color"="0.44658757938141413 0.25639393293458856 0.2315484830185478"]
+        "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle","style"="filled","color"="0.37947834890750454 0.21008099121996504 0.6969226044909884"]
+        "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle","style"="filled","color"="0.3100028267238165 0.7876064423347447 0.6784992909440705"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "single"
         }
@@ -227,11 +231,12 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "single" ["shape"="rectangle","label"="single"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
+        edge ["dir"="forward"]
+        "single" ["label"="single","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "single"
         }
@@ -247,11 +252,12 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "single" ["shape"="rectangle","label"="single"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        edge ["dir"="forward"]
+        "single" ["label"="single","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "single"
         }
@@ -269,25 +275,26 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "singleempty" ["shape"="rectangle","label"="singleempty"]
-        "orgapachexmlgraphicsbatikgvt" ["shape"="rectangle","label"="batik-gvt"]
-        "orgapachexmlgraphicsbatikbridge" ["shape"="rectangle","label"="batik-bridge"]
-        "orgapachexmlgraphicsbatikscript" ["shape"="rectangle","label"="batik-script"]
-        "orgapachexmlgraphicsbatikawtutil" ["shape"="rectangle","label"="batik-awt-util"]
-        "orgapachexmlgraphicsbatikutil" ["shape"="rectangle","label"="batik-util"]
-        "xmlapisxmlapis" ["shape"="rectangle","label"="xml-apis"]
-        "orgapachexmlgraphicsbatiksvgdom" ["shape"="rectangle","label"="batik-svg-dom"]
-        "orgapachexmlgraphicsbatikanim" ["shape"="rectangle","label"="batik-anim"]
-        "orgapachexmlgraphicsbatikparser" ["shape"="rectangle","label"="batik-parser"]
-        "orgapachexmlgraphicsbatikxml" ["shape"="rectangle","label"="batik-xml"]
-        "orgapachexmlgraphicsbatikdom" ["shape"="rectangle","label"="batik-dom"]
-        "orgapachexmlgraphicsbatikcss" ["shape"="rectangle","label"="batik-css"]
-        "orgapachexmlgraphicsbatikext" ["shape"="rectangle","label"="batik-ext"]
-        "xmlapisxmlapisext" ["shape"="rectangle","label"="xml-apis-ext"]
-        "xalanxalan" ["shape"="rectangle","label"="xalan"]
-        "orgapachexmlgraphicsbatikjs" ["shape"="rectangle","label"="batik-js"]
+        edge ["dir"="forward"]
+        "singleempty" ["label"="singleempty","shape"="rectangle"]
+        "orgapachexmlgraphicsbatikgvt" ["label"="batik-gvt","shape"="rectangle"]
+        "orgapachexmlgraphicsbatikbridge" ["label"="batik-bridge","shape"="rectangle"]
+        "orgapachexmlgraphicsbatikscript" ["label"="batik-script","shape"="rectangle"]
+        "orgapachexmlgraphicsbatikawtutil" ["label"="batik-awt-util","shape"="rectangle"]
+        "orgapachexmlgraphicsbatikutil" ["label"="batik-util","shape"="rectangle"]
+        "xmlapisxmlapis" ["label"="xml-apis","shape"="rectangle"]
+        "orgapachexmlgraphicsbatiksvgdom" ["label"="batik-svg-dom","shape"="rectangle"]
+        "orgapachexmlgraphicsbatikanim" ["label"="batik-anim","shape"="rectangle"]
+        "orgapachexmlgraphicsbatikparser" ["label"="batik-parser","shape"="rectangle"]
+        "orgapachexmlgraphicsbatikxml" ["label"="batik-xml","shape"="rectangle"]
+        "orgapachexmlgraphicsbatikdom" ["label"="batik-dom","shape"="rectangle"]
+        "orgapachexmlgraphicsbatikcss" ["label"="batik-css","shape"="rectangle"]
+        "orgapachexmlgraphicsbatikext" ["label"="batik-ext","shape"="rectangle"]
+        "xmlapisxmlapisext" ["label"="xml-apis-ext","shape"="rectangle"]
+        "xalanxalan" ["label"="xalan","shape"="rectangle"]
+        "orgapachexmlgraphicsbatikjs" ["label"="batik-js","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "singleempty"
         }
@@ -366,14 +373,15 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "single" ["shape"="rectangle","label"="single"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
-        "ioreactivexrxjava2rxandroid" ["shape"="rectangle","label"="rxandroid"]
+        edge ["dir"="forward"]
+        "single" ["label"="single","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
+        "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
+        "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]
+        "ioreactivexrxjava2rxandroid" ["label"="rxandroid","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "single"
         }
@@ -393,15 +401,16 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "multimulti1" ["shape"="rectangle","label"="multi1"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
-        "multimulti2" ["shape"="rectangle","label"="multi2"]
-        "ioreactivexrxjava2rxandroid" ["shape"="rectangle","label"="rxandroid"]
+        edge ["dir"="forward"]
+        "multimulti1" ["label"="multi1","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
+        "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
+        "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]
+        "multimulti2" ["label"="multi2","shape"="rectangle"]
+        "ioreactivexrxjava2rxandroid" ["label"="rxandroid","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "multimulti1"
         "multimulti2"
@@ -427,18 +436,19 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "android" ["shape"="rectangle","label"="android"]
-        "androidarchpersistenceroomruntime" ["shape"="rectangle","label"="persistence-room-runtime"]
-        "androidarchpersistenceroomcommon" ["shape"="rectangle","label"="persistence-room-common"]
-        "comandroidsupportsupportannotations" ["shape"="rectangle","label"="support-annotations"]
-        "androidarchpersistencedbframework" ["shape"="rectangle","label"="persistence-db-framework"]
-        "androidarchpersistencedb" ["shape"="rectangle","label"="persistence-db"]
-        "androidarchcoreruntime" ["shape"="rectangle","label"="core-runtime"]
-        "androidarchcorecommon" ["shape"="rectangle","label"="core-common"]
-        "comandroidsupportsupportcoreutils" ["shape"="rectangle","label"="support-core-utils"]
-        "comandroidsupportsupportcompat" ["shape"="rectangle","label"="support-compat"]
+        edge ["dir"="forward"]
+        "android" ["label"="android","shape"="rectangle"]
+        "androidarchpersistenceroomruntime" ["label"="persistence-room-runtime","shape"="rectangle"]
+        "androidarchpersistenceroomcommon" ["label"="persistence-room-common","shape"="rectangle"]
+        "comandroidsupportsupportannotations" ["label"="support-annotations","shape"="rectangle"]
+        "androidarchpersistencedbframework" ["label"="persistence-db-framework","shape"="rectangle"]
+        "androidarchpersistencedb" ["label"="persistence-db","shape"="rectangle"]
+        "androidarchcoreruntime" ["label"="core-runtime","shape"="rectangle"]
+        "androidarchcorecommon" ["label"="core-common","shape"="rectangle"]
+        "comandroidsupportsupportcoreutils" ["label"="support-core-utils","shape"="rectangle"]
+        "comandroidsupportsupportcompat" ["label"="support-compat","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "android"
         }
@@ -472,11 +482,12 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "android" ["shape"="rectangle","label"="android"]
-        "comsquareupsqldelightruntime" ["shape"="rectangle","label"="sqldelight-runtime"]
-        "comandroidsupportsupportannotations" ["shape"="rectangle","label"="support-annotations"]
+        edge ["dir"="forward"]
+        "android" ["label"="android","shape"="rectangle"]
+        "comsquareupsqldelightruntime" ["label"="sqldelight-runtime","shape"="rectangle"]
+        "comandroidsupportsupportannotations" ["label"="support-annotations","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "android"
         }
@@ -504,14 +515,15 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "android" ["shape"="rectangle","label"="android"]
-        "ioreactivexrxjava2rxandroid" ["shape"="rectangle","label"="rxandroid"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        edge ["dir"="forward"]
+        "android" ["label"="android","shape"="rectangle"]
+        "ioreactivexrxjava2rxandroid" ["label"="rxandroid","shape"="rectangle"]
+        "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
+        "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "android"
         }
@@ -541,14 +553,15 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "android" ["shape"="rectangle","label"="android"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
-        "ioreactivexrxjava2rxandroid" ["shape"="rectangle","label"="rxandroid"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        edge ["dir"="forward"]
+        "android" ["label"="android","shape"="rectangle"]
+        "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
+        "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]
+        "ioreactivexrxjava2rxandroid" ["label"="rxandroid","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "android"
         }
@@ -578,11 +591,12 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "android" ["shape"="rectangle","label"="android"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
+        edge ["dir"="forward"]
+        "android" ["label"="android","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "android"
         }
@@ -602,9 +616,10 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "android" ["shape"="rectangle","label"="android"]
+        edge ["dir"="forward"]
+        "android" ["label"="android","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "android"
         }
@@ -622,9 +637,10 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "android" ["shape"="rectangle","label"="android"]
+        edge ["dir"="forward"]
+        "android" ["label"="android","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "android"
         }
@@ -638,11 +654,12 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
-        node ["fontname"="Times New Roman"]
-        "rxjava" ["shape"="rectangle","label"="rxjava"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        edge ["dir"="forward"]
+        "rxjava" ["label"="rxjava","shape"="rectangle"]
+        "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
+        "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "rxjava"
         }

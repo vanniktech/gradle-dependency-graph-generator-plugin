@@ -64,7 +64,7 @@ repositories {
 dependencies {
   implementation localGroovy()
   implementation gradleApi()
-  api "guru.nidi:graphviz-java:0.8.1"
+  api "guru.nidi:graphviz-java:0.18.1"
 
   testImplementation 'junit:junit:4.13.2'
   testImplementation "com.android.tools.build:gradle:7.0.4"
@@ -90,4 +90,5 @@ test {
   testLogging {
     exceptionFormat "full"
   }
+  jvmArgs("-Xmx2048m")
 }
