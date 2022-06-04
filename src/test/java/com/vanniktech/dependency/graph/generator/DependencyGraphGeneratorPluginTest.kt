@@ -96,13 +96,15 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(
       """
         digraph "G" {
+        edge ["dir"="forward"]
         node ["fontname"="Times New Roman"]
-        "${testProjectDir.root.name}" ["shape"="rectangle","label"="${testProjectDir.root.name}"]
-        "orgjetbrainskotlinkotlinstdlib" ["shape"="rectangle","label"="kotlin-stdlib"]
-        "orgjetbrainsannotations" ["shape"="rectangle","label"="jetbrains-annotations"]
-        "ioreactivexrxjava2rxjava" ["shape"="rectangle","label"="rxjava"]
-        "orgreactivestreamsreactivestreams" ["shape"="rectangle","label"="reactive-streams"]
+        "${testProjectDir.root.name}" ["label"="${testProjectDir.root.name}","shape"="rectangle"]
+        "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
+        "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
+        "ioreactivexrxjava2rxjava" ["shape"="rectangle""label"="rxjava","shape"="rectangle"]
+        "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]
         {
+        edge ["dir"="none"]
         graph ["rank"="same"]
         "${testProjectDir.root.name}"
         }
