@@ -1,5 +1,7 @@
 package com.vanniktech.dependency.graph.generator
 
+import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator
+import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.ProjectGenerator
 import org.gradle.api.internal.project.DefaultProject
 import org.gradle.api.plugins.JavaLibraryPlugin
 import org.gradle.testfixtures.ProjectBuilder
@@ -33,7 +35,7 @@ class DependencyGraphGeneratorPluginTest {
     singleProject.evaluate() // Need to call this for afterEvaluate() to pick up.
 
     val task = singleProject.tasks.getByName("generateDependencyGraph") as DependencyGraphGeneratorTask
-    assertEquals(true, task.generator === DependencyGraphGeneratorExtension.Generator.ALL)
+    assertEquals(true, task.generator === Generator.ALL)
     assertEquals("reporting", task.group)
     assertEquals("Generates a dependency graph", task.description)
     assertEquals(File(singleProject.buildDir, "reports/dependency-graph/").toString(), task.outputDirectory.toString())
@@ -45,7 +47,7 @@ class DependencyGraphGeneratorPluginTest {
     singleProject.evaluate() // Need to call this for afterEvaluate() to pick up.
 
     val task = singleProject.tasks.getByName("generateProjectDependencyGraph") as ProjectDependencyGraphGeneratorTask
-    assertEquals(true, task.projectGenerator === DependencyGraphGeneratorExtension.ProjectGenerator.ALL)
+    assertEquals(true, task.projectGenerator === ProjectGenerator.ALL)
     assertEquals("reporting", task.group)
     assertEquals("Generates a project dependency graph", task.description)
     assertEquals(File(singleProject.buildDir, "reports/project-dependency-graph/").toString(), task.outputDirectory.toString())
@@ -89,10 +91,21 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(TaskOutcome.SUCCESS, result.task(":generateDependencyGraph")?.outcome)
     assertEquals(TaskOutcome.SUCCESS, result.task(":generateProjectDependencyGraph")?.outcome)
 
-    // We don't want to assert the content of the images, just that they exist.
-    assertEquals(true, File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.png").exists())
-    assertEquals(true, File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.svg").exists())
+    // We don't want to assert the content of the images, just that they exist and that their path is logged
+    Generator.ALL.outputFormats.forEach {
+      val file = File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.${it.fileExtension}")
+      assertEquals(true, file.exists())
+      assertEquals(true, file.absolutePath in result.output)
+    }
+    Generator.ALL.outputFormats.map {
+      File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.${it.fileExtension}")
+    }.forEach {
+      assertEquals(true, it.exists())
+      assertEquals(true, it.absolutePath in result.output)
+    }
 
+    val dependencyGraphDot = File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot")
+    assertEquals(true, dependencyGraphDot.absolutePath in result.output)
     assertEquals(
       """
         digraph "G" {
@@ -113,13 +126,19 @@ class DependencyGraphGeneratorPluginTest {
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         }
       """.trimIndent(),
-      File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot").readText()
+      dependencyGraphDot.readText()
     )
 
-    // We don't want to assert the content of the images, just that they exist.
-    assertEquals(true, File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.png").exists())
-    assertEquals(true, File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.svg").exists())
+    // We don't want to assert the content of the images, just that they exist and that their path is logged
+    ProjectGenerator.ALL.outputFormats.map {
+      File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.${it.fileExtension}")
+    }.forEach {
+      assertEquals(true, it.exists())
+      assertEquals(true, it.absolutePath in result.output)
+    }
 
+    val projectDependencyGraphDot = File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.dot")
+    assertEquals(true, projectDependencyGraphDot.absolutePath in result.output)
     assertEquals(
       """
         digraph {
@@ -132,7 +151,7 @@ class DependencyGraphGeneratorPluginTest {
         }
         }
       """.trimIndent(),
-      File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.dot").readText()
+      projectDependencyGraphDot.readText()
     )
 
     val secondResult = runBuild()
