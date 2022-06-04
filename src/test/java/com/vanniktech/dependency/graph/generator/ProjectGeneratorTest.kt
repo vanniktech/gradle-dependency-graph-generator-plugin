@@ -1,31 +1,31 @@
 package com.vanniktech.dependency.graph.generator
 
-import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.ProjectGenerator.Companion.ALL
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.ProjectGenerator
+import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.ProjectGenerator.Companion.ALL
 import guru.nidi.graphviz.engine.Format.PNG
 import guru.nidi.graphviz.engine.Format.SVG
-import org.assertj.core.api.Java6Assertions.assertThat
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class ProjectGeneratorTest {
   private val generatorFoo = ProjectGenerator(name = "fooBar")
 
   @Test fun gradleTaskName() {
-    assertThat(ALL.gradleTaskName).isEqualTo("generateProjectDependencyGraph")
-    assertThat(generatorFoo.gradleTaskName).isEqualTo("generateProjectDependencyGraphFooBar")
+    assertEquals("generateProjectDependencyGraph", ALL.gradleTaskName)
+    assertEquals("generateProjectDependencyGraphFooBar", generatorFoo.gradleTaskName)
   }
 
   @Test fun outputFileName() {
-    assertThat(ALL.outputFileName).isEqualTo("project-dependency-graph")
-    assertThat(generatorFoo.outputFileName).isEqualTo("project-dependency-graph-foo-bar")
+    assertEquals("project-dependency-graph", ALL.outputFileName)
+    assertEquals("project-dependency-graph-foo-bar", generatorFoo.outputFileName)
   }
 
   @Test fun outputFileNameDot() {
-    assertThat(ALL.outputFileNameDot).isEqualTo("project-dependency-graph.dot")
-    assertThat(generatorFoo.outputFileNameDot).isEqualTo("project-dependency-graph-foo-bar.dot")
+    assertEquals("project-dependency-graph.dot", ALL.outputFileNameDot)
+    assertEquals("project-dependency-graph-foo-bar.dot", generatorFoo.outputFileNameDot)
   }
 
   @Test fun outputFormats() {
-    assertThat(ALL.outputFormats).containsExactly(PNG, SVG)
+    assertEquals(listOf(PNG, SVG), ALL.outputFormats)
   }
 }

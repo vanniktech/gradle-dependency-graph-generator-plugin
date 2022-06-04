@@ -1,23 +1,23 @@
 package com.vanniktech.dependency.graph.generator
 
-import org.assertj.core.api.Java6Assertions.assertThat
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class ExtensionsTest {
   @Test fun dotIdentifier() {
-    assertThat("java.inject".dotIdentifier).isEqualTo("javainject")
-    assertThat("firebase-core".dotIdentifier).isEqualTo("firebasecore")
-    assertThat("firebase core".dotIdentifier).isEqualTo("firebasecore")
+    assertEquals("javainject", "java.inject".dotIdentifier)
+    assertEquals("firebasecore", "firebase-core".dotIdentifier)
+    assertEquals("firebasecore", "firebase core".dotIdentifier)
   }
 
   @Test fun nonEmptyPrepend() {
-    assertThat("".nonEmptyPrepend("-")).isEmpty()
-    assertThat("foo".nonEmptyPrepend("-")).isEqualTo("-foo")
+    assertEquals("", "".nonEmptyPrepend("-"))
+    assertEquals("-foo", "foo".nonEmptyPrepend("-"))
   }
 
   @Test fun toHyphenCase() {
-    assertThat("".toHyphenCase()).isEqualTo("")
-    assertThat("Something".toHyphenCase()).isEqualTo("something")
-    assertThat("SomethingBig".toHyphenCase()).isEqualTo("something-big")
+    assertEquals("", "".toHyphenCase())
+    assertEquals("something", "Something".toHyphenCase())
+    assertEquals("something-big", "SomethingBig".toHyphenCase())
   }
 }
