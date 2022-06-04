@@ -4,6 +4,7 @@ import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtensi
 import guru.nidi.graphviz.attribute.Font
 import guru.nidi.graphviz.attribute.Label
 import guru.nidi.graphviz.attribute.Rank
+import guru.nidi.graphviz.attribute.Rank.RankType
 import guru.nidi.graphviz.attribute.Shape
 import guru.nidi.graphviz.model.Factory.graph
 import guru.nidi.graphviz.model.Factory.mutGraph
@@ -66,7 +67,7 @@ internal class DependencyGraphGenerator(
     if (rootNodes.isNotEmpty()) {
       graph.add(graph()
           .graphAttr()
-          .with(Rank.SAME)
+          .with(Rank.inSubgraph(RankType.SAME))
           .with(*rootNodes.map { mutNode(it) }.toTypedArray())
       )
     }

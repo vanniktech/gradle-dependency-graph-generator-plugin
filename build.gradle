@@ -68,7 +68,7 @@ repositories {
 dependencies {
   implementation localGroovy()
   implementation gradleApi()
-  api "guru.nidi:graphviz-java:0.8.1"
+  api "guru.nidi:graphviz-java:0.18.1"
 
   testImplementation 'junit:junit:4.13-beta-2'
   testImplementation 'org.assertj:assertj-core:3.12.0'
