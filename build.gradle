@@ -90,4 +90,5 @@ test {
   testLogging {
     exceptionFormat "full"
   }
+  jvmArgs("-Xmx2048m")
 }
