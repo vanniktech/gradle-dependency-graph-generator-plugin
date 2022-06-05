@@ -1,0 +1,313 @@
+<svg width="902pt" height="332pt"
+ viewBox="0.00 0.00 902.44 332.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 328)">
+<title>G</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-328 898.4411,-328 898.4411,4 -4,4"/>
+<!-- Emojiapp -->
+<g id="node1" class="node">
+<title>Emojiapp</title>
+<polygon fill="none" stroke="#000000" points="126,-324 72,-324 72,-288 126,-288 126,-324"/>
+<text text-anchor="middle" x="99" y="-301.8" font-family="Times New Roman" font-size="14.00" fill="#000000">app</text>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="node2" class="node">
+<title>orgjetbrainskotlinkotlinstdlibjdk8</title>
+<polygon fill="#af1df5" stroke="#af1df5" points="391,-252 277,-252 277,-216 391,-216 391,-252"/>
+<text text-anchor="middle" x="334" y="-229.8" font-family="Times New Roman" font-size="14.00" fill="#000000">kotlin&#45;stdlib&#45;jdk8</text>
+</g>
+<!-- Emojiapp&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge1" class="edge">
+<title>Emojiapp&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="#000000" d="M126.2647,-291.6663C129.1784,-290.3462 132.1272,-289.0955 135,-288 177.8331,-271.6663 227.6082,-258.1616 266.6624,-248.7426"/>
+<polygon fill="#000000" stroke="#000000" points="267.9442,-252.0355 276.8629,-246.3163 266.3243,-245.2255 267.9442,-252.0355"/>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlibjdk7 -->
+<g id="node3" class="node">
+<title>orgjetbrainskotlinkotlinstdlibjdk7</title>
+<polygon fill="#af1df5" stroke="#af1df5" points="369,-180 255,-180 255,-144 369,-144 369,-180"/>
+<text text-anchor="middle" x="312" y="-157.8" font-family="Times New Roman" font-size="14.00" fill="#000000">kotlin&#45;stdlib&#45;jdk7</text>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlibjdk8&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk7 -->
+<g id="edge2" class="edge">
+<title>orgjetbrainskotlinkotlinstdlibjdk8&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk7</title>
+<path fill="none" stroke="#000000" d="M328.4485,-215.8314C326.0697,-208.0463 323.2362,-198.7729 320.5967,-190.1347"/>
+<polygon fill="#000000" stroke="#000000" points="323.8958,-188.954 317.6263,-180.4133 317.2013,-190.9996 323.8958,-188.954"/>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlib -->
+<g id="node4" class="node">
+<title>orgjetbrainskotlinkotlinstdlib</title>
+<polygon fill="#af1df5" stroke="#af1df5" points="503.45,-108 418.55,-108 418.55,-72 503.45,-72 503.45,-108"/>
+<text text-anchor="middle" x="461" y="-85.8" font-family="Times New Roman" font-size="14.00" fill="#000000">kotlin&#45;stdlib</text>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlibjdk8&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge3" class="edge">
+<title>orgjetbrainskotlinkotlinstdlibjdk8&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="#000000" d="M350.0846,-215.7623C372.4143,-190.4436 412.918,-144.5182 438.3119,-115.7251"/>
+<polygon fill="#000000" stroke="#000000" points="441.0564,-117.9046 445.046,-108.0896 435.8065,-113.2745 441.0564,-117.9046"/>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlibjdk7&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge4" class="edge">
+<title>orgjetbrainskotlinkotlinstdlibjdk7&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="#000000" d="M349.599,-143.8314C369.3497,-134.2874 393.7297,-122.5065 414.6417,-112.4013"/>
+<polygon fill="#000000" stroke="#000000" points="416.1903,-115.5403 423.6714,-108.038 413.1447,-109.2376 416.1903,-115.5403"/>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlibcommon -->
+<g id="node5" class="node">
+<title>orgjetbrainskotlinkotlinstdlibcommon</title>
+<polygon fill="#af1df5" stroke="#af1df5" points="453.1052,-36 314.8948,-36 314.8948,0 453.1052,0 453.1052,-36"/>
+<text text-anchor="middle" x="384" y="-13.8" font-family="Times New Roman" font-size="14.00" fill="#000000">kotlin&#45;stdlib&#45;common</text>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlib&#45;&gt;orgjetbrainskotlinkotlinstdlibcommon -->
+<g id="edge5" class="edge">
+<title>orgjetbrainskotlinkotlinstdlib&#45;&gt;orgjetbrainskotlinkotlinstdlibcommon</title>
+<path fill="none" stroke="#000000" d="M441.5696,-71.8314C432.268,-63.1337 420.9796,-52.5783 410.8714,-43.1265"/>
+<polygon fill="#000000" stroke="#000000" points="413.1189,-40.4363 403.4241,-36.1628 408.3379,-45.5493 413.1189,-40.4363"/>
+</g>
+<!-- orgjetbrainsannotations -->
+<g id="node6" class="node">
+<title>orgjetbrainsannotations</title>
+<polygon fill="#af1df5" stroke="#af1df5" points="604.913,-36 471.087,-36 471.087,0 604.913,0 604.913,-36"/>
+<text text-anchor="middle" x="538" y="-13.8" font-family="Times New Roman" font-size="14.00" fill="#000000">jetbrains&#45;annotations</text>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlib&#45;&gt;orgjetbrainsannotations -->
+<g id="edge6" class="edge">
+<title>orgjetbrainskotlinkotlinstdlib&#45;&gt;orgjetbrainsannotations</title>
+<path fill="none" stroke="#000000" d="M480.4304,-71.8314C489.732,-63.1337 501.0204,-52.5783 511.1286,-43.1265"/>
+<polygon fill="#000000" stroke="#000000" points="513.6621,-45.5493 518.5759,-36.1628 508.8811,-40.4363 513.6621,-45.5493"/>
+</g>
+<!-- comvanniktechemoji -->
+<g id="node7" class="node">
+<title>comvanniktechemoji</title>
+<polygon fill="none" stroke="#000000" points="422,-324 368,-324 368,-288 422,-288 422,-324"/>
+<text text-anchor="middle" x="395" y="-301.8" font-family="Times New Roman" font-size="14.00" fill="#000000">emoji</text>
+</g>
+<!-- comvanniktechemoji&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge7" class="edge">
+<title>comvanniktechemoji&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="#000000" d="M379.6071,-287.8314C372.5096,-279.454 363.952,-269.3531 356.176,-260.1749"/>
+<polygon fill="#000000" stroke="#000000" points="358.7348,-257.7807 349.6001,-252.4133 353.3939,-262.3056 358.7348,-257.7807"/>
+</g>
+<!-- orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="node8" class="node">
+<title>orgjetbrainskotlinkotlinparcelizeruntime</title>
+<polygon fill="#af1df5" stroke="#af1df5" points="683.0548,-252 530.9452,-252 530.9452,-216 683.0548,-216 683.0548,-252"/>
+<text text-anchor="middle" x="607" y="-229.8" font-family="Times New Roman" font-size="14.00" fill="#000000">kotlin&#45;parcelize&#45;runtime</text>
+</g>
+<!-- comvanniktechemoji&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge8" class="edge">
+<title>comvanniktechemoji&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="#000000" d="M422.3024,-291.7627C425.2088,-290.4238 428.1455,-289.1424 431,-288 462.4614,-275.4093 498.0518,-263.9852 528.9546,-254.921"/>
+<polygon fill="#000000" stroke="#000000" points="530.1825,-258.2092 538.812,-252.0625 528.2329,-251.4861 530.1825,-258.2092"/>
+</g>
+<!-- orgjetbrainskotlinkotlintestjunit -->
+<g id="node10" class="node">
+<title>orgjetbrainskotlinkotlintestjunit</title>
+<polygon fill="#af1df5" stroke="#af1df5" points="512.6053,-252 409.3947,-252 409.3947,-216 512.6053,-216 512.6053,-252"/>
+<text text-anchor="middle" x="461" y="-229.8" font-family="Times New Roman" font-size="14.00" fill="#000000">kotlin&#45;test&#45;junit</text>
+</g>
+<!-- comvanniktechemoji&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge9" class="edge">
+<title>comvanniktechemoji&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="#000000" d="M411.6546,-287.8314C419.4114,-279.3694 428.7802,-269.1489 437.261,-259.8971"/>
+<polygon fill="#000000" stroke="#000000" points="439.9439,-262.1499 444.1212,-252.4133 434.7838,-257.4198 439.9439,-262.1499"/>
+</g>
+<!-- orgjetbrainskotlinkotlinparcelizeruntime&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge11" class="edge">
+<title>orgjetbrainskotlinkotlinparcelizeruntime&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="#000000" d="M584.5753,-215.8701C572.2862,-205.667 556.962,-192.4994 544,-180 522.6383,-159.4007 499.8897,-134.5007 483.6207,-116.1182"/>
+<polygon fill="#000000" stroke="#000000" points="485.8623,-113.3672 476.63,-108.1696 480.606,-117.9901 485.8623,-113.3672"/>
+</g>
+<!-- orgjetbrainskotlinkotlinandroidextensionsruntime -->
+<g id="node9" class="node">
+<title>orgjetbrainskotlinkotlinandroidextensionsruntime</title>
+<polygon fill="#af1df5" stroke="#af1df5" points="761.066,-180 552.934,-180 552.934,-144 761.066,-144 761.066,-180"/>
+<text text-anchor="middle" x="657" y="-157.8" font-family="Times New Roman" font-size="14.00" fill="#000000">kotlin&#45;android&#45;extensions&#45;runtime</text>
+</g>
+<!-- orgjetbrainskotlinkotlinparcelizeruntime&#45;&gt;orgjetbrainskotlinkotlinandroidextensionsruntime -->
+<g id="edge10" class="edge">
+<title>orgjetbrainskotlinkotlinparcelizeruntime&#45;&gt;orgjetbrainskotlinkotlinandroidextensionsruntime</title>
+<path fill="none" stroke="#000000" d="M619.6171,-215.8314C625.3172,-207.6232 632.1663,-197.7606 638.4359,-188.7323"/>
+<polygon fill="#000000" stroke="#000000" points="641.3838,-190.6234 644.213,-180.4133 635.6342,-186.6306 641.3838,-190.6234"/>
+</g>
+<!-- orgjetbrainskotlinkotlinandroidextensionsruntime&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge12" class="edge">
+<title>orgjetbrainskotlinkotlinandroidextensionsruntime&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="#000000" d="M607.7939,-143.9243C578.8601,-133.2955 542.3078,-119.8682 512.9162,-109.0712"/>
+<polygon fill="#000000" stroke="#000000" points="513.838,-105.6813 503.2445,-105.5184 511.4243,-112.252 513.838,-105.6813"/>
+</g>
+<!-- orgjetbrainskotlinkotlintest -->
+<g id="node11" class="node">
+<title>orgjetbrainskotlinkotlintest</title>
+<polygon fill="#af1df5" stroke="#af1df5" points="497.2732,-180 424.7268,-180 424.7268,-144 497.2732,-144 497.2732,-180"/>
+<text text-anchor="middle" x="461" y="-157.8" font-family="Times New Roman" font-size="14.00" fill="#000000">kotlin&#45;test</text>
+</g>
+<!-- orgjetbrainskotlinkotlintestjunit&#45;&gt;orgjetbrainskotlinkotlintest -->
+<g id="edge13" class="edge">
+<title>orgjetbrainskotlinkotlintestjunit&#45;&gt;orgjetbrainskotlinkotlintest</title>
+<path fill="none" stroke="#000000" d="M461,-215.8314C461,-208.131 461,-198.9743 461,-190.4166"/>
+<polygon fill="#000000" stroke="#000000" points="464.5001,-190.4132 461,-180.4133 457.5001,-190.4133 464.5001,-190.4132"/>
+</g>
+<!-- orgjetbrainskotlinkotlintest&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge14" class="edge">
+<title>orgjetbrainskotlinkotlintest&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="#000000" d="M461,-143.8314C461,-136.131 461,-126.9743 461,-118.4166"/>
+<polygon fill="#000000" stroke="#000000" points="464.5001,-118.4132 461,-108.4133 457.5001,-118.4133 464.5001,-118.4132"/>
+</g>
+<!-- comvanniktechemojifacebook -->
+<g id="node12" class="node">
+<title>comvanniktechemojifacebook</title>
+<polygon fill="none" stroke="#000000" points="543.8515,-324 440.1485,-324 440.1485,-288 543.8515,-288 543.8515,-324"/>
+<text text-anchor="middle" x="492" y="-301.8" font-family="Times New Roman" font-size="14.00" fill="#000000">emoji&#45;facebook</text>
+</g>
+<!-- comvanniktechemojifacebook&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge15" class="edge">
+<title>comvanniktechemojifacebook&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="#000000" d="M452.1299,-287.8314C431.0923,-278.2446 405.1017,-266.4008 382.8604,-256.2655"/>
+<polygon fill="#000000" stroke="#000000" points="384.1345,-252.9999 373.5834,-252.038 381.2317,-259.3697 384.1345,-252.9999"/>
+</g>
+<!-- comvanniktechemojifacebook&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge16" class="edge">
+<title>comvanniktechemojifacebook&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="#000000" d="M521.0194,-287.8314C535.7286,-278.6221 553.7644,-267.3301 569.5122,-257.4706"/>
+<polygon fill="#000000" stroke="#000000" points="571.3714,-260.436 577.9899,-252.1628 567.6567,-254.5029 571.3714,-260.436"/>
+</g>
+<!-- comvanniktechemojifacebook&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge17" class="edge">
+<title>comvanniktechemojifacebook&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="#000000" d="M484.1774,-287.8314C480.7891,-279.9617 476.7459,-270.5712 472.9924,-261.8533"/>
+<polygon fill="#000000" stroke="#000000" points="476.0973,-260.214 468.9279,-252.4133 469.6679,-262.9822 476.0973,-260.214"/>
+</g>
+<!-- comvanniktechemojigoogle -->
+<g id="node13" class="node">
+<title>comvanniktechemojigoogle</title>
+<polygon fill="none" stroke="#000000" points="652.1529,-324 561.8471,-324 561.8471,-288 652.1529,-288 652.1529,-324"/>
+<text text-anchor="middle" x="607" y="-301.8" font-family="Times New Roman" font-size="14.00" fill="#000000">emoji&#45;google</text>
+</g>
+<!-- comvanniktechemojigoogle&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge18" class="edge">
+<title>comvanniktechemojigoogle&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="#000000" d="M561.7193,-290.5754C558.7773,-289.6757 555.8521,-288.8091 553,-288 488.8139,-269.7915 469.4323,-269.2088 401.1711,-252.2401"/>
+<polygon fill="#000000" stroke="#000000" points="401.7567,-248.7785 391.205,-249.7335 400.0492,-255.5671 401.7567,-248.7785"/>
+</g>
+<!-- comvanniktechemojigoogle&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge19" class="edge">
+<title>comvanniktechemojigoogle&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="#000000" d="M607,-287.8314C607,-280.131 607,-270.9743 607,-262.4166"/>
+<polygon fill="#000000" stroke="#000000" points="610.5001,-262.4132 607,-252.4133 603.5001,-262.4133 610.5001,-262.4132"/>
+</g>
+<!-- comvanniktechemojigoogle&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge20" class="edge">
+<title>comvanniktechemojigoogle&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="#000000" d="M570.158,-287.8314C550.8918,-278.3302 527.1301,-266.6121 506.7008,-256.5374"/>
+<polygon fill="#000000" stroke="#000000" points="508.0938,-253.3219 497.577,-252.038 504.9977,-259.6 508.0938,-253.3219"/>
+</g>
+<!-- comvanniktechemojigooglecompat -->
+<g id="node14" class="node">
+<title>comvanniktechemojigooglecompat</title>
+<polygon fill="none" stroke="#000000" points="807.024,-324 670.976,-324 670.976,-288 807.024,-288 807.024,-324"/>
+<text text-anchor="middle" x="739" y="-301.8" font-family="Times New Roman" font-size="14.00" fill="#000000">emoji&#45;google&#45;compat</text>
+</g>
+<!-- comvanniktechemojigooglecompat&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge21" class="edge">
+<title>comvanniktechemojigooglecompat&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="#000000" d="M670.5882,-289.847C667.3521,-289.198 664.1437,-288.5783 661,-288 548.9834,-267.3927 516.4894,-275.004 401.0638,-252.0735"/>
+<polygon fill="#000000" stroke="#000000" points="401.624,-248.616 391.1288,-250.0658 400.2374,-255.4773 401.624,-248.616"/>
+</g>
+<!-- comvanniktechemojigooglecompat&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge22" class="edge">
+<title>comvanniktechemojigooglecompat&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="#000000" d="M705.6908,-287.8314C688.5727,-278.4942 667.5294,-267.016 649.2778,-257.0606"/>
+<polygon fill="#000000" stroke="#000000" points="650.7535,-253.8788 640.2985,-252.1628 647.4015,-260.024 650.7535,-253.8788"/>
+</g>
+<!-- comvanniktechemojigooglecompat&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge23" class="edge">
+<title>comvanniktechemojigooglecompat&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="#000000" d="M670.8767,-289.8441C630.4522,-280.0715 577.9827,-267.0666 522.8319,-252.1739"/>
+<polygon fill="#000000" stroke="#000000" points="523.4386,-248.712 512.871,-249.4713 521.6055,-255.4678 523.4386,-248.712"/>
+</g>
+<!-- comvanniktechemojiios -->
+<g id="node15" class="node">
+<title>comvanniktechemojiios</title>
+<polygon fill="none" stroke="#000000" points="894.3823,-324 825.6177,-324 825.6177,-288 894.3823,-288 894.3823,-324"/>
+<text text-anchor="middle" x="860" y="-301.8" font-family="Times New Roman" font-size="14.00" fill="#000000">emoji&#45;ios</text>
+</g>
+<!-- comvanniktechemojiios&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge24" class="edge">
+<title>comvanniktechemojiios&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="#000000" d="M825.2523,-290.6761C822.1613,-289.6524 819.0484,-288.7373 816,-288 638.7924,-245.1372 584.6035,-283.1597 401.0716,-251.9872"/>
+<polygon fill="#000000" stroke="#000000" points="401.547,-248.5173 391.0943,-250.2466 400.3439,-255.4132 401.547,-248.5173"/>
+</g>
+<!-- comvanniktechemojiios&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge25" class="edge">
+<title>comvanniktechemojiios&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="#000000" d="M825.5786,-291.4029C822.3614,-290.195 819.1332,-289.0403 816,-288 776.1678,-274.7743 731.188,-262.7858 693.1875,-253.4831"/>
+<polygon fill="#000000" stroke="#000000" points="693.7193,-250.0107 683.176,-251.0546 692.0691,-256.8134 693.7193,-250.0107"/>
+</g>
+<!-- comvanniktechemojiios&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge26" class="edge">
+<title>comvanniktechemojiios&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="#000000" d="M825.2228,-290.7937C822.1381,-289.7444 819.0348,-288.7914 816,-288 691.7269,-255.5944 652.7974,-277.5849 522.7071,-251.9253"/>
+<polygon fill="#000000" stroke="#000000" points="523.2629,-248.4669 512.7665,-249.9078 521.8705,-255.327 523.2629,-248.4669"/>
+</g>
+<!-- comvanniktechemojimaterial -->
+<g id="node16" class="node">
+<title>comvanniktechemojimaterial</title>
+<polygon fill="none" stroke="#000000" points="242.4147,-324 143.5853,-324 143.5853,-288 242.4147,-288 242.4147,-324"/>
+<text text-anchor="middle" x="193" y="-301.8" font-family="Times New Roman" font-size="14.00" fill="#000000">emoji&#45;material</text>
+</g>
+<!-- comvanniktechemojimaterial&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge27" class="edge">
+<title>comvanniktechemojimaterial&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="#000000" d="M228.5803,-287.8314C247.0325,-278.4089 269.7545,-266.8062 289.373,-256.7883"/>
+<polygon fill="#000000" stroke="#000000" points="291.1168,-259.8278 298.4311,-252.1628 287.9333,-253.5935 291.1168,-259.8278"/>
+</g>
+<!-- comvanniktechemojimaterial&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge28" class="edge">
+<title>comvanniktechemojimaterial&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="#000000" d="M242.2093,-290.1079C245.1705,-289.3449 248.1168,-288.6341 251,-288 366.5373,-262.5886 400.4782,-272.0623 520.642,-252.1514"/>
+<polygon fill="#000000" stroke="#000000" points="521.3211,-255.5863 530.5975,-250.4678 520.1539,-248.6843 521.3211,-255.5863"/>
+</g>
+<!-- comvanniktechemojimaterial&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge29" class="edge">
+<title>comvanniktechemojimaterial&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="#000000" d="M242.2979,-290.4658C245.2368,-289.6128 248.1541,-288.7846 251,-288 313.7274,-270.7076 332.5261,-269.7045 399.3745,-252.0941"/>
+<polygon fill="#000000" stroke="#000000" points="400.3726,-255.4503 409.1356,-249.4955 398.5717,-248.6859 400.3726,-255.4503"/>
+</g>
+<!-- comvanniktechemojitwitter -->
+<g id="node17" class="node">
+<title>comvanniktechemojitwitter</title>
+<polygon fill="none" stroke="#000000" points="349.5912,-324 260.4088,-324 260.4088,-288 349.5912,-288 349.5912,-324"/>
+<text text-anchor="middle" x="305" y="-301.8" font-family="Times New Roman" font-size="14.00" fill="#000000">emoji&#45;twitter</text>
+</g>
+<!-- comvanniktechemojitwitter&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge30" class="edge">
+<title>comvanniktechemojitwitter&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="#000000" d="M312.3179,-287.8314C315.4876,-279.9617 319.27,-270.5712 322.7813,-261.8533"/>
+<polygon fill="#000000" stroke="#000000" points="326.0939,-262.9968 326.5835,-252.4133 319.6008,-260.3815 326.0939,-262.9968"/>
+</g>
+<!-- comvanniktechemojitwitter&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge31" class="edge">
+<title>comvanniktechemojitwitter&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="#000000" d="M349.6758,-290.6973C352.8199,-289.7471 355.9507,-288.8376 359,-288 374.7874,-283.6634 455.8294,-266.162 521.038,-252.243"/>
+<polygon fill="#000000" stroke="#000000" points="521.8944,-255.6392 530.9442,-250.13 520.4341,-248.7932 521.8944,-255.6392"/>
+</g>
+<!-- comvanniktechemojitwitter&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge32" class="edge">
+<title>comvanniktechemojitwitter&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="#000000" d="M344.3654,-287.8314C365.1367,-278.2446 390.7983,-266.4008 412.7581,-256.2655"/>
+<polygon fill="#000000" stroke="#000000" points="414.3048,-259.4065 421.9177,-252.038 411.3714,-253.0508 414.3048,-259.4065"/>
+</g>
+<!-- Emojijvm -->
+<g id="node18" class="node">
+<title>Emojijvm</title>
+<polygon fill="none" stroke="#000000" points="54,-324 0,-324 0,-288 54,-288 54,-324"/>
+<text text-anchor="middle" x="27" y="-301.8" font-family="Times New Roman" font-size="14.00" fill="#000000">jvm</text>
+</g>
+<!-- Emojijvm&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge33" class="edge">
+<title>Emojijvm&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="#000000" d="M54.1912,-291.4632C57.1193,-290.1827 60.0915,-288.9968 63,-288 130.5028,-264.866 211.0507,-250.385 266.6965,-242.3116"/>
+<polygon fill="#000000" stroke="#000000" points="267.3799,-245.7498 276.7882,-240.8781 266.3954,-238.8193 267.3799,-245.7498"/>
+</g>
+</g>
+</svg>

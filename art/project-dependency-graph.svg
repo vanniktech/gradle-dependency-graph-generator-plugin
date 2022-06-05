@@ -1,0 +1,187 @@
+<svg width="1031pt" height="235pt"
+ viewBox="0.00 0.00 1031.29 235.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 231)">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-231 1027.29,-231 1027.29,4 -4,4"/>
+<text text-anchor="middle" x="511.64" y="-195" font-family="Times,serif" font-size="35.00">Emoji</text>
+<!-- :app -->
+<g id="node1" class="node">
+<title>:app</title>
+<ellipse fill="#81c784" stroke="black" cx="488.75" cy="-162" rx="27.9" ry="18"/>
+<text text-anchor="middle" x="488.75" y="-158.3" font-family="Times New Roman" font-size="14.00">:app</text>
+</g>
+<!-- :app&#45;&gt;:app -->
+<g id="edge1" class="edge">
+<title>:app&#45;&gt;:app</title>
+<path fill="none" stroke="black" d="M509.06,-174.43C522.12,-177.68 534.69,-173.53 534.69,-162 534.69,-153.53 527.91,-149.05 519.14,-148.55"/>
+<polygon fill="black" stroke="black" points="518.66,-145.08 509.06,-149.57 519.36,-152.04 518.66,-145.08"/>
+</g>
+<!-- :emoji&#45;ios -->
+<g id="node2" class="node">
+<title>:emoji&#45;ios</title>
+<ellipse fill="#81c784" stroke="black" cx="48.75" cy="-90" rx="48.99" ry="18"/>
+<text text-anchor="middle" x="48.75" y="-86.3" font-family="Times New Roman" font-size="14.00">:emoji&#45;ios</text>
+</g>
+<!-- :app&#45;&gt;:emoji&#45;ios -->
+<g id="edge2" class="edge">
+<title>:app&#45;&gt;:emoji&#45;ios</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M461.15,-157.75C400.09,-150.38 249.03,-131.26 123.75,-108 115.44,-106.46 106.66,-104.64 98.15,-102.78"/>
+<polygon fill="black" stroke="black" points="98.85,-99.35 88.33,-100.58 97.32,-106.18 98.85,-99.35"/>
+</g>
+<!-- :emoji&#45;google -->
+<g id="node4" class="node">
+<title>:emoji&#45;google</title>
+<ellipse fill="#81c784" stroke="black" cx="196.75" cy="-90" rx="63.89" ry="18"/>
+<text text-anchor="middle" x="196.75" y="-86.3" font-family="Times New Roman" font-size="14.00">:emoji&#45;google</text>
+</g>
+<!-- :app&#45;&gt;:emoji&#45;google -->
+<g id="edge3" class="edge">
+<title>:app&#45;&gt;:emoji&#45;google</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M463.09,-154.85C416.46,-143.67 316.79,-119.78 253.47,-104.6"/>
+<polygon fill="black" stroke="black" points="254.18,-101.17 243.64,-102.24 252.55,-107.98 254.18,-101.17"/>
+</g>
+<!-- :emoji&#45;google&#45;compat -->
+<g id="node5" class="node">
+<title>:emoji&#45;google&#45;compat</title>
+<ellipse fill="#81c784" stroke="black" cx="392.75" cy="-90" rx="96.38" ry="18"/>
+<text text-anchor="middle" x="392.75" y="-86.3" font-family="Times New Roman" font-size="14.00">:emoji&#45;google&#45;compat</text>
+</g>
+<!-- :app&#45;&gt;:emoji&#45;google&#45;compat -->
+<g id="edge4" class="edge">
+<title>:app&#45;&gt;:emoji&#45;google&#45;compat</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M470.69,-147.83C457.49,-138.21 439.26,-124.92 423.75,-113.61"/>
+<polygon fill="black" stroke="black" points="425.61,-110.63 415.47,-107.57 421.48,-116.29 425.61,-110.63"/>
+</g>
+<!-- :emoji&#45;twitter -->
+<g id="node6" class="node">
+<title>:emoji&#45;twitter</title>
+<ellipse fill="#81c784" stroke="black" cx="585.75" cy="-90" rx="61.19" ry="18"/>
+<text text-anchor="middle" x="585.75" y="-86.3" font-family="Times New Roman" font-size="14.00">:emoji&#45;twitter</text>
+</g>
+<!-- :app&#45;&gt;:emoji&#45;twitter -->
+<g id="edge5" class="edge">
+<title>:app&#45;&gt;:emoji&#45;twitter</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M506.99,-147.83C520.51,-138.08 539.26,-124.55 555.07,-113.14"/>
+<polygon fill="black" stroke="black" points="557.43,-115.75 563.5,-107.06 553.34,-110.07 557.43,-115.75"/>
+</g>
+<!-- :emoji&#45;facebook -->
+<g id="node7" class="node">
+<title>:emoji&#45;facebook</title>
+<ellipse fill="#81c784" stroke="black" cx="756.75" cy="-90" rx="73.39" ry="18"/>
+<text text-anchor="middle" x="756.75" y="-86.3" font-family="Times New Roman" font-size="14.00">:emoji&#45;facebook</text>
+</g>
+<!-- :app&#45;&gt;:emoji&#45;facebook -->
+<g id="edge6" class="edge">
+<title>:app&#45;&gt;:emoji&#45;facebook</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M514.44,-154.29C556.46,-143.31 640.93,-121.25 698.16,-106.3"/>
+<polygon fill="black" stroke="black" points="699.37,-109.6 708.16,-103.69 697.6,-102.83 699.37,-109.6"/>
+</g>
+<!-- :emoji&#45;material -->
+<g id="node8" class="node">
+<title>:emoji&#45;material</title>
+<ellipse fill="#81c784" stroke="black" cx="935.75" cy="-90" rx="69.59" ry="18"/>
+<text text-anchor="middle" x="935.75" y="-86.3" font-family="Times New Roman" font-size="14.00">:emoji&#45;material</text>
+</g>
+<!-- :app&#45;&gt;:emoji&#45;material -->
+<g id="edge7" class="edge">
+<title>:app&#45;&gt;:emoji&#45;material</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M516.09,-157.72C577.31,-150.22 730,-130.74 856.75,-108 862.82,-106.91 869.13,-105.69 875.43,-104.43"/>
+<polygon fill="black" stroke="black" points="876.19,-107.84 885.28,-102.4 874.78,-100.99 876.19,-107.84"/>
+</g>
+<!-- :emoji&#45;ios&#45;&gt;:emoji&#45;ios -->
+<g id="edge9" class="edge">
+<title>:emoji&#45;ios&#45;&gt;:emoji&#45;ios</title>
+<path fill="none" stroke="black" d="M82.4,-103.03C99.8,-105.03 115.49,-100.69 115.49,-90 115.49,-81.48 105.53,-77 92.68,-76.54"/>
+<polygon fill="black" stroke="black" points="92.24,-73.05 82.4,-76.97 92.54,-80.05 92.24,-73.05"/>
+</g>
+<!-- :emoji -->
+<g id="node3" class="node">
+<title>:emoji</title>
+<ellipse fill="#81c784" stroke="black" cx="488.75" cy="-18" rx="34.39" ry="18"/>
+<text text-anchor="middle" x="488.75" y="-14.3" font-family="Times New Roman" font-size="14.00">:emoji</text>
+</g>
+<!-- :emoji&#45;ios&#45;&gt;:emoji -->
+<g id="edge8" class="edge">
+<title>:emoji&#45;ios&#45;&gt;:emoji</title>
+<path fill="none" stroke="black" d="M88.33,-79.42C99.72,-76.82 112.19,-74.14 123.75,-72 239.32,-50.55 376.83,-32.61 445.39,-24.17"/>
+<polygon fill="black" stroke="black" points="445.88,-27.64 455.39,-22.95 445.04,-20.69 445.88,-27.64"/>
+</g>
+<!-- :emoji&#45;&gt;:emoji -->
+<g id="edge10" class="edge">
+<title>:emoji&#45;&gt;:emoji</title>
+<path fill="none" stroke="black" d="M513.29,-30.71C527.7,-33.42 541.19,-29.18 541.19,-18 541.19,-9.53 533.45,-5.04 523.42,-4.55"/>
+<polygon fill="black" stroke="black" points="523.01,-1.07 513.29,-5.29 523.52,-8.05 523.01,-1.07"/>
+</g>
+<!-- :emoji&#45;google&#45;&gt;:emoji -->
+<g id="edge11" class="edge">
+<title>:emoji&#45;google&#45;&gt;:emoji</title>
+<path fill="none" stroke="black" d="M243.66,-77.75C300.3,-64.17 394.62,-41.56 448.23,-28.71"/>
+<polygon fill="black" stroke="black" points="449.16,-32.09 458.07,-26.35 447.53,-25.28 449.16,-32.09"/>
+</g>
+<!-- :emoji&#45;google&#45;&gt;:emoji&#45;google -->
+<g id="edge12" class="edge">
+<title>:emoji&#45;google&#45;&gt;:emoji&#45;google</title>
+<path fill="none" stroke="black" d="M240.45,-103.23C260.73,-104.68 278.44,-100.27 278.44,-90 278.44,-81.5 266.29,-77.01 250.6,-76.54"/>
+<polygon fill="black" stroke="black" points="250.37,-73.05 240.45,-76.77 250.53,-80.04 250.37,-73.05"/>
+</g>
+<!-- :emoji&#45;google&#45;compat&#45;&gt;:emoji -->
+<g id="edge13" class="edge">
+<title>:emoji&#45;google&#45;compat&#45;&gt;:emoji</title>
+<path fill="none" stroke="black" d="M415.5,-72.41C429.22,-62.41 446.78,-49.6 461.27,-39.03"/>
+<polygon fill="black" stroke="black" points="463.38,-41.83 469.4,-33.11 459.26,-36.17 463.38,-41.83"/>
+</g>
+<!-- :emoji&#45;google&#45;compat&#45;&gt;:emoji&#45;google&#45;compat -->
+<g id="edge14" class="edge">
+<title>:emoji&#45;google&#45;compat&#45;&gt;:emoji&#45;google&#45;compat</title>
+<path fill="none" stroke="black" d="M457.31,-103.38C484.17,-104.3 506.94,-99.84 506.94,-90 506.94,-81.43 489.66,-76.94 467.45,-76.53"/>
+<polygon fill="black" stroke="black" points="467.28,-73.03 457.31,-76.62 467.34,-80.03 467.28,-73.03"/>
+</g>
+<!-- :emoji&#45;twitter&#45;&gt;:emoji -->
+<g id="edge15" class="edge">
+<title>:emoji&#45;twitter&#45;&gt;:emoji</title>
+<path fill="none" stroke="black" d="M563.73,-73.12C549.72,-63 531.44,-49.81 516.44,-38.99"/>
+<polygon fill="black" stroke="black" points="518.2,-35.94 508.04,-32.93 514.1,-41.62 518.2,-35.94"/>
+</g>
+<!-- :emoji&#45;twitter&#45;&gt;:emoji&#45;twitter -->
+<g id="edge16" class="edge">
+<title>:emoji&#45;twitter&#45;&gt;:emoji&#45;twitter</title>
+<path fill="none" stroke="black" d="M627.66,-103.2C647.45,-104.74 664.84,-100.34 664.84,-90 664.84,-81.52 653.14,-77.04 638.01,-76.55"/>
+<polygon fill="black" stroke="black" points="637.57,-73.05 627.66,-76.8 637.74,-80.05 637.57,-73.05"/>
+</g>
+<!-- :emoji&#45;facebook&#45;&gt;:emoji -->
+<g id="edge17" class="edge">
+<title>:emoji&#45;facebook&#45;&gt;:emoji</title>
+<path fill="none" stroke="black" d="M708.52,-76.4C657.17,-62.99 576.82,-42 528.82,-29.47"/>
+<polygon fill="black" stroke="black" points="529.65,-26.07 519.09,-26.93 527.88,-32.84 529.65,-26.07"/>
+</g>
+<!-- :emoji&#45;facebook&#45;&gt;:emoji&#45;facebook -->
+<g id="edge18" class="edge">
+<title>:emoji&#45;facebook&#45;&gt;:emoji&#45;facebook</title>
+<path fill="none" stroke="black" d="M806.6,-103.29C828.9,-104.55 848.19,-100.12 848.19,-90 848.19,-81.46 834.46,-76.97 816.77,-76.53"/>
+<polygon fill="black" stroke="black" points="816.54,-73.04 806.6,-76.71 816.66,-80.04 816.54,-73.04"/>
+</g>
+<!-- :emoji&#45;material&#45;&gt;:emoji -->
+<g id="edge19" class="edge">
+<title>:emoji&#45;material&#45;&gt;:emoji</title>
+<path fill="none" stroke="black" d="M885.28,-77.6C875.82,-75.62 866,-73.66 856.75,-72 739.81,-51.02 600.8,-32.81 531.9,-24.24"/>
+<polygon fill="black" stroke="black" points="532.21,-20.75 521.86,-22.99 531.35,-27.69 532.21,-20.75"/>
+</g>
+<!-- :emoji&#45;material&#45;&gt;:emoji&#45;material -->
+<g id="edge20" class="edge">
+<title>:emoji&#45;material&#45;&gt;:emoji&#45;material</title>
+<path fill="none" stroke="black" d="M983.03,-103.26C1004.57,-104.62 1023.29,-100.2 1023.29,-90 1023.29,-81.48 1010.21,-76.99 993.33,-76.54"/>
+<polygon fill="black" stroke="black" points="992.96,-73.04 983.03,-76.74 993.09,-80.04 992.96,-73.04"/>
+</g>
+<!-- :jvm -->
+<g id="node9" class="node">
+<title>:jvm</title>
+<polygon fill="#ffb74d" stroke="black" points="75.75,-180 21.75,-180 21.75,-144 75.75,-144 75.75,-180"/>
+<text text-anchor="middle" x="48.75" y="-158.3" font-family="Times New Roman" font-size="14.00">:jvm</text>
+</g>
+<!-- :jvm&#45;&gt;:emoji&#45;ios -->
+<g id="edge21" class="edge">
+<title>:jvm&#45;&gt;:emoji&#45;ios</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M48.75,-143.7C48.75,-135.98 48.75,-126.71 48.75,-118.11"/>
+<polygon fill="black" stroke="black" points="52.25,-118.1 48.75,-108.1 45.25,-118.1 52.25,-118.1"/>
+</g>
+</g>
+</svg>

@@ -1,0 +1,1657 @@
+<svg width="3682pt" height="836pt"
+ viewBox="0.00 0.00 3681.50 836.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 832)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-832 3677.5,-832 3677.5,4 -4,4"/>
+<!-- Emojiapp -->
+<g id="node1" class="node">
+<title>Emojiapp</title>
+<polygon fill="none" stroke="black" points="584.5,-828 530.5,-828 530.5,-792 584.5,-792 584.5,-828"/>
+<text text-anchor="middle" x="557.5" y="-806.3" font-family="Times New Roman" font-size="14.00">app</text>
+</g>
+<!-- androidxdatabindingviewbinding -->
+<g id="node2" class="node">
+<title>androidxdatabindingviewbinding</title>
+<polygon fill="none" stroke="black" points="3076,-684 2989,-684 2989,-648 3076,-648 3076,-684"/>
+<text text-anchor="middle" x="3032.5" y="-662.3" font-family="Times New Roman" font-size="14.00">viewbinding</text>
+</g>
+<!-- Emojiapp&#45;&gt;androidxdatabindingviewbinding -->
+<g id="edge1" class="edge">
+<title>Emojiapp&#45;&gt;androidxdatabindingviewbinding</title>
+<path fill="none" stroke="black" d="M584.6,-809.12C747.24,-809.66 1610.19,-809.76 2311.5,-756 2562,-736.8 2859.19,-693.59 2978.75,-675.37"/>
+<polygon fill="black" stroke="black" points="2979.39,-678.81 2988.75,-673.84 2978.34,-671.89 2979.39,-678.81"/>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="node4" class="node">
+<title>orgjetbrainskotlinkotlinstdlibjdk8</title>
+<polygon fill="none" stroke="black" points="255,-612 142,-612 142,-576 255,-576 255,-612"/>
+<text text-anchor="middle" x="198.5" y="-590.3" font-family="Times New Roman" font-size="14.00">kotlin&#45;stdlib&#45;jdk8</text>
+</g>
+<!-- Emojiapp&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge2" class="edge">
+<title>Emojiapp&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="black" d="M530.43,-807.2C461.36,-802.2 280.42,-786.48 229.5,-756 194.95,-735.32 187.4,-722.15 174.5,-684 167.49,-663.28 174.81,-639.31 183.15,-621.47"/>
+<polygon fill="black" stroke="black" points="186.43,-622.76 187.81,-612.25 180.18,-619.6 186.43,-622.76"/>
+</g>
+<!-- comvanniktechemojiios -->
+<g id="node9" class="node">
+<title>comvanniktechemojiios</title>
+<polygon fill="none" stroke="black" points="310,-756 239,-756 239,-720 310,-720 310,-756"/>
+<text text-anchor="middle" x="274.5" y="-734.3" font-family="Times New Roman" font-size="14.00">emoji&#45;ios</text>
+</g>
+<!-- Emojiapp&#45;&gt;comvanniktechemojiios -->
+<g id="edge3" class="edge">
+<title>Emojiapp&#45;&gt;comvanniktechemojiios</title>
+<path fill="none" stroke="black" d="M530.28,-804.34C487.3,-796.7 401.05,-780.16 320.2,-756.31"/>
+<polygon fill="black" stroke="black" points="320.95,-752.88 310.36,-753.36 318.94,-759.59 320.95,-752.88"/>
+</g>
+<!-- comvanniktechemojigoogle -->
+<g id="node40" class="node">
+<title>comvanniktechemojigoogle</title>
+<polygon fill="none" stroke="black" points="550,-756 455,-756 455,-720 550,-720 550,-756"/>
+<text text-anchor="middle" x="502.5" y="-734.3" font-family="Times New Roman" font-size="14.00">emoji&#45;google</text>
+</g>
+<!-- Emojiapp&#45;&gt;comvanniktechemojigoogle -->
+<g id="edge4" class="edge">
+<title>Emojiapp&#45;&gt;comvanniktechemojigoogle</title>
+<path fill="none" stroke="black" d="M543.9,-791.7C537.38,-783.39 529.43,-773.28 522.25,-764.14"/>
+<polygon fill="black" stroke="black" points="524.87,-761.81 515.94,-756.1 519.37,-766.13 524.87,-761.81"/>
+</g>
+<!-- comvanniktechemojigooglecompat -->
+<g id="node41" class="node">
+<title>comvanniktechemojigooglecompat</title>
+<polygon fill="none" stroke="black" points="942.5,-756 798.5,-756 798.5,-720 942.5,-720 942.5,-756"/>
+<text text-anchor="middle" x="870.5" y="-734.3" font-family="Times New Roman" font-size="14.00">emoji&#45;google&#45;compat</text>
+</g>
+<!-- Emojiapp&#45;&gt;comvanniktechemojigooglecompat -->
+<g id="edge5" class="edge">
+<title>Emojiapp&#45;&gt;comvanniktechemojigooglecompat</title>
+<path fill="none" stroke="black" d="M584.73,-802.91C629.67,-792.86 721.08,-772.42 788.48,-757.34"/>
+<polygon fill="black" stroke="black" points="789.24,-760.76 798.24,-755.16 787.71,-753.93 789.24,-760.76"/>
+</g>
+<!-- comvanniktechemojitwitter -->
+<g id="node44" class="node">
+<title>comvanniktechemojitwitter</title>
+<polygon fill="none" stroke="black" points="658.5,-756 568.5,-756 568.5,-720 658.5,-720 658.5,-756"/>
+<text text-anchor="middle" x="613.5" y="-734.3" font-family="Times New Roman" font-size="14.00">emoji&#45;twitter</text>
+</g>
+<!-- Emojiapp&#45;&gt;comvanniktechemojitwitter -->
+<g id="edge6" class="edge">
+<title>Emojiapp&#45;&gt;comvanniktechemojitwitter</title>
+<path fill="none" stroke="black" d="M571.34,-791.7C577.99,-783.39 586.08,-773.28 593.39,-764.14"/>
+<polygon fill="black" stroke="black" points="596.3,-766.1 599.82,-756.1 590.84,-761.73 596.3,-766.1"/>
+</g>
+<!-- comvanniktechemojifacebook -->
+<g id="node45" class="node">
+<title>comvanniktechemojifacebook</title>
+<polygon fill="none" stroke="black" points="437,-756 328,-756 328,-720 437,-720 437,-756"/>
+<text text-anchor="middle" x="382.5" y="-734.3" font-family="Times New Roman" font-size="14.00">emoji&#45;facebook</text>
+</g>
+<!-- Emojiapp&#45;&gt;comvanniktechemojifacebook -->
+<g id="edge7" class="edge">
+<title>Emojiapp&#45;&gt;comvanniktechemojifacebook</title>
+<path fill="none" stroke="black" d="M530.16,-798.06C504.72,-787.89 466.13,-772.45 434.78,-759.91"/>
+<polygon fill="black" stroke="black" points="435.89,-756.59 425.31,-756.12 433.29,-763.09 435.89,-756.59"/>
+</g>
+<!-- comvanniktechemojimaterial -->
+<g id="node46" class="node">
+<title>comvanniktechemojimaterial</title>
+<polygon fill="none" stroke="black" points="780,-756 677,-756 677,-720 780,-720 780,-756"/>
+<text text-anchor="middle" x="728.5" y="-734.3" font-family="Times New Roman" font-size="14.00">emoji&#45;material</text>
+</g>
+<!-- Emojiapp&#45;&gt;comvanniktechemojimaterial -->
+<g id="edge8" class="edge">
+<title>Emojiapp&#45;&gt;comvanniktechemojimaterial</title>
+<path fill="none" stroke="black" d="M584.6,-797.91C609.41,-787.75 646.79,-772.45 677.24,-759.98"/>
+<polygon fill="black" stroke="black" points="678.93,-763.07 686.86,-756.05 676.28,-756.6 678.93,-763.07"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryandroid -->
+<g id="node62" class="node">
+<title>comsquareupleakcanaryleakcanaryandroid</title>
+<polygon fill="none" stroke="black" points="2824,-612 2693,-612 2693,-576 2824,-576 2824,-612"/>
+<text text-anchor="middle" x="2758.5" y="-590.3" font-family="Times New Roman" font-size="14.00">leakcanary&#45;android</text>
+</g>
+<!-- Emojiapp&#45;&gt;comsquareupleakcanaryleakcanaryandroid -->
+<g id="edge9" class="edge">
+<title>Emojiapp&#45;&gt;comsquareupleakcanaryleakcanaryandroid</title>
+<path fill="none" stroke="black" d="M584.61,-806.98C764.3,-793.49 1802.07,-713.85 2643.5,-612 2656.27,-610.45 2669.82,-608.62 2682.95,-606.75"/>
+<polygon fill="black" stroke="black" points="2683.51,-610.2 2692.9,-605.31 2682.5,-603.28 2683.51,-610.2"/>
+</g>
+<!-- comjakewhartontimbertimber -->
+<g id="node75" class="node">
+<title>comjakewhartontimbertimber</title>
+<polygon fill="none" stroke="black" points="55,-684 0,-684 0,-648 55,-648 55,-684"/>
+<text text-anchor="middle" x="27.5" y="-662.3" font-family="Times New Roman" font-size="14.00">timber</text>
+</g>
+<!-- Emojiapp&#45;&gt;comjakewhartontimbertimber -->
+<g id="edge10" class="edge">
+<title>Emojiapp&#45;&gt;comjakewhartontimbertimber</title>
+<path fill="none" stroke="black" d="M530.35,-808.26C444.92,-805.56 182.93,-794.27 108.5,-756 80.54,-741.62 57.46,-713.39 43.18,-692.56"/>
+<polygon fill="black" stroke="black" points="46.06,-690.56 37.62,-684.15 40.22,-694.42 46.06,-690.56"/>
+</g>
+<!-- androidxannotationannotation -->
+<g id="node3" class="node">
+<title>androidxannotationannotation</title>
+<polygon fill="none" stroke="black" points="1977.5,-36 1897.5,-36 1897.5,0 1977.5,0 1977.5,-36"/>
+<text text-anchor="middle" x="1937.5" y="-14.3" font-family="Times New Roman" font-size="14.00">annotation</text>
+</g>
+<!-- androidxdatabindingviewbinding&#45;&gt;androidxannotationannotation -->
+<g id="edge11" class="edge">
+<title>androidxdatabindingviewbinding&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M3076.05,-664.68C3220.33,-662.45 3673.5,-645.67 3673.5,-523 3673.5,-523 3673.5,-523 3673.5,-161 3673.5,-74.1 2273.33,-28.76 1987.92,-20.42"/>
+<polygon fill="black" stroke="black" points="1987.95,-16.92 1977.86,-20.12 1987.75,-23.91 1987.95,-16.92"/>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlibjdk7 -->
+<g id="node5" class="node">
+<title>orgjetbrainskotlinkotlinstdlibjdk7</title>
+<polygon fill="none" stroke="black" points="205,-540 92,-540 92,-504 205,-504 205,-540"/>
+<text text-anchor="middle" x="148.5" y="-518.3" font-family="Times New Roman" font-size="14.00">kotlin&#45;stdlib&#45;jdk7</text>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlibjdk8&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk7 -->
+<g id="edge12" class="edge">
+<title>orgjetbrainskotlinkotlinstdlibjdk8&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk7</title>
+<path fill="none" stroke="black" d="M186.14,-575.7C180.27,-567.47 173.13,-557.48 166.66,-548.42"/>
+<polygon fill="black" stroke="black" points="169.38,-546.21 160.72,-540.1 163.68,-550.28 169.38,-546.21"/>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlib -->
+<g id="node6" class="node">
+<title>orgjetbrainskotlinkotlinstdlib</title>
+<polygon fill="none" stroke="black" points="343.5,-468 259.5,-468 259.5,-432 343.5,-432 343.5,-468"/>
+<text text-anchor="middle" x="301.5" y="-446.3" font-family="Times New Roman" font-size="14.00">kotlin&#45;stdlib</text>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlibjdk8&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge13" class="edge">
+<title>orgjetbrainskotlinkotlinstdlibjdk8&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="black" d="M141.8,-581.15C119.36,-573.39 95.79,-560.68 82.5,-540 73.85,-526.54 72.61,-516.57 82.5,-504 102.87,-478.12 191.19,-463.35 249.26,-456.28"/>
+<polygon fill="black" stroke="black" points="249.85,-459.73 259.38,-455.09 249.03,-452.78 249.85,-459.73"/>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlibjdk7&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge14" class="edge">
+<title>orgjetbrainskotlinkotlinstdlibjdk7&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="black" d="M185.93,-503.88C206.75,-494.35 232.85,-482.41 254.98,-472.28"/>
+<polygon fill="black" stroke="black" points="256.56,-475.41 264.19,-468.07 253.64,-469.05 256.56,-475.41"/>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlibcommon -->
+<g id="node7" class="node">
+<title>orgjetbrainskotlinkotlinstdlibcommon</title>
+<polygon fill="none" stroke="black" points="292.5,-396 150.5,-396 150.5,-360 292.5,-360 292.5,-396"/>
+<text text-anchor="middle" x="221.5" y="-374.3" font-family="Times New Roman" font-size="14.00">kotlin&#45;stdlib&#45;common</text>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlib&#45;&gt;orgjetbrainskotlinkotlinstdlibcommon -->
+<g id="edge15" class="edge">
+<title>orgjetbrainskotlinkotlinstdlib&#45;&gt;orgjetbrainskotlinkotlinstdlibcommon</title>
+<path fill="none" stroke="black" d="M281.72,-431.7C271.75,-422.97 259.49,-412.24 248.64,-402.75"/>
+<polygon fill="black" stroke="black" points="250.88,-400.06 241.05,-396.1 246.27,-405.32 250.88,-400.06"/>
+</g>
+<!-- orgjetbrainsannotations -->
+<g id="node8" class="node">
+<title>orgjetbrainsannotations</title>
+<polygon fill="none" stroke="black" points="452.5,-396 310.5,-396 310.5,-360 452.5,-360 452.5,-396"/>
+<text text-anchor="middle" x="381.5" y="-374.3" font-family="Times New Roman" font-size="14.00">jetbrains&#45;annotations</text>
+</g>
+<!-- orgjetbrainskotlinkotlinstdlib&#45;&gt;orgjetbrainsannotations -->
+<g id="edge16" class="edge">
+<title>orgjetbrainskotlinkotlinstdlib&#45;&gt;orgjetbrainsannotations</title>
+<path fill="none" stroke="black" d="M321.28,-431.7C331.25,-422.97 343.51,-412.24 354.36,-402.75"/>
+<polygon fill="black" stroke="black" points="356.73,-405.32 361.95,-396.1 352.12,-400.06 356.73,-405.32"/>
+</g>
+<!-- comvanniktechemojiios&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge18" class="edge">
+<title>comvanniktechemojiios&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="black" d="M238.6,-725.8C218.87,-717.61 196.11,-704.31 184.5,-684 173.64,-665.01 178.83,-640.2 185.77,-621.6"/>
+<polygon fill="black" stroke="black" points="189.05,-622.83 189.6,-612.25 182.57,-620.18 189.05,-622.83"/>
+</g>
+<!-- comvanniktechemoji -->
+<g id="node10" class="node">
+<title>comvanniktechemoji</title>
+<polygon fill="none" stroke="black" points="698.5,-684 644.5,-684 644.5,-648 698.5,-648 698.5,-684"/>
+<text text-anchor="middle" x="671.5" y="-662.3" font-family="Times New Roman" font-size="14.00">emoji</text>
+</g>
+<!-- comvanniktechemojiios&#45;&gt;comvanniktechemoji -->
+<g id="edge17" class="edge">
+<title>comvanniktechemojiios&#45;&gt;comvanniktechemoji</title>
+<path fill="none" stroke="black" d="M310.31,-722.43C313.06,-721.54 315.81,-720.71 318.5,-720 377.72,-704.32 556,-681.25 634.13,-671.55"/>
+<polygon fill="black" stroke="black" points="634.97,-674.98 644.47,-670.28 634.11,-668.03 634.97,-674.98"/>
+</g>
+<!-- orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="node38" class="node">
+<title>orgjetbrainskotlinkotlinparcelizeruntime</title>
+<polygon fill="none" stroke="black" points="449,-612 292,-612 292,-576 449,-576 449,-612"/>
+<text text-anchor="middle" x="370.5" y="-590.3" font-family="Times New Roman" font-size="14.00">kotlin&#45;parcelize&#45;runtime</text>
+</g>
+<!-- comvanniktechemojiios&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge19" class="edge">
+<title>comvanniktechemojiios&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="black" d="M284.33,-719.93C294.95,-701.76 312.64,-672.34 329.5,-648 335.93,-638.72 343.37,-628.87 350.14,-620.21"/>
+<polygon fill="black" stroke="black" points="352.91,-622.34 356.36,-612.32 347.42,-618 352.91,-622.34"/>
+</g>
+<!-- orgjetbrainskotlinkotlintestjunit -->
+<g id="node39" class="node">
+<title>orgjetbrainskotlinkotlintestjunit</title>
+<polygon fill="none" stroke="black" points="631.5,-612 527.5,-612 527.5,-576 631.5,-576 631.5,-612"/>
+<text text-anchor="middle" x="579.5" y="-590.3" font-family="Times New Roman" font-size="14.00">kotlin&#45;test&#45;junit</text>
+</g>
+<!-- comvanniktechemojiios&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge20" class="edge">
+<title>comvanniktechemojiios&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="black" d="M310.08,-720.43C365.42,-694.67 472.09,-645.01 533.3,-616.51"/>
+<polygon fill="black" stroke="black" points="535.13,-619.52 542.72,-612.12 532.18,-613.17 535.13,-619.52"/>
+</g>
+<!-- comvanniktechemoji&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge23" class="edge">
+<title>comvanniktechemoji&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="black" d="M644.05,-661.88C580.35,-654.49 417.58,-634.85 282.5,-612 276.86,-611.05 271.02,-610 265.17,-608.9"/>
+<polygon fill="black" stroke="black" points="265.82,-605.46 255.34,-607.02 264.5,-612.34 265.82,-605.46"/>
+</g>
+<!-- androidxappcompatappcompat -->
+<g id="node11" class="node">
+<title>androidxappcompatappcompat</title>
+<polygon fill="none" stroke="black" points="1666.5,-540 1582.5,-540 1582.5,-504 1666.5,-504 1666.5,-540"/>
+<text text-anchor="middle" x="1624.5" y="-518.3" font-family="Times New Roman" font-size="14.00">appcompat</text>
+</g>
+<!-- comvanniktechemoji&#45;&gt;androidxappcompatappcompat -->
+<g id="edge24" class="edge">
+<title>comvanniktechemoji&#45;&gt;androidxappcompatappcompat</title>
+<path fill="none" stroke="black" d="M698.81,-661.51C805.84,-647.71 1207.03,-595.1 1535.5,-540 1547.5,-537.99 1560.37,-535.64 1572.49,-533.34"/>
+<polygon fill="black" stroke="black" points="1573.3,-536.75 1582.47,-531.43 1571.99,-529.88 1573.3,-536.75"/>
+</g>
+<!-- androidxcardviewcardview -->
+<g id="node36" class="node">
+<title>androidxcardviewcardview</title>
+<polygon fill="none" stroke="black" points="757.5,-612 687.5,-612 687.5,-576 757.5,-576 757.5,-612"/>
+<text text-anchor="middle" x="722.5" y="-590.3" font-family="Times New Roman" font-size="14.00">cardview</text>
+</g>
+<!-- comvanniktechemoji&#45;&gt;androidxcardviewcardview -->
+<g id="edge25" class="edge">
+<title>comvanniktechemoji&#45;&gt;androidxcardviewcardview</title>
+<path fill="none" stroke="black" d="M684.11,-647.7C690.1,-639.47 697.38,-629.48 703.98,-620.42"/>
+<polygon fill="black" stroke="black" points="706.98,-622.25 710.04,-612.1 701.32,-618.13 706.98,-622.25"/>
+</g>
+<!-- androidxrecyclerviewrecyclerview -->
+<g id="node37" class="node">
+<title>androidxrecyclerviewrecyclerview</title>
+<polygon fill="none" stroke="black" points="1494,-468 1403,-468 1403,-432 1494,-432 1494,-468"/>
+<text text-anchor="middle" x="1448.5" y="-446.3" font-family="Times New Roman" font-size="14.00">recyclerview</text>
+</g>
+<!-- comvanniktechemoji&#45;&gt;androidxrecyclerviewrecyclerview -->
+<g id="edge26" class="edge">
+<title>comvanniktechemoji&#45;&gt;androidxrecyclerviewrecyclerview</title>
+<path fill="none" stroke="black" d="M667.23,-647.83C663.39,-627.88 660.76,-595.27 678.5,-576 702.93,-549.47 1219.87,-480.54 1392.75,-458.14"/>
+<polygon fill="black" stroke="black" points="1393.44,-461.58 1402.91,-456.83 1392.54,-454.64 1393.44,-461.58"/>
+</g>
+<!-- comvanniktechemoji&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge21" class="edge">
+<title>comvanniktechemoji&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="black" d="M644.42,-652.92C639.83,-651.12 635.07,-649.4 630.5,-648 574.44,-630.84 509.86,-617.64 459.09,-608.71"/>
+<polygon fill="black" stroke="black" points="459.58,-605.24 449.13,-606.98 458.38,-612.14 459.58,-605.24"/>
+</g>
+<!-- comvanniktechemoji&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge22" class="edge">
+<title>comvanniktechemoji&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="black" d="M648.76,-647.7C637.06,-638.8 622.64,-627.82 609.99,-618.2"/>
+<polygon fill="black" stroke="black" points="612.06,-615.37 601.98,-612.1 607.82,-620.94 612.06,-615.37"/>
+</g>
+<!-- androidxappcompatappcompat&#45;&gt;androidxannotationannotation -->
+<g id="edge34" class="edge">
+<title>androidxappcompatappcompat&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1666.57,-506.02C1669.57,-505.25 1672.57,-504.56 1675.5,-504 1957.95,-450.06 2038.32,-517.99 2321.5,-468 2430.33,-448.79 2464.11,-451.81 2559.5,-396 2599.38,-372.67 2614.06,-365.44 2634.5,-324 2687.04,-217.47 2653.67,-121.08 2545.5,-72 2446.49,-27.07 2115.47,-20.12 1988.07,-19.13"/>
+<polygon fill="black" stroke="black" points="1987.84,-15.62 1977.82,-19.06 1987.79,-22.62 1987.84,-15.62"/>
+</g>
+<!-- androidxdrawerlayoutdrawerlayout -->
+<g id="node12" class="node">
+<title>androidxdrawerlayoutdrawerlayout</title>
+<polygon fill="none" stroke="black" points="1683.5,-396 1589.5,-396 1589.5,-360 1683.5,-360 1683.5,-396"/>
+<text text-anchor="middle" x="1636.5" y="-374.3" font-family="Times New Roman" font-size="14.00">drawerlayout</text>
+</g>
+<!-- androidxappcompatappcompat&#45;&gt;androidxdrawerlayoutdrawerlayout -->
+<g id="edge27" class="edge">
+<title>androidxappcompatappcompat&#45;&gt;androidxdrawerlayoutdrawerlayout</title>
+<path fill="none" stroke="black" d="M1635.55,-503.61C1641.24,-493.62 1647.58,-480.58 1650.5,-468 1655.29,-447.37 1651.09,-423.66 1646.08,-405.9"/>
+<polygon fill="black" stroke="black" points="1649.38,-404.73 1643.09,-396.2 1642.69,-406.79 1649.38,-404.73"/>
+</g>
+<!-- androidxcorecore -->
+<g id="node14" class="node">
+<title>androidxcorecore</title>
+<polygon fill="none" stroke="black" points="1852.5,-252 1798.5,-252 1798.5,-216 1852.5,-216 1852.5,-252"/>
+<text text-anchor="middle" x="1825.5" y="-230.3" font-family="Times New Roman" font-size="14.00">core</text>
+</g>
+<!-- androidxappcompatappcompat&#45;&gt;androidxcorecore -->
+<g id="edge31" class="edge">
+<title>androidxappcompatappcompat&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M1649.89,-503.93C1680.58,-482.13 1732.03,-441.71 1763.5,-396 1779.01,-373.48 1803.94,-301.17 1816.96,-261.56"/>
+<polygon fill="black" stroke="black" points="1820.3,-262.61 1820.07,-252.01 1813.64,-260.43 1820.3,-262.61"/>
+</g>
+<!-- androidxfragmentfragment -->
+<g id="node21" class="node">
+<title>androidxfragmentfragment</title>
+<polygon fill="none" stroke="black" points="1298,-468 1227,-468 1227,-432 1298,-432 1298,-468"/>
+<text text-anchor="middle" x="1262.5" y="-446.3" font-family="Times New Roman" font-size="14.00">fragment</text>
+</g>
+<!-- androidxappcompatappcompat&#45;&gt;androidxfragmentfragment -->
+<g id="edge28" class="edge">
+<title>androidxappcompatappcompat&#45;&gt;androidxfragmentfragment</title>
+<path fill="none" stroke="black" d="M1582.27,-512.83C1513.74,-499.58 1378.89,-473.51 1308.2,-459.84"/>
+<polygon fill="black" stroke="black" points="1308.73,-456.37 1298.25,-457.91 1307.4,-463.25 1308.73,-456.37"/>
+</g>
+<!-- androidxactivityactivity -->
+<g id="node22" class="node">
+<title>androidxactivityactivity</title>
+<polygon fill="none" stroke="black" points="1311.5,-324 1253.5,-324 1253.5,-288 1311.5,-288 1311.5,-324"/>
+<text text-anchor="middle" x="1282.5" y="-302.3" font-family="Times New Roman" font-size="14.00">activity</text>
+</g>
+<!-- androidxappcompatappcompat&#45;&gt;androidxactivityactivity -->
+<g id="edge30" class="edge">
+<title>androidxappcompatappcompat&#45;&gt;androidxactivityactivity</title>
+<path fill="none" stroke="black" d="M1602.55,-503.82C1578.53,-485.29 1538.62,-455.33 1502.5,-432 1440.49,-391.95 1365.09,-350.62 1320.6,-326.94"/>
+<polygon fill="black" stroke="black" points="1322.07,-323.76 1311.59,-322.17 1318.79,-329.94 1322.07,-323.76"/>
+</g>
+<!-- androidxsavedstatesavedstate -->
+<g id="node24" class="node">
+<title>androidxsavedstatesavedstate</title>
+<polygon fill="none" stroke="black" points="1151.5,-180 1069.5,-180 1069.5,-144 1151.5,-144 1151.5,-180"/>
+<text text-anchor="middle" x="1110.5" y="-158.3" font-family="Times New Roman" font-size="14.00">savedstate</text>
+</g>
+<!-- androidxappcompatappcompat&#45;&gt;androidxsavedstatesavedstate -->
+<g id="edge33" class="edge">
+<title>androidxappcompatappcompat&#45;&gt;androidxsavedstatesavedstate</title>
+<path fill="none" stroke="black" d="M1582.06,-512.21C1567.36,-509.35 1550.74,-506.31 1535.5,-504 1324.88,-472.01 1189.12,-571.6 1068.5,-396 1023.2,-330.05 1041.87,-290.32 1071.5,-216 1075.43,-206.13 1081.66,-196.44 1087.99,-188.1"/>
+<polygon fill="black" stroke="black" points="1090.75,-190.24 1094.27,-180.25 1085.29,-185.87 1090.75,-190.24"/>
+</g>
+<!-- androidxappcompatappcompatresources -->
+<g id="node31" class="node">
+<title>androidxappcompatappcompatresources</title>
+<polygon fill="none" stroke="black" points="2312.5,-468 2164.5,-468 2164.5,-432 2312.5,-432 2312.5,-468"/>
+<text text-anchor="middle" x="2238.5" y="-446.3" font-family="Times New Roman" font-size="14.00">appcompat&#45;resources</text>
+</g>
+<!-- androidxappcompatappcompat&#45;&gt;androidxappcompatappcompatresources -->
+<g id="edge29" class="edge">
+<title>androidxappcompatappcompat&#45;&gt;androidxappcompatappcompatresources</title>
+<path fill="none" stroke="black" d="M1666.6,-506.15C1669.59,-505.34 1672.58,-504.62 1675.5,-504 1842.95,-468.69 2043.38,-456.9 2154.25,-452.96"/>
+<polygon fill="black" stroke="black" points="2154.49,-456.45 2164.37,-452.61 2154.26,-449.46 2154.49,-456.45"/>
+</g>
+<!-- androidxcursoradaptercursoradapter -->
+<g id="node35" class="node">
+<title>androidxcursoradaptercursoradapter</title>
+<polygon fill="none" stroke="black" points="2105.5,-108 2005.5,-108 2005.5,-72 2105.5,-72 2105.5,-108"/>
+<text text-anchor="middle" x="2055.5" y="-86.3" font-family="Times New Roman" font-size="14.00">cursoradapter</text>
+</g>
+<!-- androidxappcompatappcompat&#45;&gt;androidxcursoradaptercursoradapter -->
+<g id="edge32" class="edge">
+<title>androidxappcompatappcompat&#45;&gt;androidxcursoradaptercursoradapter</title>
+<path fill="none" stroke="black" d="M1666.74,-506.87C1779.6,-468.69 2081.39,-363.67 2106.5,-324 2141.21,-269.15 2039.9,-220.59 2026.5,-180 2021.49,-164.81 2022.54,-159.5 2026.5,-144 2028.88,-134.7 2033.26,-125.27 2037.92,-117"/>
+<polygon fill="black" stroke="black" points="2041.04,-118.59 2043.19,-108.22 2035.04,-114.99 2041.04,-118.59"/>
+</g>
+<!-- androidxdrawerlayoutdrawerlayout&#45;&gt;androidxannotationannotation -->
+<g id="edge37" class="edge">
+<title>androidxdrawerlayoutdrawerlayout&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1645.12,-359.83C1674.34,-302.12 1770.65,-116.21 1820.5,-72 1839.68,-54.99 1865.24,-42.57 1887.57,-34.04"/>
+<polygon fill="black" stroke="black" points="1889.05,-37.23 1897.24,-30.51 1886.65,-30.65 1889.05,-37.23"/>
+</g>
+<!-- androidxcustomviewcustomview -->
+<g id="node13" class="node">
+<title>androidxcustomviewcustomview</title>
+<polygon fill="none" stroke="black" points="1607.5,-324 1519.5,-324 1519.5,-288 1607.5,-288 1607.5,-324"/>
+<text text-anchor="middle" x="1563.5" y="-302.3" font-family="Times New Roman" font-size="14.00">customview</text>
+</g>
+<!-- androidxdrawerlayoutdrawerlayout&#45;&gt;androidxcustomviewcustomview -->
+<g id="edge35" class="edge">
+<title>androidxdrawerlayoutdrawerlayout&#45;&gt;androidxcustomviewcustomview</title>
+<path fill="none" stroke="black" d="M1618.46,-359.7C1609.44,-351.05 1598.38,-340.45 1588.56,-331.03"/>
+<polygon fill="black" stroke="black" points="1590.98,-328.5 1581.34,-324.1 1586.13,-333.55 1590.98,-328.5"/>
+</g>
+<!-- androidxdrawerlayoutdrawerlayout&#45;&gt;androidxcorecore -->
+<g id="edge36" class="edge">
+<title>androidxdrawerlayoutdrawerlayout&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M1653.47,-359.8C1672.5,-340.99 1704.74,-310.54 1735.5,-288 1752.41,-275.61 1772.4,-263.61 1789.24,-254.16"/>
+<polygon fill="black" stroke="black" points="1791.17,-257.09 1798.23,-249.19 1787.78,-250.97 1791.17,-257.09"/>
+</g>
+<!-- androidxcustomviewcustomview&#45;&gt;androidxannotationannotation -->
+<g id="edge39" class="edge">
+<title>androidxcustomviewcustomview&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1592.92,-287.94C1608.99,-278.15 1628.93,-265.2 1645.5,-252 1681.39,-223.41 1693.26,-217.65 1719.5,-180 1749.53,-136.91 1728.27,-106.93 1767.5,-72 1800.64,-42.5 1850.04,-29.42 1887.07,-23.62"/>
+<polygon fill="black" stroke="black" points="1887.76,-27.06 1897.16,-22.17 1886.76,-20.13 1887.76,-27.06"/>
+</g>
+<!-- androidxcustomviewcustomview&#45;&gt;androidxcorecore -->
+<g id="edge38" class="edge">
+<title>androidxcustomviewcustomview&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M1607.65,-293.2C1658.46,-279.63 1741.01,-257.57 1788.56,-244.87"/>
+<polygon fill="black" stroke="black" points="1789.68,-248.19 1798.44,-242.23 1787.88,-241.43 1789.68,-248.19"/>
+</g>
+<!-- androidxcorecore&#45;&gt;androidxannotationannotation -->
+<g id="edge42" class="edge">
+<title>androidxcorecore&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1821.91,-215.8C1816.36,-184.37 1809.15,-116.8 1838.5,-72 1850.01,-54.42 1869.38,-42.25 1887.95,-34.05"/>
+<polygon fill="black" stroke="black" points="1889.34,-37.26 1897.25,-30.22 1886.67,-30.79 1889.34,-37.26"/>
+</g>
+<!-- androidxlifecyclelifecycleruntime -->
+<g id="node15" class="node">
+<title>androidxlifecyclelifecycleruntime</title>
+<polygon fill="none" stroke="black" points="1677,-180 1562,-180 1562,-144 1677,-144 1677,-180"/>
+<text text-anchor="middle" x="1619.5" y="-158.3" font-family="Times New Roman" font-size="14.00">lifecycle&#45;runtime</text>
+</g>
+<!-- androidxcorecore&#45;&gt;androidxlifecyclelifecycleruntime -->
+<g id="edge40" class="edge">
+<title>androidxcorecore&#45;&gt;androidxlifecyclelifecycleruntime</title>
+<path fill="none" stroke="black" d="M1798.14,-223.7C1767.98,-213.45 1718.51,-196.65 1679.28,-183.31"/>
+<polygon fill="black" stroke="black" points="1680.13,-179.91 1669.54,-180 1677.88,-186.53 1680.13,-179.91"/>
+</g>
+<!-- androidxversionedparcelableversionedparcelable -->
+<g id="node18" class="node">
+<title>androidxversionedparcelableversionedparcelable</title>
+<polygon fill="none" stroke="black" points="2173,-180 2036,-180 2036,-144 2173,-144 2173,-180"/>
+<text text-anchor="middle" x="2104.5" y="-158.3" font-family="Times New Roman" font-size="14.00">versionedparcelable</text>
+</g>
+<!-- androidxcorecore&#45;&gt;androidxversionedparcelableversionedparcelable -->
+<g id="edge41" class="edge">
+<title>androidxcorecore&#45;&gt;androidxversionedparcelableversionedparcelable</title>
+<path fill="none" stroke="black" d="M1852.51,-226.22C1892.39,-216.22 1968.59,-197.1 2026.8,-182.49"/>
+<polygon fill="black" stroke="black" points="2027.86,-185.84 2036.71,-180.01 2026.16,-179.05 2027.86,-185.84"/>
+</g>
+<!-- androidxannotationannotationexperimental -->
+<g id="node20" class="node">
+<title>androidxannotationannotationexperimental</title>
+<polygon fill="none" stroke="black" points="975.5,-180 813.5,-180 813.5,-144 975.5,-144 975.5,-180"/>
+<text text-anchor="middle" x="894.5" y="-158.3" font-family="Times New Roman" font-size="14.00">annotation&#45;experimental</text>
+</g>
+<!-- androidxcorecore&#45;&gt;androidxannotationannotationexperimental -->
+<g id="edge43" class="edge">
+<title>androidxcorecore&#45;&gt;androidxannotationannotationexperimental</title>
+<path fill="none" stroke="black" d="M1798.37,-231.44C1699.48,-225.7 1349,-204.76 1060.5,-180 1036.25,-177.92 1010.05,-175.37 985.78,-172.89"/>
+<polygon fill="black" stroke="black" points="985.81,-169.38 975.5,-171.83 985.09,-176.34 985.81,-169.38"/>
+</g>
+<!-- androidxlifecyclelifecycleruntime&#45;&gt;androidxannotationannotation -->
+<g id="edge46" class="edge">
+<title>androidxlifecyclelifecycleruntime&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1628.47,-143.97C1640.15,-123.53 1662.55,-89.8 1691.5,-72 1752.03,-34.77 1834.95,-23.46 1887.38,-20.15"/>
+<polygon fill="black" stroke="black" points="1887.65,-23.64 1897.44,-19.59 1887.26,-16.65 1887.65,-23.64"/>
+</g>
+<!-- androidxlifecyclelifecyclecommon -->
+<g id="node16" class="node">
+<title>androidxlifecyclelifecyclecommon</title>
+<polygon fill="none" stroke="black" points="1639.5,-108 1517.5,-108 1517.5,-72 1639.5,-72 1639.5,-108"/>
+<text text-anchor="middle" x="1578.5" y="-86.3" font-family="Times New Roman" font-size="14.00">lifecycle&#45;common</text>
+</g>
+<!-- androidxlifecyclelifecycleruntime&#45;&gt;androidxlifecyclelifecyclecommon -->
+<g id="edge44" class="edge">
+<title>androidxlifecyclelifecycleruntime&#45;&gt;androidxlifecyclelifecyclecommon</title>
+<path fill="none" stroke="black" d="M1609.37,-143.7C1604.65,-135.64 1598.94,-125.89 1593.72,-116.98"/>
+<polygon fill="black" stroke="black" points="1596.59,-114.96 1588.52,-108.1 1590.55,-118.5 1596.59,-114.96"/>
+</g>
+<!-- androidxarchcorecorecommon -->
+<g id="node17" class="node">
+<title>androidxarchcorecorecommon</title>
+<polygon fill="none" stroke="black" points="1949,-108 1848,-108 1848,-72 1949,-72 1949,-108"/>
+<text text-anchor="middle" x="1898.5" y="-86.3" font-family="Times New Roman" font-size="14.00">core&#45;common</text>
+</g>
+<!-- androidxlifecyclelifecycleruntime&#45;&gt;androidxarchcorecorecommon -->
+<g id="edge45" class="edge">
+<title>androidxlifecyclelifecycleruntime&#45;&gt;androidxarchcorecorecommon</title>
+<path fill="none" stroke="black" d="M1677.31,-146.5C1724.25,-134.72 1790.24,-118.16 1837.91,-106.2"/>
+<polygon fill="black" stroke="black" points="1838.94,-109.55 1847.79,-103.72 1837.24,-102.76 1838.94,-109.55"/>
+</g>
+<!-- androidxlifecyclelifecyclecommon&#45;&gt;androidxannotationannotation -->
+<g id="edge47" class="edge">
+<title>androidxlifecyclelifecyclecommon&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1639.85,-74.89C1644.47,-73.89 1649.05,-72.92 1653.5,-72 1735.12,-55.14 1830.43,-37.84 1887.27,-27.77"/>
+<polygon fill="black" stroke="black" points="1888.19,-31.16 1897.43,-25.98 1886.97,-24.27 1888.19,-31.16"/>
+</g>
+<!-- androidxarchcorecorecommon&#45;&gt;androidxannotationannotation -->
+<g id="edge48" class="edge">
+<title>androidxarchcorecorecommon&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1908.14,-71.7C1912.63,-63.64 1918.06,-53.89 1923.02,-44.98"/>
+<polygon fill="black" stroke="black" points="1926.16,-46.54 1927.97,-36.1 1920.05,-43.14 1926.16,-46.54"/>
+</g>
+<!-- androidxversionedparcelableversionedparcelable&#45;&gt;androidxannotationannotation -->
+<g id="edge50" class="edge">
+<title>androidxversionedparcelableversionedparcelable&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2112.91,-143.76C2121.03,-124.36 2130.01,-92.83 2114.5,-72 2099.24,-51.5 2034.43,-35.99 1987.65,-27.2"/>
+<polygon fill="black" stroke="black" points="1988.13,-23.73 1977.67,-25.37 1986.87,-30.62 1988.13,-23.73"/>
+</g>
+<!-- androidxcollectioncollection -->
+<g id="node19" class="node">
+<title>androidxcollectioncollection</title>
+<polygon fill="none" stroke="black" points="2390,-108 2317,-108 2317,-72 2390,-72 2390,-108"/>
+<text text-anchor="middle" x="2353.5" y="-86.3" font-family="Times New Roman" font-size="14.00">collection</text>
+</g>
+<!-- androidxversionedparcelableversionedparcelable&#45;&gt;androidxcollectioncollection -->
+<g id="edge49" class="edge">
+<title>androidxversionedparcelableversionedparcelable&#45;&gt;androidxcollectioncollection</title>
+<path fill="none" stroke="black" d="M2165.09,-143.97C2208.75,-131.69 2266.8,-115.37 2306.87,-104.11"/>
+<polygon fill="black" stroke="black" points="2307.97,-107.44 2316.65,-101.36 2306.08,-100.7 2307.97,-107.44"/>
+</g>
+<!-- androidxcollectioncollection&#45;&gt;androidxannotationannotation -->
+<g id="edge51" class="edge">
+<title>androidxcollectioncollection&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2316.93,-82.76C2298,-79.54 2274.51,-75.55 2253.5,-72 2159.72,-56.16 2050.24,-37.84 1987.88,-27.41"/>
+<polygon fill="black" stroke="black" points="1988.35,-23.94 1977.91,-25.75 1987.2,-30.85 1988.35,-23.94"/>
+</g>
+<!-- androidxfragmentfragment&#45;&gt;androidxannotationannotation -->
+<g id="edge61" class="edge">
+<title>androidxfragmentfragment&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1226.87,-448.21C1174.91,-445.68 1076.69,-435.54 1004.5,-396 879.09,-327.32 719.48,-258.97 804.5,-144 869.45,-56.17 931.99,-91.36 1039.5,-72 1204.28,-42.33 1723,-25.18 1887.16,-20.39"/>
+<polygon fill="black" stroke="black" points="1887.56,-23.88 1897.45,-20.1 1887.36,-16.89 1887.56,-23.88"/>
+</g>
+<!-- androidxfragmentfragment&#45;&gt;androidxcorecore -->
+<g id="edge55" class="edge">
+<title>androidxfragmentfragment&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M1292.81,-431.83C1310.41,-421.69 1332.91,-408.44 1352.5,-396 1388.4,-373.2 1471.05,-303.9 1510.5,-288 1605.6,-249.67 1727.65,-239.06 1788.11,-236.12"/>
+<polygon fill="black" stroke="black" points="1788.48,-239.61 1798.31,-235.67 1788.17,-232.62 1788.48,-239.61"/>
+</g>
+<!-- androidxfragmentfragment&#45;&gt;androidxcollectioncollection -->
+<g id="edge58" class="edge">
+<title>androidxfragmentfragment&#45;&gt;androidxcollectioncollection</title>
+<path fill="none" stroke="black" d="M1298.01,-443.76C1324.33,-440.03 1361.09,-435.14 1393.5,-432 1642.18,-407.91 1712.62,-458.59 1954.5,-396 2026.87,-377.27 2048.46,-371.11 2106.5,-324 2153.29,-286.02 2145.86,-258.59 2188.5,-216 2229.05,-175.49 2283.11,-136.94 2318.12,-113.63"/>
+<polygon fill="black" stroke="black" points="2320.17,-116.47 2326.58,-108.04 2316.31,-110.63 2320.17,-116.47"/>
+</g>
+<!-- androidxfragmentfragment&#45;&gt;androidxannotationannotationexperimental -->
+<g id="edge62" class="edge">
+<title>androidxfragmentfragment&#45;&gt;androidxannotationannotationexperimental</title>
+<path fill="none" stroke="black" d="M1226.92,-444.54C1186.45,-438.32 1119.41,-424.43 1068.5,-396 986.69,-350.31 961.06,-333.32 914.5,-252 903.65,-233.04 898.68,-208.68 896.41,-190.24"/>
+<polygon fill="black" stroke="black" points="899.88,-189.73 895.36,-180.15 892.92,-190.45 899.88,-189.73"/>
+</g>
+<!-- androidxfragmentfragment&#45;&gt;androidxactivityactivity -->
+<g id="edge52" class="edge">
+<title>androidxfragmentfragment&#45;&gt;androidxactivityactivity</title>
+<path fill="none" stroke="black" d="M1245.61,-431.99C1237.21,-422.31 1227.92,-409.46 1223.5,-396 1218.51,-380.8 1216.98,-374.61 1223.5,-360 1228.58,-348.6 1237.46,-338.63 1246.81,-330.51"/>
+<polygon fill="black" stroke="black" points="1249.13,-333.14 1254.7,-324.13 1244.72,-327.69 1249.13,-333.14"/>
+</g>
+<!-- androidxlifecyclelifecycleviewmodelsavedstate -->
+<g id="node23" class="node">
+<title>androidxlifecyclelifecycleviewmodelsavedstate</title>
+<polygon fill="none" stroke="black" points="1312,-252 1109,-252 1109,-216 1312,-216 1312,-252"/>
+<text text-anchor="middle" x="1210.5" y="-230.3" font-family="Times New Roman" font-size="14.00">lifecycle&#45;viewmodel&#45;savedstate</text>
+</g>
+<!-- androidxfragmentfragment&#45;&gt;androidxlifecyclelifecycleviewmodelsavedstate -->
+<g id="edge56" class="edge">
+<title>androidxfragmentfragment&#45;&gt;androidxlifecyclelifecycleviewmodelsavedstate</title>
+<path fill="none" stroke="black" d="M1226.78,-447.85C1190.5,-444.54 1135.99,-433.21 1109.5,-396 1081.66,-356.9 1084.67,-329.08 1109.5,-288 1117.61,-274.59 1130.36,-264.4 1144.11,-256.73"/>
+<polygon fill="black" stroke="black" points="1145.95,-259.72 1153.25,-252.04 1142.75,-253.49 1145.95,-259.72"/>
+</g>
+<!-- androidxfragmentfragment&#45;&gt;androidxsavedstatesavedstate -->
+<g id="edge57" class="edge">
+<title>androidxfragmentfragment&#45;&gt;androidxsavedstatesavedstate</title>
+<path fill="none" stroke="black" d="M1226.93,-449.62C1186.02,-448.17 1120.42,-438.77 1088.5,-396 1042.34,-334.13 1076.81,-235.76 1097.66,-189.15"/>
+<polygon fill="black" stroke="black" points="1100.86,-190.56 1101.86,-180.02 1094.5,-187.63 1100.86,-190.56"/>
+</g>
+<!-- androidxlifecyclelifecycleviewmodel -->
+<g id="node25" class="node">
+<title>androidxlifecyclelifecycleviewmodel</title>
+<polygon fill="none" stroke="black" points="1341.5,-180 1207.5,-180 1207.5,-144 1341.5,-144 1341.5,-180"/>
+<text text-anchor="middle" x="1274.5" y="-158.3" font-family="Times New Roman" font-size="14.00">lifecycle&#45;viewmodel</text>
+</g>
+<!-- androidxfragmentfragment&#45;&gt;androidxlifecyclelifecycleviewmodel -->
+<g id="edge59" class="edge">
+<title>androidxfragmentfragment&#45;&gt;androidxlifecyclelifecycleviewmodel</title>
+<path fill="none" stroke="black" d="M1241.23,-431.7C1231.39,-422.31 1220.74,-409.8 1215.5,-396 1209.82,-381.04 1212.46,-375.71 1215.5,-360 1222.06,-326.13 1220.84,-313.11 1244.5,-288 1270.13,-260.8 1300.51,-283.58 1320.5,-252 1333.77,-231.04 1317.97,-205.81 1301.38,-187.57"/>
+<polygon fill="black" stroke="black" points="1303.76,-185 1294.3,-180.22 1298.72,-189.85 1303.76,-185"/>
+</g>
+<!-- androidxlifecyclelifecyclelivedatacore -->
+<g id="node26" class="node">
+<title>androidxlifecyclelifecyclelivedatacore</title>
+<polygon fill="none" stroke="black" points="1543.5,-180 1397.5,-180 1397.5,-144 1543.5,-144 1543.5,-180"/>
+<text text-anchor="middle" x="1470.5" y="-158.3" font-family="Times New Roman" font-size="14.00">lifecycle&#45;livedata&#45;core</text>
+</g>
+<!-- androidxfragmentfragment&#45;&gt;androidxlifecyclelifecyclelivedatacore -->
+<g id="edge60" class="edge">
+<title>androidxfragmentfragment&#45;&gt;androidxlifecyclelifecyclelivedatacore</title>
+<path fill="none" stroke="black" d="M1255.98,-431.96C1249.9,-413.02 1243.52,-382.19 1256.5,-360 1272.98,-331.83 1293.65,-342.55 1320.5,-324 1341,-309.83 1342.86,-301.97 1363.5,-288 1391.49,-269.05 1407.46,-276.73 1430.5,-252 1446.85,-234.45 1457.35,-209.1 1463.47,-189.94"/>
+<polygon fill="black" stroke="black" points="1466.84,-190.87 1466.35,-180.29 1460.13,-188.87 1466.84,-190.87"/>
+</g>
+<!-- androidxviewpagerviewpager -->
+<g id="node27" class="node">
+<title>androidxviewpagerviewpager</title>
+<polygon fill="none" stroke="black" points="1343.5,-396 1265.5,-396 1265.5,-360 1343.5,-360 1343.5,-396"/>
+<text text-anchor="middle" x="1304.5" y="-374.3" font-family="Times New Roman" font-size="14.00">viewpager</text>
+</g>
+<!-- androidxfragmentfragment&#45;&gt;androidxviewpagerviewpager -->
+<g id="edge53" class="edge">
+<title>androidxfragmentfragment&#45;&gt;androidxviewpagerviewpager</title>
+<path fill="none" stroke="black" d="M1272.88,-431.7C1277.76,-423.56 1283.69,-413.69 1289.08,-404.7"/>
+<polygon fill="black" stroke="black" points="1292.09,-406.48 1294.24,-396.1 1286.09,-402.88 1292.09,-406.48"/>
+</g>
+<!-- androidxloaderloader -->
+<g id="node28" class="node">
+<title>androidxloaderloader</title>
+<polygon fill="none" stroke="black" points="2097.5,-324 2043.5,-324 2043.5,-288 2097.5,-288 2097.5,-324"/>
+<text text-anchor="middle" x="2070.5" y="-302.3" font-family="Times New Roman" font-size="14.00">loader</text>
+</g>
+<!-- androidxfragmentfragment&#45;&gt;androidxloaderloader -->
+<g id="edge54" class="edge">
+<title>androidxfragmentfragment&#45;&gt;androidxloaderloader</title>
+<path fill="none" stroke="black" d="M1298.07,-444.29C1324.41,-440.83 1361.19,-436.04 1393.5,-432 1526.31,-415.39 1560.71,-419.37 1692.5,-396 1818.78,-373.6 1966.12,-335.35 2033.48,-317.17"/>
+<polygon fill="black" stroke="black" points="2034.47,-320.53 2043.21,-314.53 2032.64,-313.77 2034.47,-320.53"/>
+</g>
+<!-- androidxactivityactivity&#45;&gt;androidxannotationannotation -->
+<g id="edge68" class="edge">
+<title>androidxactivityactivity&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1311.78,-289.19C1336.2,-275.75 1367.62,-257.73 1371.5,-252 1398.73,-211.76 1361.33,-184.29 1388.5,-144 1423.27,-92.43 1449.69,-92.25 1508.5,-72 1639.83,-26.77 1805.5,-19.24 1887.21,-18.54"/>
+<polygon fill="black" stroke="black" points="1887.24,-22.04 1897.22,-18.48 1887.21,-15.04 1887.24,-22.04"/>
+</g>
+<!-- androidxactivityactivity&#45;&gt;androidxcorecore -->
+<g id="edge63" class="edge">
+<title>androidxactivityactivity&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M1311.82,-300.66C1335.9,-297.14 1370.89,-292.1 1401.5,-288 1544.11,-268.9 1714.02,-248.32 1787.99,-239.46"/>
+<polygon fill="black" stroke="black" points="1788.68,-242.91 1798.2,-238.24 1787.85,-235.96 1788.68,-242.91"/>
+</g>
+<!-- androidxactivityactivity&#45;&gt;androidxlifecyclelifecycleruntime -->
+<g id="edge64" class="edge">
+<title>androidxactivityactivity&#45;&gt;androidxlifecyclelifecycleruntime</title>
+<path fill="none" stroke="black" d="M1311.74,-295.46C1341.82,-285.42 1389.89,-268.79 1430.5,-252 1481.48,-230.92 1538.61,-203.47 1576.57,-184.66"/>
+<polygon fill="black" stroke="black" points="1578.4,-187.66 1585.8,-180.08 1575.29,-181.39 1578.4,-187.66"/>
+</g>
+<!-- androidxactivityactivity&#45;&gt;androidxlifecyclelifecycleviewmodelsavedstate -->
+<g id="edge65" class="edge">
+<title>androidxactivityactivity&#45;&gt;androidxlifecyclelifecycleviewmodelsavedstate</title>
+<path fill="none" stroke="black" d="M1264.7,-287.7C1255.9,-279.14 1245.12,-268.66 1235.5,-259.3"/>
+<polygon fill="black" stroke="black" points="1237.7,-256.57 1228.09,-252.1 1232.82,-261.58 1237.7,-256.57"/>
+</g>
+<!-- androidxactivityactivity&#45;&gt;androidxsavedstatesavedstate -->
+<g id="edge66" class="edge">
+<title>androidxactivityactivity&#45;&gt;androidxsavedstatesavedstate</title>
+<path fill="none" stroke="black" d="M1253.46,-300.85C1206.69,-293.52 1118.03,-276.66 1099.5,-252 1086.2,-234.3 1091.07,-208.8 1098.03,-189.63"/>
+<polygon fill="black" stroke="black" points="1101.31,-190.84 1101.77,-180.25 1094.81,-188.24 1101.31,-190.84"/>
+</g>
+<!-- androidxactivityactivity&#45;&gt;androidxlifecyclelifecycleviewmodel -->
+<g id="edge67" class="edge">
+<title>androidxactivityactivity&#45;&gt;androidxlifecyclelifecycleviewmodel</title>
+<path fill="none" stroke="black" d="M1311.78,-291.8C1327.54,-282.98 1345.54,-269.73 1354.5,-252 1361.72,-237.72 1362.07,-230.1 1354.5,-216 1347.71,-203.36 1336.44,-193.23 1324.47,-185.35"/>
+<polygon fill="black" stroke="black" points="1326.05,-182.21 1315.68,-180 1322.41,-188.19 1326.05,-182.21"/>
+</g>
+<!-- androidxlifecyclelifecycleviewmodelsavedstate&#45;&gt;androidxannotationannotation -->
+<g id="edge72" class="edge">
+<title>androidxlifecyclelifecycleviewmodelsavedstate&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1202.39,-215.84C1194.79,-197.06 1186.27,-166.63 1198.5,-144 1226.29,-92.6 1253.26,-91.03 1308.5,-72 1415.31,-35.2 1758.03,-23.3 1887.42,-20.06"/>
+<polygon fill="black" stroke="black" points="1887.54,-23.56 1897.45,-19.82 1887.37,-16.56 1887.54,-23.56"/>
+</g>
+<!-- androidxlifecyclelifecycleviewmodelsavedstate&#45;&gt;androidxsavedstatesavedstate -->
+<g id="edge69" class="edge">
+<title>androidxlifecyclelifecycleviewmodelsavedstate&#45;&gt;androidxsavedstatesavedstate</title>
+<path fill="none" stroke="black" d="M1186.04,-215.88C1173.2,-206.89 1157.3,-195.76 1143.41,-186.03"/>
+<polygon fill="black" stroke="black" points="1145.26,-183.06 1135.06,-180.19 1141.24,-188.79 1145.26,-183.06"/>
+</g>
+<!-- androidxlifecyclelifecycleviewmodelsavedstate&#45;&gt;androidxlifecyclelifecycleviewmodel -->
+<g id="edge70" class="edge">
+<title>androidxlifecyclelifecycleviewmodelsavedstate&#45;&gt;androidxlifecyclelifecycleviewmodel</title>
+<path fill="none" stroke="black" d="M1226.32,-215.7C1234.07,-207.22 1243.54,-196.86 1252.02,-187.58"/>
+<polygon fill="black" stroke="black" points="1254.7,-189.85 1258.86,-180.1 1249.53,-185.12 1254.7,-189.85"/>
+</g>
+<!-- androidxlifecyclelifecycleviewmodelsavedstate&#45;&gt;androidxlifecyclelifecyclelivedatacore -->
+<g id="edge71" class="edge">
+<title>androidxlifecyclelifecycleviewmodelsavedstate&#45;&gt;androidxlifecyclelifecyclelivedatacore</title>
+<path fill="none" stroke="black" d="M1273.77,-215.97C1311.05,-205.93 1358.36,-193.19 1397.25,-182.72"/>
+<polygon fill="black" stroke="black" points="1398.2,-186.09 1406.95,-180.11 1396.38,-179.33 1398.2,-186.09"/>
+</g>
+<!-- androidxsavedstatesavedstate&#45;&gt;androidxannotationannotation -->
+<g id="edge73" class="edge">
+<title>androidxsavedstatesavedstate&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1115.74,-143.75C1123.12,-122.77 1138.75,-88.14 1165.5,-72 1227.09,-34.84 1725.96,-22.76 1887.34,-19.81"/>
+<polygon fill="black" stroke="black" points="1887.54,-23.3 1897.47,-19.62 1887.41,-16.3 1887.54,-23.3"/>
+</g>
+<!-- androidxlifecyclelifecycleviewmodel&#45;&gt;androidxannotationannotation -->
+<g id="edge74" class="edge">
+<title>androidxlifecyclelifecycleviewmodel&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1284.55,-143.71C1297.82,-122.68 1323.33,-88.01 1355.5,-72 1448.18,-25.89 1762.88,-19.62 1886.78,-18.97"/>
+<polygon fill="black" stroke="black" points="1887.13,-22.46 1897.12,-18.92 1887.1,-15.46 1887.13,-22.46"/>
+</g>
+<!-- androidxlifecyclelifecyclelivedatacore&#45;&gt;androidxlifecyclelifecyclecommon -->
+<g id="edge75" class="edge">
+<title>androidxlifecyclelifecyclelivedatacore&#45;&gt;androidxlifecyclelifecyclecommon</title>
+<path fill="none" stroke="black" d="M1496.92,-143.88C1510.91,-134.81 1528.28,-123.55 1543.39,-113.76"/>
+<polygon fill="black" stroke="black" points="1545.49,-116.57 1551.98,-108.19 1541.68,-110.69 1545.49,-116.57"/>
+</g>
+<!-- androidxviewpagerviewpager&#45;&gt;androidxannotationannotation -->
+<g id="edge78" class="edge">
+<title>androidxviewpagerviewpager&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1265.37,-363.88C1217.2,-345.85 1135.87,-309.03 1087.5,-252 1055.49,-214.27 1042.05,-189.91 1060.5,-144 1077.02,-102.87 1089.33,-90.72 1129.5,-72 1197.96,-40.1 1720.9,-24.41 1887.02,-20.19"/>
+<polygon fill="black" stroke="black" points="1887.52,-23.68 1897.43,-19.93 1887.35,-16.68 1887.52,-23.68"/>
+</g>
+<!-- androidxviewpagerviewpager&#45;&gt;androidxcustomviewcustomview -->
+<g id="edge76" class="edge">
+<title>androidxviewpagerviewpager&#45;&gt;androidxcustomviewcustomview</title>
+<path fill="none" stroke="black" d="M1343.56,-366.44C1387.71,-354.51 1459.89,-335 1509.44,-321.61"/>
+<polygon fill="black" stroke="black" points="1510.61,-324.92 1519.35,-318.93 1508.78,-318.16 1510.61,-324.92"/>
+</g>
+<!-- androidxviewpagerviewpager&#45;&gt;androidxcorecore -->
+<g id="edge77" class="edge">
+<title>androidxviewpagerviewpager&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M1330.88,-359.96C1363.82,-339.53 1422.55,-305.79 1477.5,-288 1586.82,-252.6 1723.29,-240.61 1788.05,-236.74"/>
+<polygon fill="black" stroke="black" points="1788.4,-240.22 1798.18,-236.16 1788,-233.24 1788.4,-240.22"/>
+</g>
+<!-- androidxloaderloader&#45;&gt;androidxannotationannotation -->
+<g id="edge82" class="edge">
+<title>androidxloaderloader&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2086.21,-287.97C2116.22,-255.32 2178.99,-186.6 2181.5,-180 2187.18,-165.04 2186.14,-159.31 2181.5,-144 2170.36,-107.19 2164.72,-94.45 2133.5,-72 2090.41,-41.01 2030.19,-28.14 1987.91,-22.79"/>
+<polygon fill="black" stroke="black" points="1988.18,-19.3 1977.84,-21.62 1987.36,-26.26 1988.18,-19.3"/>
+</g>
+<!-- androidxloaderloader&#45;&gt;androidxcorecore -->
+<g id="edge79" class="edge">
+<title>androidxloaderloader&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M2043.4,-292.98C2038.81,-291.17 2034.06,-289.44 2029.5,-288 1958.74,-265.71 1937.26,-274.29 1866.5,-252 1865.08,-251.55 1863.63,-251.07 1862.18,-250.57"/>
+<polygon fill="black" stroke="black" points="1863.19,-247.21 1852.6,-247.02 1860.76,-253.78 1863.19,-247.21"/>
+</g>
+<!-- androidxloaderloader&#45;&gt;androidxlifecyclelifecycleviewmodel -->
+<g id="edge80" class="edge">
+<title>androidxloaderloader&#45;&gt;androidxlifecyclelifecycleviewmodel</title>
+<path fill="none" stroke="black" d="M2043.36,-293.78C2038.13,-291.76 2032.67,-289.74 2027.5,-288 1971.5,-269.11 1950.89,-281.17 1899.5,-252 1879.27,-240.52 1882.77,-225.43 1861.5,-216 1765.13,-173.29 1493.25,-191.78 1388.5,-180 1376.62,-178.66 1364.07,-177.02 1351.81,-175.3"/>
+<polygon fill="black" stroke="black" points="1352,-171.79 1341.61,-173.83 1351.01,-178.72 1352,-171.79"/>
+</g>
+<!-- androidxlifecyclelifecyclelivedata -->
+<g id="node29" class="node">
+<title>androidxlifecyclelifecyclelivedata</title>
+<polygon fill="none" stroke="black" points="2024.5,-252 1908.5,-252 1908.5,-216 2024.5,-216 2024.5,-252"/>
+<text text-anchor="middle" x="1966.5" y="-230.3" font-family="Times New Roman" font-size="14.00">lifecycle&#45;livedata</text>
+</g>
+<!-- androidxloaderloader&#45;&gt;androidxlifecyclelifecyclelivedata -->
+<g id="edge81" class="edge">
+<title>androidxloaderloader&#45;&gt;androidxlifecyclelifecyclelivedata</title>
+<path fill="none" stroke="black" d="M2045.06,-287.88C2031.71,-278.89 2015.18,-267.76 2000.72,-258.03"/>
+<polygon fill="black" stroke="black" points="2002.29,-254.87 1992.04,-252.19 1998.38,-260.68 2002.29,-254.87"/>
+</g>
+<!-- androidxlifecyclelifecyclelivedata&#45;&gt;androidxarchcorecorecommon -->
+<g id="edge85" class="edge">
+<title>androidxlifecyclelifecyclelivedata&#45;&gt;androidxarchcorecorecommon</title>
+<path fill="none" stroke="black" d="M1917.94,-215.97C1901.83,-207.73 1885.68,-196.06 1876.5,-180 1865.4,-160.58 1873.11,-135.67 1882.33,-117.14"/>
+<polygon fill="black" stroke="black" points="1885.54,-118.56 1887.2,-108.1 1879.38,-115.25 1885.54,-118.56"/>
+</g>
+<!-- androidxlifecyclelifecyclelivedata&#45;&gt;androidxlifecyclelifecyclelivedatacore -->
+<g id="edge83" class="edge">
+<title>androidxlifecyclelifecyclelivedata&#45;&gt;androidxlifecyclelifecyclelivedatacore</title>
+<path fill="none" stroke="black" d="M1908.47,-218.63C1903.76,-217.67 1899.06,-216.77 1894.5,-216 1747.06,-190.94 1705.3,-203 1553.89,-180.12"/>
+<polygon fill="black" stroke="black" points="1554.17,-176.62 1543.75,-178.56 1553.1,-183.54 1554.17,-176.62"/>
+</g>
+<!-- androidxarchcorecoreruntime -->
+<g id="node30" class="node">
+<title>androidxarchcorecoreruntime</title>
+<polygon fill="none" stroke="black" points="1979,-180 1886,-180 1886,-144 1979,-144 1979,-180"/>
+<text text-anchor="middle" x="1932.5" y="-158.3" font-family="Times New Roman" font-size="14.00">core&#45;runtime</text>
+</g>
+<!-- androidxlifecyclelifecyclelivedata&#45;&gt;androidxarchcorecoreruntime -->
+<g id="edge84" class="edge">
+<title>androidxlifecyclelifecyclelivedata&#45;&gt;androidxarchcorecoreruntime</title>
+<path fill="none" stroke="black" d="M1958.1,-215.7C1954.23,-207.73 1949.55,-198.1 1945.26,-189.26"/>
+<polygon fill="black" stroke="black" points="1948.33,-187.57 1940.81,-180.1 1942.03,-190.63 1948.33,-187.57"/>
+</g>
+<!-- androidxarchcorecoreruntime&#45;&gt;androidxannotationannotation -->
+<g id="edge87" class="edge">
+<title>androidxarchcorecoreruntime&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1943.13,-143.56C1948.6,-133.54 1954.7,-120.51 1957.5,-108 1961,-92.39 1960.37,-87.74 1957.5,-72 1955.89,-63.2 1952.9,-53.95 1949.71,-45.7"/>
+<polygon fill="black" stroke="black" points="1952.85,-44.12 1945.81,-36.21 1946.38,-46.79 1952.85,-44.12"/>
+</g>
+<!-- androidxarchcorecoreruntime&#45;&gt;androidxarchcorecorecommon -->
+<g id="edge86" class="edge">
+<title>androidxarchcorecoreruntime&#45;&gt;androidxarchcorecorecommon</title>
+<path fill="none" stroke="black" d="M1924.1,-143.7C1920.23,-135.73 1915.55,-126.1 1911.26,-117.26"/>
+<polygon fill="black" stroke="black" points="1914.33,-115.57 1906.81,-108.1 1908.03,-118.63 1914.33,-115.57"/>
+</g>
+<!-- androidxappcompatappcompatresources&#45;&gt;androidxannotationannotation -->
+<g id="edge91" class="edge">
+<title>androidxappcompatappcompatresources&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2312.55,-442.83C2368.22,-436.22 2445.41,-422.82 2508.5,-396 2559.9,-374.15 2581.37,-371.03 2611.5,-324 2637.58,-283.29 2636.12,-262.93 2624.5,-216 2603.98,-133.17 2576.51,-104.23 2497.5,-72 2405.78,-34.59 2107.73,-23.19 1987.99,-20.07"/>
+<polygon fill="black" stroke="black" points="1987.73,-16.56 1977.64,-19.81 1987.55,-23.56 1987.73,-16.56"/>
+</g>
+<!-- androidxappcompatappcompatresources&#45;&gt;androidxcorecore -->
+<g id="edge90" class="edge">
+<title>androidxappcompatappcompatresources&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M2164.41,-437.47C2124.72,-429.4 2075.83,-416.33 2035.5,-396 1967.2,-361.57 1962.69,-333.9 1901.5,-288 1887.99,-277.86 1872.78,-267.13 1859.53,-257.99"/>
+<polygon fill="black" stroke="black" points="1861.37,-255.01 1851.15,-252.23 1857.41,-260.78 1861.37,-255.01"/>
+</g>
+<!-- androidxvectordrawablevectordrawableanimated -->
+<g id="node32" class="node">
+<title>androidxvectordrawablevectordrawableanimated</title>
+<polygon fill="none" stroke="black" points="2323,-396 2154,-396 2154,-360 2323,-360 2323,-396"/>
+<text text-anchor="middle" x="2238.5" y="-374.3" font-family="Times New Roman" font-size="14.00">vectordrawable&#45;animated</text>
+</g>
+<!-- androidxappcompatappcompatresources&#45;&gt;androidxvectordrawablevectordrawableanimated -->
+<g id="edge88" class="edge">
+<title>androidxappcompatappcompatresources&#45;&gt;androidxvectordrawablevectordrawableanimated</title>
+<path fill="none" stroke="black" d="M2238.5,-431.7C2238.5,-423.98 2238.5,-414.71 2238.5,-406.11"/>
+<polygon fill="black" stroke="black" points="2242,-406.1 2238.5,-396.1 2235,-406.1 2242,-406.1"/>
+</g>
+<!-- androidxvectordrawablevectordrawable -->
+<g id="node33" class="node">
+<title>androidxvectordrawablevectordrawable</title>
+<polygon fill="none" stroke="black" points="2413.5,-324 2305.5,-324 2305.5,-288 2413.5,-288 2413.5,-324"/>
+<text text-anchor="middle" x="2359.5" y="-302.3" font-family="Times New Roman" font-size="14.00">vectordrawable</text>
+</g>
+<!-- androidxappcompatappcompatresources&#45;&gt;androidxvectordrawablevectordrawable -->
+<g id="edge89" class="edge">
+<title>androidxappcompatappcompatresources&#45;&gt;androidxvectordrawablevectordrawable</title>
+<path fill="none" stroke="black" d="M2283.65,-431.77C2300.72,-423.27 2319.02,-411.48 2331.5,-396 2345.76,-378.32 2352.8,-353.3 2356.25,-334.29"/>
+<polygon fill="black" stroke="black" points="2359.75,-334.58 2357.86,-324.16 2352.84,-333.49 2359.75,-334.58"/>
+</g>
+<!-- androidxvectordrawablevectordrawableanimated&#45;&gt;androidxcollectioncollection -->
+<g id="edge93" class="edge">
+<title>androidxvectordrawablevectordrawableanimated&#45;&gt;androidxcollectioncollection</title>
+<path fill="none" stroke="black" d="M2248.83,-359.87C2260.01,-341.65 2278.64,-312.18 2296.5,-288 2308.87,-271.25 2317.81,-270.93 2326.5,-252 2346.58,-208.26 2351.9,-151.71 2353.21,-118.59"/>
+<polygon fill="black" stroke="black" points="2356.72,-118.41 2353.51,-108.31 2349.72,-118.2 2356.72,-118.41"/>
+</g>
+<!-- androidxvectordrawablevectordrawableanimated&#45;&gt;androidxvectordrawablevectordrawable -->
+<g id="edge92" class="edge">
+<title>androidxvectordrawablevectordrawableanimated&#45;&gt;androidxvectordrawablevectordrawable</title>
+<path fill="none" stroke="black" d="M2268.1,-359.88C2284.07,-350.64 2303.96,-339.13 2321.11,-329.21"/>
+<polygon fill="black" stroke="black" points="2322.88,-332.23 2329.79,-324.19 2319.38,-326.17 2322.88,-332.23"/>
+</g>
+<!-- androidxinterpolatorinterpolator -->
+<g id="node34" class="node">
+<title>androidxinterpolatorinterpolator</title>
+<polygon fill="none" stroke="black" points="2281.5,-252 2197.5,-252 2197.5,-216 2281.5,-216 2281.5,-252"/>
+<text text-anchor="middle" x="2239.5" y="-230.3" font-family="Times New Roman" font-size="14.00">interpolator</text>
+</g>
+<!-- androidxvectordrawablevectordrawableanimated&#45;&gt;androidxinterpolatorinterpolator -->
+<g id="edge94" class="edge">
+<title>androidxvectordrawablevectordrawableanimated&#45;&gt;androidxinterpolatorinterpolator</title>
+<path fill="none" stroke="black" d="M2238.62,-359.87C2238.79,-335.67 2239.1,-291.21 2239.31,-262.39"/>
+<polygon fill="black" stroke="black" points="2242.81,-262.21 2239.38,-252.19 2235.81,-262.16 2242.81,-262.21"/>
+</g>
+<!-- androidxvectordrawablevectordrawable&#45;&gt;androidxannotationannotation -->
+<g id="edge97" class="edge">
+<title>androidxvectordrawablevectordrawable&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2370.57,-287.79C2396.36,-245.33 2454.18,-134.45 2398.5,-72 2371.53,-41.75 2102.15,-26.31 1988.09,-21.09"/>
+<polygon fill="black" stroke="black" points="1988.02,-17.58 1977.88,-20.63 1987.71,-24.57 1988.02,-17.58"/>
+</g>
+<!-- androidxvectordrawablevectordrawable&#45;&gt;androidxcorecore -->
+<g id="edge95" class="edge">
+<title>androidxvectordrawablevectordrawable&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M2305.4,-300.73C2219.14,-293.48 2045.28,-277.06 1899.5,-252 1887.44,-249.93 1874.4,-247.12 1862.67,-244.39"/>
+<polygon fill="black" stroke="black" points="1863.3,-240.94 1852.76,-242.03 1861.68,-247.75 1863.3,-240.94"/>
+</g>
+<!-- androidxvectordrawablevectordrawable&#45;&gt;androidxcollectioncollection -->
+<g id="edge96" class="edge">
+<title>androidxvectordrawablevectordrawable&#45;&gt;androidxcollectioncollection</title>
+<path fill="none" stroke="black" d="M2362.75,-287.89C2364.55,-277.54 2366.59,-264.06 2367.5,-252 2371.09,-204.13 2373.68,-191.6 2367.5,-144 2366.4,-135.51 2364.34,-126.43 2362.13,-118.24"/>
+<polygon fill="black" stroke="black" points="2365.45,-117.09 2359.32,-108.44 2358.72,-119.02 2365.45,-117.09"/>
+</g>
+<!-- androidxinterpolatorinterpolator&#45;&gt;androidxannotationannotation -->
+<g id="edge98" class="edge">
+<title>androidxinterpolatorinterpolator&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2242.68,-215.95C2247.71,-183.24 2253.38,-111.44 2215.5,-72 2184.76,-40 2059.02,-26.77 1987.62,-21.76"/>
+<polygon fill="black" stroke="black" points="1987.72,-18.25 1977.5,-21.07 1987.25,-25.24 1987.72,-18.25"/>
+</g>
+<!-- androidxcursoradaptercursoradapter&#45;&gt;androidxannotationannotation -->
+<g id="edge99" class="edge">
+<title>androidxcursoradaptercursoradapter&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2026.63,-71.88C2011.21,-62.72 1992.02,-51.34 1975.4,-41.48"/>
+<polygon fill="black" stroke="black" points="1976.86,-38.28 1966.48,-36.19 1973.29,-44.3 1976.86,-38.28"/>
+</g>
+<!-- androidxcardviewcardview&#45;&gt;androidxannotationannotation -->
+<g id="edge100" class="edge">
+<title>androidxcardviewcardview&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M719.93,-576C716.14,-549.4 709.5,-496.3 709.5,-451 709.5,-451 709.5,-451 709.5,-161 709.5,-120.03 701.53,-97.62 733.5,-72 779.18,-35.39 1665.33,-22.28 1887.38,-19.57"/>
+<polygon fill="black" stroke="black" points="1887.49,-23.07 1897.45,-19.44 1887.4,-16.07 1887.49,-23.07"/>
+</g>
+<!-- androidxrecyclerviewrecyclerview&#45;&gt;androidxannotationannotation -->
+<g id="edge103" class="edge">
+<title>androidxrecyclerviewrecyclerview&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1402.93,-440.71C1335.45,-426.56 1207.66,-392.4 1121.5,-324 1032.33,-253.21 983.96,-139.69 1075.5,-72 1140.77,-23.73 1712.55,-19.2 1887.11,-18.95"/>
+<polygon fill="black" stroke="black" points="1887.31,-22.45 1897.3,-18.94 1887.3,-15.45 1887.31,-22.45"/>
+</g>
+<!-- androidxrecyclerviewrecyclerview&#45;&gt;androidxcustomviewcustomview -->
+<g id="edge101" class="edge">
+<title>androidxrecyclerviewrecyclerview&#45;&gt;androidxcustomviewcustomview</title>
+<path fill="none" stroke="black" d="M1458.82,-431.9C1470.28,-413.45 1489.76,-383.54 1509.5,-360 1517.87,-350.01 1527.87,-339.81 1536.97,-331.05"/>
+<polygon fill="black" stroke="black" points="1539.49,-333.49 1544.35,-324.07 1534.68,-328.4 1539.49,-333.49"/>
+</g>
+<!-- androidxrecyclerviewrecyclerview&#45;&gt;androidxcorecore -->
+<g id="edge102" class="edge">
+<title>androidxrecyclerviewrecyclerview&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M1470.39,-431.93C1511.52,-400.41 1603.93,-332.3 1689.5,-288 1721.87,-271.24 1760.8,-256.59 1788.7,-246.96"/>
+<polygon fill="black" stroke="black" points="1790.1,-250.18 1798.44,-243.64 1787.85,-243.55 1790.1,-250.18"/>
+</g>
+<!-- orgjetbrainskotlinkotlinparcelizeruntime&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge105" class="edge">
+<title>orgjetbrainskotlinkotlinparcelizeruntime&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="black" d="M298.62,-575.92C280.53,-568.04 263.24,-556.59 252.5,-540 238.83,-518.88 255.6,-493.67 273.14,-475.48"/>
+<polygon fill="black" stroke="black" points="275.93,-477.65 280.61,-468.15 271.02,-472.65 275.93,-477.65"/>
+</g>
+<!-- orgjetbrainskotlinkotlinandroidextensionsruntime -->
+<g id="node47" class="node">
+<title>orgjetbrainskotlinkotlinandroidextensionsruntime</title>
+<polygon fill="none" stroke="black" points="479,-540 262,-540 262,-504 479,-504 479,-540"/>
+<text text-anchor="middle" x="370.5" y="-518.3" font-family="Times New Roman" font-size="14.00">kotlin&#45;android&#45;extensions&#45;runtime</text>
+</g>
+<!-- orgjetbrainskotlinkotlinparcelizeruntime&#45;&gt;orgjetbrainskotlinkotlinandroidextensionsruntime -->
+<g id="edge104" class="edge">
+<title>orgjetbrainskotlinkotlinparcelizeruntime&#45;&gt;orgjetbrainskotlinkotlinandroidextensionsruntime</title>
+<path fill="none" stroke="black" d="M370.5,-575.7C370.5,-567.98 370.5,-558.71 370.5,-550.11"/>
+<polygon fill="black" stroke="black" points="374,-550.1 370.5,-540.1 367,-550.1 374,-550.1"/>
+</g>
+<!-- orgjetbrainskotlinkotlintest -->
+<g id="node48" class="node">
+<title>orgjetbrainskotlinkotlintest</title>
+<polygon fill="none" stroke="black" points="571.5,-540 497.5,-540 497.5,-504 571.5,-504 571.5,-540"/>
+<text text-anchor="middle" x="534.5" y="-518.3" font-family="Times New Roman" font-size="14.00">kotlin&#45;test</text>
+</g>
+<!-- orgjetbrainskotlinkotlintestjunit&#45;&gt;orgjetbrainskotlinkotlintest -->
+<g id="edge106" class="edge">
+<title>orgjetbrainskotlinkotlintestjunit&#45;&gt;orgjetbrainskotlinkotlintest</title>
+<path fill="none" stroke="black" d="M568.38,-575.7C563.14,-567.56 556.8,-557.69 551.02,-548.7"/>
+<polygon fill="black" stroke="black" points="553.85,-546.62 545.5,-540.1 547.96,-550.41 553.85,-546.62"/>
+</g>
+<!-- junitjunit -->
+<g id="node49" class="node">
+<title>junitjunit</title>
+<polygon fill="none" stroke="black" points="681.5,-540 627.5,-540 627.5,-504 681.5,-504 681.5,-540"/>
+<text text-anchor="middle" x="654.5" y="-518.3" font-family="Times New Roman" font-size="14.00">junit</text>
+</g>
+<!-- orgjetbrainskotlinkotlintestjunit&#45;&gt;junitjunit -->
+<g id="edge107" class="edge">
+<title>orgjetbrainskotlinkotlintestjunit&#45;&gt;junitjunit</title>
+<path fill="none" stroke="black" d="M598.04,-575.7C607.3,-567.05 618.66,-556.45 628.76,-547.03"/>
+<polygon fill="black" stroke="black" points="631.25,-549.49 636.17,-540.1 626.48,-544.37 631.25,-549.49"/>
+</g>
+<!-- comvanniktechemojigoogle&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge109" class="edge">
+<title>comvanniktechemojigoogle&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="black" d="M465.83,-719.87C410.37,-693.96 305.21,-644.84 244.63,-616.55"/>
+<polygon fill="black" stroke="black" points="245.84,-613.25 235.3,-612.19 242.88,-619.59 245.84,-613.25"/>
+</g>
+<!-- comvanniktechemojigoogle&#45;&gt;comvanniktechemoji -->
+<g id="edge108" class="edge">
+<title>comvanniktechemojigoogle&#45;&gt;comvanniktechemoji</title>
+<path fill="none" stroke="black" d="M543.84,-719.88C571.69,-708.34 608.09,-693.26 634.89,-682.16"/>
+<polygon fill="black" stroke="black" points="636.4,-685.33 644.3,-678.27 633.72,-678.86 636.4,-685.33"/>
+</g>
+<!-- comvanniktechemojigoogle&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge110" class="edge">
+<title>comvanniktechemojigoogle&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="black" d="M486.58,-719.87C463.39,-694.92 420.19,-648.45 393.53,-619.77"/>
+<polygon fill="black" stroke="black" points="395.85,-617.13 386.48,-612.19 390.72,-621.9 395.85,-617.13"/>
+</g>
+<!-- comvanniktechemojigoogle&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge111" class="edge">
+<title>comvanniktechemojigoogle&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="black" d="M523.85,-719.82C534.44,-710.28 546.62,-697.61 554.5,-684 565.59,-664.84 571.99,-640.49 575.53,-622.11"/>
+<polygon fill="black" stroke="black" points="579.01,-622.51 577.3,-612.06 572.12,-621.3 579.01,-622.51"/>
+</g>
+<!-- comvanniktechemojigooglecompat&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge113" class="edge">
+<title>comvanniktechemojigooglecompat&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="black" d="M798.27,-721.74C667.24,-694.05 392.21,-635.93 265.29,-609.11"/>
+<polygon fill="black" stroke="black" points="265.82,-605.65 255.31,-607.01 264.37,-612.5 265.82,-605.65"/>
+</g>
+<!-- comvanniktechemojigooglecompat&#45;&gt;comvanniktechemoji -->
+<g id="edge112" class="edge">
+<title>comvanniktechemojigooglecompat&#45;&gt;comvanniktechemoji</title>
+<path fill="none" stroke="black" d="M822.07,-719.97C786.94,-707.61 740.14,-691.15 708.1,-679.87"/>
+<polygon fill="black" stroke="black" points="709.25,-676.57 698.66,-676.55 706.93,-683.17 709.25,-676.57"/>
+</g>
+<!-- comvanniktechemojigooglecompat&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge115" class="edge">
+<title>comvanniktechemojigooglecompat&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="black" d="M838.37,-719.85C820.41,-709.93 797.82,-696.89 778.5,-684 756.61,-669.4 755.74,-658.24 731.5,-648 706.89,-637.6 557.94,-617.89 459.21,-605.66"/>
+<polygon fill="black" stroke="black" points="459.58,-602.18 449.23,-604.43 458.72,-609.12 459.58,-602.18"/>
+</g>
+<!-- comvanniktechemojigooglecompat&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge116" class="edge">
+<title>comvanniktechemojigooglecompat&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="black" d="M850.53,-719.78C826.85,-700.1 785.53,-668.02 745.5,-648 712.52,-631.5 673.31,-618.7 641.29,-609.81"/>
+<polygon fill="black" stroke="black" points="642.16,-606.42 631.59,-607.18 640.33,-613.18 642.16,-606.42"/>
+</g>
+<!-- androidxemojiemojiappcompat -->
+<g id="node42" class="node">
+<title>androidxemojiemojiappcompat</title>
+<polygon fill="none" stroke="black" points="2039.5,-612 1917.5,-612 1917.5,-576 2039.5,-576 2039.5,-612"/>
+<text text-anchor="middle" x="1978.5" y="-590.3" font-family="Times New Roman" font-size="14.00">emoji&#45;appcompat</text>
+</g>
+<!-- comvanniktechemojigooglecompat&#45;&gt;androidxemojiemojiappcompat -->
+<g id="edge114" class="edge">
+<title>comvanniktechemojigooglecompat&#45;&gt;androidxemojiemojiappcompat</title>
+<path fill="none" stroke="black" d="M942.61,-734.86C1070.22,-730.33 1343.92,-717.33 1572.5,-684 1691.14,-666.7 1826.79,-634.37 1907.4,-613.8"/>
+<polygon fill="black" stroke="black" points="1908.62,-617.11 1917.44,-611.23 1906.88,-610.32 1908.62,-617.11"/>
+</g>
+<!-- androidxemojiemojiappcompat&#45;&gt;androidxappcompatappcompat -->
+<g id="edge117" class="edge">
+<title>androidxemojiemojiappcompat&#45;&gt;androidxappcompatappcompat</title>
+<path fill="none" stroke="black" d="M1917.29,-585.02C1857.91,-576.66 1765.21,-562 1676.6,-540.09"/>
+<polygon fill="black" stroke="black" points="1677.21,-536.63 1666.66,-537.59 1675.51,-543.42 1677.21,-536.63"/>
+</g>
+<!-- androidxemojiemoji -->
+<g id="node43" class="node">
+<title>androidxemojiemoji</title>
+<polygon fill="none" stroke="black" points="1945.5,-396 1891.5,-396 1891.5,-360 1945.5,-360 1945.5,-396"/>
+<text text-anchor="middle" x="1918.5" y="-374.3" font-family="Times New Roman" font-size="14.00">emoji</text>
+</g>
+<!-- androidxemojiemojiappcompat&#45;&gt;androidxemojiemoji -->
+<g id="edge118" class="edge">
+<title>androidxemojiemojiappcompat&#45;&gt;androidxemojiemoji</title>
+<path fill="none" stroke="black" d="M1973.69,-575.85C1963.29,-538.75 1938.63,-450.81 1926.1,-406.1"/>
+<polygon fill="black" stroke="black" points="1929.4,-404.92 1923.33,-396.23 1922.66,-406.81 1929.4,-404.92"/>
+</g>
+<!-- androidxemojiemoji&#45;&gt;androidxcorecore -->
+<g id="edge119" class="edge">
+<title>androidxemojiemoji&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M1912.56,-359.68C1905.71,-341.03 1893.34,-310.97 1877.5,-288 1870.42,-277.74 1861.28,-267.67 1852.63,-259.11"/>
+<polygon fill="black" stroke="black" points="1854.87,-256.41 1845.23,-252.01 1850.02,-261.46 1854.87,-256.41"/>
+</g>
+<!-- comvanniktechemojitwitter&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge121" class="edge">
+<title>comvanniktechemojitwitter&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="black" d="M568.24,-722.78C564.95,-721.82 561.68,-720.88 558.5,-720 494.1,-702.12 472.89,-712.63 412.5,-684 388.4,-672.58 388.2,-660.23 364.5,-648 333.33,-631.92 296.34,-619.53 265.19,-610.79"/>
+<polygon fill="black" stroke="black" points="265.87,-607.35 255.3,-608.08 264.02,-614.1 265.87,-607.35"/>
+</g>
+<!-- comvanniktechemojitwitter&#45;&gt;comvanniktechemoji -->
+<g id="edge120" class="edge">
+<title>comvanniktechemojitwitter&#45;&gt;comvanniktechemoji</title>
+<path fill="none" stroke="black" d="M627.84,-719.7C634.79,-711.3 643.27,-701.07 650.9,-691.86"/>
+<polygon fill="black" stroke="black" points="653.64,-694.04 657.33,-684.1 648.25,-689.57 653.64,-694.04"/>
+</g>
+<!-- comvanniktechemojitwitter&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge122" class="edge">
+<title>comvanniktechemojitwitter&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="black" d="M584.19,-719.87C540.22,-694.18 457.18,-645.65 408.57,-617.25"/>
+<polygon fill="black" stroke="black" points="410.32,-614.21 399.92,-612.19 406.78,-620.26 410.32,-614.21"/>
+</g>
+<!-- comvanniktechemojitwitter&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge123" class="edge">
+<title>comvanniktechemojitwitter&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="black" d="M658.73,-722.97C677.26,-714.75 696.82,-702.28 707.5,-684 715.57,-670.18 716.39,-661.3 707.5,-648 692.58,-625.67 666.31,-612.73 641.45,-605.25"/>
+<polygon fill="black" stroke="black" points="642.22,-601.83 631.65,-602.55 640.36,-608.58 642.22,-601.83"/>
+</g>
+<!-- comvanniktechemojifacebook&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge125" class="edge">
+<title>comvanniktechemojifacebook&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="black" d="M327.66,-721.62C284.39,-709.03 230.09,-692.03 222.5,-684 206.83,-667.41 201.17,-641.69 199.23,-622.16"/>
+<polygon fill="black" stroke="black" points="202.71,-621.76 198.5,-612.04 195.73,-622.27 202.71,-621.76"/>
+</g>
+<!-- comvanniktechemojifacebook&#45;&gt;comvanniktechemoji -->
+<g id="edge124" class="edge">
+<title>comvanniktechemojifacebook&#45;&gt;comvanniktechemoji</title>
+<path fill="none" stroke="black" d="M437.11,-722.15C439.94,-721.41 442.75,-720.69 445.5,-720 511.84,-703.27 589.59,-685.42 634.43,-675.3"/>
+<polygon fill="black" stroke="black" points="635.31,-678.69 644.29,-673.07 633.77,-671.86 635.31,-678.69"/>
+</g>
+<!-- comvanniktechemojifacebook&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge126" class="edge">
+<title>comvanniktechemojifacebook&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="black" d="M361.68,-719.62C352.04,-710.2 341.61,-697.7 336.5,-684 330.9,-669.01 332,-663.35 336.5,-648 339.3,-638.45 344.41,-628.98 349.83,-620.76"/>
+<polygon fill="black" stroke="black" points="352.85,-622.56 355.75,-612.37 347.12,-618.52 352.85,-622.56"/>
+</g>
+<!-- comvanniktechemojifacebook&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge127" class="edge">
+<title>comvanniktechemojifacebook&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="black" d="M434.41,-719.91C466.14,-708.81 503.12,-694.51 516.5,-684 538.12,-667.02 555.49,-640.66 566.47,-621.03"/>
+<polygon fill="black" stroke="black" points="569.67,-622.47 571.34,-612 563.51,-619.14 569.67,-622.47"/>
+</g>
+<!-- comvanniktechemojimaterial&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge129" class="edge">
+<title>comvanniktechemojimaterial&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="black" d="M676.68,-722.15C673.58,-721.39 670.51,-720.67 667.5,-720 572.05,-698.85 540.39,-722.43 450.5,-684 425.98,-673.52 426.53,-659.57 402.5,-648 378.31,-636.35 314.84,-620.65 265.06,-609.36"/>
+<polygon fill="black" stroke="black" points="265.83,-605.95 255.31,-607.16 264.29,-612.77 265.83,-605.95"/>
+</g>
+<!-- comvanniktechemojimaterial&#45;&gt;comvanniktechemoji -->
+<g id="edge128" class="edge">
+<title>comvanniktechemojimaterial&#45;&gt;comvanniktechemoji</title>
+<path fill="none" stroke="black" d="M714.41,-719.7C707.58,-711.3 699.24,-701.07 691.74,-691.86"/>
+<polygon fill="black" stroke="black" points="694.46,-689.65 685.43,-684.1 689.03,-694.07 694.46,-689.65"/>
+</g>
+<!-- comvanniktechemojimaterial&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime -->
+<g id="edge131" class="edge">
+<title>comvanniktechemojimaterial&#45;&gt;orgjetbrainskotlinkotlinparcelizeruntime</title>
+<path fill="none" stroke="black" d="M729.68,-719.83C730.06,-699.57 727.29,-666.35 707.5,-648 698.38,-639.54 556.01,-619.35 459.26,-606.47"/>
+<polygon fill="black" stroke="black" points="459.54,-602.98 449.17,-605.13 458.62,-609.92 459.54,-602.98"/>
+</g>
+<!-- comvanniktechemojimaterial&#45;&gt;orgjetbrainskotlinkotlintestjunit -->
+<g id="edge132" class="edge">
+<title>comvanniktechemojimaterial&#45;&gt;orgjetbrainskotlinkotlintestjunit</title>
+<path fill="none" stroke="black" d="M733.17,-719.78C737.33,-700.4 740.67,-668.89 725.5,-648 706.21,-621.44 672.25,-608.15 641.93,-601.53"/>
+<polygon fill="black" stroke="black" points="642.31,-598.03 631.82,-599.52 640.95,-604.9 642.31,-598.03"/>
+</g>
+<!-- comgoogleandroidmaterialmaterial -->
+<g id="node51" class="node">
+<title>comgoogleandroidmaterialmaterial</title>
+<polygon fill="none" stroke="black" points="1564,-684 1499,-684 1499,-648 1564,-648 1564,-684"/>
+<text text-anchor="middle" x="1531.5" y="-662.3" font-family="Times New Roman" font-size="14.00">material</text>
+</g>
+<!-- comvanniktechemojimaterial&#45;&gt;comgoogleandroidmaterialmaterial -->
+<g id="edge130" class="edge">
+<title>comvanniktechemojimaterial&#45;&gt;comgoogleandroidmaterialmaterial</title>
+<path fill="none" stroke="black" d="M780.25,-721.82C783.37,-721.14 786.47,-720.53 789.5,-720 1052.34,-674.46 1374.08,-667.91 1488.56,-667.07"/>
+<polygon fill="black" stroke="black" points="1488.69,-670.57 1498.67,-667.01 1488.65,-663.57 1488.69,-670.57"/>
+</g>
+<!-- orgjetbrainskotlinkotlinandroidextensionsruntime&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge133" class="edge">
+<title>orgjetbrainskotlinkotlinandroidextensionsruntime&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="black" d="M353.44,-503.7C345,-495.14 334.68,-484.66 325.46,-475.3"/>
+<polygon fill="black" stroke="black" points="327.87,-472.77 318.36,-468.1 322.89,-477.68 327.87,-472.77"/>
+</g>
+<!-- orgjetbrainskotlinkotlintest&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge134" class="edge">
+<title>orgjetbrainskotlinkotlintest&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="black" d="M497.38,-507.3C494.05,-506.16 490.72,-505.04 487.5,-504 442.62,-489.51 391,-474.97 353.55,-464.79"/>
+<polygon fill="black" stroke="black" points="354.43,-461.4 343.86,-462.17 352.6,-468.16 354.43,-461.4"/>
+</g>
+<!-- orghamcresthamcrestcore -->
+<g id="node50" class="node">
+<title>orghamcresthamcrestcore</title>
+<polygon fill="none" stroke="black" points="681.5,-468 577.5,-468 577.5,-432 681.5,-432 681.5,-468"/>
+<text text-anchor="middle" x="629.5" y="-446.3" font-family="Times New Roman" font-size="14.00">hamcrest&#45;core</text>
+</g>
+<!-- junitjunit&#45;&gt;orghamcresthamcrestcore -->
+<g id="edge135" class="edge">
+<title>junitjunit&#45;&gt;orghamcresthamcrestcore</title>
+<path fill="none" stroke="black" d="M648.32,-503.7C645.5,-495.81 642.11,-486.3 638.98,-477.55"/>
+<polygon fill="black" stroke="black" points="642.27,-476.34 635.61,-468.1 635.68,-478.7 642.27,-476.34"/>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxannotationannotation -->
+<g id="edge149" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1498.76,-663.25C1430.1,-659.01 1266.39,-645.93 1133.5,-612 1047.21,-589.97 1025.84,-580.45 946.5,-540 894.11,-513.29 871.77,-514.28 835.5,-468 745.44,-353.1 735.34,-282.49 781.5,-144 794.15,-106.05 800.16,-90.74 835.5,-72 929.11,-22.35 1684.23,-18.93 1887.35,-18.92"/>
+<polygon fill="black" stroke="black" points="1887.43,-22.42 1897.43,-18.92 1887.43,-15.42 1887.43,-22.42"/>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxappcompatappcompat -->
+<g id="edge137" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxappcompatappcompat</title>
+<path fill="none" stroke="black" d="M1543.71,-647.96C1551.02,-637.64 1560.44,-624.16 1568.5,-612 1582.42,-591.01 1597.6,-566.8 1608.64,-548.93"/>
+<polygon fill="black" stroke="black" points="1611.74,-550.57 1614,-540.22 1605.78,-546.9 1611.74,-550.57"/>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxdrawerlayoutdrawerlayout -->
+<g id="edge142" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxdrawerlayoutdrawerlayout</title>
+<path fill="none" stroke="black" d="M1534.76,-647.71C1540.66,-617.82 1554.32,-554.81 1573.5,-504 1586.9,-468.52 1607.37,-429.84 1621.32,-405.05"/>
+<polygon fill="black" stroke="black" points="1624.41,-406.69 1626.31,-396.27 1618.33,-403.23 1624.41,-406.69"/>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxcorecore -->
+<g id="edge147" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M1564.41,-649.35C1565.78,-648.86 1567.15,-648.41 1568.5,-648 1664.12,-618.87 1701.52,-657.54 1790.5,-612 1830.78,-591.38 1844.89,-581.69 1862.5,-540 1906.14,-436.69 1878.45,-396.35 1849.5,-288 1847.1,-279.02 1843.33,-269.65 1839.48,-261.33"/>
+<polygon fill="black" stroke="black" points="1842.52,-259.59 1835,-252.13 1836.23,-262.65 1842.52,-259.59"/>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxlifecyclelifecycleruntime -->
+<g id="edge148" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxlifecyclelifecycleruntime</title>
+<path fill="none" stroke="black" d="M1498.7,-651.36C1480.82,-642.46 1459.55,-629.28 1445.5,-612 1392.98,-547.38 1380.68,-514.28 1393.5,-432 1403.85,-365.62 1399.57,-342.03 1439.5,-288 1449.71,-274.18 1535.15,-217.62 1584.55,-185.52"/>
+<polygon fill="black" stroke="black" points="1586.55,-188.39 1593.04,-180.02 1582.75,-182.52 1586.55,-188.39"/>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxannotationannotationexperimental -->
+<g id="edge150" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxannotationannotationexperimental</title>
+<path fill="none" stroke="black" d="M1498.83,-659.42C1358.56,-634.54 814.5,-528.43 814.5,-379 814.5,-379 814.5,-379 814.5,-305 814.5,-259.1 846.62,-214.35 870.16,-187.73"/>
+<polygon fill="black" stroke="black" points="872.99,-189.81 877.14,-180.07 867.82,-185.1 872.99,-189.81"/>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxfragmentfragment -->
+<g id="edge144" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxfragmentfragment</title>
+<path fill="none" stroke="black" d="M1498.71,-661.81C1461.73,-656.75 1401.43,-643.92 1360.5,-612 1315.05,-576.56 1285.76,-513.69 1271.9,-477.9"/>
+<polygon fill="black" stroke="black" points="1275.03,-476.28 1268.24,-468.14 1268.47,-478.73 1275.03,-476.28"/>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxvectordrawablevectordrawable -->
+<g id="edge146" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxvectordrawablevectordrawable</title>
+<path fill="none" stroke="black" d="M1564.15,-664.04C1739.91,-658.44 2565.5,-626.62 2565.5,-523 2565.5,-523 2565.5,-523 2565.5,-449 2565.5,-402.03 2545.28,-389.22 2508.5,-360 2501.22,-354.22 2459.96,-339.73 2422.7,-327.35"/>
+<polygon fill="black" stroke="black" points="2423.43,-323.91 2412.84,-324.1 2421.23,-330.56 2423.43,-323.91"/>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxcardviewcardview -->
+<g id="edge138" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxcardviewcardview</title>
+<path fill="none" stroke="black" d="M1498.66,-663.86C1371.83,-659.3 913.88,-641.13 771.5,-612 770.21,-611.74 768.91,-611.45 767.6,-611.14"/>
+<polygon fill="black" stroke="black" points="768.09,-607.64 757.52,-608.39 766.25,-614.4 768.09,-607.64"/>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxrecyclerviewrecyclerview -->
+<g id="edge140" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxrecyclerviewrecyclerview</title>
+<path fill="none" stroke="black" d="M1510.95,-647.64C1486.56,-625.55 1447.23,-584.84 1431.5,-540 1424.34,-519.58 1429.78,-495.42 1436.35,-477.42"/>
+<polygon fill="black" stroke="black" points="1439.6,-478.71 1440.04,-468.12 1433.1,-476.13 1439.6,-478.71"/>
+</g>
+<!-- androidxconstraintlayoutconstraintlayout -->
+<g id="node52" class="node">
+<title>androidxconstraintlayoutconstraintlayout</title>
+<polygon fill="none" stroke="black" points="1782,-612 1671,-612 1671,-576 1782,-576 1782,-612"/>
+<text text-anchor="middle" x="1726.5" y="-590.3" font-family="Times New Roman" font-size="14.00">constraintlayout</text>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxconstraintlayoutconstraintlayout -->
+<g id="edge136" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxconstraintlayoutconstraintlayout</title>
+<path fill="none" stroke="black" d="M1564.14,-653.28C1592.88,-642.97 1635.38,-627.71 1669.69,-615.39"/>
+<polygon fill="black" stroke="black" points="1670.9,-618.68 1679.13,-612 1668.54,-612.09 1670.9,-618.68"/>
+</g>
+<!-- androidxviewpager2viewpager2 -->
+<g id="node54" class="node">
+<title>androidxviewpager2viewpager2</title>
+<polygon fill="none" stroke="black" points="1526.5,-540 1440.5,-540 1440.5,-504 1526.5,-504 1526.5,-540"/>
+<text text-anchor="middle" x="1483.5" y="-518.3" font-family="Times New Roman" font-size="14.00">viewpager2</text>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxviewpager2viewpager2 -->
+<g id="edge139" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxviewpager2viewpager2</title>
+<path fill="none" stroke="black" d="M1525.71,-647.87C1517.49,-623.56 1502.37,-578.82 1492.63,-550.01"/>
+<polygon fill="black" stroke="black" points="1495.83,-548.54 1489.31,-540.19 1489.2,-550.78 1495.83,-548.54"/>
+</g>
+<!-- androidxcoordinatorlayoutcoordinatorlayout -->
+<g id="node55" class="node">
+<title>androidxcoordinatorlayoutcoordinatorlayout</title>
+<polygon fill="none" stroke="black" points="2499.5,-396 2379.5,-396 2379.5,-360 2499.5,-360 2499.5,-396"/>
+<text text-anchor="middle" x="2439.5" y="-374.3" font-family="Times New Roman" font-size="14.00">coordinatorlayout</text>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxcoordinatorlayoutcoordinatorlayout -->
+<g id="edge141" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxcoordinatorlayoutcoordinatorlayout</title>
+<path fill="none" stroke="black" d="M1564.3,-663.28C1663.17,-657.82 1957.06,-639.66 2048.5,-612 2198.03,-566.76 2349.8,-452.43 2411.17,-402.71"/>
+<polygon fill="black" stroke="black" points="2413.69,-405.17 2419.22,-396.14 2409.26,-399.75 2413.69,-405.17"/>
+</g>
+<!-- androidxdynamicanimationdynamicanimation -->
+<g id="node56" class="node">
+<title>androidxdynamicanimationdynamicanimation</title>
+<polygon fill="none" stroke="black" points="2797,-468 2670,-468 2670,-432 2797,-432 2797,-468"/>
+<text text-anchor="middle" x="2733.5" y="-446.3" font-family="Times New Roman" font-size="14.00">dynamicanimation</text>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxdynamicanimationdynamicanimation -->
+<g id="edge143" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxdynamicanimationdynamicanimation</title>
+<path fill="none" stroke="black" d="M1564.01,-664.4C1740.13,-661.02 2573.56,-643.39 2617.5,-612 2659.54,-581.97 2628.79,-544.79 2660.5,-504 2669.55,-492.36 2681.82,-482.11 2693.71,-473.81"/>
+<polygon fill="black" stroke="black" points="2695.88,-476.57 2702.25,-468.11 2691.99,-470.75 2695.88,-476.57"/>
+</g>
+<!-- androidxtransitiontransition -->
+<g id="node61" class="node">
+<title>androidxtransitiontransition</title>
+<polygon fill="none" stroke="black" points="2579,-324 2508,-324 2508,-288 2579,-288 2579,-324"/>
+<text text-anchor="middle" x="2543.5" y="-302.3" font-family="Times New Roman" font-size="14.00">transition</text>
+</g>
+<!-- comgoogleandroidmaterialmaterial&#45;&gt;androidxtransitiontransition -->
+<g id="edge145" class="edge">
+<title>comgoogleandroidmaterialmaterial&#45;&gt;androidxtransitiontransition</title>
+<path fill="none" stroke="black" d="M1564.36,-663.69C1713.97,-657.65 2327.03,-631.87 2410.5,-612 2502.39,-590.13 2603.5,-617.46 2603.5,-523 2603.5,-523 2603.5,-523 2603.5,-449 2603.5,-405.72 2579.56,-360.45 2561.92,-332.98"/>
+<polygon fill="black" stroke="black" points="2564.66,-330.78 2556.22,-324.38 2558.82,-334.65 2564.66,-330.78"/>
+</g>
+<!-- androidxconstraintlayoutconstraintlayout&#45;&gt;androidxappcompatappcompat -->
+<g id="edge151" class="edge">
+<title>androidxconstraintlayoutconstraintlayout&#45;&gt;androidxappcompatappcompat</title>
+<path fill="none" stroke="black" d="M1701.55,-575.88C1688.46,-566.89 1672.24,-555.76 1658.06,-546.03"/>
+<polygon fill="black" stroke="black" points="1659.77,-542.96 1649.55,-540.19 1655.81,-548.73 1659.77,-542.96"/>
+</g>
+<!-- androidxconstraintlayoutconstraintlayout&#45;&gt;androidxcorecore -->
+<g id="edge152" class="edge">
+<title>androidxconstraintlayoutconstraintlayout&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M1782.14,-582.33C1805.88,-574.72 1831.34,-561.81 1845.5,-540 1860.41,-517.03 1838.28,-332.83 1829.14,-262.32"/>
+<polygon fill="black" stroke="black" points="1832.61,-261.86 1827.84,-252.4 1825.67,-262.77 1832.61,-261.86"/>
+</g>
+<!-- androidxconstraintlayoutconstraintlayoutsolver -->
+<g id="node53" class="node">
+<title>androidxconstraintlayoutconstraintlayoutsolver</title>
+<polygon fill="none" stroke="black" points="1836.5,-540 1684.5,-540 1684.5,-504 1836.5,-504 1836.5,-540"/>
+<text text-anchor="middle" x="1760.5" y="-518.3" font-family="Times New Roman" font-size="14.00">constraintlayout&#45;solver</text>
+</g>
+<!-- androidxconstraintlayoutconstraintlayout&#45;&gt;androidxconstraintlayoutconstraintlayoutsolver -->
+<g id="edge153" class="edge">
+<title>androidxconstraintlayoutconstraintlayout&#45;&gt;androidxconstraintlayoutconstraintlayoutsolver</title>
+<path fill="none" stroke="black" d="M1734.9,-575.7C1738.77,-567.73 1743.45,-558.1 1747.74,-549.26"/>
+<polygon fill="black" stroke="black" points="1750.97,-550.63 1752.19,-540.1 1744.67,-547.57 1750.97,-550.63"/>
+</g>
+<!-- androidxviewpager2viewpager2&#45;&gt;androidxannotationannotation -->
+<g id="edge158" class="edge">
+<title>androidxviewpager2viewpager2&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M1491.19,-503.71C1495.33,-493.53 1500.08,-480.28 1502.5,-468 1517.96,-389.43 1469.94,-357.05 1510.5,-288 1556.79,-209.19 1623.57,-247.22 1685.5,-180 1722,-140.38 1698.66,-105.92 1740.5,-72 1782.4,-38.03 1844.16,-25.72 1887.33,-21.32"/>
+<polygon fill="black" stroke="black" points="1887.69,-24.8 1897.33,-20.41 1887.06,-17.83 1887.69,-24.8"/>
+</g>
+<!-- androidxviewpager2viewpager2&#45;&gt;androidxcorecore -->
+<g id="edge156" class="edge">
+<title>androidxviewpager2viewpager2&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M1520.34,-503.82C1564.14,-482.35 1638.14,-442.7 1692.5,-396 1740.72,-354.58 1785.28,-294.38 1808.57,-260.55"/>
+<polygon fill="black" stroke="black" points="1811.56,-262.38 1814.29,-252.14 1805.77,-258.44 1811.56,-262.38"/>
+</g>
+<!-- androidxviewpager2viewpager2&#45;&gt;androidxcollectioncollection -->
+<g id="edge157" class="edge">
+<title>androidxviewpager2viewpager2&#45;&gt;androidxcollectioncollection</title>
+<path fill="none" stroke="black" d="M1526.71,-512.43C1637.14,-490.29 1927.46,-430.52 2019.5,-396 2147.21,-348.11 2199.78,-353.85 2290.5,-252 2325.24,-213 2341.86,-152.64 2348.94,-117.97"/>
+<polygon fill="black" stroke="black" points="2352.39,-118.57 2350.84,-108.09 2345.52,-117.25 2352.39,-118.57"/>
+</g>
+<!-- androidxviewpager2viewpager2&#45;&gt;androidxfragmentfragment -->
+<g id="edge155" class="edge">
+<title>androidxviewpager2viewpager2&#45;&gt;androidxfragmentfragment</title>
+<path fill="none" stroke="black" d="M1440.36,-507.34C1402.31,-495.28 1347.02,-477.77 1308.22,-465.48"/>
+<polygon fill="black" stroke="black" points="1308.82,-462 1298.23,-462.32 1306.71,-468.67 1308.82,-462"/>
+</g>
+<!-- androidxviewpager2viewpager2&#45;&gt;androidxrecyclerviewrecyclerview -->
+<g id="edge154" class="edge">
+<title>androidxviewpager2viewpager2&#45;&gt;androidxrecyclerviewrecyclerview</title>
+<path fill="none" stroke="black" d="M1474.85,-503.7C1470.86,-495.73 1466.05,-486.1 1461.63,-477.26"/>
+<polygon fill="black" stroke="black" points="1464.65,-475.48 1457.05,-468.1 1458.39,-478.61 1464.65,-475.48"/>
+</g>
+<!-- androidxcoordinatorlayoutcoordinatorlayout&#45;&gt;androidxannotationannotation -->
+<g id="edge162" class="edge">
+<title>androidxcoordinatorlayoutcoordinatorlayout&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2499.53,-362.98C2535.71,-353.18 2576.82,-339.17 2587.5,-324 2660.29,-220.62 2565.83,-133.75 2455.5,-72 2376.23,-27.64 2102.17,-20.26 1988.02,-19.14"/>
+<polygon fill="black" stroke="black" points="1987.84,-15.64 1977.81,-19.06 1987.78,-22.64 1987.84,-15.64"/>
+</g>
+<!-- androidxcoordinatorlayoutcoordinatorlayout&#45;&gt;androidxcustomviewcustomview -->
+<g id="edge159" class="edge">
+<title>androidxcoordinatorlayoutcoordinatorlayout&#45;&gt;androidxcustomviewcustomview</title>
+<path fill="none" stroke="black" d="M2379.36,-366.58C2363.81,-364.15 2347.06,-361.76 2331.5,-360 2064.76,-329.86 1743.82,-314.39 1617.93,-309.12"/>
+<polygon fill="black" stroke="black" points="1617.91,-305.62 1607.78,-308.7 1617.62,-312.61 1617.91,-305.62"/>
+</g>
+<!-- androidxcoordinatorlayoutcoordinatorlayout&#45;&gt;androidxcorecore -->
+<g id="edge160" class="edge">
+<title>androidxcoordinatorlayoutcoordinatorlayout&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M2379.29,-367.13C2363.74,-364.69 2347.01,-362.16 2331.5,-360 2199.8,-341.66 2156.51,-376.86 2034.5,-324 2011.63,-314.09 2013.51,-299.7 1991.5,-288 1940.45,-260.86 1921.07,-271.1 1866.5,-252 1865.09,-251.51 1863.66,-250.99 1862.22,-250.46"/>
+<polygon fill="black" stroke="black" points="1863.27,-247.11 1852.68,-246.77 1860.75,-253.64 1863.27,-247.11"/>
+</g>
+<!-- androidxcoordinatorlayoutcoordinatorlayout&#45;&gt;androidxcollectioncollection -->
+<g id="edge161" class="edge">
+<title>androidxcoordinatorlayoutcoordinatorlayout&#45;&gt;androidxcollectioncollection</title>
+<path fill="none" stroke="black" d="M2437.21,-359.77C2431.59,-320.38 2415.2,-221.16 2383.5,-144 2379.72,-134.81 2374.68,-125.22 2369.8,-116.77"/>
+<polygon fill="black" stroke="black" points="2372.77,-114.91 2364.64,-108.11 2366.75,-118.49 2372.77,-114.91"/>
+</g>
+<!-- androidxdynamicanimationdynamicanimation&#45;&gt;androidxcorecore -->
+<g id="edge164" class="edge">
+<title>androidxdynamicanimationdynamicanimation&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M2669.62,-446.07C2538.28,-439.58 2242.11,-422.47 2144.5,-396 2071.97,-376.33 2057.1,-360.67 1991.5,-324 1966,-309.75 1962.09,-302.1 1936.5,-288 1905.48,-270.91 1894,-269.23 1861.83,-254.01"/>
+<polygon fill="black" stroke="black" points="1863.2,-250.79 1852.68,-249.58 1860.15,-257.09 1863.2,-250.79"/>
+</g>
+<!-- androidxdynamicanimationdynamicanimation&#45;&gt;androidxcollectioncollection -->
+<g id="edge165" class="edge">
+<title>androidxdynamicanimationdynamicanimation&#45;&gt;androidxcollectioncollection</title>
+<path fill="none" stroke="black" d="M2723.44,-431.67C2692.66,-380.12 2594.39,-226.26 2472.5,-144 2450.03,-128.83 2422.51,-116.25 2399.6,-107.16"/>
+<polygon fill="black" stroke="black" points="2400.68,-103.82 2390.09,-103.47 2398.15,-110.35 2400.68,-103.82"/>
+</g>
+<!-- androidxlegacylegacysupportcoreutils -->
+<g id="node57" class="node">
+<title>androidxlegacylegacysupportcoreutils</title>
+<polygon fill="none" stroke="black" points="2913.5,-396 2749.5,-396 2749.5,-360 2913.5,-360 2913.5,-396"/>
+<text text-anchor="middle" x="2831.5" y="-374.3" font-family="Times New Roman" font-size="14.00">legacy&#45;support&#45;core&#45;utils</text>
+</g>
+<!-- androidxdynamicanimationdynamicanimation&#45;&gt;androidxlegacylegacysupportcoreutils -->
+<g id="edge163" class="edge">
+<title>androidxdynamicanimationdynamicanimation&#45;&gt;androidxlegacylegacysupportcoreutils</title>
+<path fill="none" stroke="black" d="M2757.47,-431.88C2770.05,-422.89 2785.63,-411.76 2799.25,-402.03"/>
+<polygon fill="black" stroke="black" points="2801.33,-404.85 2807.43,-396.19 2797.26,-399.15 2801.33,-404.85"/>
+</g>
+<!-- androidxlegacylegacysupportcoreutils&#45;&gt;androidxannotationannotation -->
+<g id="edge171" class="edge">
+<title>androidxlegacylegacysupportcoreutils&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2853.74,-359.92C2882.65,-335.6 2929.5,-288.02 2929.5,-235 2929.5,-235 2929.5,-235 2929.5,-161 2929.5,-118.5 2928.95,-96.89 2894.5,-72 2820.74,-18.71 2174.34,-17.79 1987.73,-18.65"/>
+<polygon fill="black" stroke="black" points="1987.63,-15.15 1977.65,-18.7 1987.67,-22.15 1987.63,-15.15"/>
+</g>
+<!-- androidxlegacylegacysupportcoreutils&#45;&gt;androidxcorecore -->
+<g id="edge167" class="edge">
+<title>androidxlegacylegacysupportcoreutils&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M2749.28,-370.48C2680.96,-363.51 2581.83,-349.79 2498.5,-324 2462.79,-312.95 2458.66,-297.45 2422.5,-288 2197.07,-229.1 2129.97,-286.19 1899.5,-252 1887.4,-250.2 1874.34,-247.48 1862.62,-244.73"/>
+<polygon fill="black" stroke="black" points="1863.26,-241.28 1852.72,-242.33 1861.61,-248.09 1863.26,-241.28"/>
+</g>
+<!-- androidxlegacylegacysupportcoreutils&#45;&gt;androidxloaderloader -->
+<g id="edge166" class="edge">
+<title>androidxlegacylegacysupportcoreutils&#45;&gt;androidxloaderloader</title>
+<path fill="none" stroke="black" d="M2749.34,-369.44C2585.72,-354.39 2224.88,-321.2 2107.9,-310.44"/>
+<polygon fill="black" stroke="black" points="2107.95,-306.93 2097.67,-309.5 2107.31,-313.9 2107.95,-306.93"/>
+</g>
+<!-- androidxdocumentfiledocumentfile -->
+<g id="node58" class="node">
+<title>androidxdocumentfiledocumentfile</title>
+<polygon fill="none" stroke="black" points="3051.5,-108 2957.5,-108 2957.5,-72 3051.5,-72 3051.5,-108"/>
+<text text-anchor="middle" x="3004.5" y="-86.3" font-family="Times New Roman" font-size="14.00">documentfile</text>
+</g>
+<!-- androidxlegacylegacysupportcoreutils&#45;&gt;androidxdocumentfiledocumentfile -->
+<g id="edge168" class="edge">
+<title>androidxlegacylegacysupportcoreutils&#45;&gt;androidxdocumentfiledocumentfile</title>
+<path fill="none" stroke="black" d="M2891.45,-359.9C2910.47,-351.8 2930.04,-340.23 2943.5,-324 2993.9,-263.24 3003.14,-165.37 3004.52,-118.18"/>
+<polygon fill="black" stroke="black" points="3008.02,-118.18 3004.71,-108.11 3001.02,-118.05 3008.02,-118.18"/>
+</g>
+<!-- androidxlocalbroadcastmanagerlocalbroadcastmanager -->
+<g id="node59" class="node">
+<title>androidxlocalbroadcastmanagerlocalbroadcastmanager</title>
+<polygon fill="none" stroke="black" points="2863.5,-108 2705.5,-108 2705.5,-72 2863.5,-72 2863.5,-108"/>
+<text text-anchor="middle" x="2784.5" y="-86.3" font-family="Times New Roman" font-size="14.00">localbroadcastmanager</text>
+</g>
+<!-- androidxlegacylegacysupportcoreutils&#45;&gt;androidxlocalbroadcastmanagerlocalbroadcastmanager -->
+<g id="edge169" class="edge">
+<title>androidxlegacylegacysupportcoreutils&#45;&gt;androidxlocalbroadcastmanagerlocalbroadcastmanager</title>
+<path fill="none" stroke="black" d="M2828.7,-359.97C2820.85,-312.19 2798.57,-176.62 2788.98,-118.27"/>
+<polygon fill="black" stroke="black" points="2792.42,-117.61 2787.34,-108.31 2785.51,-118.74 2792.42,-117.61"/>
+</g>
+<!-- androidxprintprint -->
+<g id="node60" class="node">
+<title>androidxprintprint</title>
+<polygon fill="none" stroke="black" points="2890.5,-252 2836.5,-252 2836.5,-216 2890.5,-216 2890.5,-252"/>
+<text text-anchor="middle" x="2863.5" y="-230.3" font-family="Times New Roman" font-size="14.00">print</text>
+</g>
+<!-- androidxlegacylegacysupportcoreutils&#45;&gt;androidxprintprint -->
+<g id="edge170" class="edge">
+<title>androidxlegacylegacysupportcoreutils&#45;&gt;androidxprintprint</title>
+<path fill="none" stroke="black" d="M2835.36,-359.87C2840.84,-335.56 2850.92,-290.82 2857.41,-262.01"/>
+<polygon fill="black" stroke="black" points="2860.84,-262.71 2859.63,-252.19 2854.01,-261.18 2860.84,-262.71"/>
+</g>
+<!-- androidxdocumentfiledocumentfile&#45;&gt;androidxannotationannotation -->
+<g id="edge172" class="edge">
+<title>androidxdocumentfiledocumentfile&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2957.44,-74.79C2952.76,-73.7 2948.06,-72.75 2943.5,-72 2756.29,-41.36 2164,-24.59 1987.56,-20.19"/>
+<polygon fill="black" stroke="black" points="1987.61,-16.69 1977.52,-19.94 1987.43,-23.68 1987.61,-16.69"/>
+</g>
+<!-- androidxlocalbroadcastmanagerlocalbroadcastmanager&#45;&gt;androidxannotationannotation -->
+<g id="edge173" class="edge">
+<title>androidxlocalbroadcastmanagerlocalbroadcastmanager&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2705.44,-73.93C2700.73,-73.23 2696.06,-72.58 2691.5,-72 2427.73,-38.73 2109.22,-24.92 1987.81,-20.61"/>
+<polygon fill="black" stroke="black" points="1987.82,-17.11 1977.71,-20.26 1987.58,-24.11 1987.82,-17.11"/>
+</g>
+<!-- androidxprintprint&#45;&gt;androidxannotationannotation -->
+<g id="edge174" class="edge">
+<title>androidxprintprint&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2871.5,-215.94C2885.52,-183.21 2909.7,-111.37 2872.5,-72 2841.9,-39.62 2178.01,-23.83 1987.93,-19.96"/>
+<polygon fill="black" stroke="black" points="1987.74,-16.46 1977.67,-19.76 1987.59,-23.46 1987.74,-16.46"/>
+</g>
+<!-- androidxtransitiontransition&#45;&gt;androidxannotationannotation -->
+<g id="edge177" class="edge">
+<title>androidxtransitiontransition&#45;&gt;androidxannotationannotation</title>
+<path fill="none" stroke="black" d="M2540.32,-287.88C2531.12,-243.59 2499.98,-125.04 2422.5,-72 2352.76,-24.25 2097.02,-18.74 1987.65,-18.63"/>
+<polygon fill="black" stroke="black" points="1987.54,-15.13 1977.54,-18.64 1987.54,-22.13 1987.54,-15.13"/>
+</g>
+<!-- androidxtransitiontransition&#45;&gt;androidxcorecore -->
+<g id="edge175" class="edge">
+<title>androidxtransitiontransition&#45;&gt;androidxcorecore</title>
+<path fill="none" stroke="black" d="M2507.7,-297.02C2491.79,-293.75 2472.79,-290.22 2455.5,-288 2209.89,-256.45 2144.52,-287.84 1899.5,-252 1887.39,-250.23 1874.34,-247.51 1862.62,-244.76"/>
+<polygon fill="black" stroke="black" points="1863.26,-241.31 1852.71,-242.36 1861.61,-248.12 1863.26,-241.31"/>
+</g>
+<!-- androidxtransitiontransition&#45;&gt;androidxcollectioncollection -->
+<g id="edge176" class="edge">
+<title>androidxtransitiontransition&#45;&gt;androidxcollectioncollection</title>
+<path fill="none" stroke="black" d="M2536.24,-287.87C2522.17,-256.28 2488.58,-188.03 2443.5,-144 2430.82,-131.62 2414.71,-120.97 2399.63,-112.53"/>
+<polygon fill="black" stroke="black" points="2400.88,-109.23 2390.42,-107.57 2397.56,-115.39 2400.88,-109.23"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryandroid&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge179" class="edge">
+<title>comsquareupleakcanaryleakcanaryandroid&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="black" d="M2692.8,-591.41C2333.41,-582.72 621.57,-541.27 618.5,-540 597,-531.12 601.21,-514.6 580.5,-504 507.63,-466.7 411.93,-455.49 353.66,-452.22"/>
+<polygon fill="black" stroke="black" points="353.74,-448.72 343.58,-451.71 353.39,-455.71 353.74,-448.72"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryobjectwatcherandroid -->
+<g id="node63" class="node">
+<title>comsquareupleakcanaryleakcanaryobjectwatcherandroid</title>
+<polygon fill="none" stroke="black" points="2893.5,-540 2669.5,-540 2669.5,-504 2893.5,-504 2893.5,-540"/>
+<text text-anchor="middle" x="2781.5" y="-518.3" font-family="Times New Roman" font-size="14.00">leakcanary&#45;object&#45;watcher&#45;android</text>
+</g>
+<!-- comsquareupleakcanaryleakcanaryandroid&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroid -->
+<g id="edge178" class="edge">
+<title>comsquareupleakcanaryleakcanaryandroid&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroid</title>
+<path fill="none" stroke="black" d="M2764.19,-575.7C2766.75,-567.9 2769.83,-558.51 2772.68,-549.83"/>
+<polygon fill="black" stroke="black" points="2776.08,-550.7 2775.88,-540.1 2769.43,-548.51 2776.08,-550.7"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryandroidcore -->
+<g id="node68" class="node">
+<title>comsquareupleakcanaryleakcanaryandroidcore</title>
+<polygon fill="none" stroke="black" points="3401.5,-540 3239.5,-540 3239.5,-504 3401.5,-504 3401.5,-540"/>
+<text text-anchor="middle" x="3320.5" y="-518.3" font-family="Times New Roman" font-size="14.00">leakcanary&#45;android&#45;core</text>
+</g>
+<!-- comsquareupleakcanaryleakcanaryandroid&#45;&gt;comsquareupleakcanaryleakcanaryandroidcore -->
+<g id="edge180" class="edge">
+<title>comsquareupleakcanaryleakcanaryandroid&#45;&gt;comsquareupleakcanaryleakcanaryandroidcore</title>
+<path fill="none" stroke="black" d="M2824.07,-584.83C2924.13,-572.37 3115.27,-548.56 3228.96,-534.4"/>
+<polygon fill="black" stroke="black" points="3229.54,-537.86 3239.03,-533.15 3228.68,-530.91 3229.54,-537.86"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryobjectwatcherandroid&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge181" class="edge">
+<title>comsquareupleakcanaryleakcanaryobjectwatcherandroid&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="black" d="M2669.38,-518.9C2279.53,-511.52 984.12,-486.2 568.5,-468 493.74,-464.73 407.32,-458.84 353.54,-454.93"/>
+<polygon fill="black" stroke="black" points="353.78,-451.43 343.55,-454.19 353.27,-458.42 353.78,-451.43"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryobjectwatcherandroidcore -->
+<g id="node64" class="node">
+<title>comsquareupleakcanaryleakcanaryobjectwatcherandroidcore</title>
+<polygon fill="none" stroke="black" points="3433.5,-396 3179.5,-396 3179.5,-360 3433.5,-360 3433.5,-396"/>
+<text text-anchor="middle" x="3306.5" y="-374.3" font-family="Times New Roman" font-size="14.00">leakcanary&#45;object&#45;watcher&#45;android&#45;core</text>
+</g>
+<!-- comsquareupleakcanaryleakcanaryobjectwatcherandroid&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroidcore -->
+<g id="edge182" class="edge">
+<title>comsquareupleakcanaryleakcanaryobjectwatcherandroid&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroidcore</title>
+<path fill="none" stroke="black" d="M2788.35,-503.9C2797.67,-483.06 2816.48,-448.59 2844.5,-432 2897.83,-400.43 3053.35,-387.66 3169.32,-382.5"/>
+<polygon fill="black" stroke="black" points="3169.51,-386 3179.35,-382.07 3169.21,-379 3169.51,-386"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryobjectwatcher -->
+<g id="node65" class="node">
+<title>comsquareupleakcanaryleakcanaryobjectwatcher</title>
+<polygon fill="none" stroke="black" points="3534.5,-252 3360.5,-252 3360.5,-216 3534.5,-216 3534.5,-252"/>
+<text text-anchor="middle" x="3447.5" y="-230.3" font-family="Times New Roman" font-size="14.00">leakcanary&#45;object&#45;watcher</text>
+</g>
+<!-- comsquareupleakcanaryleakcanaryobjectwatcherandroidcore&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcher -->
+<g id="edge183" class="edge">
+<title>comsquareupleakcanaryleakcanaryobjectwatcherandroidcore&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcher</title>
+<path fill="none" stroke="black" d="M3323.51,-359.87C3348.39,-334.82 3394.82,-288.05 3423.27,-259.41"/>
+<polygon fill="black" stroke="black" points="3425.87,-261.75 3430.43,-252.19 3420.9,-256.82 3425.87,-261.75"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryandroidutils -->
+<g id="node67" class="node">
+<title>comsquareupleakcanaryleakcanaryandroidutils</title>
+<polygon fill="none" stroke="black" points="3342.5,-252 3182.5,-252 3182.5,-216 3342.5,-216 3342.5,-252"/>
+<text text-anchor="middle" x="3262.5" y="-230.3" font-family="Times New Roman" font-size="14.00">leakcanary&#45;android&#45;utils</text>
+</g>
+<!-- comsquareupleakcanaryleakcanaryobjectwatcherandroidcore&#45;&gt;comsquareupleakcanaryleakcanaryandroidutils -->
+<g id="edge184" class="edge">
+<title>comsquareupleakcanaryleakcanaryobjectwatcherandroidcore&#45;&gt;comsquareupleakcanaryleakcanaryandroidutils</title>
+<path fill="none" stroke="black" d="M3301.19,-359.87C3293.66,-335.56 3279.8,-290.82 3270.87,-262.01"/>
+<polygon fill="black" stroke="black" points="3274.13,-260.71 3267.83,-252.19 3267.44,-262.78 3274.13,-260.71"/>
+</g>
+<!-- comsquareupleakcanarysharklog -->
+<g id="node66" class="node">
+<title>comsquareupleakcanarysharklog</title>
+<polygon fill="none" stroke="black" points="3483.5,-180 3411.5,-180 3411.5,-144 3483.5,-144 3483.5,-180"/>
+<text text-anchor="middle" x="3447.5" y="-158.3" font-family="Times New Roman" font-size="14.00">shark&#45;log</text>
+</g>
+<!-- comsquareupleakcanaryleakcanaryobjectwatcher&#45;&gt;comsquareupleakcanarysharklog -->
+<g id="edge185" class="edge">
+<title>comsquareupleakcanaryleakcanaryobjectwatcher&#45;&gt;comsquareupleakcanarysharklog</title>
+<path fill="none" stroke="black" d="M3447.5,-215.7C3447.5,-207.98 3447.5,-198.71 3447.5,-190.11"/>
+<polygon fill="black" stroke="black" points="3451,-190.1 3447.5,-180.1 3444,-190.1 3451,-190.1"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryandroidutils&#45;&gt;comsquareupleakcanarysharklog -->
+<g id="edge186" class="edge">
+<title>comsquareupleakcanaryleakcanaryandroidutils&#45;&gt;comsquareupleakcanarysharklog</title>
+<path fill="none" stroke="black" d="M3307.76,-215.88C3336.4,-205.04 3373.3,-191.08 3401.98,-180.22"/>
+<polygon fill="black" stroke="black" points="3403.26,-183.48 3411.38,-176.67 3400.78,-176.93 3403.26,-183.48"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryandroidcore&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroidcore -->
+<g id="edge190" class="edge">
+<title>comsquareupleakcanaryleakcanaryandroidcore&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroidcore</title>
+<path fill="none" stroke="black" d="M3401.72,-509.31C3462.5,-497.02 3530.1,-473.51 3498.5,-432 3487.87,-418.04 3455.51,-406.82 3420.31,-398.36"/>
+<polygon fill="black" stroke="black" points="3420.86,-394.9 3410.32,-396.05 3419.28,-401.72 3420.86,-394.9"/>
+</g>
+<!-- comsquareupleakcanarysharkandroid -->
+<g id="node69" class="node">
+<title>comsquareupleakcanarysharkandroid</title>
+<polygon fill="none" stroke="black" points="3645,-468 3546,-468 3546,-432 3645,-432 3645,-468"/>
+<text text-anchor="middle" x="3595.5" y="-446.3" font-family="Times New Roman" font-size="14.00">shark&#45;android</text>
+</g>
+<!-- comsquareupleakcanaryleakcanaryandroidcore&#45;&gt;comsquareupleakcanarysharkandroid -->
+<g id="edge187" class="edge">
+<title>comsquareupleakcanaryleakcanaryandroidcore&#45;&gt;comsquareupleakcanarysharkandroid</title>
+<path fill="none" stroke="black" d="M3389.46,-503.93C3430.7,-493.66 3484.14,-480.24 3531.5,-468 3532.96,-467.62 3534.44,-467.24 3535.93,-466.85"/>
+<polygon fill="black" stroke="black" points="3537.11,-470.16 3545.9,-464.25 3535.34,-463.39 3537.11,-470.16"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryobjectwatcherandroidandroidx -->
+<g id="node73" class="node">
+<title>comsquareupleakcanaryleakcanaryobjectwatcherandroidandroidx</title>
+<polygon fill="none" stroke="black" points="3133.5,-468 2853.5,-468 2853.5,-432 3133.5,-432 3133.5,-468"/>
+<text text-anchor="middle" x="2993.5" y="-446.3" font-family="Times New Roman" font-size="14.00">leakcanary&#45;object&#45;watcher&#45;android&#45;androidx</text>
+</g>
+<!-- comsquareupleakcanaryleakcanaryandroidcore&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroidandroidx -->
+<g id="edge188" class="edge">
+<title>comsquareupleakcanaryleakcanaryandroidcore&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroidandroidx</title>
+<path fill="none" stroke="black" d="M3240.92,-503.97C3193.26,-493.76 3132.54,-480.76 3083.18,-470.2"/>
+<polygon fill="black" stroke="black" points="3083.66,-466.72 3073.15,-468.05 3082.19,-473.57 3083.66,-466.72"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryobjectwatcherandroidsupportfragments -->
+<g id="node74" class="node">
+<title>comsquareupleakcanaryleakcanaryobjectwatcherandroidsupportfragments</title>
+<polygon fill="none" stroke="black" points="3489.5,-468 3151.5,-468 3151.5,-432 3489.5,-432 3489.5,-468"/>
+<text text-anchor="middle" x="3320.5" y="-446.3" font-family="Times New Roman" font-size="14.00">leakcanary&#45;object&#45;watcher&#45;android&#45;support&#45;fragments</text>
+</g>
+<!-- comsquareupleakcanaryleakcanaryandroidcore&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroidsupportfragments -->
+<g id="edge189" class="edge">
+<title>comsquareupleakcanaryleakcanaryandroidcore&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroidsupportfragments</title>
+<path fill="none" stroke="black" d="M3320.5,-503.7C3320.5,-495.98 3320.5,-486.71 3320.5,-478.11"/>
+<polygon fill="black" stroke="black" points="3324,-478.1 3320.5,-468.1 3317,-478.1 3324,-478.1"/>
+</g>
+<!-- comsquareupleakcanaryshark -->
+<g id="node70" class="node">
+<title>comsquareupleakcanaryshark</title>
+<polygon fill="none" stroke="black" points="3622.5,-396 3568.5,-396 3568.5,-360 3622.5,-360 3622.5,-396"/>
+<text text-anchor="middle" x="3595.5" y="-374.3" font-family="Times New Roman" font-size="14.00">shark</text>
+</g>
+<!-- comsquareupleakcanarysharkandroid&#45;&gt;comsquareupleakcanaryshark -->
+<g id="edge191" class="edge">
+<title>comsquareupleakcanarysharkandroid&#45;&gt;comsquareupleakcanaryshark</title>
+<path fill="none" stroke="black" d="M3595.5,-431.7C3595.5,-423.98 3595.5,-414.71 3595.5,-406.11"/>
+<polygon fill="black" stroke="black" points="3599,-406.1 3595.5,-396.1 3592,-406.1 3599,-406.1"/>
+</g>
+<!-- comsquareupleakcanarysharkgraph -->
+<g id="node71" class="node">
+<title>comsquareupleakcanarysharkgraph</title>
+<polygon fill="none" stroke="black" points="3640,-324 3551,-324 3551,-288 3640,-288 3640,-324"/>
+<text text-anchor="middle" x="3595.5" y="-302.3" font-family="Times New Roman" font-size="14.00">shark&#45;graph</text>
+</g>
+<!-- comsquareupleakcanaryshark&#45;&gt;comsquareupleakcanarysharkgraph -->
+<g id="edge192" class="edge">
+<title>comsquareupleakcanaryshark&#45;&gt;comsquareupleakcanarysharkgraph</title>
+<path fill="none" stroke="black" d="M3595.5,-359.7C3595.5,-351.98 3595.5,-342.71 3595.5,-334.11"/>
+<polygon fill="black" stroke="black" points="3599,-334.1 3595.5,-324.1 3592,-334.1 3599,-334.1"/>
+</g>
+<!-- comsquareupleakcanarysharkhprof -->
+<g id="node72" class="node">
+<title>comsquareupleakcanarysharkhprof</title>
+<polygon fill="none" stroke="black" points="3638,-252 3553,-252 3553,-216 3638,-216 3638,-252"/>
+<text text-anchor="middle" x="3595.5" y="-230.3" font-family="Times New Roman" font-size="14.00">shark&#45;hprof</text>
+</g>
+<!-- comsquareupleakcanarysharkgraph&#45;&gt;comsquareupleakcanarysharkhprof -->
+<g id="edge193" class="edge">
+<title>comsquareupleakcanarysharkgraph&#45;&gt;comsquareupleakcanarysharkhprof</title>
+<path fill="none" stroke="black" d="M3595.5,-287.7C3595.5,-279.98 3595.5,-270.71 3595.5,-262.11"/>
+<polygon fill="black" stroke="black" points="3599,-262.1 3595.5,-252.1 3592,-262.1 3599,-262.1"/>
+</g>
+<!-- comsquareupleakcanarysharkhprof&#45;&gt;comsquareupleakcanarysharklog -->
+<g id="edge194" class="edge">
+<title>comsquareupleakcanarysharkhprof&#45;&gt;comsquareupleakcanarysharklog</title>
+<path fill="none" stroke="black" d="M3559.3,-215.88C3539.24,-206.39 3514.13,-194.51 3492.79,-184.42"/>
+<polygon fill="black" stroke="black" points="3494.12,-181.18 3483.59,-180.07 3491.13,-187.51 3494.12,-181.18"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryobjectwatcherandroidandroidx&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroidcore -->
+<g id="edge195" class="edge">
+<title>comsquareupleakcanaryleakcanaryobjectwatcherandroidandroidx&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroidcore</title>
+<path fill="none" stroke="black" d="M3069.67,-431.97C3115.2,-421.78 3173.17,-408.82 3220.36,-398.26"/>
+<polygon fill="black" stroke="black" points="3221.27,-401.65 3230.26,-396.05 3219.74,-394.82 3221.27,-401.65"/>
+</g>
+<!-- comsquareupleakcanaryleakcanaryobjectwatcherandroidsupportfragments&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroidcore -->
+<g id="edge196" class="edge">
+<title>comsquareupleakcanaryleakcanaryobjectwatcherandroidsupportfragments&#45;&gt;comsquareupleakcanaryleakcanaryobjectwatcherandroidcore</title>
+<path fill="none" stroke="black" d="M3317.04,-431.7C3315.5,-423.98 3313.64,-414.71 3311.92,-406.11"/>
+<polygon fill="black" stroke="black" points="3315.31,-405.22 3309.92,-396.1 3308.45,-406.6 3315.31,-405.22"/>
+</g>
+<!-- comjakewhartontimbertimber&#45;&gt;orgjetbrainskotlinkotlinstdlib -->
+<g id="edge197" class="edge">
+<title>comjakewhartontimbertimber&#45;&gt;orgjetbrainskotlinkotlinstdlib</title>
+<path fill="none" stroke="black" d="M26.98,-647.84C26.97,-614.93 31.9,-542.8 72.5,-504 97.53,-480.08 189.99,-464.58 249.49,-456.85"/>
+<polygon fill="black" stroke="black" points="249.99,-460.32 259.47,-455.59 249.11,-453.37 249.99,-460.32"/>
+</g>
+<!-- Emojijvm -->
+<g id="node76" class="node">
+<title>Emojijvm</title>
+<polygon fill="none" stroke="black" points="206.5,-828 152.5,-828 152.5,-792 206.5,-792 206.5,-828"/>
+<text text-anchor="middle" x="179.5" y="-806.3" font-family="Times New Roman" font-size="14.00">jvm</text>
+</g>
+<!-- Emojijvm&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8 -->
+<g id="edge198" class="edge">
+<title>Emojijvm&#45;&gt;orgjetbrainskotlinkotlinstdlibjdk8</title>
+<path fill="none" stroke="black" d="M152.43,-796.72C136.48,-787.88 117.67,-774.29 108.5,-756 86.99,-713.09 84.68,-689.67 108.5,-648 115.96,-634.95 128.02,-624.8 140.92,-617.03"/>
+<polygon fill="black" stroke="black" points="142.89,-619.94 149.94,-612.03 139.5,-613.82 142.89,-619.94"/>
+</g>
+<!-- Emojijvm&#45;&gt;comvanniktechemojiios -->
+<g id="edge199" class="edge">
+<title>Emojijvm&#45;&gt;comvanniktechemojiios</title>
+<path fill="none" stroke="black" d="M202.98,-791.7C215.06,-782.8 229.95,-771.82 243.02,-762.2"/>
+<polygon fill="black" stroke="black" points="245.31,-764.85 251.29,-756.1 241.16,-759.22 245.31,-764.85"/>
+</g>
+</g>
+</svg>

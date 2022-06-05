@@ -38,15 +38,22 @@ apply plugin: "com.vanniktech.dependency.graph.generator"
 
 ## Usage
 
-By default this plugin will generate a `generateDependencyGraph` task that can be used to generate a dependency graph at location `yourmodule/build/reports/dependency-graph` that could look like this generated graph from my [chess clock app](https://play.google.com/store/apps/details?id=com.vanniktech.chessclock). The graph is generated in `.png`, `.svg` & `.dot` format.
+By default, this plugin provides two reporting tasks:
 
-![Example graph.](example.png)
+| `generateDependencyGraph`                                                       | `generateProjectDependencyGraph`                                                                     |
+|:--------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------|
+| ![Dependency Graph](art/dependency-graph.svg)                                   | ![Project Dependency Graph](art/project-dependency-graph.svg)                                        |
+| Generates a **complete** dependency graph in `build/reports/dependency-graph/`  | Generates a dependency graph of the **project modules** in `build/reports/project-dependency-graph/` |
+
+_Source project: [vanniktech/Emoji](https://github.com/vanniktech/Emoji)_
+
+The graphs are generated in `.png`, `.svg` & `.dot` format.
 
 There are extension points to be able to generate graphs which only include some dependencies and their transitive ones. The trick is to hook a [Generator](./src/main/kotlin/com/vanniktech/dependency/graph/generator/DependencyGraphGeneratorExtension.kt) in over the `dependencyGraphGenerator` extension. Note that this is extremely experimental and will likely change between releases. It's still fun though.
 
 ### Generator Example
 
-We only want to show which Firebase libraries we're using and give them the typical Firebase orange.
+We only want to show which Jetbrains libraries we're using.
 
 ```groovy
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorPlugin
@@ -57,31 +64,39 @@ plugins.apply(DependencyGraphGeneratorPlugin)
 
 dependencyGraphGenerator {
   generators {
-    firebaseLibraries {
-      include = { dependency -> dependency.getModuleGroup().startsWith("com.google.firebase") } // Only want Firebase.
-      children = { dependency -> true } // Include transitive dependencies.
-      dependencyNode = { node, dependency -> node.add(Style.FILLED, Color.rgb("#ffcb2b")) } // Give them some color.
+    jetbrainsLibraries {
+      include = { dependency -> dependency.getModuleGroup().startsWith("org.jetbrains") } // Only want Jetbrains.
+      children = { true } // Include transitive dependencies.
+      dependencyNode = { node, dependency -> node.add(Style.FILLED, Color.rgb("#AF1DF5")) } // Give them some color.
     }
   }
 }
 ```
 
-This will generate a new task `generateDependencyGraphFirebaseLibraries` which when run will yield this graph:
-
-The same can be done using Kotlin:
+<details>
+<summary>The same can be done using Kotlin</summary>
 
 ```kotlin
+import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorPlugin
+import guru.nidi.graphviz.attribute.Color
+import guru.nidi.graphviz.attribute.Style
+
 rootProject.plugins.apply(DependencyGraphGeneratorPlugin::class.java)
+
 rootProject.configure<DependencyGraphGeneratorExtension> {
-  generators.create("firebaseLibraries") {
-    include = { dependency -> dependency.moduleGroup.startsWith("com.google.firebase") }
+  generators.create("jetbrainsLibraries") {
+    include = { dependency -> dependency.moduleGroup.startsWith("org.jetbrains") } // Only want Jetbrains.
     children = { true } // Include transitive dependencies.
-    dependencyNode = { node, dependency -> node.add(Style.FILLED, Color.rgb("#ffcb2b")) } // Give them some color.
+    dependencyNode = { node, dependency -> node.add(Style.FILLED, Color.rgb("#AF1DF5")) } // Give them some color.
   }
 }
 ```
 
-![Example Firebase graph.](example-firebase.png)
+</details>
+
+This will generate a new task `generateDependencyGraphJetbrainsLibraries` which when run will yield this graph:
+
+![Example Jetbrains graph](art/dependency-graph-jetbrains-libraries.svg)
 
 
 # License
