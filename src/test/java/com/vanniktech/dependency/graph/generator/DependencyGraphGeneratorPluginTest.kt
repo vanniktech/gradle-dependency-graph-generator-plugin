@@ -110,6 +110,7 @@ class DependencyGraphGeneratorPluginTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "${testProjectDir.root.name}" ["label"="${testProjectDir.root.name}","shape"="rectangle"]
         "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
         "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
@@ -143,7 +144,7 @@ class DependencyGraphGeneratorPluginTest {
       """
         digraph {
         edge ["dir"="forward"]
-        graph ["label"="${testProjectDir.root.name}","labelloc"="t","fontsize"="35"]
+        graph ["dpi"="100","label"="${testProjectDir.root.name}","labelloc"="t","fontsize"="35"]
         node ["style"="filled"]
         {
         edge ["dir"="none"]
@@ -284,6 +285,7 @@ class DependencyGraphGeneratorPluginTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "$app" ["label"="app","shape"="rectangle"]
         "$lib1" ["label"="lib1","shape"="rectangle"]
         "$lib" ["label"="lib","shape"="rectangle"]
@@ -318,7 +320,7 @@ class DependencyGraphGeneratorPluginTest {
     fun projectDependencyGraph(label: String) = """
         digraph {
         edge ["dir"="forward"]
-        graph ["label"="$label","labelloc"="t","fontsize"="35"]
+        graph ["dpi"="100","label"="$label","labelloc"="t","fontsize"="35"]
         node ["style"="filled"]
         ":app" ["shape"="rectangle","fillcolor"="#ff8a65"]
         ":lib1" ["fillcolor"="#ff8a65"]

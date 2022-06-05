@@ -1,6 +1,7 @@
 package com.vanniktech.dependency.graph.generator
 
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator
+import guru.nidi.graphviz.attribute.GraphAttr
 import guru.nidi.graphviz.attribute.Label
 import guru.nidi.graphviz.attribute.Rank
 import guru.nidi.graphviz.attribute.Rank.RankType
@@ -25,8 +26,7 @@ internal class DependencyGraphGenerator(
   private val nodes = mutableMapOf<String, MutableNode>()
 
   @Suppress("Detekt.SpreadOperator") fun generateGraph(): MutableGraph {
-    val graph = mutGraph("G").setDirected(true)
-
+    val graph = mutGraph("G").setDirected(true).graphAttrs().add(GraphAttr.dpi(100))
     generator.label?.let {
       graph.graphAttrs().add(it)
     }
