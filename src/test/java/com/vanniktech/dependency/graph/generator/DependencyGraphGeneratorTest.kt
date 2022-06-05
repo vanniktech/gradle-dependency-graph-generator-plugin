@@ -80,6 +80,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "singleempty" ["label"="singleempty","shape"="rectangle"]
         {
         edge ["dir"="none"]
@@ -96,6 +97,7 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         digraph "G" {
+        graph ["dpi"="100"]
         }
       """.trimIndent(),
       DependencyGraphGenerator(singleEmpty, ALL.copy(includeProject = { false })).generateGraph().toString()
@@ -107,6 +109,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "singleempty" ["label"="singleempty","shape"="rectangle"]
         {
         edge ["dir"="none"]
@@ -123,6 +126,7 @@ class DependencyGraphGeneratorTest {
     assertEquals(
       """
         graph "G" {
+        graph ["dpi"="100"]
         "singleempty" ["label"="singleempty","shape"="rectangle"]
         {
         graph ["rank"="same"]
@@ -139,7 +143,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
-        graph ["label"="my custom header","labeljust"="l","labelloc"="t"]
+        graph ["dpi"="100","label"="my custom header","labeljust"="l","labelloc"="t"]
         "singleempty" ["label"="singleempty","shape"="rectangle"]
         {
         edge ["dir"="none"]
@@ -157,6 +161,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "singleempty" ["label"="singleempty","shape"="egg","style"="dotted","color"="#ff0099"]
         {
         edge ["dir"="none"]
@@ -174,6 +179,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "single" ["label"="single","shape"="rectangle"]
         "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
         "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
@@ -207,6 +213,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "single" ["label"="single","shape"="rectangle"]
         "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle","style"="filled","color"="0.833904937402929 0.4047932090555708 0.5440948801677342"]
         "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle","style"="filled","color"="0.44658757938141413 0.25639393293458856 0.2315484830185478"]
@@ -232,6 +239,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "single" ["label"="single","shape"="rectangle"]
         "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
         "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
@@ -253,6 +261,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "single" ["label"="single","shape"="rectangle"]
         "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
         "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
@@ -276,6 +285,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "singleempty" ["label"="singleempty","shape"="rectangle"]
         "orgapachexmlgraphicsbatikgvt" ["label"="batik-gvt","shape"="rectangle"]
         "orgapachexmlgraphicsbatikbridge" ["label"="batik-bridge","shape"="rectangle"]
@@ -374,6 +384,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "single" ["label"="single","shape"="rectangle"]
         "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
         "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
@@ -402,6 +413,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "multimulti1" ["label"="multi1","shape"="rectangle"]
         "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
         "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
@@ -437,6 +449,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "android" ["label"="android","shape"="rectangle"]
         "androidarchpersistenceroomruntime" ["label"="persistence-room-runtime","shape"="rectangle"]
         "androidarchpersistenceroomcommon" ["label"="persistence-room-common","shape"="rectangle"]
@@ -483,6 +496,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "android" ["label"="android","shape"="rectangle"]
         "comsquareupsqldelightruntime" ["label"="sqldelight-runtime","shape"="rectangle"]
         "comandroidsupportsupportannotations" ["label"="support-annotations","shape"="rectangle"]
@@ -516,6 +530,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "android" ["label"="android","shape"="rectangle"]
         "ioreactivexrxjava2rxandroid" ["label"="rxandroid","shape"="rectangle"]
         "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
@@ -554,6 +569,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "android" ["label"="android","shape"="rectangle"]
         "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
         "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]
@@ -592,6 +608,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "android" ["label"="android","shape"="rectangle"]
         "orgjetbrainskotlinkotlinstdlib" ["label"="kotlin-stdlib","shape"="rectangle"]
         "orgjetbrainsannotations" ["label"="jetbrains-annotations","shape"="rectangle"]
@@ -617,6 +634,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "android" ["label"="android","shape"="rectangle"]
         {
         edge ["dir"="none"]
@@ -638,6 +656,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "android" ["label"="android","shape"="rectangle"]
         {
         edge ["dir"="none"]
@@ -655,6 +674,7 @@ class DependencyGraphGeneratorTest {
       """
         digraph "G" {
         edge ["dir"="forward"]
+        graph ["dpi"="100"]
         "rxjava" ["label"="rxjava","shape"="rectangle"]
         "ioreactivexrxjava2rxjava" ["label"="rxjava","shape"="rectangle"]
         "orgreactivestreamsreactivestreams" ["label"="reactive-streams","shape"="rectangle"]

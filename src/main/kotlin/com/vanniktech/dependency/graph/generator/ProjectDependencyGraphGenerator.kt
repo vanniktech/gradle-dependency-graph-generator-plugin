@@ -2,6 +2,7 @@ package com.vanniktech.dependency.graph.generator
 
 import guru.nidi.graphviz.attribute.Color
 import guru.nidi.graphviz.attribute.Font
+import guru.nidi.graphviz.attribute.GraphAttr
 import guru.nidi.graphviz.attribute.Label
 import guru.nidi.graphviz.attribute.Rank
 import guru.nidi.graphviz.attribute.Rank.RankType
@@ -39,7 +40,7 @@ internal class ProjectDependencyGraphGenerator(
     }
     project.allprojects.filter { it.isDependingOnOtherProject() }.forEach { addProject(it) }
 
-    val graph = mutGraph().setDirected(true)
+    val graph = mutGraph().setDirected(true).graphAttrs().add(GraphAttr.dpi(100))
     graph.graphAttrs().add(Label.of(project.name).locate(Label.Location.TOP), Font.size(DEFAULT_FONT_SIZE))
     graph.nodeAttrs().add(Style.FILLED)
     projects.forEach { addNode(it, dependencies, graph) }
