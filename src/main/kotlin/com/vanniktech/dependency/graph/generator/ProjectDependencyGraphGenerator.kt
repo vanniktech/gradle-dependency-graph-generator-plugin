@@ -26,6 +26,7 @@ internal class ProjectDependencyGraphGenerator(
     fun addProject(project: Project) {
       if (projectGenerator.includeProject(project) && projects.add(project)) {
         project.configurations
+          .filter { projectGenerator.includeConfiguration.invoke(it) }
           .flatMap { configuration ->
             configuration.dependencies
               .withType(ProjectDependency::class.java)
@@ -70,12 +71,13 @@ internal class ProjectDependencyGraphGenerator(
   }
 
   private fun addDependencies(dependencies: MutableList<ProjectDependencyContainer>, graph: MutableGraph) {
+    val rootNodes = graph.rootNodes().filter { it.links().isEmpty() }
     dependencies
-      .filterNot { (from, to, _) -> !from.isCommonsProject() && to.isCommonsProject() }
+      .filterNot { (from, to, _) -> from == to }
       .distinctBy { (from, to, _) -> from to to }
       .forEach { (from, to, isImplementation) ->
-        val fromNode = graph.nodes().find { it.name().toString() == from.path }
-        val toNode = graph.nodes().find { it.name().toString() == to.path }
+        val fromNode = rootNodes.single { it.name().toString() == from.path }
+        val toNode = rootNodes.single { it.name().toString() == to.path }
 
         if (fromNode != null && toNode != null) {
           val link = Link.to(toNode)

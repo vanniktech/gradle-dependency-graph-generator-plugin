@@ -55,28 +55,28 @@ open class DependencyGraphGeneratorExtension(project: Project) {
      * The task name as well as the output files will use this name.
      */
     @get:Input var name: String = "",
-    /** Return true when you want to include this dependency, false otherwise. */
+    /** Return true when you want to include this [ResolvedDependency], false otherwise. */
     @get:Nested var include: (ResolvedDependency) -> Boolean = { true },
-    /** Return true when you want to include the children of this dependency, false otherwise. */
+    /** Return true when you want to include the children of this [ResolvedDependency], false otherwise. */
     @get:Nested var children: (ResolvedDependency) -> Boolean = { true },
-    /** Allows to change the node for the given dependency. */
+    /** Allows to change the [MutableNode] for the given [ResolvedDependency]. */
     @get:Nested var dependencyNode: (MutableNode, ResolvedDependency) -> MutableNode = { node, _ -> node },
-    /** Allows to change the node for the given project. */
+    /** Allows to change the [MutableNode] for the given [Project]. */
     @get:Nested var projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
     /** Optional label that can be displayed wrapped around the graph. */
-    @get:Internal var label: Label? = null, // Not serializable making it unusable as an Input
-    /** Return true when you want to include this configuration, false otherwise. */
+    @get:Internal var label: Label? = null, // Not serializable making it unusable as an Input.
+    /** Return true when you want to include this [Configuration], false otherwise. */
     @get:Nested var includeConfiguration: (Configuration) -> Boolean = {
-      // By default we'll include everything that's on the compileClassPath except test, UnitTest and AndroidTest configurations.
+      // By default, we'll include everything that's on the compileClassPath except test, UnitTest and AndroidTest configurations.
       val raw = it.name.replace("compileClasspath", "", ignoreCase = true)
       it.name.contains("compileClassPath", ignoreCase = true) && listOf("test", "AndroidTest", "UnitTest").none { raw.contains(it) }
     },
-    /** Return true when you want to include this project, false otherwise. */
+    /** Return true when you want to include this [Project], false otherwise. */
     @get:Nested var includeProject: (Project) -> Boolean = { true },
-    /** Return the output formats you'd like to be generated. */
+    /** Return the output [Format]s you'd like to have generated. */
     @get:Nested var outputFormats: List<Format> = listOf(PNG, SVG),
-    /** Allows you to mutate the graph and add things as needed. */
-    @get:Nested var graph: (MutableGraph) -> MutableGraph = { it }
+    /** Allows you to mutate the [MutableGraph] and add things as needed. */
+    @get:Nested var graph: (MutableGraph) -> MutableGraph = { it },
   ) {
     /** Gradle task name that is associated with this generator. */
     @get:Internal val gradleTaskName = "generateDependencyGraph${
@@ -109,14 +109,16 @@ open class DependencyGraphGeneratorExtension(project: Project) {
      * The task name as well as the output files will use this name.
      */
     @get:Input var name: String = "",
-    /** Allows to change the node for the given project. */
+    /** Allows to change the [MutableNode] for the given [Project]. */
     @get:Nested var projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
-    /** Return true when you want to include this project, false otherwise. */
+    /** Return true when you want to include this [Project], false otherwise. */
     @get:Nested var includeProject: (Project) -> Boolean = { true },
-    /** Return the output formats you'd like to be generated. */
+    /** Return true when you want to include this [Configuration], false otherwise. */
+    @get:Nested var includeConfiguration: (Configuration) -> Boolean = { true },
+    /** Return the output [Format]s you'd like to have generated. */
     @get:Nested var outputFormats: List<Format> = listOf(PNG, SVG),
-    /** Allows you to mutate the graph and add things as needed. */
-    @get:Nested var graph: (MutableGraph) -> MutableGraph = { it }
+    /** Allows you to mutate the [MutableGraph] and add things as needed. */
+    @get:Nested var graph: (MutableGraph) -> MutableGraph = { it },
   ) {
     /** Gradle task name that is associated with this generator. */
     @get:Internal val gradleTaskName = "generateProjectDependencyGraph${
