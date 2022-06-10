@@ -1,6 +1,5 @@
 package com.vanniktech.dependency.graph.generator
 
-import guru.nidi.graphviz.attribute.Color
 import guru.nidi.graphviz.attribute.Font
 import guru.nidi.graphviz.attribute.GraphAttr
 import guru.nidi.graphviz.attribute.Label
@@ -58,14 +57,7 @@ internal class ProjectDependencyGraphGenerator(
       node.add(Shape.RECTANGLE)
     }
 
-    when {
-      project.isJsProject() -> node.add(Color.rgb("#fff176").fill())
-      project.isAndroidProject() -> node.add(Color.rgb("#81c784").fill())
-      project.isKotlinProject() -> node.add(Color.rgb("#ffb74d").fill())
-      project.isJavaProject() -> node.add(Color.rgb("#ff8a65").fill())
-      else -> node.add(Color.rgb("#e0e0e0").fill())
-    }
-
+    node.add(project.target().color)
     graph.add(projectGenerator.projectNode(node, project))
   }
 
