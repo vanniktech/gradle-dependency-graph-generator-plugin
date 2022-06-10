@@ -114,7 +114,13 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     /** Return true when you want to include this [Project], false otherwise. */
     @get:Nested var includeProject: (Project) -> Boolean = { true },
     /** Return true when you want to include this [Configuration], false otherwise. */
-    @get:Nested var includeConfiguration: (Configuration) -> Boolean = { true },
+    @get:Nested var includeConfiguration: (Configuration) -> Boolean = {
+      // Filter out test configurations by default. Similar to how it's done in Generator.
+      // We also filter out any configuration that starts with ios.
+      // This is convenient when using Kotlin Multiplatform, and exporting more modules since transitive dependencies are not included by default.
+      // https://kotlinlang.org/docs/multiplatform-build-native-binaries.html#export-dependencies-to-binaries
+      !it.name.contains("test", ignoreCase = true) && !it.name.startsWith("ios")
+    },
     /** Return the output [Format]s you'd like to have generated. */
     @get:Nested var outputFormats: List<Format> = listOf(PNG, SVG),
     /** Allows you to mutate the [MutableGraph] and add things as needed. */
