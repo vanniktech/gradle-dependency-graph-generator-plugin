@@ -32,5 +32,3 @@ fun Project.isKotlinProject() = listOf("kotlin", "kotlin-android", "kotlin-platf
 fun Project.isAndroidProject() = listOf("com.android.library", "com.android.application", "com.android.test", "com.android.feature", "com.android.instantapp").any { plugins.hasPlugin(it) }
 
 fun Project.isJsProject() = plugins.hasPlugin("kotlin2js")
-
-fun Project.isCommonsProject() = plugins.hasPlugin("org.jetbrains.kotlin.platform.common")
