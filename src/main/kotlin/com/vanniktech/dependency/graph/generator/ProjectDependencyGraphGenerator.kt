@@ -55,8 +55,6 @@ internal class ProjectDependencyGraphGenerator(
 
     if (dependencies.none { it.to == project }) {
       node.add(Shape.RECTANGLE)
-    } else if (project.isCommonsProject()) {
-      node.add(Style.DASHED, Color.BLACK)
     }
 
     when {
