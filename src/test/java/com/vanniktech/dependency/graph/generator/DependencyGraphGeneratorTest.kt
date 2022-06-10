@@ -29,7 +29,7 @@ class DependencyGraphGeneratorTest {
   private lateinit var androidProject: DefaultProject // We always need to call evaluate() for Android Projects.
   private lateinit var androidProjectExtension: AppExtension
 
-  @Before @Suppress("Detekt.LongMethod") fun setUp() {
+  @Before fun setUp() {
     singleEmpty = ProjectBuilder.builder().withName("singleempty").build()
     singleEmpty.plugins.apply(JavaLibraryPlugin::class.java)
     singleEmpty.repositories.run { add(mavenCentral()) }

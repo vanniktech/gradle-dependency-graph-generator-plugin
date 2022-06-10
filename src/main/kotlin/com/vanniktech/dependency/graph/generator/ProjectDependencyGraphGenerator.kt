@@ -1,5 +1,11 @@
 package com.vanniktech.dependency.graph.generator
 
+import com.vanniktech.dependency.graph.generator.ProjectTarget.ANDROID
+import com.vanniktech.dependency.graph.generator.ProjectTarget.IOS
+import com.vanniktech.dependency.graph.generator.ProjectTarget.JS
+import com.vanniktech.dependency.graph.generator.ProjectTarget.JVM
+import com.vanniktech.dependency.graph.generator.ProjectTarget.MULTIPLATFORM
+import com.vanniktech.dependency.graph.generator.ProjectTarget.OTHER
 import guru.nidi.graphviz.attribute.Color
 import guru.nidi.graphviz.attribute.Font
 import guru.nidi.graphviz.attribute.GraphAttr
@@ -50,25 +56,30 @@ internal class ProjectDependencyGraphGenerator(
     return projectGenerator.graph(graph)
   }
 
-  private fun addNode(project: Project, dependencies: List<ProjectDependencyContainer>, graph: MutableGraph) {
+  private fun addNode(
+    project: Project,
+    dependencies: List<ProjectDependencyContainer>,
+    graph: MutableGraph
+  ) {
     val node = mutNode(project.path)
 
     if (dependencies.none { it.to == project }) {
       node.add(Shape.RECTANGLE)
     }
 
-    when {
-      project.isJsProject() -> node.add(Color.rgb("#fff176").fill())
-      project.isAndroidProject() -> node.add(Color.rgb("#81c784").fill())
-      project.isKotlinProject() -> node.add(Color.rgb("#ffb74d").fill())
-      project.isJavaProject() -> node.add(Color.rgb("#ff8a65").fill())
-      else -> node.add(Color.rgb("#e0e0e0").fill())
+    when (project.target()) {
+      MULTIPLATFORM -> node.add(Color.rgb("#AB47BC").fill())
+      JS -> node.add(Color.rgb("#FFCA28").fill())
+      ANDROID -> node.add(Color.rgb("#66BB6A").fill())
+      JVM -> node.add(Color.rgb("#FF7043").fill())
+      IOS -> node.add(Color.rgb("#42A5F5").fill())
+      OTHER -> node.add(Color.rgb("#BDBDBD").fill())
     }
 
     graph.add(projectGenerator.projectNode(node, project))
   }
 
-  @Suppress("Detekt.SpreadOperator") private fun rankRootProjects(graph: MutableGraph, projects: MutableSet<Project>, dependencies: List<ProjectDependencyContainer>) {
+  private fun rankRootProjects(graph: MutableGraph, projects: MutableSet<Project>, dependencies: List<ProjectDependencyContainer>) {
     graph.add(
       graph()
         .graphAttr()

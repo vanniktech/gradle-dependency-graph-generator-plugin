@@ -1,5 +1,6 @@
 package com.vanniktech.dependency.graph.generator
 
+import com.vanniktech.dependency.graph.generator.ProjectTarget.MULTIPLATFORM
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ProjectDependency
 
@@ -25,12 +26,16 @@ internal val Project.dotIdentifier get() = "$group$name".dotIdentifier
 
 fun Project.isDependingOnOtherProject() = configurations.any { configuration -> configuration.dependencies.any { it is ProjectDependency } }
 
-fun Project.isJavaProject() = listOf("java-library", "java", "java-gradle-plugin").any { plugins.hasPlugin(it) }
-
-fun Project.isKotlinProject() = listOf("kotlin", "kotlin-android", "kotlin-platform-jvm").any { plugins.hasPlugin(it) }
-
-fun Project.isAndroidProject() = listOf("com.android.library", "com.android.application", "com.android.test", "com.android.feature", "com.android.instantapp").any { plugins.hasPlugin(it) }
-
-fun Project.isJsProject() = plugins.hasPlugin("kotlin2js")
-
 fun Project.isCommonsProject() = plugins.hasPlugin("org.jetbrains.kotlin.platform.common")
+
+internal fun Project.target(): ProjectTarget {
+  val targets = ProjectTarget.values()
+    .filter { target -> target.ids.any { plugins.hasPlugin(it) } }
+
+  val withoutMultiplatform = targets.minus(MULTIPLATFORM)
+
+  return when {
+    targets.contains(MULTIPLATFORM) -> MULTIPLATFORM
+    else -> withoutMultiplatform.firstOrNull() ?: ProjectTarget.OTHER
+  }
+}

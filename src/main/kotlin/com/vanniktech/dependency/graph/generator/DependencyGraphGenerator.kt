@@ -25,7 +25,7 @@ internal class DependencyGraphGenerator(
 
   private val nodes = mutableMapOf<String, MutableNode>()
 
-  @Suppress("Detekt.SpreadOperator") fun generateGraph(): MutableGraph {
+  fun generateGraph(): MutableGraph {
     val graph = mutGraph("G").setDirected(true).graphAttrs().add(GraphAttr.dpi(100))
     generator.label?.let {
       graph.graphAttrs().add(it)

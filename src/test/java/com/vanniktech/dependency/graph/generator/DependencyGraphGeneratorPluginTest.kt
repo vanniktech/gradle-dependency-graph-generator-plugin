@@ -57,7 +57,7 @@ class DependencyGraphGeneratorPluginTest {
     integrationTest("7.4.2")
   }
 
-  @Suppress("Detekt.LongMethod") private fun integrationTest(gradleVersion: String) {
+  private fun integrationTest(gradleVersion: String) {
     val buildFile = testProjectDir.newFile("build.gradle")
     buildFile.writeText(
       """
@@ -183,7 +183,7 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(TaskOutcome.SUCCESS, thirdResult.task(":generateProjectDependencyGraph")?.outcome)
   }
 
-  @Test @Suppress("Detekt.LongMethod") fun multiProjectIntegrationTest() {
+  @Test fun multiProjectIntegrationTest() {
     testProjectDir.newFile("build.gradle").writeText(
       """
         |plugins {
@@ -322,10 +322,10 @@ class DependencyGraphGeneratorPluginTest {
         edge ["dir"="forward"]
         graph ["dpi"="100","label"="$label","labelloc"="t","fontsize"="35"]
         node ["style"="filled"]
-        ":app" ["shape"="rectangle","fillcolor"="#ff8a65"]
-        ":lib1" ["fillcolor"="#ff8a65"]
-        ":lib" ["fillcolor"="#ff8a65"]
-        ":lib2" ["fillcolor"="#ff8a65"]
+        ":app" ["shape"="rectangle","fillcolor"="#FF7043"]
+        ":lib1" ["fillcolor"="#FF7043"]
+        ":lib" ["fillcolor"="#FF7043"]
+        ":lib2" ["fillcolor"="#FF7043"]
         {
         edge ["dir"="none"]
         graph ["rank"="same"]
