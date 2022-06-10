@@ -79,12 +79,13 @@ internal class ProjectDependencyGraphGenerator(
   }
 
   private fun addDependencies(dependencies: MutableList<ProjectDependencyContainer>, graph: MutableGraph) {
+    val rootNodes = graph.rootNodes().filter { it.links().isEmpty() }
     dependencies
       .filterNot { (from, to, _) -> from == to }
       .distinctBy { (from, to, _) -> from to to }
       .forEach { (from, to, isImplementation) ->
-        val fromNode = graph.nodes().find { it.name().toString() == from.path }
-        val toNode = graph.nodes().find { it.name().toString() == to.path }
+        val fromNode = rootNodes.single { it.name().toString() == from.path }
+        val toNode = rootNodes.single { it.name().toString() == to.path }
 
         if (fromNode != null && toNode != null) {
           val link = Link.to(toNode)
