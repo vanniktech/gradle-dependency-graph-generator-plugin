@@ -62,7 +62,7 @@ internal class ProjectDependencyGraphGenerator(
       project.isJsProject() -> node.add(Color.rgb("#fff176").fill())
       project.isAndroidProject() -> node.add(Color.rgb("#81c784").fill())
       project.isKotlinProject() -> node.add(Color.rgb("#ffb74d").fill())
-      project.isJavaProject() -> node.add(Color.rgb("#ff8a65").fill())
+      project.isJavaProject() -> node.add(Color.rgb("#ff7043").fill())
       else -> node.add(Color.rgb("#e0e0e0").fill())
     }
 
