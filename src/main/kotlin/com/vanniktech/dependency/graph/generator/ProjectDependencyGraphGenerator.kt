@@ -79,7 +79,7 @@ internal class ProjectDependencyGraphGenerator(
 
   private fun addDependencies(dependencies: MutableList<ProjectDependencyContainer>, graph: MutableGraph) {
     dependencies
-      .filterNot { (from, to, _) -> !from.isCommonsProject() && to.isCommonsProject() }
+      .filterNot { (from, to, _) -> from == to }
       .distinctBy { (from, to, _) -> from to to }
       .forEach { (from, to, isImplementation) ->
         val fromNode = graph.nodes().find { it.name().toString() == from.path }
