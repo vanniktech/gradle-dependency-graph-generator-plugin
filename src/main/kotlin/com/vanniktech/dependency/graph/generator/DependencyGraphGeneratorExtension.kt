@@ -118,7 +118,7 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     @get:Nested var projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
     /** Allows to change the [Link] between two [Project]s and for the given [Configuration]. */
     @get:Nested var link: (link: Link, from: Project, to: Project, Configuration) -> Link = { it, _, _, configuration ->
-        if (configuration.isImplementation()) it.with(Style.DOTTED) else it
+      if (configuration.isImplementation()) it.with(Style.DOTTED) else it
     },
     /** Return true when you want to include this [Project], false otherwise. */
     @get:Nested var includeProject: (Project) -> Boolean = { true },
