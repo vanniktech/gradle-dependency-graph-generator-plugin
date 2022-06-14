@@ -6,6 +6,7 @@ import guru.nidi.graphviz.engine.Format
 import guru.nidi.graphviz.engine.Format.PNG
 import guru.nidi.graphviz.engine.Format.SVG
 import guru.nidi.graphviz.engine.Graphviz
+import guru.nidi.graphviz.model.Link
 import guru.nidi.graphviz.model.MutableGraph
 import guru.nidi.graphviz.model.MutableNode
 import org.gradle.api.NamedDomainObjectContainer
@@ -114,6 +115,8 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     @get:Input var name: String = "",
     /** Allows to change the [MutableNode] for the given [Project]. */
     @get:Nested var projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
+    /** Allows to change the [Link] between two [Project]s and for the given [Configuration]. */
+    @get:Nested var link: (link: Link, from: Project, to: Project, Configuration) -> Link = { it, _, _, _ -> it }
     /** Return true when you want to include this [Project], false otherwise. */
     @get:Nested var includeProject: (Project) -> Boolean = { true },
     /** Return true when you want to include this [Configuration], false otherwise. */
