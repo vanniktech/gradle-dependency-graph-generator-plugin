@@ -75,7 +75,6 @@ internal class ProjectDependencyGraphGenerator(
     val rootNodes: List<MutableNode> = graph.rootNodes().filter { it.links().isEmpty() }
     dependencies
       .filterNot { (from, to, _) -> from == to }
-      .distinctBy { (from, to, _) -> from to to }
       .forEach { (from, to, isImplementation) ->
         val fromNode = rootNodes.single { it.name().toString() == from.path }
         val toNode = rootNodes.singleOrNull { it.name().toString() == to.path } ?: return@forEach
