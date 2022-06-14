@@ -73,7 +73,7 @@ internal class ProjectDependencyGraphGenerator(
   }
 
   private fun addDependencies(dependencies: MutableList<ProjectDependencyContainer>, graph: MutableGraph) {
-    val rootNodes: List<MutableNode> = graph.rootNodes().filter { it.links().isEmpty() }
+    val rootNodes: List<MutableNode> = graph.rootNodes().filterNotNull().filter { it.links().isEmpty() }
     dependencies
       .filterNot { (from, to, _) -> from == to }
       .forEach { (from, to, configuration) ->
