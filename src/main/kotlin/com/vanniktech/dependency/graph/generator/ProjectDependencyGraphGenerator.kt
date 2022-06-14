@@ -14,6 +14,7 @@ import guru.nidi.graphviz.model.Link
 import guru.nidi.graphviz.model.MutableGraph
 import guru.nidi.graphviz.model.MutableNode
 import org.gradle.api.Project
+import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ProjectDependency
 
 // Based on https://github.com/JakeWharton/SdkSearch/blob/766d612ed52cdf3af9cd0728b6afd87006746ae5/gradle/projectDependencyGraph.gradle
@@ -31,7 +32,7 @@ internal class ProjectDependencyGraphGenerator(
           .flatMap { configuration ->
             configuration.dependencies
               .withType(ProjectDependency::class.java)
-              .map { ProjectDependencyContainer(project, it.dependencyProject, configuration.isImplementation()) }
+              .map { ProjectDependencyContainer(project, it.dependencyProject, configuration) }
           }
           .forEach {
             dependencies.add(it)
@@ -75,18 +76,18 @@ internal class ProjectDependencyGraphGenerator(
     val rootNodes: List<MutableNode> = graph.rootNodes().filter { it.links().isEmpty() }
     dependencies
       .filterNot { (from, to, _) -> from == to }
-      .forEach { (from, to, isImplementation) ->
+      .forEach { (from, to, configuration) ->
         val fromNode = rootNodes.single { it.name().toString() == from.path }
         val toNode = rootNodes.singleOrNull { it.name().toString() == to.path } ?: return@forEach
         val link = Link.to(toNode)
-        graph.add(fromNode.addLink(if (isImplementation) link.with(Style.DOTTED) else link))
+        graph.add(fromNode.addLink(if (configuration.isImplementation()) link.with(Style.DOTTED) else link))
       }
   }
 
   internal data class ProjectDependencyContainer(
     val from: Project,
     val to: Project,
-    val isImplementation: Boolean
+    val configuration: Configuration,
   )
 
   internal companion object {
