@@ -79,8 +79,8 @@ internal class ProjectDependencyGraphGenerator(
       .forEach { (from, to, configuration) ->
         val fromNode = rootNodes.single { it.name().toString() == from.path }
         val toNode = rootNodes.singleOrNull { it.name().toString() == to.path } ?: return@forEach
-        val link = Link.to(toNode)
-        graph.add(fromNode.addLink(if (configuration.isImplementation()) link.with(Style.DOTTED) else link))
+        val link = projectGenerator.link(Link.to(toNode), from, to, configuration)
+        graph.add(fromNode.addLink(link))
       }
   }
 
