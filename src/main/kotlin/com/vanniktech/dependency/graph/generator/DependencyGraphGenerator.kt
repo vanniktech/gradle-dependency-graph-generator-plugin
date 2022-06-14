@@ -77,24 +77,25 @@ internal class DependencyGraphGenerator(
     val identifier = (dependency.moduleGroup + dependency.moduleName).dotIdentifier
     val pair = parentIdentifier to identifier
 
-    if (generator.include.invoke(dependency) && !addedConnections.contains(pair)) {
-      addedConnections.add(pair)
+    if (pair in addedConnections) return
+    if (!generator.include(dependency)) return
 
-      val node = mutNode(identifier)
-        .add(Label.of(dependency.getDisplayName()))
-        .add(Shape.RECTANGLE)
+    addedConnections.add(pair)
 
-      val mutated = generator.dependencyNode.invoke(node, dependency)
-      nodes[identifier] = mutated
-      graph.add(mutated)
+    val node = mutNode(identifier)
+      .add(Label.of(dependency.getDisplayName()))
+      .add(Shape.RECTANGLE)
 
-      rootNodes.remove(identifier)
+    val mutated = generator.dependencyNode.invoke(node, dependency)
+    nodes[identifier] = mutated
+    graph.add(mutated)
 
-      nodes[parentIdentifier]?.addLink(mutated)
+    rootNodes.remove(identifier)
 
-      if (generator.children.invoke(dependency)) {
-        dependency.children.forEach { append(it, identifier, graph, rootNodes) }
-      }
+    nodes[parentIdentifier]?.addLink(mutated)
+
+    if (generator.children.invoke(dependency)) {
+      dependency.children.forEach { append(it, identifier, graph, rootNodes) }
     }
   }
 
