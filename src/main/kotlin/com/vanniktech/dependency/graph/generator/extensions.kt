@@ -2,6 +2,7 @@ package com.vanniktech.dependency.graph.generator
 
 import com.vanniktech.dependency.graph.generator.ProjectTarget.MULTIPLATFORM
 import org.gradle.api.Project
+import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ProjectDependency
 
 private val whitespaceRegex = Regex("\\s")
@@ -39,3 +40,5 @@ internal fun Project.target(): ProjectTarget {
     else -> withoutMultiplatform.firstOrNull() ?: ProjectTarget.OTHER
   }
 }
+
+internal fun Configuration.isImplementation() = name.lowercase().endsWith("implementation")
