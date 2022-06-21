@@ -1,7 +1,22 @@
 # Change Log
 
-Version 0.8.0 *(In development)*
---------------------------------
+Version 0.8.0 *(2022-06-21)*
+----------------------------
+
+Big thanks to @SimonMarquis for all of his work!
+
+- Project Graph: By default exclude test configurations as well as ios configurations \(mimicing graph behavior\) [\#171](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/171) ([vanniktech](https://github.com/vanniktech))
+- Project Graph: Add dependencies from the root \(declaration\) nodes only [\#168](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/168) ([SimonMarquis](https://github.com/SimonMarquis))
+- Project Graph: Extension also gets includeConfiguration function similar to normal graph. [\#166](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/166) ([vanniktech](https://github.com/vanniktech))
+- Project Graph: Filter out dependencies on a module on its self. [\#165](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/165) ([vanniktech](https://github.com/vanniktech))
+- Project Graph: Better coloring support for modules. [\#163](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/163) ([vanniktech](https://github.com/vanniktech))
+- Remove project.isCommonsProject check which changes styling \(dunno what it's used for anymore\) [\#162](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/162) ([vanniktech](https://github.com/vanniktech))
+- Update dependencies. [\#161](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/161) ([vanniktech](https://github.com/vanniktech))
+- Rework README.md to mention generateProjectDependencyGraph task [\#160](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/160) ([SimonMarquis](https://github.com/SimonMarquis))
+- Force the dpi value to 100 [\#159](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/159) ([SimonMarquis](https://github.com/SimonMarquis))
+- Log output files path: dot, png, svg [\#157](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/157) ([SimonMarquis](https://github.com/SimonMarquis))
+- Update graphviz-java to 0.18.1 [\#151](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/151) ([SimonMarquis](https://github.com/SimonMarquis))
+- \[Documentation\] Mention output file path in documentation [\#148](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/148) ([mamatagelanee07](https://github.com/mamatagelanee07))
 
 Version 0.7.0 *(2021-12-18)*
 ----------------------------

@@ -12,7 +12,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.7.0"
+    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.8.0"
   }
 }
 
