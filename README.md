@@ -1,4 +1,4 @@
-# gradle-dependency-graph-generator-plugin
+s# gradle-dependency-graph-generator-plugin
 
 Gradle plugin that lets you visualize your dependencies in a graph.
 
@@ -29,7 +29,7 @@ buildscript {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
   }
   dependencies {
-    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.8.0-SNAPSHOT"
+    classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.9.0-SNAPSHOT"
   }
 }
 
