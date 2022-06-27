@@ -81,9 +81,9 @@ import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorPlugin
 import guru.nidi.graphviz.attribute.Color
 import guru.nidi.graphviz.attribute.Style
 
-rootProject.plugins.apply(DependencyGraphGeneratorPlugin::class.java)
+plugins.apply(DependencyGraphGeneratorPlugin::class.java)
 
-rootProject.configure<DependencyGraphGeneratorExtension> {
+configure<DependencyGraphGeneratorExtension> {
   generators.create("jetbrainsLibraries") {
     include = { dependency -> dependency.moduleGroup.startsWith("org.jetbrains") } // Only want Jetbrains.
     children = { true } // Include transitive dependencies.
