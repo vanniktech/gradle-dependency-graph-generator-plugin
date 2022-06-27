@@ -1,4 +1,4 @@
-s# gradle-dependency-graph-generator-plugin
+# gradle-dependency-graph-generator-plugin
 
 Gradle plugin that lets you visualize your dependencies in a graph.
 
