@@ -77,6 +77,7 @@ dependencyGraphGenerator {
 <summary>The same can be done using Kotlin</summary>
 
 ```kotlin
+import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorPlugin
 import guru.nidi.graphviz.attribute.Color
 import guru.nidi.graphviz.attribute.Style
