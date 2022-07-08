@@ -34,6 +34,6 @@ import java.io.File
       graphviz.render(it).toFile(File(outputDirectory, generator.outputFileName))
     }
 
-    listOf(dot).plus(renders).forEach { logger.lifecycle(it.absolutePath) }
+    listOf(dot).plus(renders).distinct().forEach { logger.lifecycle(it.absolutePath) }
   }
 }
