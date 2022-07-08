@@ -5,6 +5,7 @@ import guru.nidi.graphviz.attribute.Label
 import guru.nidi.graphviz.engine.Format
 import guru.nidi.graphviz.engine.Format.PNG
 import guru.nidi.graphviz.engine.Format.SVG
+import guru.nidi.graphviz.engine.Graphviz
 import guru.nidi.graphviz.model.MutableGraph
 import guru.nidi.graphviz.model.MutableNode
 import org.gradle.api.NamedDomainObjectContainer
@@ -77,6 +78,8 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     @get:Nested var outputFormats: List<Format> = listOf(PNG, SVG),
     /** Allows you to mutate the [MutableGraph] and add things as needed. */
     @get:Nested var graph: (MutableGraph) -> MutableGraph = { it },
+    /** Allows you to configure the [Graphviz] instance. */
+    @get:Nested var graphviz: (Graphviz) -> Graphviz = { it },
   ) {
     /** Gradle task name that is associated with this generator. */
     @get:Internal val gradleTaskName = "generateDependencyGraph${
@@ -125,6 +128,8 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     @get:Nested var outputFormats: List<Format> = listOf(PNG, SVG),
     /** Allows you to mutate the [MutableGraph] and add things as needed. */
     @get:Nested var graph: (MutableGraph) -> MutableGraph = { it },
+    /** Allows you to configure the [Graphviz] instance. */
+    @get:Nested var graphviz: (Graphviz) -> Graphviz = { it },
   ) {
     /** Gradle task name that is associated with this generator. */
     @get:Internal val gradleTaskName = "generateProjectDependencyGraph${
