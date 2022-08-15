@@ -35,7 +35,7 @@ class ProjectDependencyGraphGeneratorIncludeProjectTest {
 
   @Test fun excludeNonLeafProject() {
     assertEquals(
-      // language=DOT
+      // language=dot
       """
       digraph {
       edge ["dir"="forward"]
