@@ -12,6 +12,7 @@ import guru.nidi.graphviz.model.Factory.mutGraph
 import guru.nidi.graphviz.model.Factory.mutNode
 import guru.nidi.graphviz.model.Link
 import guru.nidi.graphviz.model.MutableGraph
+import guru.nidi.graphviz.model.MutableNode
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ProjectDependency
 
@@ -71,18 +72,15 @@ internal class ProjectDependencyGraphGenerator(
   }
 
   private fun addDependencies(dependencies: MutableList<ProjectDependencyContainer>, graph: MutableGraph) {
-    val rootNodes = graph.rootNodes().filter { it.links().isEmpty() }
+    val rootNodes: List<MutableNode> = graph.rootNodes().filter { it.links().isEmpty() }
     dependencies
       .filterNot { (from, to, _) -> from == to }
       .distinctBy { (from, to, _) -> from to to }
       .forEach { (from, to, isImplementation) ->
         val fromNode = rootNodes.single { it.name().toString() == from.path }
-        val toNode = rootNodes.single { it.name().toString() == to.path }
-
-        if (fromNode != null && toNode != null) {
-          val link = Link.to(toNode)
-          graph.add(fromNode.addLink(if (isImplementation) link.with(Style.DOTTED) else link))
-        }
+        val toNode = rootNodes.singleOrNull { it.name().toString() == to.path } ?: return@forEach
+        val link = Link.to(toNode)
+        graph.add(fromNode.addLink(if (isImplementation) link.with(Style.DOTTED) else link))
       }
   }
 
