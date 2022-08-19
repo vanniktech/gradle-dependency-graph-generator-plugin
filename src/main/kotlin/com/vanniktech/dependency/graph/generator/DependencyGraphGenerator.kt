@@ -100,7 +100,9 @@ internal class DependencyGraphGenerator(
 
     rootNodes.remove(identifier)
 
-    nodes[parent.dotIdentifier]?.addLink(mutated)
+    nodes[parent.dotIdentifier]?.apply {
+      addLink(generator.link(linkTo(mutated), parent, dependency.wrapped()))
+    }
 
     if (generator.children.invoke(dependency)) {
       dependency.children.forEach { append(it, dependency.wrapped(), graph, rootNodes) }

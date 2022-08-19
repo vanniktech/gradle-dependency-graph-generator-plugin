@@ -66,6 +66,8 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     @get:Nested var dependencyNode: (MutableNode, ResolvedDependency) -> MutableNode = { node, _ -> node },
     /** Allows to change the [MutableNode] for the given [Project]. */
     @get:Nested var projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
+    /** Allows to change the [Link] between two [ResolvedDependency]. */
+    @get:Nested var link: (link: Link, from: DependencyContainer, to: DependencyContainer) -> Link = { it, _, _ -> it },
     /** Optional label that can be displayed wrapped around the graph. */
     @get:Internal var label: Label? = null, // Not serializable making it unusable as an Input.
     /** Return true when you want to include this [Configuration], false otherwise. */
