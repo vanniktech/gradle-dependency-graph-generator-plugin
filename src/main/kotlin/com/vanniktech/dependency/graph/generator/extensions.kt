@@ -4,12 +4,20 @@ import com.vanniktech.dependency.graph.generator.ProjectTarget.MULTIPLATFORM
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ProjectDependency
+import org.gradle.api.artifacts.ResolvedDependency
 
 private val whitespaceRegex = Regex("\\s")
 
 internal val String.dotIdentifier get() = replace("-", "")
   .replace(".", "")
   .replace(whitespaceRegex, "")
+
+internal val ResolvedDependency.dotIdentifier get() = (moduleGroup + moduleName).dotIdentifier
+
+internal val DependencyContainer.dotIdentifier get() = when (this) {
+  is DependencyContainer.Project -> project.dotIdentifier
+  is DependencyContainer.ResolvedDependency -> resolvedDependency.dotIdentifier
+}
 
 internal fun String.nonEmptyPrepend(prepend: String) =
   if (isNotEmpty()) prepend + this else this

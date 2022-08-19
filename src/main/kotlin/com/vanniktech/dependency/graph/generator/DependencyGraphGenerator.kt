@@ -21,7 +21,7 @@ internal class DependencyGraphGenerator(
   // We keep a map of an identifier to a parent identifier in order to not add unique dependencies more than once.
   // One scenario is A depending on B and B on C.
   // If a module depends on both A and B the connection from B to C could be wired twice.
-  private val addedConnections = mutableSetOf<Pair<String, String>>()
+  private val addedConnections = mutableSetOf<Pair<DependencyContainer, ResolvedDependency>>()
 
   private val nodes = mutableMapOf<String, MutableNode>()
 
@@ -54,11 +54,14 @@ internal class DependencyGraphGenerator(
         project.configurations
           .filter { it.isCanBeResolved }
           .filter { generator.includeConfiguration.invoke(it) }
-          .flatMap { it.resolvedConfiguration.firstLevelModuleDependencies }
-          .map { project to it }
+          .flatMap {
+            it.resolvedConfiguration.firstLevelModuleDependencies.map { dependency ->
+              project to dependency
+            }
+          }
       }
       .forEach { (project, dependency) ->
-        append(dependency, project.dotIdentifier, graph, rootNodes)
+        append(dependency, project.wrapped(), graph, rootNodes)
       }
 
     if (rootNodes.isNotEmpty()) {
@@ -73,9 +76,14 @@ internal class DependencyGraphGenerator(
     return generator.graph(graph)
   }
 
-  private fun append(dependency: ResolvedDependency, parentIdentifier: String, graph: MutableGraph, rootNodes: MutableSet<String>) {
-    val identifier = (dependency.moduleGroup + dependency.moduleName).dotIdentifier
-    val pair = parentIdentifier to identifier
+  private fun append(
+    dependency: ResolvedDependency,
+    parent: DependencyContainer,
+    graph: MutableGraph,
+    rootNodes: MutableSet<String>
+  ) {
+    val identifier = dependency.dotIdentifier
+    val pair = parent to dependency
 
     if (pair in addedConnections) return
     if (!generator.include(dependency)) return
@@ -92,10 +100,10 @@ internal class DependencyGraphGenerator(
 
     rootNodes.remove(identifier)
 
-    nodes[parentIdentifier]?.addLink(mutated)
+    nodes[parent.dotIdentifier]?.addLink(mutated)
 
     if (generator.children.invoke(dependency)) {
-      dependency.children.forEach { append(it, identifier, graph, rootNodes) }
+      dependency.children.forEach { append(it, dependency.wrapped(), graph, rootNodes) }
     }
   }
 
