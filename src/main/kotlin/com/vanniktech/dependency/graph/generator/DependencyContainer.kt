@@ -3,16 +3,18 @@ package com.vanniktech.dependency.graph.generator
 import org.gradle.api.Project as GradleProject
 import org.gradle.api.artifacts.ResolvedDependency as GradleResolvedDependency
 
-internal fun GradleProject.wrapped() = DependencyContainer.Project(this)
-internal fun GradleResolvedDependency.wrapped() = DependencyContainer.ResolvedDependency(this)
-
 sealed interface DependencyContainer {
 
-  data class Project(
+  companion object {
+    internal operator fun invoke(project: GradleProject) = Project(project)
+    internal operator fun invoke(dependency: GradleResolvedDependency) = ResolvedDependency(dependency)
+  }
+
+  data class Project internal constructor(
     internal val project: GradleProject,
   ) : DependencyContainer, GradleProject by project
 
-  data class ResolvedDependency(
+  data class ResolvedDependency internal constructor(
     internal val resolvedDependency: GradleResolvedDependency,
   ) : DependencyContainer, GradleResolvedDependency by resolvedDependency
 }
