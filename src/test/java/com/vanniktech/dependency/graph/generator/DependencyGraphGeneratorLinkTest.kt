@@ -34,7 +34,7 @@ class DependencyGraphGeneratorLinkTest {
       else link
     }
     assertEquals(
-      // language=DOT
+      // language=dot
       """
       digraph "G" {
       edge ["dir"="forward"]
