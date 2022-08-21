@@ -5,7 +5,7 @@ import org.gradle.api.artifacts.ResolvedDependency as GradleResolvedDependency
 
 sealed interface DependencyContainer {
 
-  internal companion object {
+  companion object {
     internal operator fun invoke(project: GradleProject) = Project(project)
     internal operator fun invoke(dependency: GradleResolvedDependency) = ResolvedDependency(dependency)
   }
