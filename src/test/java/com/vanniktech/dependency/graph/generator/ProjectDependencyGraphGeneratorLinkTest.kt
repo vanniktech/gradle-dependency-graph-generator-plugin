@@ -19,8 +19,7 @@ class ProjectDependencyGraphGeneratorLinkTest {
   private lateinit var lib1: Project
   private lateinit var lib2: Project
 
-  @Before
-  fun setUp() {
+  @Before fun setUp() {
     root = ProjectBuilder.builder().withName("root").build()
     root.plugins.apply(JavaLibraryPlugin::class.java)
 
@@ -37,8 +36,7 @@ class ProjectDependencyGraphGeneratorLinkTest {
     app.dependencies.add("implementation", lib2)
   }
 
-  @Test
-  fun customizeLinkBasedOnFromAndTo() {
+  @Test fun customizeLinkBasedOnFromAndTo() {
     val blueDashedLinkForAppToLib1 = { link: Link, from: Project, to: Project, _: Configuration ->
       if (from == app && to == lib1) link.attrs().add(BLUE, DASHED)
       else link

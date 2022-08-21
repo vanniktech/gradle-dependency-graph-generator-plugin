@@ -7,21 +7,18 @@ import org.junit.Test
 
 class DotIdentifierTest {
 
-  @Test
-  fun valid() {
+  @Test fun valid() {
     assertEquals("javainject", "java.inject".dotIdentifier.value)
     assertEquals("firebasecore", "firebase-core".dotIdentifier.value)
     assertEquals("firebasecore", "firebase core".dotIdentifier.value)
   }
 
-  @Test
-  fun validProject() {
+  @Test fun validProject() {
     val project = ProjectBuilder.builder().withName("app").build()
     assertEquals("app", project.dotIdentifier.value)
   }
 
-  @Test
-  fun validResolvedDependency() {
+  @Test fun validResolvedDependency() {
     val project = ProjectBuilder.builder().withName("app").build()
     project.plugins.apply(JavaLibraryPlugin::class.java)
     project.repositories.run { add(mavenCentral()) }
@@ -33,8 +30,7 @@ class DotIdentifierTest {
     assertEquals("orgjetbrainskotlinkotlinstdlib", dependency.dotIdentifier.value)
   }
 
-  @Test(expected = IllegalArgumentException::class)
-  fun dash() {
+  @Test(expected = IllegalArgumentException::class) fun dash() {
     DotIdentifier("a-b")
   }
 

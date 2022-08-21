@@ -17,8 +17,7 @@ class DependencyGraphGeneratorLinkTest {
 
   private lateinit var project: DefaultProject
 
-  @Before
-  fun setUp() {
+  @Before fun setUp() {
     project = ProjectBuilder.builder().withName("root").build() as DefaultProject
     project.plugins.apply(JavaLibraryPlugin::class.java)
     project.repositories.run { add(mavenCentral()) }
@@ -26,8 +25,7 @@ class DependencyGraphGeneratorLinkTest {
     project.dependencies.add("implementation", "io.reactivex.rxjava2:rxjava:2.1.10")
   }
 
-  @Test
-  fun customizeLinkBasedOnFromAndTo() {
+  @Test fun customizeLinkBasedOnFromAndTo() {
     val blueDashedLinkForRootToRxJava = { link: Link, from: DependencyContainer, to: DependencyContainer ->
       if ((from as? Project)?.project == project && (to as? ResolvedDependency)?.moduleName == "rxjava") link.attrs()
         .add(BLUE, DASHED)
