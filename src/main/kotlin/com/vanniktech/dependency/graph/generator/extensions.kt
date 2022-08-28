@@ -1,10 +1,10 @@
 package com.vanniktech.dependency.graph.generator
 
 import com.vanniktech.dependency.graph.generator.ProjectTarget.MULTIPLATFORM
+import guru.nidi.graphviz.engine.Graphviz
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ProjectDependency
-import guru.nidi.graphviz.engine.Graphviz
 
 internal fun String.nonEmptyPrepend(prepend: String) =
   if (isNotEmpty()) prepend + this else this
