@@ -34,7 +34,6 @@ internal fun Project.target(): ProjectTarget {
   }
 }
 
-
 internal fun Configuration.isImplementation() = name.lowercase().endsWith("implementation")
 
 internal fun Graphviz.withDefaultTotalMemory() = totalMemory(2.0.pow(30).toInt())
