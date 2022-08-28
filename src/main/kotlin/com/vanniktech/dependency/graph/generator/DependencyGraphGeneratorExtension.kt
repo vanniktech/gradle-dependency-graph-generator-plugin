@@ -2,10 +2,12 @@ package com.vanniktech.dependency.graph.generator
 
 import groovy.lang.Closure
 import guru.nidi.graphviz.attribute.Label
+import guru.nidi.graphviz.attribute.Style
 import guru.nidi.graphviz.engine.Format
 import guru.nidi.graphviz.engine.Format.PNG
 import guru.nidi.graphviz.engine.Format.SVG
 import guru.nidi.graphviz.engine.Graphviz
+import guru.nidi.graphviz.model.Link
 import guru.nidi.graphviz.model.MutableGraph
 import guru.nidi.graphviz.model.MutableNode
 import org.gradle.api.NamedDomainObjectContainer
@@ -64,6 +66,8 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     @get:Nested var dependencyNode: (MutableNode, ResolvedDependency) -> MutableNode = { node, _ -> node },
     /** Allows to change the [MutableNode] for the given [Project]. */
     @get:Nested var projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
+    /** Allows to change the [Link] between two [DependencyContainer]. */
+    @get:Nested var link: (link: Link, from: DependencyContainer, to: DependencyContainer) -> Link = { it, _, _ -> it },
     /** Optional label that can be displayed wrapped around the graph. */
     @get:Internal var label: Label? = null, // Not serializable making it unusable as an Input.
     /** Return true when you want to include this [Configuration], false otherwise. */
@@ -114,6 +118,10 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     @get:Input var name: String = "",
     /** Allows to change the [MutableNode] for the given [Project]. */
     @get:Nested var projectNode: (MutableNode, Project) -> MutableNode = { node, _ -> node },
+    /** Allows to change the [Link] between two [Project]s and for the given [Configuration]. */
+    @get:Nested var link: (link: Link, from: Project, to: Project, configuration: Configuration) -> Link = { it, _, _, configuration ->
+      if (configuration.isImplementation()) it.with(Style.DOTTED) else it
+    },
     /** Return true when you want to include this [Project], false otherwise. */
     @get:Nested var includeProject: (Project) -> Boolean = { true },
     /** Return true when you want to include this [Configuration], false otherwise. */

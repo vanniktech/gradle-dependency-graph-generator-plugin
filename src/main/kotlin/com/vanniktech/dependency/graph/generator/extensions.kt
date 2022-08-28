@@ -2,14 +2,9 @@ package com.vanniktech.dependency.graph.generator
 
 import com.vanniktech.dependency.graph.generator.ProjectTarget.MULTIPLATFORM
 import org.gradle.api.Project
+import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ProjectDependency
 import guru.nidi.graphviz.engine.Graphviz
-
-private val whitespaceRegex = Regex("\\s")
-
-internal val String.dotIdentifier get() = replace("-", "")
-  .replace(".", "")
-  .replace(whitespaceRegex, "")
 
 internal fun String.nonEmptyPrepend(prepend: String) =
   if (isNotEmpty()) prepend + this else this
@@ -22,8 +17,6 @@ internal fun String.toHyphenCase(): String {
     .drop(1)
     .joinToString(separator = "") { if (it[0].isUpperCase()) "-${it[0].lowercase()}" else it }
 }
-
-internal val Project.dotIdentifier get() = "$group$name".dotIdentifier
 
 fun Project.isDependingOnOtherProject() = configurations.any { configuration -> configuration.dependencies.any { it is ProjectDependency } }
 
@@ -40,5 +33,8 @@ internal fun Project.target(): ProjectTarget {
     else -> withoutMultiplatform.firstOrNull() ?: ProjectTarget.OTHER
   }
 }
+
+
+internal fun Configuration.isImplementation() = name.lowercase().endsWith("implementation")
 
 internal fun Graphviz.withDefaultTotalMemory() = totalMemory(2.0.pow(30).toInt())

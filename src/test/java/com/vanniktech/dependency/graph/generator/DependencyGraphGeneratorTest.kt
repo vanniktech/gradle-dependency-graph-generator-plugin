@@ -77,6 +77,7 @@ class DependencyGraphGeneratorTest {
     singleEmpty.dependencies.add("testImplementation", "junit:junit:4.12")
 
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -95,6 +96,7 @@ class DependencyGraphGeneratorTest {
 
   @Test fun singleProjectEmptyAllNoProjects() {
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         graph ["dpi"="100"]
@@ -106,6 +108,7 @@ class DependencyGraphGeneratorTest {
 
   @Test fun singleProjectEmptyAll() {
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -124,6 +127,7 @@ class DependencyGraphGeneratorTest {
 
   @Test fun singleProjectEmptyAllMutateGraph() {
     assertEquals(
+      // language=dot
       """
         graph "G" {
         graph ["dpi"="100"]
@@ -140,6 +144,7 @@ class DependencyGraphGeneratorTest {
 
   @Test fun singleProjectEmptyAllHeader() {
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -158,6 +163,7 @@ class DependencyGraphGeneratorTest {
 
   @Test fun singleProjectEmptyAllRootFormatted() {
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -176,6 +182,7 @@ class DependencyGraphGeneratorTest {
 
   @Test fun singleProjectAll() {
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -210,6 +217,7 @@ class DependencyGraphGeneratorTest {
     }
 
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -236,6 +244,7 @@ class DependencyGraphGeneratorTest {
 
   @Test fun singleProjectNoChildren() {
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -258,6 +267,7 @@ class DependencyGraphGeneratorTest {
 
   @Test fun singleProjectFilterRxJavaOut() {
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -282,6 +292,7 @@ class DependencyGraphGeneratorTest {
     singleEmpty.dependencies.add("implementation", "org.apache.xmlgraphics:batik-gvt:1.7")
 
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -381,6 +392,7 @@ class DependencyGraphGeneratorTest {
     singleProject.dependencies.add("implementation", "io.reactivex.rxjava2:rxandroid:2.0.2")
 
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -410,6 +422,7 @@ class DependencyGraphGeneratorTest {
 
   @Test fun multiProjectAll() {
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -446,6 +459,7 @@ class DependencyGraphGeneratorTest {
     androidProject.dependencies.add("implementation", "android.arch.persistence.room:runtime:1.0.0")
 
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -493,6 +507,7 @@ class DependencyGraphGeneratorTest {
     androidProject.dependencies.add("implementation", "com.squareup.sqldelight:runtime:0.6.1")
 
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -527,6 +542,7 @@ class DependencyGraphGeneratorTest {
     androidProject.dependencies.add("flavor2ReleaseImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
 
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -566,6 +582,7 @@ class DependencyGraphGeneratorTest {
     androidProject.dependencies.add("stagingImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
 
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -605,6 +622,7 @@ class DependencyGraphGeneratorTest {
     androidProject.dependencies.add("stagingImplementation", "org.jetbrains.kotlin:kotlin-stdlib:1.2.30")
 
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -631,6 +649,7 @@ class DependencyGraphGeneratorTest {
     androidProject.dependencies.add("testImplementation", "junit:junit:4.12")
 
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -653,6 +672,7 @@ class DependencyGraphGeneratorTest {
     androidProject.dependencies.add("androidTestImplementation", "junit:junit:4.12")
 
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -671,6 +691,7 @@ class DependencyGraphGeneratorTest {
 
   @Test fun projectNamedLikeDependencyName() {
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
