@@ -3,6 +3,7 @@ package com.vanniktech.dependency.graph.generator
 import com.vanniktech.dependency.graph.generator.ProjectTarget.MULTIPLATFORM
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ProjectDependency
+import guru.nidi.graphviz.engine.Graphviz
 
 private val whitespaceRegex = Regex("\\s")
 
@@ -39,3 +40,5 @@ internal fun Project.target(): ProjectTarget {
     else -> withoutMultiplatform.firstOrNull() ?: ProjectTarget.OTHER
   }
 }
+
+internal fun Graphviz.withDefaultTotalMemory() = totalMemory(2.0.pow(30).toInt())
