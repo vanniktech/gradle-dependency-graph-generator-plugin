@@ -8,6 +8,7 @@ import org.gradle.testfixtures.ProjectBuilder
 import org.gradle.testkit.runner.BuildResult
 import org.gradle.testkit.runner.GradleRunner
 import org.gradle.testkit.runner.TaskOutcome
+import org.intellij.lang.annotations.Language
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -60,6 +61,7 @@ class DependencyGraphGeneratorPluginTest {
   @Suppress("Detekt.LongMethod") private fun integrationTest(gradleVersion: String) {
     val buildFile = testProjectDir.newFile("build.gradle")
     buildFile.writeText(
+      // language=groovy
       """
         |plugins {
         |  id "java"
@@ -107,6 +109,7 @@ class DependencyGraphGeneratorPluginTest {
     val dependencyGraphDot = File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot")
     assertEquals(true, dependencyGraphDot.absolutePath in result.output)
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -141,6 +144,7 @@ class DependencyGraphGeneratorPluginTest {
     val projectDependencyGraphDot = File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.dot")
     assertEquals(true, projectDependencyGraphDot.absolutePath in result.output)
     assertEquals(
+      // language=dot
       """
         digraph {
         edge ["dir"="forward"]
@@ -160,6 +164,7 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(TaskOutcome.UP_TO_DATE, secondResult.task(":generateProjectDependencyGraph")?.outcome)
 
     buildFile.appendText(
+      // language=groovy
       """
       |import guru.nidi.graphviz.engine.Format
       |dependencyGraphGenerator {
@@ -185,6 +190,7 @@ class DependencyGraphGeneratorPluginTest {
 
   @Test @Suppress("Detekt.LongMethod") fun multiProjectIntegrationTest() {
     testProjectDir.newFile("build.gradle").writeText(
+      // language=groovy
       """
         |plugins {
         |  id "com.vanniktech.dependency.graph.generator"
@@ -194,6 +200,7 @@ class DependencyGraphGeneratorPluginTest {
     )
 
     testProjectDir.newFile("settings.gradle").writeText(
+      // language=groovy
       """
         |include ":lib"
         |include ":lib1"
@@ -206,6 +213,7 @@ class DependencyGraphGeneratorPluginTest {
 
     val lib = testProjectDir.newFolder("lib").run { parentFile.name + name }
     testProjectDir.newFile("lib/build.gradle").writeText(
+      // language=groovy
       """
         |plugins { id "java-library" }
         |
@@ -220,6 +228,7 @@ class DependencyGraphGeneratorPluginTest {
 
     val lib1 = testProjectDir.newFolder("lib1").run { parentFile.name + name }
     testProjectDir.newFile("lib1/build.gradle").writeText(
+      // language=groovy
       """
         |plugins { id "java-library" }
         |
@@ -235,6 +244,7 @@ class DependencyGraphGeneratorPluginTest {
 
     val lib2 = testProjectDir.newFolder("lib2").run { parentFile.name + name }
     testProjectDir.newFile("lib2/build.gradle").writeText(
+      // language=groovy
       """
         |plugins { id "java-library" }
         |
@@ -249,6 +259,7 @@ class DependencyGraphGeneratorPluginTest {
 
     val app = testProjectDir.newFolder("app").run { parentFile.name + name }
     testProjectDir.newFile("app/build.gradle").writeText(
+      // language=groovy
       """
         |plugins {
         |  id "java-library"
@@ -282,6 +293,7 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(true, File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.svg").exists())
 
     assertEquals(
+      // language=dot
       """
         digraph "G" {
         edge ["dir"="forward"]
@@ -317,6 +329,7 @@ class DependencyGraphGeneratorPluginTest {
     // We don't want to assert the content of the image, just that it exists.
     assertEquals(true, File(testProjectDir.root, "build/reports/project-dependency-graph/project-dependency-graph.svg").exists())
 
+    @Language("dot")
     fun projectDependencyGraph(label: String) = """
         digraph {
         edge ["dir"="forward"]

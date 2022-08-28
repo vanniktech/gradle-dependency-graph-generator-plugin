@@ -21,9 +21,9 @@ internal class DependencyGraphGenerator(
   // We keep a map of an identifier to a parent identifier in order to not add unique dependencies more than once.
   // One scenario is A depending on B and B on C.
   // If a module depends on both A and B the connection from B to C could be wired twice.
-  private val addedConnections = mutableSetOf<Pair<String, String>>()
+  private val addedConnections = mutableSetOf<Pair<DotIdentifier, DotIdentifier>>()
 
-  private val nodes = mutableMapOf<String, MutableNode>()
+  private val nodes = mutableMapOf<DotIdentifier, MutableNode>()
 
   @Suppress("Detekt.SpreadOperator") fun generateGraph(): MutableGraph {
     val graph = mutGraph("G").setDirected(true).graphAttrs().add(GraphAttr.dpi(100))
@@ -34,12 +34,12 @@ internal class DependencyGraphGenerator(
     val projects = (if (project.subprojects.size > 0) project.subprojects else setOf(project))
       .filter { generator.includeProject(it) }
 
-    val rootNodes = mutableSetOf<String>()
+    val rootNodes = mutableSetOf<DotIdentifier>()
 
     // Generate top level projects.
     projects.forEach {
       val projectId = it.dotIdentifier
-      val node = mutNode(projectId)
+      val node = mutNode(projectId.value)
         .add(Label.of(it.name))
         .add(Shape.RECTANGLE)
       val tunedNode = generator.projectNode.invoke(node, it)
@@ -55,46 +55,52 @@ internal class DependencyGraphGenerator(
           .filter { it.isCanBeResolved }
           .filter { generator.includeConfiguration.invoke(it) }
           .flatMap { it.resolvedConfiguration.firstLevelModuleDependencies }
-          .map { project to it }
+          .map { DependencyContainer(project) to it }
       }
-      .forEach { (project, dependency) ->
-        append(dependency, project.dotIdentifier, graph, rootNodes)
-      }
+      .forEach { (project, dependency) -> append(dependency, project, graph, rootNodes) }
 
     if (rootNodes.isNotEmpty()) {
       graph.add(
         graph()
           .graphAttr()
           .with(Rank.inSubgraph(RankType.SAME))
-          .with(*rootNodes.map { mutNode(it) }.toTypedArray())
+          .with(*rootNodes.map { mutNode(it.value) }.toTypedArray())
       )
     }
 
     return generator.graph(graph)
   }
 
-  private fun append(dependency: ResolvedDependency, parentIdentifier: String, graph: MutableGraph, rootNodes: MutableSet<String>) {
-    val identifier = (dependency.moduleGroup + dependency.moduleName).dotIdentifier
-    val pair = parentIdentifier to identifier
+  private fun append(
+    dependency: ResolvedDependency,
+    parent: DependencyContainer,
+    graph: MutableGraph,
+    rootNodes: MutableSet<DotIdentifier>
+  ) {
+    val identifier = dependency.dotIdentifier
+    val pair = parent.dotIdentifier to identifier
 
-    if (generator.include.invoke(dependency) && !addedConnections.contains(pair)) {
-      addedConnections.add(pair)
+    if (pair in addedConnections) return
+    if (!generator.include(dependency)) return
 
-      val node = mutNode(identifier)
-        .add(Label.of(dependency.getDisplayName()))
-        .add(Shape.RECTANGLE)
+    addedConnections.add(pair)
 
-      val mutated = generator.dependencyNode.invoke(node, dependency)
-      nodes[identifier] = mutated
-      graph.add(mutated)
+    val node = mutNode(identifier.value)
+      .add(Label.of(dependency.getDisplayName()))
+      .add(Shape.RECTANGLE)
 
-      rootNodes.remove(identifier)
+    val mutated = generator.dependencyNode.invoke(node, dependency)
+    nodes[identifier] = mutated
+    graph.add(mutated)
 
-      nodes[parentIdentifier]?.addLink(mutated)
+    rootNodes.remove(identifier)
 
-      if (generator.children.invoke(dependency)) {
-        dependency.children.forEach { append(it, identifier, graph, rootNodes) }
-      }
+    nodes[parent.dotIdentifier]?.apply {
+      addLink(generator.link(linkTo(mutated), parent, DependencyContainer(dependency)))
+    }
+
+    if (generator.children.invoke(dependency)) {
+      dependency.children.forEach { append(it, DependencyContainer(dependency), graph, rootNodes) }
     }
   }
 
