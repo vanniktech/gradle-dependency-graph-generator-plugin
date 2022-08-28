@@ -7,7 +7,6 @@ import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ProjectDependency
 import kotlin.math.pow
 
-
 internal fun String.nonEmptyPrepend(prepend: String) =
   if (isNotEmpty()) prepend + this else this
 
