@@ -20,7 +20,7 @@ import org.gradle.api.artifacts.ProjectDependency
 // Based on https://github.com/JakeWharton/SdkSearch/blob/766d612ed52cdf3af9cd0728b6afd87006746ae5/gradle/projectDependencyGraph.gradle
 internal class ProjectDependencyGraphGenerator(
   private val project: Project,
-  private val projectGenerator: DependencyGraphGeneratorExtension.ProjectGenerator
+  private val projectGenerator: DependencyGraphGeneratorExtension.ProjectGenerator,
 ) {
   fun generateGraph(): MutableGraph {
     val projects = mutableSetOf<Project>()
@@ -68,7 +68,7 @@ internal class ProjectDependencyGraphGenerator(
       graph()
         .graphAttr()
         .with(Rank.inSubgraph(RankType.SAME))
-        .with(*projects.filter { project -> dependencies.none { it.to == project } }.map { mutNode(it.path) }.toTypedArray())
+        .with(*projects.filter { project -> dependencies.none { it.to == project } }.map { mutNode(it.path) }.toTypedArray()),
     )
   }
 

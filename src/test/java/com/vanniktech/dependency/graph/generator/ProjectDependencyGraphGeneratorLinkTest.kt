@@ -38,8 +38,11 @@ class ProjectDependencyGraphGeneratorLinkTest {
 
   @Test fun customizeLinkBasedOnFromAndTo() {
     val blueDashedLinkForAppToLib1 = { link: Link, from: Project, to: Project, _: Configuration ->
-      if (from == app && to == lib1) link.attrs().add(BLUE, DASHED)
-      else link
+      if (from == app && to == lib1) {
+        link.attrs().add(BLUE, DASHED)
+      } else {
+        link
+      }
     }
     assertEquals(
       // language=DOT
@@ -60,7 +63,7 @@ class ProjectDependencyGraphGeneratorLinkTest {
       ":app" -> ":lib2"
       }
       """.trimIndent(),
-      ProjectDependencyGraphGenerator(root, ALL.copy(link = blueDashedLinkForAppToLib1)).generateGraph().toString()
+      ProjectDependencyGraphGenerator(root, ALL.copy(link = blueDashedLinkForAppToLib1)).generateGraph().toString(),
     )
   }
 }
