@@ -90,7 +90,7 @@ class DependencyGraphGeneratorTest {
         }
         }
       """.trimIndent(),
-      DependencyGraphGenerator(singleEmpty, ALL).generateGraph().toString()
+      DependencyGraphGenerator(singleEmpty, ALL).generateGraph().toString(),
     )
   }
 
@@ -102,7 +102,7 @@ class DependencyGraphGeneratorTest {
         graph ["dpi"="100"]
         }
       """.trimIndent(),
-      DependencyGraphGenerator(singleEmpty, ALL.copy(includeProject = { false })).generateGraph().toString()
+      DependencyGraphGenerator(singleEmpty, ALL.copy(includeProject = { false })).generateGraph().toString(),
     )
   }
 
@@ -121,7 +121,7 @@ class DependencyGraphGeneratorTest {
         }
         }
       """.trimIndent(),
-      DependencyGraphGenerator(singleEmpty, ALL).generateGraph().toString()
+      DependencyGraphGenerator(singleEmpty, ALL).generateGraph().toString(),
     )
   }
 
@@ -138,7 +138,7 @@ class DependencyGraphGeneratorTest {
         }
         }
       """.trimIndent(),
-      DependencyGraphGenerator(singleEmpty, ALL.copy(graph = { it.setDirected(false) })).generateGraph().toString()
+      DependencyGraphGenerator(singleEmpty, ALL.copy(graph = { it.setDirected(false) })).generateGraph().toString(),
     )
   }
 
@@ -157,7 +157,7 @@ class DependencyGraphGeneratorTest {
         }
         }
       """.trimIndent(),
-      DependencyGraphGenerator(singleEmpty, ALL.copy(label = Label.of("my custom header").locate(TOP).justify(LEFT))).generateGraph().toString()
+      DependencyGraphGenerator(singleEmpty, ALL.copy(label = Label.of("my custom header").locate(TOP).justify(LEFT))).generateGraph().toString(),
     )
   }
 
@@ -176,7 +176,7 @@ class DependencyGraphGeneratorTest {
         }
         }
       """.trimIndent(),
-      DependencyGraphGenerator(singleEmpty, ALL.copy(projectNode = { node, _ -> node.add(Shape.EGG, Style.DOTTED, Color.rgb("ff0099")) })).generateGraph().toString()
+      DependencyGraphGenerator(singleEmpty, ALL.copy(projectNode = { node, _ -> node.add(Shape.EGG, Style.DOTTED, Color.rgb("ff0099")) })).generateGraph().toString(),
     )
   }
 
@@ -203,7 +203,7 @@ class DependencyGraphGeneratorTest {
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(singleProject, ALL).generateGraph().toString()
+      DependencyGraphGenerator(singleProject, ALL).generateGraph().toString(),
     )
   }
 
@@ -212,7 +212,7 @@ class DependencyGraphGeneratorTest {
     val dependencyNode: (MutableNode, ResolvedDependency) -> MutableNode = { node, project ->
       val random = Random(project.name.hashCode().toLong())
       node.add(
-        Style.FILLED, Color.hsv(random.nextDouble(), random.nextDouble(), random.nextDouble())
+        Style.FILLED, Color.hsv(random.nextDouble(), random.nextDouble(), random.nextDouble()),
       )
     }
 
@@ -238,7 +238,7 @@ class DependencyGraphGeneratorTest {
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(singleProject, ALL.copy(dependencyNode = dependencyNode)).generateGraph().toString()
+      DependencyGraphGenerator(singleProject, ALL.copy(dependencyNode = dependencyNode)).generateGraph().toString(),
     )
   }
 
@@ -261,7 +261,7 @@ class DependencyGraphGeneratorTest {
         "single" -> "ioreactivexrxjava2rxjava"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(singleProject, ALL.copy(children = { false })).generateGraph().toString()
+      DependencyGraphGenerator(singleProject, ALL.copy(children = { false })).generateGraph().toString(),
     )
   }
 
@@ -284,7 +284,7 @@ class DependencyGraphGeneratorTest {
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(singleProject, ALL.copy(include = { it.moduleGroup != "io.reactivex.rxjava2" })).generateGraph().toString()
+      DependencyGraphGenerator(singleProject, ALL.copy(include = { it.moduleGroup != "io.reactivex.rxjava2" })).generateGraph().toString(),
     )
   }
 
@@ -383,7 +383,7 @@ class DependencyGraphGeneratorTest {
         "orgapachexmlgraphicsbatikjs" -> "xmlapisxmlapis"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(singleEmpty, ALL).generateGraph().toString()
+      DependencyGraphGenerator(singleEmpty, ALL).generateGraph().toString(),
     )
   }
 
@@ -416,7 +416,7 @@ class DependencyGraphGeneratorTest {
         "ioreactivexrxjava2rxandroid" -> "ioreactivexrxjava2rxjava"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(singleProject, ALL).generateGraph().toString()
+      DependencyGraphGenerator(singleProject, ALL).generateGraph().toString(),
     )
   }
 
@@ -449,7 +449,7 @@ class DependencyGraphGeneratorTest {
         "ioreactivexrxjava2rxandroid" -> "ioreactivexrxjava2rxjava"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(multiProject, ALL).generateGraph().toString()
+      DependencyGraphGenerator(multiProject, ALL).generateGraph().toString(),
     )
   }
 
@@ -497,7 +497,7 @@ class DependencyGraphGeneratorTest {
         "comandroidsupportsupportcompat" -> "comandroidsupportsupportannotations"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString()
+      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString(),
     )
   }
 
@@ -524,7 +524,7 @@ class DependencyGraphGeneratorTest {
         "comsquareupsqldelightruntime" -> "comandroidsupportsupportannotations"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString()
+      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString(),
     )
   }
 
@@ -566,7 +566,7 @@ class DependencyGraphGeneratorTest {
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString()
+      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString(),
     )
   }
 
@@ -606,7 +606,7 @@ class DependencyGraphGeneratorTest {
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString()
+      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString(),
     )
   }
 
@@ -639,7 +639,7 @@ class DependencyGraphGeneratorTest {
         "orgjetbrainskotlinkotlinstdlib" -> "orgjetbrainsannotations"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(androidProject, ALL.copy(includeConfiguration = { it.name == "stagingCompileClasspath" })).generateGraph().toString()
+      DependencyGraphGenerator(androidProject, ALL.copy(includeConfiguration = { it.name == "stagingCompileClasspath" })).generateGraph().toString(),
     )
   }
 
@@ -662,7 +662,7 @@ class DependencyGraphGeneratorTest {
         }
         }
       """.trimIndent(),
-      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString()
+      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString(),
     )
   }
 
@@ -685,7 +685,7 @@ class DependencyGraphGeneratorTest {
         }
         }
       """.trimIndent(),
-      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString()
+      DependencyGraphGenerator(androidProject, ALL).generateGraph().toString(),
     )
   }
 
@@ -708,7 +708,7 @@ class DependencyGraphGeneratorTest {
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         }
       """.trimIndent(),
-      DependencyGraphGenerator(rxjavaProject, ALL).generateGraph().toString()
+      DependencyGraphGenerator(rxjavaProject, ALL).generateGraph().toString(),
     )
   }
 }

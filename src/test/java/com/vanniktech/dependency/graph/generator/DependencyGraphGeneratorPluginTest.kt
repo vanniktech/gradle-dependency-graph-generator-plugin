@@ -77,7 +77,7 @@ class DependencyGraphGeneratorPluginTest {
         |  implementation "io.reactivex.rxjava2:rxjava:2.1.10"
         |}
         |
-      """.trimMargin()
+      """.trimMargin(),
     )
 
     fun runBuild(): BuildResult {
@@ -130,7 +130,7 @@ class DependencyGraphGeneratorPluginTest {
         "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
         }
       """.trimIndent(),
-      dependencyGraphDot.readText()
+      dependencyGraphDot.readText(),
     )
 
     // We don't want to assert the content of the images, just that they exist and that their path is logged
@@ -156,7 +156,7 @@ class DependencyGraphGeneratorPluginTest {
         }
         }
       """.trimIndent(),
-      projectDependencyGraphDot.readText()
+      projectDependencyGraphDot.readText(),
     )
 
     val secondResult = runBuild()
@@ -180,7 +180,7 @@ class DependencyGraphGeneratorPluginTest {
       |  }
       |}
       |
-      """.trimMargin()
+      """.trimMargin(),
     )
 
     val thirdResult = runBuild()
@@ -196,7 +196,7 @@ class DependencyGraphGeneratorPluginTest {
         |  id "com.vanniktech.dependency.graph.generator"
         |}
         |
-      """.trimMargin()
+      """.trimMargin(),
     )
 
     testProjectDir.newFile("settings.gradle").writeText(
@@ -208,7 +208,7 @@ class DependencyGraphGeneratorPluginTest {
         |include ":app"
         |include ":empty"
         |
-      """.trimMargin()
+      """.trimMargin(),
     )
 
     val lib = testProjectDir.newFolder("lib").run { parentFile.name + name }
@@ -223,7 +223,7 @@ class DependencyGraphGeneratorPluginTest {
         |  api "io.reactivex.rxjava2:rxjava:2.1.10"
         |}
         |
-      """.trimMargin()
+      """.trimMargin(),
     )
 
     val lib1 = testProjectDir.newFolder("lib1").run { parentFile.name + name }
@@ -239,7 +239,7 @@ class DependencyGraphGeneratorPluginTest {
         |  implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
         |}
         |
-      """.trimMargin()
+      """.trimMargin(),
     )
 
     val lib2 = testProjectDir.newFolder("lib2").run { parentFile.name + name }
@@ -254,7 +254,7 @@ class DependencyGraphGeneratorPluginTest {
         |  api project(":lib")
         |}
         |
-      """.trimMargin()
+      """.trimMargin(),
     )
 
     val app = testProjectDir.newFolder("app").run { parentFile.name + name }
@@ -273,7 +273,7 @@ class DependencyGraphGeneratorPluginTest {
         |  implementation project(":lib2")
         |}
         |
-      """.trimMargin()
+      """.trimMargin(),
     )
 
     val empty = testProjectDir.newFolder("empty").run { parentFile.name + name }
@@ -323,7 +323,7 @@ class DependencyGraphGeneratorPluginTest {
         "$lib2" -> "$lib"
         }
       """.trimIndent(),
-      File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot").readText()
+      File(testProjectDir.root, "build/reports/dependency-graph/dependency-graph.dot").readText(),
     )
 
     // We don't want to assert the content of the image, just that it exists.

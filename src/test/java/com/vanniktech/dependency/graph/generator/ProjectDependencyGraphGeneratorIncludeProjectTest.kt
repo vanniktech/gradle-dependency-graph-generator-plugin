@@ -51,7 +51,7 @@ class ProjectDependencyGraphGeneratorIncludeProjectTest {
       ":app" -> ":lib2" ["style"="dotted"]
       }
       """.trimIndent(),
-      ProjectDependencyGraphGenerator(root, ALL.copy(includeProject = { it != lib1 })).generateGraph().toString()
+      ProjectDependencyGraphGenerator(root, ALL.copy(includeProject = { it != lib1 })).generateGraph().toString(),
     )
   }
 
@@ -73,7 +73,7 @@ class ProjectDependencyGraphGeneratorIncludeProjectTest {
       ":app" -> ":lib1" ["style"="dotted"]
       }
       """.trimIndent(),
-      ProjectDependencyGraphGenerator(root, ALL.copy(includeProject = { it != lib2 })).generateGraph().toString()
+      ProjectDependencyGraphGenerator(root, ALL.copy(includeProject = { it != lib2 })).generateGraph().toString(),
     )
   }
 }

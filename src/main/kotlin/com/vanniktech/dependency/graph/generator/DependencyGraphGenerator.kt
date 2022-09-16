@@ -16,7 +16,7 @@ import org.gradle.api.artifacts.ResolvedDependency
 
 internal class DependencyGraphGenerator(
   private val project: Project,
-  private val generator: Generator
+  private val generator: Generator,
 ) {
   // We keep a map of an identifier to a parent identifier in order to not add unique dependencies more than once.
   // One scenario is A depending on B and B on C.
@@ -64,7 +64,7 @@ internal class DependencyGraphGenerator(
         graph()
           .graphAttr()
           .with(Rank.inSubgraph(RankType.SAME))
-          .with(*rootNodes.map { mutNode(it.value) }.toTypedArray())
+          .with(*rootNodes.map { mutNode(it.value) }.toTypedArray()),
       )
     }
 
@@ -75,7 +75,7 @@ internal class DependencyGraphGenerator(
     dependency: ResolvedDependency,
     parent: DependencyContainer,
     graph: MutableGraph,
-    rootNodes: MutableSet<DotIdentifier>
+    rootNodes: MutableSet<DotIdentifier>,
   ) {
     val identifier = dependency.dotIdentifier
     val pair = parent.dotIdentifier to identifier

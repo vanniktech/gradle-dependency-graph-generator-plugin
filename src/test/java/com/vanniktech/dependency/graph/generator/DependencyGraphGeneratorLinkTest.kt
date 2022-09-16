@@ -27,9 +27,12 @@ class DependencyGraphGeneratorLinkTest {
 
   @Test fun customizeLinkBasedOnFromAndTo() {
     val blueDashedLinkForRootToRxJava = { link: Link, from: DependencyContainer, to: DependencyContainer ->
-      if ((from as? Project)?.project == project && (to as? ResolvedDependency)?.moduleName == "rxjava") link.attrs()
-        .add(BLUE, DASHED)
-      else link
+      if ((from as? Project)?.project == project && (to as? ResolvedDependency)?.moduleName == "rxjava") {
+        link.attrs()
+          .add(BLUE, DASHED)
+      } else {
+        link
+      }
     }
     assertEquals(
       // language=dot
@@ -53,7 +56,7 @@ class DependencyGraphGeneratorLinkTest {
       "ioreactivexrxjava2rxjava" -> "orgreactivestreamsreactivestreams"
       }
       """.trimIndent(),
-      DependencyGraphGenerator(project, ALL.copy(link = blueDashedLinkForRootToRxJava)).generateGraph().toString()
+      DependencyGraphGenerator(project, ALL.copy(link = blueDashedLinkForRootToRxJava)).generateGraph().toString(),
     )
   }
 }
