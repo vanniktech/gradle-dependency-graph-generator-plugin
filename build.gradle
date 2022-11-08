@@ -2,7 +2,7 @@ import org.gradle.api.internal.classpath.ModuleRegistry
 import org.gradle.api.internal.project.ProjectInternal
 
 buildscript {
-  ext.kotlinVersion = '1.7.20'
+  ext.kotlinVersion = '1.7.21'
 
   repositories {
     mavenCentral()
