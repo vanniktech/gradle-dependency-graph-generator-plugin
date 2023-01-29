@@ -14,7 +14,7 @@ buildscript {
   dependencies {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.22.0'
-    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.23.2'
+    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.24.0'
   }
 }
 
