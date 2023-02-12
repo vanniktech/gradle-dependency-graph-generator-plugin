@@ -24,7 +24,7 @@ internal enum class ProjectTarget(
   ),
   MULTIPLATFORM(
     ids = setOf("org.jetbrains.kotlin.multiplatform"),
-    color = Color.rgb("#AB47BC").fill(),
+    color = Color.rgb("#A280FF").fill(),
   ),
   OTHER(
     ids = emptySet(),
