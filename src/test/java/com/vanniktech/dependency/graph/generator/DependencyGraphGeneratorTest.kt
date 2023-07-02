@@ -18,7 +18,6 @@ import org.gradle.testfixtures.ProjectBuilder
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import java.io.File
 import java.util.Random
 
 class DependencyGraphGeneratorTest {
@@ -67,10 +66,8 @@ class DependencyGraphGeneratorTest {
     }
 
     androidProjectExtension = androidProject.extensions.getByType(AppExtension::class.java)
+    androidProjectExtension.namespace = "com.foo.bar"
     androidProjectExtension.compileSdkVersion(27)
-    val manifestFile = File(androidProject.projectDir, "src/main/AndroidManifest.xml")
-    manifestFile.parentFile.mkdirs()
-    manifestFile.writeText("""<manifest package="com.foo.bar"/>""")
   }
 
   @Test fun singleProjectAllNoTestDependencies() {
