@@ -87,12 +87,12 @@ open class DependencyGraphGeneratorExtension(project: Project) {
   ) {
     /** Gradle task name that is associated with this generator. */
     @get:Internal val gradleTaskName = "generateDependencyGraph${
-    name.replaceFirstChar {
-      when {
-        it.isLowerCase() -> it.titlecase(Locale.getDefault())
-        else -> it.toString()
+      name.replaceFirstChar {
+        when {
+          it.isLowerCase() -> it.titlecase(Locale.getDefault())
+          else -> it.toString()
+        }
       }
-    }
     }"
     @get:Internal internal val outputFileName = "dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
     @get:Internal internal val outputFileNameDot = "$outputFileName.dot"
@@ -141,12 +141,12 @@ open class DependencyGraphGeneratorExtension(project: Project) {
   ) {
     /** Gradle task name that is associated with this generator. */
     @get:Internal val gradleTaskName = "generateProjectDependencyGraph${
-    name.replaceFirstChar {
-      when {
-        it.isLowerCase() -> it.titlecase(Locale.getDefault())
-        else -> it.toString()
+      name.replaceFirstChar {
+        when {
+          it.isLowerCase() -> it.titlecase(Locale.getDefault())
+          else -> it.toString()
+        }
       }
-    }
     }"
     @get:Internal internal val outputFileName = "project-dependency-graph${name.toHyphenCase().nonEmptyPrepend("-")}"
     @get:Internal internal val outputFileNameDot = "$outputFileName.dot"
