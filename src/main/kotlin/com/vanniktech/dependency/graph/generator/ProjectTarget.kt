@@ -30,5 +30,4 @@ internal enum class ProjectTarget(
     ids = emptySet(),
     color = Color.rgb("#BDBDBD").fill(),
   ),
-  ;
 }

@@ -30,7 +30,7 @@ validatePlugins {
 
 codeQualityTools {
   ktlint {
-    toolVersion = "0.47.1"
+    toolVersion = "1.0.1"
   }
   detekt {
     enabled = false
