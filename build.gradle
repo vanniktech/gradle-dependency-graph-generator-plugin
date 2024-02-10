@@ -82,7 +82,7 @@ dependencies {
 sourceCompatibility = JavaVersion.VERSION_1_8
 
 wrapper {
-  gradleVersion = '7.6.3'
+  gradleVersion = '7.6.4'
   distributionType = Wrapper.DistributionType.ALL
 }
 
