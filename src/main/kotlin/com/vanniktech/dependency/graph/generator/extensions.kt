@@ -1,9 +1,11 @@
 package com.vanniktech.dependency.graph.generator
 
 import com.vanniktech.dependency.graph.generator.ProjectTarget.MULTIPLATFORM
+import guru.nidi.graphviz.engine.Graphviz
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ProjectDependency
+import kotlin.math.pow
 
 internal fun String.nonEmptyPrepend(prepend: String) =
   if (isNotEmpty()) prepend + this else this
@@ -34,3 +36,5 @@ internal fun Project.target(): ProjectTarget {
 }
 
 internal fun Configuration.isImplementation() = name.lowercase().endsWith("implementation")
+
+internal fun Graphviz.withDefaultTotalMemory() = totalMemory(2.0.pow(30).toInt())
