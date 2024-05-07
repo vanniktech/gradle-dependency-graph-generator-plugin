@@ -12,9 +12,11 @@ sealed interface DependencyContainer {
 
   data class Project internal constructor(
     internal val project: GradleProject,
-  ) : DependencyContainer, GradleProject by project
+  ) : DependencyContainer,
+    GradleProject by project
 
   data class ResolvedDependency internal constructor(
     internal val resolvedDependency: GradleResolvedDependency,
-  ) : DependencyContainer, GradleResolvedDependency by resolvedDependency
+  ) : DependencyContainer,
+    GradleResolvedDependency by resolvedDependency
 }

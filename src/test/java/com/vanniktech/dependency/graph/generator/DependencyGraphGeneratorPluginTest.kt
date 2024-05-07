@@ -80,14 +80,12 @@ class DependencyGraphGeneratorPluginTest {
       """.trimMargin(),
     )
 
-    fun runBuild(): BuildResult {
-      return GradleRunner.create().withDebug(true)
-        .withPluginClasspath()
-        .withGradleVersion(gradleVersion)
-        .withProjectDir(testProjectDir.root)
-        .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "-Dorg.gradle.jvmargs=-Xmx2048m", "--stacktrace")
-        .build()
-    }
+    fun runBuild(): BuildResult = GradleRunner.create().withDebug(true)
+      .withPluginClasspath()
+      .withGradleVersion(gradleVersion)
+      .withProjectDir(testProjectDir.root)
+      .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "-Dorg.gradle.jvmargs=-Xmx2048m", "--stacktrace")
+      .build()
 
     val result = runBuild()
     assertEquals(TaskOutcome.SUCCESS, result.task(":generateDependencyGraph")?.outcome)
