@@ -212,7 +212,8 @@ class DependencyGraphGeneratorTest {
     val dependencyNode: (MutableNode, ResolvedDependency) -> MutableNode = { node, project ->
       val random = Random(project.name.hashCode().toLong())
       node.add(
-        Style.FILLED, Color.hsv(random.nextDouble(), random.nextDouble(), random.nextDouble()),
+        Style.FILLED,
+        Color.hsv(random.nextDouble(), random.nextDouble(), random.nextDouble()),
       )
     }
 
