@@ -28,7 +28,7 @@ import java.io.File
     val dot = File(outputDirectory, projectGenerator.outputFileNameDot)
     dot.writeText(graph.toString())
 
-    val graphviz = Graphviz.fromGraph(graph).run(projectGenerator.graphviz)
+    val graphviz = Graphviz.fromGraph(graph).withDefaultTotalMemory().run(projectGenerator.graphviz)
 
     val renders = projectGenerator.outputFormats.map {
       graphviz.render(it).toFile(File(outputDirectory, projectGenerator.outputFileName))
