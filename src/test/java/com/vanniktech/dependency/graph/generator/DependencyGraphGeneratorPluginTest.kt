@@ -39,7 +39,7 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(true, task.generator === Generator.ALL)
     assertEquals("reporting", task.group)
     assertEquals("Generates a dependency graph", task.description)
-    assertEquals(File(singleProject.buildDir, "reports/dependency-graph/").toString(), task.outputDirectory.toString())
+    assertEquals(singleProject.layout.buildDirectory.dir("reports/dependency-graph/").toString(), task.outputDirectory.toString())
   }
 
   @Test fun taskPropertiesProject() {
@@ -51,7 +51,7 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(true, task.projectGenerator === ProjectGenerator.ALL)
     assertEquals("reporting", task.group)
     assertEquals("Generates a project dependency graph", task.description)
-    assertEquals(File(singleProject.buildDir, "reports/project-dependency-graph/").toString(), task.outputDirectory.toString())
+    assertEquals(singleProject.layout.buildDirectory.dir("reports/project-dependency-graph/").toString(), task.outputDirectory.toString())
   }
 
   @Test fun integrationTestGradle742() {

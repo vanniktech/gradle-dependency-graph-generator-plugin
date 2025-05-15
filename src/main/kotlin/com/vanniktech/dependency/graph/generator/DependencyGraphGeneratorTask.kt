@@ -3,6 +3,8 @@ package com.vanniktech.dependency.graph.generator
 import com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.Generator
 import guru.nidi.graphviz.engine.Graphviz
 import org.gradle.api.DefaultTask
+import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.model.ObjectFactory
 import org.gradle.api.tasks.CacheableTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.Internal
@@ -10,11 +12,13 @@ import org.gradle.api.tasks.Nested
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
+import javax.inject.Inject
 
-@CacheableTask open class DependencyGraphGeneratorTask : DefaultTask() {
+@CacheableTask
+open class DependencyGraphGeneratorTask @Inject constructor(objects: ObjectFactory) : DefaultTask() {
   @get:Nested lateinit var generator: Generator
 
-  @OutputDirectory lateinit var outputDirectory: File
+  @OutputDirectory val outputDirectory: DirectoryProperty = objects.directoryProperty()
 
   @get:Internal val graph by lazy {
     DependencyGraphGenerator(project, generator).generateGraph()
@@ -25,6 +29,7 @@ import java.io.File
   }
 
   @TaskAction fun run() {
+    val outputDirectory = outputDirectory.get().asFile
     val dot = File(outputDirectory, generator.outputFileNameDot)
     dot.writeText(graph.toString())
 

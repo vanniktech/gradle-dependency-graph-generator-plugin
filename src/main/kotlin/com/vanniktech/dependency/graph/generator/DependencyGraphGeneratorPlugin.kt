@@ -13,7 +13,7 @@ open class DependencyGraphGeneratorPlugin : Plugin<Project> {
         it.generator = generator
         it.group = "reporting"
         it.description = "Generates a dependency graph${generator.name.nonEmptyPrepend(" for ")}"
-        it.outputDirectory = File(project.buildDir, "reports/dependency-graph/")
+        it.outputDirectory.set(project.layout.buildDirectory.dir("reports/dependency-graph/"))
       }
     }
 
@@ -22,7 +22,7 @@ open class DependencyGraphGeneratorPlugin : Plugin<Project> {
         it.projectGenerator = projectGenerator
         it.group = "reporting"
         it.description = "Generates a project dependency graph${projectGenerator.name.nonEmptyPrepend(" for ")}"
-        it.outputDirectory = File(project.buildDir, "reports/project-dependency-graph/")
+        it.outputDirectory.set(project.layout.buildDirectory.dir("reports/project-dependency-graph/"))
       }
     }
   }
