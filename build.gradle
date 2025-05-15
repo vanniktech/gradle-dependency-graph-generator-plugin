@@ -79,7 +79,7 @@ dependencies {
   testRuntimeOnly(files(toolingApiBuildersJar))
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_17
 
 wrapper {
   gradleVersion = '8.13'
