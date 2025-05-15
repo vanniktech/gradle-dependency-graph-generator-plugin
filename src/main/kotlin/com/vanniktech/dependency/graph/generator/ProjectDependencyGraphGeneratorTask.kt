@@ -35,10 +35,9 @@ open class ProjectDependencyGraphGeneratorTask @Inject constructor(objects: Obje
 
     val graphviz = Graphviz.fromGraph(graph).run(projectGenerator.graphviz)
 
-    val renders =
-      projectGenerator.outputFormats.map {
-        graphviz.render(it).toFile(File(outputDirectory, projectGenerator.outputFileName))
-      }
+    val renders = projectGenerator.outputFormats.map {
+      graphviz.render(it).toFile(File(outputDirectory, projectGenerator.outputFileName))
+    }
 
     listOf(dot).plus(renders).distinct().forEach { logger.lifecycle(it.absolutePath) }
   }
