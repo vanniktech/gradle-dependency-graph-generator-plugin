@@ -10,11 +10,11 @@ sealed interface DependencyContainer {
     internal operator fun invoke(dependency: GradleResolvedDependency) = ResolvedDependency(dependency)
   }
 
-  data class Project internal constructor(
+  data class Project(
     internal val project: GradleProject,
   ) : DependencyContainer, GradleProject by project
 
-  data class ResolvedDependency internal constructor(
+  data class ResolvedDependency(
     internal val resolvedDependency: GradleResolvedDependency,
   ) : DependencyContainer, GradleResolvedDependency by resolvedDependency
 }

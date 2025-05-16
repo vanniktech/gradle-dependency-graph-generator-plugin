@@ -68,9 +68,10 @@ class DependencyGraphGeneratorTest {
 
     androidProjectExtension = androidProject.extensions.getByType(AppExtension::class.java)
     androidProjectExtension.compileSdkVersion(27)
+    androidProjectExtension.namespace = "com.foo.bar"
     val manifestFile = File(androidProject.projectDir, "src/main/AndroidManifest.xml")
     manifestFile.parentFile.mkdirs()
-    manifestFile.writeText("""<manifest package="com.foo.bar"/>""")
+    manifestFile.writeText("""<manifest/>""")
   }
 
   @Test fun singleProjectAllNoTestDependencies() {
