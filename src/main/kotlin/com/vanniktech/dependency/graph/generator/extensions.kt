@@ -4,6 +4,7 @@ import com.vanniktech.dependency.graph.generator.ProjectTarget.MULTIPLATFORM
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ProjectDependency
+import java.io.File
 
 internal fun String.nonEmptyPrepend(prepend: String) =
   if (isNotEmpty()) prepend + this else this
@@ -34,3 +35,6 @@ internal fun Project.target(): ProjectTarget {
 }
 
 internal fun Configuration.isImplementation() = name.lowercase().endsWith("implementation")
+
+internal val Project.buildDirectory: File
+  get() = layout.buildDirectory.asFile.get()

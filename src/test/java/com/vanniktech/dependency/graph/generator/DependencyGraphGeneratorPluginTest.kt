@@ -39,7 +39,7 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(true, task.generator === Generator.ALL)
     assertEquals("reporting", task.group)
     assertEquals("Generates a dependency graph", task.description)
-    assertEquals(File(singleProject.buildDir, "reports/dependency-graph/").toString(), task.outputDirectory.toString())
+    assertEquals(File(singleProject.buildDirectory, "reports/dependency-graph/").toString(), task.outputDirectory.toString())
   }
 
   @Test fun taskPropertiesProject() {
@@ -51,11 +51,11 @@ class DependencyGraphGeneratorPluginTest {
     assertEquals(true, task.projectGenerator === ProjectGenerator.ALL)
     assertEquals("reporting", task.group)
     assertEquals("Generates a project dependency graph", task.description)
-    assertEquals(File(singleProject.buildDir, "reports/project-dependency-graph/").toString(), task.outputDirectory.toString())
+    assertEquals(File(singleProject.buildDirectory, "reports/project-dependency-graph/").toString(), task.outputDirectory.toString())
   }
 
-  @Test fun integrationTestGradle742() {
-    integrationTest("7.4.2")
+  @Test fun integrationTestGradle814() {
+    integrationTest("8.14")
   }
 
   @Suppress("Detekt.LongMethod") private fun integrationTest(gradleVersion: String) {
@@ -280,7 +280,7 @@ class DependencyGraphGeneratorPluginTest {
 
     val result = GradleRunner.create().withDebug(true)
       .withPluginClasspath()
-      .withGradleVersion("7.4.2")
+      .withGradleVersion("8.14")
       .withProjectDir(testProjectDir.root)
       .withArguments("generateDependencyGraph", "generateProjectDependencyGraph", "app:generateProjectDependencyGraph", "-Dorg.gradle.jvmargs=-Xmx2048m", "--stacktrace")
       .build()
