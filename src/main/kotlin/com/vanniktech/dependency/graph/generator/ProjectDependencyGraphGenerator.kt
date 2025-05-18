@@ -13,6 +13,7 @@ import guru.nidi.graphviz.model.Factory.mutNode
 import guru.nidi.graphviz.model.Link
 import guru.nidi.graphviz.model.MutableGraph
 import guru.nidi.graphviz.model.MutableNode
+import org.gradle.api.GradleException
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ProjectDependency
@@ -59,7 +60,14 @@ internal class ProjectDependencyGraphGenerator(
       node.add(Shape.RECTANGLE)
     }
 
-    node.add(project.target().color)
+    val type = projectGenerator.projectMapper?.invoke(project)
+    type?.color?.let(node::add)
+    type?.shape?.let(node::add)
+
+    if (node.attrs().isEmpty) {
+      project.logger.warn("Node '${node.name()}' has no attributes, it won't be visible on the diagram")
+    }
+
     graph.add(projectGenerator.projectNode(node, project))
   }
 

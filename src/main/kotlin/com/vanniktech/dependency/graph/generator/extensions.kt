@@ -1,6 +1,5 @@
 package com.vanniktech.dependency.graph.generator
 
-import com.vanniktech.dependency.graph.generator.ProjectTarget.MULTIPLATFORM
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ProjectDependency
@@ -20,21 +19,9 @@ internal fun String.toHyphenCase(): String {
 
 fun Project.isDependingOnOtherProject() = configurations.any { configuration -> configuration.dependencies.any { it is ProjectDependency } }
 
-fun Project.isCommonsProject() = plugins.hasPlugin("org.jetbrains.kotlin.platform.common")
-
-internal fun Project.target(): ProjectTarget {
-  val targets = ProjectTarget.values()
-    .filter { target -> target.ids.any { plugins.hasPlugin(it) } }
-
-  val withoutMultiplatform = targets.minus(MULTIPLATFORM)
-
-  return when {
-    targets.contains(MULTIPLATFORM) -> MULTIPLATFORM
-    else -> withoutMultiplatform.firstOrNull() ?: ProjectTarget.OTHER
-  }
-}
-
 internal fun Configuration.isImplementation() = name.lowercase().endsWith("implementation")
 
 internal val Project.buildDirectory: File
   get() = layout.buildDirectory.asFile.get()
+
+internal fun Project.hasAnyPlugin(vararg ids: String) = ids.any { pluginManager.hasPlugin(it) }
