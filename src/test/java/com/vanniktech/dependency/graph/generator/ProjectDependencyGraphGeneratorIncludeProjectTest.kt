@@ -121,7 +121,7 @@ class ProjectDependencyGraphGeneratorIncludeProjectTest {
     )
   }
 
-  private enum class TestTarget(override val color: Color?, override val shape: Shape?) : ProjectType {
+  private enum class TestProject(override val color: Color?, override val shape: Shape?) : NodeType {
     ABC(color = Color.rgb("#FFFFFF").fill(), shape = Shape.PARALLELOGRAM),
     DEF(color = Color.rgb("#ABCDEF").fill(), shape = Shape.THREE_P_OVERHANG),
     XYZ(color = null, shape = Shape.ASSEMBLY),
@@ -145,9 +145,9 @@ class ProjectDependencyGraphGeneratorIncludeProjectTest {
 
     val mapper: ProjectMapper = { proj ->
       when {
-        proj.extensions.extraProperties.has("some-property") -> TestTarget.ABC
-        proj.path.contains("def") -> TestTarget.DEF
-        else -> TestTarget.XYZ
+        proj.extensions.extraProperties.has("some-property") -> TestProject.ABC
+        proj.path.contains("def") -> TestProject.DEF
+        else -> TestProject.XYZ
       }
     }
     val customGenerator = ALL.copy(projectMapper = mapper)

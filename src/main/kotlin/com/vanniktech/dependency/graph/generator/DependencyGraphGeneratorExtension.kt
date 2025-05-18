@@ -84,6 +84,8 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     @get:Nested var graph: (MutableGraph) -> MutableGraph = { it },
     /** Allows you to configure the [Graphviz] instance. */
     @get:Nested var graphviz: (Graphviz) -> Graphviz = { it },
+    /** Determines the color/shape of the project node on the output diagram */
+    @get:Input var dependencyMapper: DependencyMapper = { null },
   ) {
     /** Gradle task name that is associated with this generator. */
     @get:Internal val gradleTaskName = "generateDependencyGraph${
@@ -139,7 +141,7 @@ open class DependencyGraphGeneratorExtension(project: Project) {
     /** Allows you to configure the [Graphviz] instance. */
     @get:Nested var graphviz: (Graphviz) -> Graphviz = { it },
     /** Determines the color/shape of the project node on the output diagram */
-    @get:Input var projectMapper: ProjectMapper? = ::defaultProjectMapper,
+    @get:Input var projectMapper: ProjectMapper = DefaultProjectMapper,
   ) {
     /** Gradle task name that is associated with this generator. */
     @get:Internal val gradleTaskName = "generateProjectDependencyGraph${

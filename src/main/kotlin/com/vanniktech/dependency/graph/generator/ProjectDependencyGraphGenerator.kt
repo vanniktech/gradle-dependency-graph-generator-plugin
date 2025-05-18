@@ -13,7 +13,6 @@ import guru.nidi.graphviz.model.Factory.mutNode
 import guru.nidi.graphviz.model.Link
 import guru.nidi.graphviz.model.MutableGraph
 import guru.nidi.graphviz.model.MutableNode
-import org.gradle.api.GradleException
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ProjectDependency
@@ -60,7 +59,7 @@ internal class ProjectDependencyGraphGenerator(
       node.add(Shape.RECTANGLE)
     }
 
-    val type = projectGenerator.projectMapper?.invoke(project)
+    val type = projectGenerator.projectMapper.invoke(project)
     type?.color?.let(node::add)
     type?.shape?.let(node::add)
 

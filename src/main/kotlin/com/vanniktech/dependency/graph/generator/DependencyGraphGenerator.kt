@@ -89,6 +89,10 @@ internal class DependencyGraphGenerator(
       .add(Label.of(dependency.getDisplayName()))
       .add(Shape.RECTANGLE)
 
+    val type = generator.dependencyMapper.invoke(dependency)
+    type?.color?.let(node::add)
+    type?.shape?.let(node::add)
+
     val mutated = generator.dependencyNode.invoke(node, dependency)
     nodes[identifier] = mutated
     graph.add(mutated)
