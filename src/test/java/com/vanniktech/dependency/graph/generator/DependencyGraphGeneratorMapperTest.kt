@@ -64,7 +64,6 @@ class DependencyGraphGeneratorMapperTest {
       when {
         dependency.moduleName.contains("x") -> BasicNodeType("#ABC123", Shape.EGG)
         dependency.moduleName.contains("k") -> BasicNodeType("#DEF789", Shape.POINT)
-//        !dependency.moduleGroup.contains("kotlin") -> BasicNodeType("#000000", Shape.OCTAGON)
         else -> null
       }
     }
