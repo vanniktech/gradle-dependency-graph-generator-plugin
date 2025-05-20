@@ -3,6 +3,8 @@
 Version 0.9.0 *(In development)*
 --------------------------------
 
+- Add configurable node types to the project diagrams, with custom colors/shapes. [\#163](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin/pull/266) ([jonapoul](https://github.com/jonapoul))
+
 Version 0.8.0 *(2022-06-21)*
 ----------------------------
 

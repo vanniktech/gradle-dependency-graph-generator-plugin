@@ -69,6 +69,7 @@ dependencies {
 
   testImplementation 'junit:junit:4.13.2'
   testImplementation "com.android.tools.build:gradle:8.10.0"
+  testImplementation "org.jetbrains.kotlin.native.cocoapods:org.jetbrains.kotlin.native.cocoapods.gradle.plugin:$kotlinVersion"
   testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
   // https://github.com/gradle/gradle/issues/16774#issuecomment-893493869
