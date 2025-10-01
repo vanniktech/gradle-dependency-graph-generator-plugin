@@ -22,7 +22,7 @@ jobs:
           java-version-file: .github/workflows/.java-version
 
       - name: Setup gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v5
 
       - name: Retrieve version
         run: |
