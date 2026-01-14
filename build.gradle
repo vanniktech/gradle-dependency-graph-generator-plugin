@@ -78,11 +78,10 @@ dependencies {
   testRuntimeOnly(files(toolingApiBuildersJar))
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-
-wrapper {
-  gradleVersion = '8.14.3'
-  distributionType = Wrapper.DistributionType.ALL
+kotlin {
+  jvmToolchain {
+    languageVersion.set(JavaLanguageVersion.of(17))
+  }
 }
 
 test {
