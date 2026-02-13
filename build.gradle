@@ -65,7 +65,7 @@ dependencies {
   api "guru.nidi:graphviz-java:0.18.1"
 
   testImplementation 'junit:junit:4.13.2'
-  testImplementation "com.android.tools.build:gradle:8.13.2"
+  testImplementation "com.android.tools.build:gradle:9.0.1"
   testImplementation "org.jetbrains.kotlin.native.cocoapods:org.jetbrains.kotlin.native.cocoapods.gradle.plugin:$kotlinVersion"
   testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
